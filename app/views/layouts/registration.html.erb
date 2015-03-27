@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dashboard | Dynamic Admin Template</title>
+  <title>Login | Dynamic Admin Template</title>
   <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'registration', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/ico/apple-touch-icon-144-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/ico/apple-touch-icon-114-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/ico/apple-touch-icon-72-precomposed.png">
   <link rel="apple-touch-icon-precomposed" href="/assets/images/ico/apple-touch-icon-57-precomposed.png">
-  <link rel="icon" href="img/ico/favicon.ico" type="image/png">
+  <link rel="icon" href="/assets/ico/favicon.ico" type="image/png">
   <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
   <meta name="msapplication-TileColor" content="#3399cc" />
 </head>
-<body>
-<%= render "layouts/header"%>
-<div id="wrapper">
-  <!-- .page-sidebar -->
-  <%= render "layouts/left_side_bar"%>
-  <!-- / page-sidebar -->
-  <!-- Start #right-sidebar -->
-  <%= render "layouts/right_side_bar"%>
-<%= yield %>
-<%= render "layouts/footer" %>
+<body class="login-page">
+  <div class="container login-container">
+  <%= yield%>  
+  </div>
+  <div class="container">
+    <div class="footer">
+      <p class="text-center">&copy;2014 Copyright Dynamic admin. All right reserved !!!</p>
+    </div>
+  </div>
 </body>
 </html>
