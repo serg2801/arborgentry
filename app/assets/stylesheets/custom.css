@@ -1,3 +1,55 @@
 /* -----------------------------------------
    Custom.css - put your own changes here 
 ----------------------------------------- */
+
+.panel-ta{
+  background-color: #d5d8e4;
+  border:1px solid #aeb0b5;
+}
+
+.font-wt{
+  color:#FFF;
+}
+
+.panel-header{
+  font-weight: bold !important;
+  text-transform: uppercase;
+  font-size: 24px !important;
+}
+
+.page-header h2 span{
+  font-weight: bold;
+}
+
+.section-title{
+  background-color: #d5d8e4;
+}
+.section-title h1{
+  color: #63656a;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin: 10px 5px;
+  float: left;
+}
+.timeline  a{
+  color:#aaadc6 !important;
+}
+.section-title a{
+  color: #65676c !important;
+  margin: 0 4px;
+}
+.section-title a:hover{
+  text-decoration: none !important;
+}
+.section-title .panel-controls-right{
+  float:right !important;
+  padding-top:12px;
+}
+
+/* Bootstrap CSS overwrite */
+
+.panel .panel-controls-right a i{
+  color:#FFF !important;
+  font-size: 14px !important;
+}
+

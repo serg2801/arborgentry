@@ -479,7 +479,7 @@
   color: #777777 !important;
 }
 .color-gray-dark {
-  color: #333333 !important;
+  color: #231f20 !important;
 }
 /* ------------------ Backgrounds --------------------*/
 .white-bg {
@@ -1787,7 +1787,7 @@ body.fixed-right-sidebar:not(.fixed-header) #right-sidebar.rstop {
   font-weight: bold;
   font-size: 18px;
   padding-right: 5px;
-  color: #0a97b9;
+  color: #231f20;
 }
 .spark .sparkline {
   width: 100%;
@@ -3061,7 +3061,7 @@ fieldset[disabled] .pricing-table.yellow .pricing-bottom .price .btn.active {
 }
 .custom-progressbar.blue .percent,
 .custom-progressbar.blue .description {
-  color: #0a97b9;
+  color: #231F20;
 }
 .custom-progressbar.red .percent,
 .custom-progressbar.red .description {
@@ -3103,19 +3103,19 @@ fieldset[disabled] .pricing-table.yellow .pricing-bottom .price .btn.active {
   background-color: rgba(255, 255, 255, 0.7);
 }
 .weather.snow {
-  background-image: url(/assets/weather/snow.png);
+  background-image: url(../img/weather/snow.png);
 }
 .weather.rain {
-  background-image: url(/assets/weather/rain.png);
+  background-image: url(../img/weather/rain.png);
 }
 .weather.clear {
-  background-image: url(/assets/weather/clear.png);
+  background-image: url(../img/weather/clear.png);
 }
 .weather.cloud {
-  background-image: url(/assets/weather/cloud.png);
+  background-image: url(../img/weather/cloud.png);
 }
 .weather.sunny {
-  background-image: url(/assets/weather/sunny.png);
+  background-image: url(../img/weather/sunny.png);
 }
 /* -----------------------------------------
    Recent comments

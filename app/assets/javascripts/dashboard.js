@@ -163,15 +163,15 @@ $(document).ready(function() {
 		type: 'bar',
 		width: '100%',
 		height: '20px',
-		barColor: '#a8aeb7',
+		barColor: '#f1f3f6',
 		zeroAxis: false,
 	});
 
 	//------------- User satisfaction chart -------------//
 	var customerProgress = new ProgressBar.Circle('#customer-exp', {
-	    color: '#0a97b9',
+	    color: '#bec3d1',
 	    strokeWidth: 2,
-	    fill: '#d0f1f9',
+	    fill: '#e0e0e0',
 	    duration: 4000,
 	    easing: 'bounce'
 	});
