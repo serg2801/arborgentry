@@ -14,8 +14,8 @@
   <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
   <meta name="msapplication-TileColor" content="#3399cc" />
 </head>
-<body class="login-page">
-  <div class="container login-container">
+<body class="<%= params[:action] == "login" ? 'login-page' : 'signup-page'%>">
+  <div class="container <%= params[:action] == "login" ? 'login-container' : '' %>">
   <%= yield%>  
   </div>
   <div class="container">
