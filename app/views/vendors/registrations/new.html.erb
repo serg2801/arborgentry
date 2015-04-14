@@ -1,29 +1,421 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="headline text-center">
+        A HiGHLY CURATED HOME FURNISHING and DESIGN site
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="row">
+    <div class="col-xs-12 m-t-lg m-b-lg">
+      <div class="signup-header">
+        <div class="line"></div>
+        <ul class="menu-left">
+          <li><a href="#">Custom Service</a></li>
+          <li class="seprator"></li>
+          <li><a href="#">Our Story</a></li>
+          <li class="seprator"></li>
+          <li><a href="#">Register</a></li>
+          <li class="seprator"></li>
+          <li><a href="#">My Account</a></li>
+        </ul>
+
+        <ul class="menu-right">
+          <li><a href="#">Avant</a></li>
+          <li class="seprator"></li>
+          <li><a href="#">Very Personal Decorator</a></li>
+          <li class="seprator"></li>
+          <li><a href="#">Factory</a></li>
+          <li class="seprator"></li>
+          <li><a href="#">Curate</a></li>
+        </ul>
+        <div class="signup-logo">
+          <img src="/assets/signup-logo.png" class="" />
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="row">
+    <div class="col-xs-12 m-t-lg m-b-lg">
+      <div class="b-t-md">
+        <div class="col-xs-10 col-xs-offset-1 bold-title">
+          <h4 class="text-center">BECOME A VENDOR</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-8 col-xs-offset-2">
+      Tandem Arbor is an independent lifestyle e-commerce site for highly curated home furnishings and designs catering to the higher end luxury market. Focused on true mid to high end products with engaging content from in—house designers across multiple product categories. Tandem Arbor is a one-stop shop for all home decor with a focused niche on providing superb customer service. Thndern Arbor is constantly exploring the developmnent of high-end sub-brands and exclusive arrangements with premier vendors, to further penetrate the luxury market.
+    </div>
+    <div class="col-xs-12 m-t-lg m-b-lg">
+      <div class="b-t-md">
+        <div class="col-xs-10 col-xs-offset-1 bold-title">
+          <h4 class="text-center">VENDOR APPLICATION</h4>
+        </div>
+      </div>
+    </div>
   </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- col-lg-12 start here -->
+        <div class="panel panel-default toggle panelMove panelClose panelRefresh" id="dyn_0">
+          <!-- Start .panel -->
+          <div class="panel-heading">
+            <h4 class="panel-title">BUSINESS INFORMATION</h4>
+            <div class="panel-controls panel-controls-right">
+              <a class="panel-refresh" href="#"><i class="fa fa-circle-o"></i></a>
+              <a class="toggle panel-minimize" href="#"><i class="fa fa-angle-up"></i></a>
+              <a class="panel-close" href="#"><i class="fa fa-times"></i></a>
+            </div>
+          </div>
+          <div class="panel-body pt0 pb0">
+            <div class="form-horizontal group-border stripped" id="validate">
+              <div class="form-group">
+                <%= f.label :vendor_name, "BUSSSINESS/VENDOR NAME", :class => "col-lg-2 col-md-3 control-label"  %>
+                <div class="col-lg-10 col-md-9">
+                  <%= f.text_field :vendor_name, :class => "form-control requires" %>
+                </div>
+              </div>
+                
+              <div class="form-group">
+                <label class="col-lg-2 col-md-3 control-label" for="first_name">FIRST NAME</label>
+                <div class="col-lg-10 col-md-9">
+                  <input type="text" placeholder="" name="first_name" class="form-control" id="first_name">
+                </div>
+              </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+              <div class="form-group">
+                <label class="col-lg-2 col-md-3 control-label" for="last_name">LAST NAME</label>
+                <div class="col-lg-10 col-md-9">
+                  <input type="text" placeholder="" name="last_name" class="form-control" id="last_name">
+                </div>
+              </div>
 
-<%= render "vendors/shared/links" %>
+              <div class="form-group">
+                <label class="col-lg-2 col-md-3 control-label" for="phone_number">PHONE NUMBER</label>
+                <div class="col-lg-10 col-md-9">
+                  <input type="text" placeholder="" name="phone_number" id="phone_number" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="email">Email ADDRESS</label>
+                  <div class="col-lg-10 col-md-9">
+                      <input type="email" placeholder="" class="form-control" name="email" id="email">
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="business_add">BUSINESS ADDRESS</label>
+                  <div class="col-lg-10 col-md-9">
+                      <input type="text" placeholder="" name="business_add" id="business_add" class="form-control">
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-lg-2 col-md-3 control-label" for="city">CITY</label>
+                <div class="col-lg-4 col-md-9">
+                  <input type="text" placeholder="" name="city" id="city" class="form-control">
+                </div>
+                <label class="col-lg-2 col-md-3 control-label" for="city">STATE</label>
+                <div class="col-lg-4 col-md-9">
+                  <input type="text" placeholder="" name="state" id="state" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-lg-2 col-md-3 control-label" for="zipcode">ZIP CODE</label>
+                <div class="col-lg-4 col-md-9">
+                  <input type="text" placeholder="" name="zipcode" id="zipcode" class="form-control">
+                </div>
+                <label class="col-lg-2 col-md-3 control-label" for="country">COUNTRY</label>
+                <div class="col-lg-4 col-md-9">
+                  <input type="text" placeholder="" name="country" id="country" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-lg-2 col-md-3 control-label" for="url">WEBSITE ADDRESS</label>
+                <div class="col-lg-10 col-md-9">
+                  <input type="text" placeholder="" name="url" id="url" class="form-control">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-xs-12 control-label">CHECK THE OPTION THAT BEST DESCRIBE YOUR COMPANY : </label>
+                <div class="col-lg-3 col-md-6">
+                  <div class="checkbox-custom">
+                    <input type="checkbox" value="option" id="agree" name="agree">
+                    <label for="agree">SALES REPRESENTATIVE/ WHOLESALER</label>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <div class="checkbox-custom">
+                    <input type="checkbox" value="option" id="antique-dealer" name="antique-dealer">
+                    <label for="agree">ANTIQUE DEALER</label>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <div class="checkbox-custom">
+                    <input type="checkbox" value="option" id="agree" name="agree">
+                    <label for="agree">DESIGNER</label>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <div class="checkbox-custom">
+                    <input type="checkbox" value="option" id="agree" name="agree">
+                    <label for="agree">NOT APPLICABLE</label>
+                  </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                  <div class="checkbox-custom">
+                    <input type="checkbox" value="option" id="agree" name="agree">
+                    <label for="agree">MANUFACTURER</label>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <div class="checkbox-custom">
+                    <input type="checkbox" value="option" id="agree" name="agree">
+                    <label for="agree">VINTAGE DEALER</label>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <div class="checkbox-custom">
+                    <input type="checkbox" value="option" id="had" name="agree">
+                    <label for="agree">HAND-CRAFTED / ARTISINAL</label>
+                  </div>
+                </div>
+              </div>                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12">
+          <!-- col-lg-12 start here -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh" id="dyn_0">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                <h4 class="panel-title">BUSINESS INFORMATION</h4>
+                <div class="panel-controls panel-controls-right">
+                  <a class="panel-refresh" href="#"><i class="fa fa-circle-o"></i></a>
+                  <a class="toggle panel-minimize" href="#"><i class="fa fa-angle-up"></i></a>
+                  <a class="panel-close" href="#"><i class="fa fa-times"></i></a>
+                </div>
+              </div>
+              <div class="panel-body pt0 pb0">
+                  <form role="form" class="form-horizontal group-border stripped" id="validate" novalidate="novalidate">
+                     
+
+                     <!-- End .form-group  -->
+                      <div class="form-group">
+                          <label class="col-xs-12 control-label">CHECK THE PRODUCT CATEGORIES WOULD YOU LIKE TO SELL ON TANDEMARBOR: </label>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="furniture" name="furniture">
+                                  <label for="furniture">FURNITURE</label>
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="bath" name="bath">
+                                  <label for="bath">BATH</label>
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="outdoor" name="outdoor">
+                                  <label for="outdoor">OUTDOOR</label>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">KITCHEN</label>
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">LIGHTING</label>
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">ART</label>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">TABLETOP</label>
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">RUGS</label>
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">DECORATIVE TAXTILES</label>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">BED</label>
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">DECORATIVE ACCESSORIES</label>
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">OTHER</label>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="" class="col-lg-3 col-md-3 control-label text-left">UPLOAD PRODUCT EXAMPLE</label>
+                          <div class="col-lg-9 col-md-9">
+                              <input type="file" data-iconname="" data-buttonname="btn-danger" data-buttontext="UPLOAD" class="filestyle" id="filestyle-0" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1"><div class="bootstrap-filestyle input-group"><input type="text" disabled="" class="form-control "> <span class="group-span-filestyle input-group-btn" tabindex="0"><label class="btn btn-upload " for="filestyle-0">UPLOAD</label></span></div>
+                          </div>
+                      </div>
+
+
+                      <!-- End .form-group  -->
+                      <div class="form-group">
+                          <label class="col-xs-12 control-label">WHAT CHANNEL DO YOU SELL THROUGH</label>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">DIRECT TO CONSUMER</label>
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">SHOW ROOM</label>
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">OTHER</label>
+                              </div>
+                          </div>
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">BRICK AND MORTAR RETAIL STORE</label>
+                              </div>
+                          </div>
+
+                          <div class="col-lg-4 col-md-6">
+                              <div class="checkbox-custom">
+                                  <input type="checkbox" value="option" id="agree" name="agree">
+                                  <label for="agree">3RD PARTY ECOMMERCE SITE</label>
+                              </div>
+                          </div>
+                          
+                      </div>
+                    
+                  </form>
+              </div>
+          </div>
+          <!-- End .panel -->
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- col-lg-12 start here -->
+        <div class="panel panel-default toggle panelMove panelClose panelRefresh" id="dyn_0">
+          <!-- Start .panel -->
+          <div class="panel-heading">
+            <h4 class="panel-title">PRODUCT INFORMATION</h4>
+            <div class="panel-controls panel-controls-right">
+              <a class="panel-refresh" href="#"><i class="fa fa-circle-o"></i></a>
+              <a class="toggle panel-minimize" href="#"><i class="fa fa-angle-up"></i></a>
+              <a class="panel-close" href="#"><i class="fa fa-times"></i></a>
+            </div>
+          </div>
+          <div class="panel-body pt0 pb0">
+            <form role="form" class="form-horizontal group-border stripped" id="validate" novalidate="novalidate">
+              <!-- End .form-group  -->
+              <div class="form-group">
+                <label class="col-xs-12 control-label">PLEASE NOTE ANY ADDITIONAL INFORMATION : </label>
+                <div class="col-xs-12">
+                  <textarea rows="10" class="form-control"></textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- End .panel -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default toggle panelMove panelClose panelRefresh" id="dyn_0">
+          <div class="panel-heading">
+            <h4 class="panel-title">CONSENT</h4>
+            <div class="panel-controls panel-controls-right">
+              <a class="panel-refresh" href="#"><i class="fa fa-circle-o"></i></a>
+              <a class="toggle panel-minimize" href="#"><i class="fa fa-angle-up"></i></a>
+              <a class="panel-close" href="#"><i class="fa fa-times"></i></a>
+            </div>
+          </div>
+          <div class="panel-body pt0 pb0">
+            <form role="form" class="form-horizontal group-border stripped" id="validate" novalidate="novalidate">
+              <div class="form-group">
+                <label class="col-xs-12 control-label">BY CLICKING THE "l AGREE" BUTTON. YOU HEREBY REPRESENT AND WARRANT AS FOLLOWS : </label>
+                <div class="col-xs-12">
+                  <ul>
+                    <li>You have reviewed, understand and agree to the terms of the Arbor Gentry Mutual Non-Disclosure Agreement ("NDA"). <button type="button" class="btn btn-agreement">NON-DISCLOSURE AGREEMENT</button></li>
+                    <li>If you are agreeing to the NDA on behalf of a company or other entity, you are legally authorized to bind that entity</li>
+                    <li>You understand that agreeing to the NDA and submitting your appiication does not mean that you hove been approved as a Tandem Arbor vendor or that you are committing to do business with Tandem Arbor;</li>
+                    <li>If you are selected to become a Tandem Arbor vendor, you will need to review and agree to our separate Tandem Arbor vendor Terms and Conditions. </li>
+                  </ul>
+                </div>
+                <div class="col-xs-12">
+                  <div class="checkbox-custom">
+                    <input type="checkbox" value="option" id="agree" name="agree">
+                    <label for="agree">AGREE</label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 m-b-lg"> 
+        <!-- <button type="button" class="btn-submit-app">SUBMIT APPLCIATION</button> -->
+        <%= f.submit "SUBMIT APPLICATION", :class => "btn-submit-app" %>
+      </div>
+    </div>
+  <% end %>
+</div>

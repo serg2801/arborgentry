@@ -11,7 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411023656) do
+ActiveRecord::Schema.define(version: 20150413013456) do
+
+  create_table "categories", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "channels", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "company_types", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vendor_categories", force: true do |t|
+    t.integer "vendor_id"
+    t.integer "category_id"
+  end
+
+  create_table "vendor_channels", force: true do |t|
+    t.integer "vendor_id"
+    t.integer "channel_id"
+  end
+
+  create_table "vendor_companies", force: true do |t|
+    t.integer "vendor_id"
+    t.integer "company_id"
+  end
 
   create_table "vendors", force: true do |t|
     t.string   "email",                  default: "",    null: false
