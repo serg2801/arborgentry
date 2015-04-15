@@ -71,124 +71,89 @@
             </div>
           </div>
           <div class="panel-body pt0 pb0">
+            <%= devise_error_messages! %>
             <div class="form-horizontal group-border stripped" id="validate">
               <div class="form-group">
                 <%= f.label :vendor_name, "BUSSSINESS/VENDOR NAME", :class => "col-lg-2 col-md-3 control-label"  %>
                 <div class="col-lg-10 col-md-9">
-                  <%= f.text_field :vendor_name, :class => "form-control requires" %>
+                  <%= f.text_field :vendor_name, :class => "form-control requires", :required => true %>
                 </div>
               </div>
                 
               <div class="form-group">
-                
-                <label class="col-lg-2 col-md-3 control-label" for="first_name">FIRST NAME</label>
+                <%= f.label :first_name, "FIRST NAME", :class => "col-lg-2 col-md-3 control-label" %>
                 <div class="col-lg-10 col-md-9">
-                  <input type="text" placeholder="" name="first_name" class="form-control" id="first_name">
+                  <%= f.text_field :first_name, :class => "form-control", :required => true %>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-lg-2 col-md-3 control-label" for="last_name">LAST NAME</label>
+                <%= f.label :last_name, "LAST NAME", :class => "col-lg-2 col-md-3 control-label" %>
                 <div class="col-lg-10 col-md-9">
-                  <input type="text" placeholder="" name="last_name" class="form-control" id="last_name">
+                  <%= f.text_field :last_name, :class => "form-control", :required => true %>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-lg-2 col-md-3 control-label" for="phone_number">PHONE NUMBER</label>
+                <%= f.label :phone_number, "PHONE NUMBER", :class => "col-lg-2 col-md-3 control-label" %>
                 <div class="col-lg-10 col-md-9">
-                  <input type="text" placeholder="" name="phone_number" id="phone_number" class="form-control">
+                  <%= f.text_field :phone_number, :class => "form-control" %>
                 </div>
               </div>
 
               <div class="form-group">
-                  <label class="col-lg-2 col-md-3 control-label" for="email">Email ADDRESS</label>
-                  <div class="col-lg-10 col-md-9">
-                      <input type="email" placeholder="" class="form-control" name="email" id="email">
-                  </div>
-              </div>
-
-              <div class="form-group">
-                  <label class="col-lg-2 col-md-3 control-label" for="business_add">BUSINESS ADDRESS</label>
-                  <div class="col-lg-10 col-md-9">
-                      <input type="text" placeholder="" name="business_add" id="business_add" class="form-control">
-                  </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-lg-2 col-md-3 control-label" for="city">CITY</label>
-                <div class="col-lg-4 col-md-9">
-                  <input type="text" placeholder="" name="city" id="city" class="form-control">
-                </div>
-                <label class="col-lg-2 col-md-3 control-label" for="city">STATE</label>
-                <div class="col-lg-4 col-md-9">
-                  <input type="text" placeholder="" name="state" id="state" class="form-control">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-lg-2 col-md-3 control-label" for="zipcode">ZIP CODE</label>
-                <div class="col-lg-4 col-md-9">
-                  <input type="text" placeholder="" name="zipcode" id="zipcode" class="form-control">
-                </div>
-                <label class="col-lg-2 col-md-3 control-label" for="country">COUNTRY</label>
-                <div class="col-lg-4 col-md-9">
-                  <input type="text" placeholder="" name="country" id="country" class="form-control">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-lg-2 col-md-3 control-label" for="url">WEBSITE ADDRESS</label>
+                <%= f.label :email, "EMAIL ADDRESS", :class => "col-lg-2 col-md-3 control-label" %>
                 <div class="col-lg-10 col-md-9">
-                  <input type="text" placeholder="" name="url" id="url" class="form-control">
+                  <%= f.email_field :email, :class => "form-control", :required => true %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :business_address, "BUSINESS ADDRESS", :class => "col-lg-2 col-md-3 control-label" %>
+                <div class="col-lg-10 col-md-9">
+                  <%= f.text_field :business_address, :class => "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :city, "CITY", :class => "col-lg-2 col-md-3 control-label" %>
+                <div class="col-lg-4 col-md-9">
+                  <%= f.text_field :city, :class => "form-control" %>
+                </div>
+                <%= f.label :state, "STATE", :class => "col-lg-2 col-md-3 control-label" %>
+                <div class="col-lg-4 col-md-9">
+                  <%= f.text_field :state, :class => "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :zipcode, "ZIP CODE", :class => "col-lg-2 col-md-3 control-label" %>
+                <div class="col-lg-4 col-md-9">
+                  <%= f.text_field :zipcode, :class => "form-control" %>
+                </div>
+                <%= f.label :country, "COUNTRY", :class => "col-lg-2 col-md-3 control-label" %>
+                <div class="col-lg-4 col-md-9">
+                  <%= f.text_field :country, :class => "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :web_site_url, "WEBSITE ADDRESS", :class => "col-lg-2 col-md-3 control-label" %>
+                <div class="col-lg-10 col-md-9">
+                  <%= f.text_field :web_site_url, :class => "form-control" %>
                 </div>
               </div>
               
               <div class="form-group">
                 <label class="col-xs-12 control-label">CHECK THE OPTION THAT BEST DESCRIBE YOUR COMPANY : </label>
+                <% Company.order(:title).each do |company_type| %>
                 <div class="col-lg-3 col-md-6">
                   <div class="checkbox-custom">
-                    <input type="checkbox" value="option" id="agree" name="agree">
-                    <label for="agree">SALES REPRESENTATIVE/ WHOLESALER</label>
+                    <%= check_box_tag "vendor[company_ids][]", company_type.id, nil ,:id => "cmt_#{company_type.id}" %>
+                    <label for="cmt_<%= company_type.id %>"><%= company_type.title.upcase %></label>
                   </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                  <div class="checkbox-custom">
-                    <input type="checkbox" value="option" id="antique-dealer" name="antique-dealer">
-                    <label for="agree">ANTIQUE DEALER</label>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                  <div class="checkbox-custom">
-                    <input type="checkbox" value="option" id="agree" name="agree">
-                    <label for="agree">DESIGNER</label>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                  <div class="checkbox-custom">
-                    <input type="checkbox" value="option" id="agree" name="agree">
-                    <label for="agree">NOT APPLICABLE</label>
-                  </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                  <div class="checkbox-custom">
-                    <input type="checkbox" value="option" id="agree" name="agree">
-                    <label for="agree">MANUFACTURER</label>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                  <div class="checkbox-custom">
-                    <input type="checkbox" value="option" id="agree" name="agree">
-                    <label for="agree">VINTAGE DEALER</label>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                  <div class="checkbox-custom">
-                    <input type="checkbox" value="option" id="had" name="agree">
-                    <label for="agree">HAND-CRAFTED / ARTISINAL</label>
-                  </div>
-                </div>
+                <% end %>
               </div>                
             </div>
           </div>
@@ -199,150 +164,52 @@
 
     <div class="row">
       <div class="col-lg-12">
-          <!-- col-lg-12 start here -->
-          <div class="panel panel-default toggle panelMove panelClose panelRefresh" id="dyn_0">
-              <!-- Start .panel -->
-              <div class="panel-heading">
-                <h4 class="panel-title">BUSINESS INFORMATION</h4>
-                <div class="panel-controls panel-controls-right">
-                  <a class="panel-refresh" href="#"><i class="fa fa-circle-o"></i></a>
-                  <a class="toggle panel-minimize" href="#"><i class="fa fa-angle-up"></i></a>
-                  <a class="panel-close" href="#"><i class="fa fa-times"></i></a>
+        <div class="panel panel-default toggle panelMove panelClose panelRefresh" id="dyn_0">
+          <div class="panel-heading">
+            <h4 class="panel-title">BUSINESS INFORMATION</h4>
+            <div class="panel-controls panel-controls-right">
+              <a class="panel-refresh" href="#"><i class="fa fa-circle-o"></i></a>
+              <a class="toggle panel-minimize" href="#"><i class="fa fa-angle-up"></i></a>
+              <a class="panel-close" href="#"><i class="fa fa-times"></i></a>
+            </div>
+          </div>
+          <div class="panel-body pt0 pb0">
+            <div class="form-horizontal group-border stripped">
+              
+              <div class="form-group">
+                <label class="col-xs-12 control-label">CHECK THE PRODUCT CATEGORIES WOULD YOU LIKE TO SELL ON TANDEMARBOR: </label>
+                <% Category.order(:title).each do |category| %>
+                  <div class="col-lg-4 col-md-6">
+                    <div class="checkbox-custom">
+                      <%= check_box_tag "vendor[category_ids][]", category.id, nil ,:id => "cat_#{category.id}" %>
+                      <label for="cat_<%= category.id %>"><%= category.title.upcase %></label>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class="form-group">
+                <label for="" class="col-lg-3 col-md-3 control-label text-left">UPLOAD PRODUCT EXAMPLE</label>
+                <div class="col-lg-9 col-md-9">
+                  <input type="file" data-iconname="" data-buttonname="btn-danger" data-buttontext="UPLOAD" class="filestyle" id="filestyle-0" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1"><div class="bootstrap-filestyle input-group"><input type="text" class="form-control "> <span class="group-span-filestyle input-group-btn" tabindex="0"><label class="btn btn-upload " for="filestyle-0">UPLOAD</label></span></div>
                 </div>
               </div>
-              <div class="panel-body pt0 pb0">
-                  <form role="form" class="form-horizontal group-border stripped" id="validate" novalidate="novalidate">
-                     
 
-                     <!-- End .form-group  -->
-                      <div class="form-group">
-                          <label class="col-xs-12 control-label">CHECK THE PRODUCT CATEGORIES WOULD YOU LIKE TO SELL ON TANDEMARBOR: </label>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="furniture" name="furniture">
-                                  <label for="furniture">FURNITURE</label>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="bath" name="bath">
-                                  <label for="bath">BATH</label>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="outdoor" name="outdoor">
-                                  <label for="outdoor">OUTDOOR</label>
-                              </div>
-                          </div>
-
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">KITCHEN</label>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">LIGHTING</label>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">ART</label>
-                              </div>
-                          </div>
-
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">TABLETOP</label>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">RUGS</label>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">DECORATIVE TAXTILES</label>
-                              </div>
-                          </div>
-
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">BED</label>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">DECORATIVE ACCESSORIES</label>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">OTHER</label>
-                              </div>
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-                          <label for="" class="col-lg-3 col-md-3 control-label text-left">UPLOAD PRODUCT EXAMPLE</label>
-                          <div class="col-lg-9 col-md-9">
-                              <input type="file" data-iconname="" data-buttonname="btn-danger" data-buttontext="UPLOAD" class="filestyle" id="filestyle-0" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1"><div class="bootstrap-filestyle input-group"><input type="text" disabled="" class="form-control "> <span class="group-span-filestyle input-group-btn" tabindex="0"><label class="btn btn-upload " for="filestyle-0">UPLOAD</label></span></div>
-                          </div>
-                      </div>
-
-
-                      <!-- End .form-group  -->
-                      <div class="form-group">
-                          <label class="col-xs-12 control-label">WHAT CHANNEL DO YOU SELL THROUGH</label>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">DIRECT TO CONSUMER</label>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">SHOW ROOM</label>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">OTHER</label>
-                              </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">BRICK AND MORTAR RETAIL STORE</label>
-                              </div>
-                          </div>
-
-                          <div class="col-lg-4 col-md-6">
-                              <div class="checkbox-custom">
-                                  <input type="checkbox" value="option" id="agree" name="agree">
-                                  <label for="agree">3RD PARTY ECOMMERCE SITE</label>
-                              </div>
-                          </div>
-                          
-                      </div>
-                    
-                  </form>
+              <div class="form-group">
+                <label class="col-xs-12 control-label">WHAT CHANNEL DO YOU SELL THROUGH</label>
+                <% Channel.order(:title).each do |channel| %>
+                  <div class="col-lg-4 col-md-6">
+                    <div class="checkbox-custom">
+                      <%= check_box_tag "vendor[channel_ids][]", channel.id, nil ,:id => "chnl_#{channel.id}" %>
+                      <label for="chnl_<%= channel.id %>"><%= channel.title.upcase %></label>
+                    </div>
+                  </div>
+                <% end %>
               </div>
+              
+            </div>
           </div>
-          <!-- End .panel -->
+        </div>
       </div>
     </div>
 
@@ -361,12 +228,11 @@
             </div>
           </div>
           <div class="panel-body pt0 pb0">
-            <form role="form" class="form-horizontal group-border stripped" id="validate" novalidate="novalidate">
-              <!-- End .form-group  -->
+            <div class="form-horizontal group-border stripped">
               <div class="form-group">
-                <label class="col-xs-12 control-label">PLEASE NOTE ANY ADDITIONAL INFORMATION : </label>
+                <%= f.label :additional_information, "PLEASE NOTE ANY ADDITIONAL INFORMATION", :class => "control-label col-xs-12" %>
                 <div class="col-xs-12">
-                  <textarea rows="10" class="form-control"></textarea>
+                  <%= f.text_area :additional_information, :class => "form-control", rows: "10" %>
                 </div>
               </div>
             </form>
@@ -393,7 +259,7 @@
                 <label class="col-xs-12 control-label">BY CLICKING THE "l AGREE" BUTTON. YOU HEREBY REPRESENT AND WARRANT AS FOLLOWS : </label>
                 <div class="col-xs-12">
                   <ul>
-                    <li>You have reviewed, understand and agree to the terms of the Arbor Gentry Mutual Non-Disclosure Agreement ("NDA"). <button type="button" class="btn btn-agreement">NON-DISCLOSURE AGREEMENT</button></li>
+                    <li>You have reviewed, understand and agree to the terms of the Arbor Gentry Mutual Non-Disclosure Agreement ("NDA"). <a href="/Vendor_Agreement.pdf" target="_blank" class="btn btn-agreement">NON-DISCLOSURE AGREEMENT</a></li>
                     <li>If you are agreeing to the NDA on behalf of a company or other entity, you are legally authorized to bind that entity</li>
                     <li>You understand that agreeing to the NDA and submitting your appiication does not mean that you hove been approved as a Tandem Arbor vendor or that you are committing to do business with Tandem Arbor;</li>
                     <li>If you are selected to become a Tandem Arbor vendor, you will need to review and agree to our separate Tandem Arbor vendor Terms and Conditions. </li>
@@ -420,3 +286,10 @@
     </div>
   <% end %>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.new_vendor').validate({
+
+    });
+  });
+</script>

@@ -1,0 +1,49 @@
+<div class="login-panel panel panel-default plain animated bounceIn">
+  <div class="panel-heading">
+    <h4 class="panel-title text-center">
+      <img id="logo" src="/assets/logo-dark.png" alt="Dynamic logo">
+    </h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for resource, :as => resource_name, :url => confirm_path, :html => { :class => "form-horizontal mt0", id: "confirmation-form", :role => "form"} do |f| %>
+      <%= devise_error_messages! %>
+      <div class="form-group">
+        <div class="col-lg-12">
+          <%= f.hidden_field :confirmation_token, :value => @original_token %>
+          <div class="input-group input-icon">
+            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+            <%= f.password_field :password, :input_html => {:autofocus => true}, class: "form-control", autocomplete: "off", :required => true, placeholder: "Enter password" %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-12">
+          <div class="input-group input-icon">
+            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+            <%= f.password_field :password_confirmation, class: "form-control", placeholder: " Enter password confirmation", autocomplete: "off", :required => true %>
+          </div>
+          <span class="help-block text-right"><%= link_to "Forgot spassword?", new_password_path(resource_name) %></span> 
+        </div>
+      </div>
+      <div class="form-group mb0">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4 mb25">
+          <button class="btn btn-default pull-right" type="submit">Confirm Account</button>
+        </div>
+      </div>
+    <% end%>
+    <div class="seperator">
+      <strong>or</strong>
+      <hr>
+    </div>
+  </div>
+  <div class="panel-footer gray-lighter-bg bt">
+    <h4 class="text-center"><strong>Don`t have an account ?</strong></h4>
+    <p class="text-center"><a href="<%= new_vendor_registration_path%>" class="btn btn-primary">Create account</a></p>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.confirmation-form').validate();
+  });
+</script>

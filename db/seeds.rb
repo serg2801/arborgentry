@@ -5,3 +5,32 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# Company Type 
+Company.create(title: "Sales Representative/Wholesaler")
+Company.create(title: "Antique Dealer")
+Company.create(title: "Manufacturer")
+Company.create(title: "Designer")
+Company.create(title: "Vintage Dealer")
+Company.create(title: "Not Applicable")
+Company.create(title: "Hand-crafted / Artisinal")
+
+
+# Category
+Category.create(title: "Furniture")
+Category.create(title: "Bath")
+Category.create(title: "Outdoor")
+Category.create(title: "Kitchen")
+Category.create(title: "Lighting")
+Category.create(title: "Art")
+Category.create(title: "Tabletop")
+Category.create(title: "Rugs")
+Category.create(title: "Decorative Taxtiles")
+Category.create(title: "BED")
+Category.create(title: "Decorative Accessories")
+
+# Channel 
+Channel.create(title: 'Direct to consumer')
+Channel.create(title: 'Show room')
+Channel.create(title: 'Brick and Mortar retail store')
+Channel.create(title: '3rd party ecommerce site')
