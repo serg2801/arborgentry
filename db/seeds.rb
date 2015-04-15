@@ -38,4 +38,4 @@
 
 
 Vendor.create(email: 'admin@tendemarbor.com', :password => "password", :admin => true)
-Vendor.create(email: 'vendor@tendemarbor.com',, :password => "password")
+Vendor.create(email: 'vendor@tendemarbor.com', :password => "password")
