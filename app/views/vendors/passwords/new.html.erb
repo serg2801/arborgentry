@@ -1,16 +1,68 @@
-<h2>Forgot your password?</h2>
+<!-- <h2>Forgot your password?</h2> -->
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<%#= form_for(resource, as: resource_name, url: password_path(resource_name), html: { :class => "form-horizontal mt0", id: "login-form" ,:role=>"form", method: :post }) do |f| %>
+  <%#= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <!-- <div class="field">
+    <%#= f.label :email %><br />
+    <%#= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+    <%#= f.submit "Send me reset password instructions" %>
+  </div> -->
+<%# end %>
 
-<%= render "vendors/shared/links" %>
+<%#= render "vendors/shared/links" %>
+<div class="login-panel panel panel-default plain animated bounceIn">
+  <div class="panel-heading">
+    <h4 class="panel-title text-center">
+      <img id="logo" src="/assets/logo-dark.png" alt="Dynamic logo">
+    </h4>
+  </div>
+  <div class="panel-body">
+    <h3>Forgot your password?</h3>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { :class => "form-horizontal mt0", id: "login-form" ,:role=>"form", method: :post }) do |f| %>
+    	<div class="form-group">
+        <div class="col-lg-12">
+          <div class="input-group input-icon">
+    				<%= devise_error_messages! %>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="form-group">
+        <div class="col-lg-12">
+          <div class="input-group input-icon">
+            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+            <%= f.email_field :email, class: "form-control", placeholder: "Your email ..." %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mb0">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8">
+        	<%= f.submit "Send me reset password instructions", :class => "pull-left" %>
+        </div>
+      </div>
+    <% end%>
+    <div class="seperator">
+      <strong>or</strong>
+      <hr>
+    </div>
+    <div class="social-buttons text-center mt5 mb5">
+      <a href="<%= new_vendor_session_path %>" class="btn btn-primary btn-alt mr10">Login </a> 
+      <a href="<%= new_vendor_registration_path %>" class="btn btn-danger btn-alt ml10">Register </a> 
+    </div>
+  </div>
+  <div class="panel-footer gray-lighter-bg bt">
+    <p class="text-center">
+      <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), :class => "btn btn-primary" %>
+      <!-- <a href="<%#= new_vendor_registration_path%>" class="btn btn-primary">Create account</a> -->
+    </p>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.login-form').validate();
+  });
+</script>

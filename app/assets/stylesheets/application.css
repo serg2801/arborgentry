@@ -15,3 +15,8 @@
  *= require main
  *= require custom
  */
+
+#flash_alert{
+	color: #db5565;
+	text-align: center;
+}
