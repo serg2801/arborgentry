@@ -39,13 +39,14 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   
-  ActionMailer::Base.smtp_settings = {
+  config.action_mailer.smtp_settings = {
     :address => "smtp.gmail.com",
     :port => 587,
     :domain => "gmail.com",
     :authentication => :plain,
-    :user_name => "divyanghirpara",
+    :user_name => "divyanghirpara@gmail.com",
     :password => "hello9825659504",
     :enable_starttls_auto => true
   }
+  Paperclip.options[:command_path] = "/usr/bin"
 end

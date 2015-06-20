@@ -202,7 +202,25 @@
 .signup-page .panel-controls a i{
   color:#62646b !important;
 }
+.uploadBtn{
+ position: absolute;
+ z-index: 34;
+ right:15px;
+ top: 0;
+ cursor: pointer;
+ padding:0 20px;
+ text-align: center;
+ height: 34px;
+ line-height: 34px;
+ background-color: #D5D8E4;
+ border:1px solid #ccc;
+ width: 200px;
+}
+.uploadfile{
+ opacity: 0;
+ cursor: pointer;
 
+}
 
 @media (max-width: 1200px){
   .signup-logo{
