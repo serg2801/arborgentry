@@ -16,6 +16,7 @@ class VendorsController < ApplicationController
   	@vendor = Vendor.find(params[:id])
   	if @vendor.update_attributes(vendor_params)
   		@vendors = Vendor.where('admin = (?)', false)
+      flash[:success]="Vendor updated successfully."
 	  	respond_to do |format|
 				format.html
 				format.js
@@ -28,7 +29,7 @@ class VendorsController < ApplicationController
   def destroy
   	@vendor = Vendor.find(params[:id])
   	@vendor.destroy
-  	flash[:notice]="Vendor deleted successfully."
+  	flash[:success]="Vendor deleted successfully."
   	redirect_to vendors_path
   end
 
