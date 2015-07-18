@@ -1,0 +1,4 @@
+$modal = $('.modal');
+$modal.modal('hide');
+$('#vendor-list').html('');
+$('#vendor-list').html('<%= escape_javascript(render @vendors) %>');

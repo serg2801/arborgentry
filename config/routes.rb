@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  resources :vendors, only: [:index, :edit, :update, :destroy]
+
   # root 'home#index'
   # get 'home/login'
   # get 'home/registration'
