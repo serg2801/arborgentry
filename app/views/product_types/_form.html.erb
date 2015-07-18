@@ -1,0 +1,56 @@
+<%= form_for(@product_type) do |f| %>
+  <% if @product_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product_type.errors.count, "error") %> prohibited this product_type from being saved:</h2>
+
+      <ul>
+      <% @product_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row m-none">
+<div class="col-xs-12 dis-product">
+  <div class="field m-product">
+    <div class="row">
+      <div class="col-xs-2"><%= f.label :name %></div>
+       <div class="col-xs-8"><%= f.text_field :name %></div>
+    </div>
+  </div>
+  <br>
+  <div class="field">
+    <div class="row">
+      <div class="col-xs-2"><%= f.label :image %></div>
+      <div class="col-xs-8"><%= f.file_field :image%></div>
+    </div>
+  </div>
+  <br>
+  <div class="actions">
+     <div class="row">
+        <div class="col-xs-2"><%= f.submit :class=>"btn-product btn"%></div>
+      </div>
+  </div>
+</div>    
+</div>
+<% end %>
+
+<style type="text/css">
+  .dis-product{
+    background-color: #FCFCFC;
+    width: 100%;
+    height:150px;
+
+  }
+  .m-product{
+      padding-top: 12px;
+  }
+  .m-none{
+    margin: 0px;
+  }
+  .btn-product , .btn:hover, .btn:focus{
+    background-color: #455264;
+    color:white;
+  }
+</style>

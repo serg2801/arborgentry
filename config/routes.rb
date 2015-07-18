@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  resources :product_types
+
   # root 'home#index'
   # get 'home/login'
   # get 'home/registration'
+  resources :product_types
+  
   devise_for :vendors, :controllers => {:confirmations => 'confirmations'}
   devise_scope :vendor do
     patch "/confirm" => "confirmations#confirm"
