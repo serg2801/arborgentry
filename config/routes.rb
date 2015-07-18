@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  resources :vendors, only: [:index, :edit, :update, :destroy]
   resources :product_types
 
   # root 'home#index'

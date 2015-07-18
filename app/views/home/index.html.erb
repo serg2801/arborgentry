@@ -8,11 +8,6 @@
                 <h2><span>VENDOR PORTAL:</span> VENDOR NAME</h2>
                 <span class="txt">Welcome to Dynamic admin</span>
             </div>
-            <%if current_vendor.admin?%>
-                <div>
-                    <%= link_to "Add Product Type",product_types_path, method: :get %>
-                </div>
-            <%end %>
             <div class="header-stats">
                 <div class="spark clearfix">
                     <div class="spark-info"><span class="number">2345</span>Visitors</div>
