@@ -22,6 +22,11 @@
     <!-- / top left nav -->
     <!-- top right nav -->
     <ul class="nav navbar-nav navbar-right">
+      <% if current_vendor.admin? %>
+        <li>
+          <%= link_to "Vendors", vendors_path %>
+        </li>
+      <% end %>
         <li class="dropdown">
           <a href="#" data-toggle="dropdown">
             <i class="fa fa-bell-o"></i>
