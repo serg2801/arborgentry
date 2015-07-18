@@ -1930,7 +1930,7 @@ li.L9 {
   display: block;
   width: 32px;
   height: 32px;
-  background: rgba(0, 0, 0, 0.4) url(../img/backtop.png) no-repeat center center;
+  background: rgba(0, 0, 0, 0.4) url(/assets/backtop.png) no-repeat center center;
   text-indent: -9999px;
   border-radius: 3px;
   transition: all;
