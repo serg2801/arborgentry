@@ -1,0 +1,36 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel">Edit Vendor</h4>
+    </div>
+    <%= form_for(vendor, :remote => true) do |f| %>
+      <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-4">
+              Email
+            </div>
+            <div class="col-xs-8">
+              <%= f.text_field :email, class: "form-control", placeholder: "Email", required: true %>
+            </div>
+            <div class="col-xs-4">
+              Contact Number
+            </div>
+            <div class="col-xs-8">
+              <%= f.text_field :phone_number, class: "form-control", placeholder: "Contact Number" %>
+            </div>
+            <div class="col-xs-4">
+              Country
+            </div>
+            <div class="col-xs-8">
+              <%= f.text_field :country, class: "form-control", placeholder: "Country"%>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= f.submit "Update", class: "btn btn-primary"%>
+      </div>
+    <% end %>
+  </div>
+</div>

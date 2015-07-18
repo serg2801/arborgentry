@@ -34,6 +34,10 @@
 //= require flot/jquery.flot.tooltip.min
 //= require flot/jquery.flot.curvedLines
 //= require sparklines/jquery.sparkline
+//= require datatables/jquery.dataTables
+//= require datatables/dataTables.tableTools
+//= require datatables/dataTables.bootstrap
+//= require datatables/dataTables.responsive
 //= require progressbars/progressbar
 //= require plugins/waypoint/waypoints
 //= require plugins/weather/skyicons
@@ -43,4 +47,5 @@
 //= require plugins/misc/countTo/jquery.countTo
 //= require jquery.dynamic
 //= require main
+//= require tables-data
 //= require dashboard
