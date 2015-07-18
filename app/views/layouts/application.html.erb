@@ -22,9 +22,11 @@
   <!-- / page-sidebar -->
   <!-- Start #right-sidebar -->
   <%= render "layouts/right_side_bar"%>
-<% if flash.present? %>
-  <%= render 'layouts/messages' %>
-<% end %>
+<div id="error-msg">
+  <% if flash.present? %>
+    <%= render 'layouts/messages' %>
+  <% end %>
+</div>
 <%= yield %>
 <%= render "layouts/footer" %>
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
