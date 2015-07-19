@@ -1,0 +1,10 @@
+<tr id = "<%= inquiry.id %>">
+  <td><%= inquiry.first_name %></td>
+  <td><%= inquiry.last_name %></td>
+  <td><%= inquiry.email %></td>
+  <td><%= inquiry.message %></td>
+  <td>
+	<%= link_to "View ", admin_inquiry_path(inquiry), remote: true %> |
+	<%= link_to "Delete", admin_inquiry_path(inquiry), method: :delete, data: { confirm: "You sure?" }, remote: true %>
+  </td>
+</tr>
