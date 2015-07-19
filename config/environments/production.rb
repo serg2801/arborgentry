@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  Paperclip.options[:command_path] = "/usr/bin/convert"
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -83,8 +83,8 @@ Rails.application.configure do
     :port => 587,
     :domain => "gmail.com",
     :authentication => :plain,
-    :user_name => "divyanghirpara@gmail.com",
-    :password => "hello9825659504",
+    :user_name => "devror007@gmail.com",
+    :password => "airpilot143",
     :enable_starttls_auto => true
   }
 end
