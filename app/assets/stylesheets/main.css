@@ -3103,19 +3103,19 @@ fieldset[disabled] .pricing-table.yellow .pricing-bottom .price .btn.active {
   background-color: rgba(255, 255, 255, 0.7);
 }
 .weather.snow {
-  background-image: url(../img/weather/snow.png);
+  background-image: url(/assets/weather/snow.png);
 }
 .weather.rain {
-  background-image: url(../img/weather/rain.png);
+  background-image: url(/assets/weather/rain.png);
 }
 .weather.clear {
-  background-image: url(../img/weather/clear.png);
+  background-image: url(/assets/weather/clear.png);
 }
 .weather.cloud {
-  background-image: url(../img/weather/cloud.png);
+  background-image: url(/assets/weather/cloud.png);
 }
 .weather.sunny {
-  background-image: url(../img/weather/sunny.png);
+  background-image: url(/assets/weather/sunny.png);
 }
 /* -----------------------------------------
    Recent comments
