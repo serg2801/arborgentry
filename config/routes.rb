@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  
-
+  namespace :admin do
+    resources :inquiries, :only => [:index, :destroy, :show]
+  end
   # root 'home#index'
   # get 'home/login'
   # get 'home/registration'

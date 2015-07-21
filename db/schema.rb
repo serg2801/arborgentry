@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716175811) do
+ActiveRecord::Schema.define(version: 20150719104919) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20150716175811) do
 
   create_table "companies", force: true do |t|
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inquiries", force: true do |t|
+    t.string   "topic"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "message"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,17 +73,17 @@ ActiveRecord::Schema.define(version: 20150716175811) do
   end
 
   create_table "vendors", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                     default: "",    null: false
+    t.string   "encrypted_password",        default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",             default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.boolean  "admin",                  default: false
+    t.boolean  "admin",                     default: false
     t.string   "vendor_name"
     t.string   "first_name"
     t.string   "last_name"
@@ -84,13 +94,17 @@ ActiveRecord::Schema.define(version: 20150716175811) do
     t.string   "zipcode"
     t.string   "web_site_url"
     t.text     "additional_information"
-    t.boolean  "terms_and_condition",    default: false
+    t.boolean  "terms_and_condition",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "business_address"
+    t.string   "sample_photo_file_name"
+    t.string   "sample_photo_content_type"
+    t.integer  "sample_photo_file_size"
+    t.datetime "sample_photo_updated_at"
   end
 
   add_index "vendors", ["confirmation_token"], name: "index_vendors_on_confirmation_token", unique: true
