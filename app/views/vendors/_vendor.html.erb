@@ -4,6 +4,6 @@
   <td><%= vendor.country %></td>
   <td>
   	<%= link_to "Edit", edit_vendor_path(vendor), remote: true %> / 
-	<%= link_to "Delete", vendor_path(vendor), method: :delete, data: { confirm: "You sure?" } %>
+	<%= link_to "Delete", vendor_path(vendor), method: :delete, data: { confirm: "You sure?" }, remote: true %>
   </td>
 </tr>

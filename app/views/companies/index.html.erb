@@ -32,20 +32,25 @@
                                 <div class="panel panel-default toggle panelMove panelClose panelRefresh">
                                     <!-- Start .panel -->
                                     <div class="panel-heading">
-                                        <h4 class="panel-title">Vendor List</h4>
+                                        <h4 class="panel-title" style="float:left">Company List</h4>
+                                        <h4>
+                                        (<%= link_to "Add New", new_company_path, remote: true %>)</h4>
+                                    </div>
+                                    <div>
+                                    
+                                        
+                                        
                                     </div>
                                     <div class="panel-body">
                                         <table id="responsive-datatables" class="table table-bordered table-striped table-hover dt-responsive non-responsive" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
-                                                    <th>Email</th>
-                                                    <th>Contact</th>
-                                                    <th>Country</th>
+                                                    <th>Company Name</th>
                                                     <th>Edit / Delete</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id="vendor-list">
-                                                <%= render @vendors %>
+                                            <tbody id="company-list">
+                                                <%= render @companies %>
                                             </tbody>
                                         </table>
                                     </div>

@@ -1,0 +1,7 @@
+<tr>
+  <td><%= company.title %></td>
+  <td>
+  	<%= link_to "Edit", edit_company_path(company), remote: true %> / 
+	<%= link_to "Delete", company_path(company), method: :delete, data: { confirm: "You sure?" }, remote: true %>
+  </td>
+</tr>
