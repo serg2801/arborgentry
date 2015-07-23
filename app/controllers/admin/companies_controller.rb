@@ -1,5 +1,5 @@
-class CompaniesController < ApplicationController
-  before_action :is_admin?, only: [:new, :create, :index, :edit, :update, :destroy]
+class Admin::CompaniesController < ApplicationController
+  before_action :is_admin?
 
 	def index
   	@companies = Company.all
@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company=Company.new(company_params)
+    @company = Company.new(company_params)
     if @company.save
       @companies = Company.all
       flash[:success]="Company created successfully."
