@@ -1,0 +1,6 @@
+<tr>
+  <td><%= category.id %></td>
+  <td><%= category.title %></td>
+  <td><%= category.created_at %></td>
+  <td><%= link_to "Edit", edit_category_path(category), remote: true %> / <%= link_to "Delete", category_path(category), method: :delete,remote: true, data: { confirm: 'Are you sure?' } %></td>
+</tr>  
