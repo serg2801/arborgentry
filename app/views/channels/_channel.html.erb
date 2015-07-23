@@ -1,6 +1,0 @@
-<tr>
-	<td><%= channel.id %></td>
-	<td><%= channel.title %></td>
-	<td><%= channel.created_at %></td>
-	<td><%= link_to "Edit", edit_channel_path(channel),remote: true %> / <%= link_to "Delete", channel_path(channel), method: :delete,remote: true, data: { confirm: 'Are you sure?' } %></td>
-</tr>  

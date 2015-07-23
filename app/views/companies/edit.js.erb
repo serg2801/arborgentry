@@ -1,0 +1,3 @@
+$modal = $('.modal');
+$modal.html('<%= escape_javascript(render partial: "edit_company_details", :locals => { :company => @company }) %>');
+$modal.modal();

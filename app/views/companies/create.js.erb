@@ -1,5 +1,5 @@
 $modal = $('.modal');
 $modal.modal('hide');
-$('#vendor-list').html('');
-$('#vendor-list').html('<%= escape_javascript(render @vendors) %>');
+$('#company-list').html('');
+$('#company-list').html('<%= escape_javascript(render @companies) %>');
 $('#error-msg').html('<%= escape_javascript(render 'layouts/messages') %>');

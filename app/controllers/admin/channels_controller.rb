@@ -1,4 +1,4 @@
-class ChannelsController < ApplicationController
+class Admin::ChannelsController < ApplicationController
 	before_action :set_channels 
 	def index
 		

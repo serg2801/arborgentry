@@ -25,16 +25,19 @@
 
       <% if current_vendor.admin? %>
         <li>
-          <%= link_to "Channel", channels_path %>
+          <%= link_to "Channel", admin_channels_path %>
         </li>
         <li>
-          <%= link_to "Category", categories_path %>
+          <%= link_to "Category", admin_categories_path %>
         </li>
         <li>
           <%= link_to "Vendors", vendors_path %>
         </li>
         <li>
-          <%= link_to "Product Type",product_types_path, method: :get %>
+          <%= link_to "Companies", companies_path %>
+        </li>
+        <li>
+            <%= link_to "Product Type",product_types_path, method: :get %>
         </li>
       <%end %>
         <li class="dropdown">
