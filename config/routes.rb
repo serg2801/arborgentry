@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root 'home#index'
   # get 'home/login'
   # get 'home/registration'
-  resources :product_types
+  
   
   devise_for :vendors, :controllers => {:confirmations => 'confirmations'}
   devise_scope :vendor do
