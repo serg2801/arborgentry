@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :customers
   namespace :admin do
     resources :inquiries, :only => [:index, :destroy, :show]
     resources :companies
