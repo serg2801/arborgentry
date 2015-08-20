@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   layout :resolve_layout
+  before_filter :authenticate_vendor! , :except => [:welcome]
   def index
   end
 
