@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
+  
   namespace :admin do
     resources :inquiries, :only => [:index, :destroy, :show]
     resources :companies
   end
+
   # root 'home#index'
   # get 'home/login'
   # get 'home/registration'
-  
-  
+
+  get 'home/welcome'
+
   devise_for :vendors, :controllers => {:confirmations => 'confirmations'}
   devise_scope :vendor do
     patch "/confirm" => "confirmations#confirm"
@@ -16,7 +19,8 @@ Rails.application.routes.draw do
     end
 
     unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+      # root 'devise/sessions#new', as: :unauthenticated_root
+      root 'home#welcome', as: :unauthenticated_root
     end
   end  
   resources :vendors, only: [:index, :edit, :update, :destroy]
