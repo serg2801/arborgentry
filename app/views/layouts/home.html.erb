@@ -13,7 +13,12 @@
   <link rel="icon" href="img/ico/favicon.ico" type="image/png">
 </head>
 <body>
+<div id="error-msg">
 <%= render "layouts/home_header"%>
+  <% if flash.present? %>
+    <%#= render 'layouts/messages' %>
+  <% end %>
+</div>
 <%= yield %>
 <%= render "layouts/home_footer" %>
 </body>

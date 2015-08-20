@@ -8,21 +8,21 @@ Rails.application.routes.draw do
   # root 'home#index'
   # get 'home/login'
   # get 'home/registration'
-
   get 'home/welcome'
-
+ 
   devise_for :vendors, :controllers => {:confirmations => 'confirmations'}
   devise_scope :vendor do
     patch "/confirm" => "confirmations#confirm"
     authenticated :vendor do
-      root 'home#index', as: :authenticated_root
+      root :to =>'home#index', as: :authenticated_root
     end
 
-    unauthenticated do
+    unauthenticated :vendor do
       # root 'devise/sessions#new', as: :unauthenticated_root
-      root 'home#welcome', as: :unauthenticated_root
+      root :to =>'home#welcome', as: :unauthenticated_root
     end
-  end  
+  end    
+
   resources :vendors, only: [:index, :edit, :update, :destroy]
   resources :product_types
   namespace :admin do
