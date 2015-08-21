@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719104919) do
+ActiveRecord::Schema.define(version: 20150820164054) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -50,6 +50,20 @@ ActiveRecord::Schema.define(version: 20150719104919) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "slug"
+    t.text     "meta_description"
+    t.string   "meta_keywords"
+    t.datetime "publish_date"
+    t.integer  "vendor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "products", ["vendor_id"], name: "index_products_on_vendor_id"
 
   create_table "vendor_categories", force: true do |t|
     t.integer  "vendor_id"
