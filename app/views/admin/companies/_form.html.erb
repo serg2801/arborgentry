@@ -4,7 +4,6 @@
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h4 class="modal-title" id="myModalLabel"><%= params[:action] == "new" ? "Add New Company" : "Edit Company" %></h4>
     </div>
-    <%#= logger.info"==============#{company.inspect}=========================" %>
     <%= form_for([:admin, company], :remote => true) do |f| %>
       <div class="modal-body">
           <div class="row">
