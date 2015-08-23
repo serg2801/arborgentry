@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @product.slug %>
+</p>
+
+<p>
+  <strong>Meta description:</strong>
+  <%= @product.meta_description %>
+</p>
+
+<p>
+  <strong>Meta keywords:</strong>
+  <%= @product.meta_keywords %>
+</p>
+
+<p>
+  <strong>Publish date:</strong>
+  <%= @product.publish_date %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= @product.vendor %>
+</p>
+
+<%= link_to 'Edit', edit_admin_product_path(@product) %> |
+<%= link_to 'Back', admin_products_path %>

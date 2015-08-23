@@ -30,10 +30,11 @@ class Admin::VariantsController < ApplicationController
 
 	private
 	def variant_params
-		params.require(:variant).permit(:sku, :barcode, :weight, :weight_unit, :price, :compare_price, :is_master)
+		params.require(:variant).permit(:product_id, :sku, :barcode, :weight, :weight_unit, :price, :compare_price, :is_master)
 	end
 
 	def set_variants
 		@variants = Variant.all
+		@products = Product.all
 	end
 end

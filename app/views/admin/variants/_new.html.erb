@@ -11,6 +11,14 @@
     <%= form_for [:admin, @variant], remote: :true do |f| %>
       <div class="modal-body">
         <div class="form-group">
+          <label class="col-lg-3 col-md-4 control-label" for="">Product</label>
+          <div class="col-lg-9 col-md-8">
+            <%= f.select :product_id, @products.map{ |p| [p.name, p.id] },{}, class: "form-control input" %>
+          </div>
+        </div>
+
+        <br>
+        <div class="form-group">
           <label class="col-lg-3 col-md-4 control-label" for="">SKU</label>
           <div class="col-lg-9 col-md-8">
             <%= f.text_field :sku, placeholder: "Enter sku", required: true, class: "form-control" %>
@@ -32,7 +40,8 @@
             <%= f.text_field :weight, placeholder: "Enter weight", required: true, class: "form-control" %>
           </div>
           <div class="col-lg-3 col-md-2">
-              <%= f.select :weight_unit, options_for_select(["lg", "oz", "kg"]), { prompt: true}, class: "form-control input" %>
+              <%= f.select :weight_unit, options_for_select(["lg", "oz", "kg"], :selected => f.object.weight_unit ), {}, class: "form-control input" %>
+              <%#=  %>
           </div>
         </div>
 

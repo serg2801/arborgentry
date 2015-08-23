@@ -1,5 +1,6 @@
 <tr>
   <td><%= variant.id %></td>
+  <td><%= Product.find(variant.product_id).name %></td>
   <td><%= variant.sku %></td>
   <td><%= variant.barcode %></td>
   <td><%= variant.weight %></td>
