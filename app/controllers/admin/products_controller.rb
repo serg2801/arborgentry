@@ -22,13 +22,13 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    flash[:notice] = 'Product was successfully created.' if @product.save
+    flash[:success] = 'Product was successfully created.' if @product.save
     @products = Product.all
     admin_product_path(@product)
   end
 
   def update
-    flash[:notice] = 'Product was successfully updated.' if @product.update(product_params)
+    flash[:success] = 'Product was successfully updated.' if @product.update(product_params)
     @products = Product.all
     admin_product_path(@product)
   end
@@ -36,7 +36,7 @@ class Admin::ProductsController < ApplicationController
   def destroy
     @product.destroy
     @products = Product.all
-    flash[:notice] = 'Product deleted successfully.'
+    flash[:success] = 'Product deleted successfully.'
     respond_with(@product)
   end
 
