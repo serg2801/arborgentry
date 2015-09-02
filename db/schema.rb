@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820170908) do
+ActiveRecord::Schema.define(version: 20150823112242) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -82,6 +82,21 @@ ActiveRecord::Schema.define(version: 20150820170908) do
   end
 
   add_index "products", ["vendor_id"], name: "index_products_on_vendor_id"
+
+  create_table "variants", force: true do |t|
+    t.string   "sku"
+    t.string   "barcode"
+    t.float    "weight"
+    t.string   "weight_unit"
+    t.float    "price"
+    t.float    "compare_price"
+    t.boolean  "is_master",     default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "product_id"
+  end
+
+  add_index "variants", ["product_id"], name: "index_variants_on_product_id"
 
   create_table "vendor_categories", force: true do |t|
     t.integer  "vendor_id"

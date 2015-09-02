@@ -1,0 +1,87 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <% if params[:action] == "new" %>
+        <h4 class="modal-title">New Variant</h4>
+      <% else %>
+        <h4 class="modal-title">Edit Variant</h4>
+      <% end %>
+    </div>
+    <%= form_for [:admin, @variant], remote: :true do |f| %>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="col-lg-3 col-md-4 control-label" for="">Product</label>
+          <div class="col-lg-9 col-md-8">
+            <%= f.select :product_id, @products.map{ |p| [p.name, p.id] },{}, class: "form-control input" %>
+          </div>
+        </div>
+
+        <br>
+        <div class="form-group">
+          <label class="col-lg-3 col-md-4 control-label" for="">SKU</label>
+          <div class="col-lg-9 col-md-8">
+            <%= f.text_field :sku, placeholder: "Enter sku", required: true, class: "form-control" %>
+          </div>
+        </div>
+
+        <br>
+        <div class="form-group">
+          <label class="col-lg-3 col-md-4 control-label" for="">Barcode</label>
+          <div class="col-lg-9 col-md-8">
+            <%= f.text_field :barcode, placeholder: "Enter barcode", required: true, class: "form-control" %>
+          </div>
+        </div>
+
+        <br>
+        <div class="form-group">
+          <label class="col-lg-3 col-md-4 control-label" for="">Weight</label>
+          <div class="col-lg-6 col-md-6">
+            <%= f.text_field :weight, placeholder: "Enter weight", required: true, class: "form-control" %>
+          </div>
+          <div class="col-lg-3 col-md-2">
+              <%= f.select :weight_unit, options_for_select(["lg", "oz", "kg"], :selected => f.object.weight_unit ), {}, class: "form-control input" %>
+              <%#=  %>
+          </div>
+        </div>
+
+        <br>
+        <div class="form-group">
+          <label class="col-lg-3 col-md-4 control-label" for="">Price</label>
+          <div class="col-lg-9 col-md-8">
+            <%= f.text_field :price, placeholder: "Enter price", required: true, class: "form-control" %>
+          </div>
+        </div>
+
+        <br>
+        <div class="form-group">
+          <label class="col-lg-3 col-md-4 control-label" for="">Compare Price</label>
+          <div class="col-lg-9 col-md-8">
+            <%= f.text_field :compare_price, placeholder: "Enter compare price", required: true, class: "form-control" %>
+          </div>
+        </div>
+
+        <br>
+        <div class="toggle-custom">
+          <label class="col-lg-3 col-md-4 control-label" for="">Is Master</label>
+          <div class="col-lg-9 col-md-8">
+          <label class="toggle" data-on="ON" data-off="OFF">
+              <%= f.check_box :is_master %>
+              <span class="button-checkbox"></span>
+          </label>
+          </div>
+        </div>
+    
+      </div>
+      <div class="modal-footer">
+        <div class="field col-xs-12">
+          <% if params[:action] == "new" %>
+            <%= button_to "Save",nil, class: "btn btn-primary" %>
+          <% else %>
+            <%= button_to "Update",nil, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div> 

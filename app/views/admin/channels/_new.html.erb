@@ -2,22 +2,28 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title">New channel</h4>
+      <% if params[:action] == "new" %>
+      	<h4 class="modal-title">New channel</h4>
+      <% else %>
+      	<h4 class="modal-title">Edit channel</h4>
+      <% end %>
     </div>
     <%= form_for [:admin, @channel], remote: :true do |f| %>
 	    <div class="modal-body">
-	    	<div class="row">
-	    		<div class="filed col-xs-1">
-            Title
+				<div class="form-group">
+          <label class="col-lg-2 col-md-3 control-label" for="">Title</label>
+          <div class="col-lg-10 col-md-9">
+            <%= f.text_field :title, placeholder: "Enter channel name", required: true, class: "form-control" %>
           </div>
-					<div class="field col-xs-11">
-						<%= f.text_field :title, placeholder: "Enter channel name", required: true %>
-					</div>
-				</div>
+        </div>
 	    </div>
 	    <div class="modal-footer">
 	    	<div class="field col-xs-12">
-					<%= button_to "Save",nil, class: "btn btn-primary" %>
+	    		<% if params[:action] == "new" %>
+						<%= button_to "Save",nil, class: "btn btn-primary" %>
+					<% else %>
+						<%= button_to "Update",nil, class: "btn btn-primary" %>
+					<% end %>
 				</div>
 	    </div>
     <% end %>
