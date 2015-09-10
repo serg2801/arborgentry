@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  
   devise_for :customers
   namespace :admin do
     resources :inquiries, :only => [:index, :destroy, :show]
     resources :companies
+    resources :products
   end
 
   # root 'home#index'
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :categories
     resources :channels
+    resources :variants
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

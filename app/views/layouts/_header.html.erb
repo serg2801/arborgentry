@@ -25,6 +25,9 @@
 
       <% if current_vendor.admin? %>
         <li>
+          <%= link_to "Variant", admin_variants_path %>
+        </li>
+        <li>
           <%= link_to "Channel", admin_channels_path %>
         </li>
         <li>
@@ -35,6 +38,9 @@
         </li>
         <li>
           <%= link_to "Companies", admin_companies_path %>
+        </li>
+        <li>
+          <%= link_to "Products", admin_products_path %>
         </li>
         <li>
           <%= link_to "Product Type",product_types_path, method: :get %>

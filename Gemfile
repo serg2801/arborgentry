@@ -40,3 +40,4 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem "nested_form"

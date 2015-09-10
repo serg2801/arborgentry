@@ -1,0 +1,98 @@
+<%= form_for(@product, url: params[:action] == 'new' ? admin_products_path : admin_product_path, remote: true ) do |f| %>
+  <div>
+    <% if @product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+        <ul>
+        <% @product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-4">
+          <%= f.label :name %>
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :name, class: 'form-control', required: true %>
+        </div>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-4">
+          <%= f.label :description %>
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_area :description, class: 'form-control', required: true %>
+        </div>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-4">
+          <%= f.label :slug %>
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :slug, class: 'form-control', required: true %>
+        </div>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-4">
+          <%= f.label :meta_description %>
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_area :meta_description, class: 'form-control' %>
+        </div>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-4">
+          <%= f.label :meta_keywords %>
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :meta_keywords, class: 'form-control' %>
+        </div>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-4">
+          <%= f.label :publish_date %>
+        </div>
+        <div class="col-xs-8">
+          <%= f.datetime_select :publish_date, class: 'form-control', required: true %>
+        </div>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-4">
+          <%= f.label :vendor_id %>
+        </div>
+        <div class="col-xs-8">
+          <%= f.select :vendor_id, Vendor.all.map{|i| [i.first_name, i.id]}, required: true %>
+        </div>
+      </div>
+    </div><br>
+    <%= f.fields_for :variants do |variant| %>
+      <%= render 'variant_fields', :f => variant %>
+    <% end %>
+  </div>
+  <div>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <% if params[:action] == "new" %>
+      <%= f.submit "Create", class: "btn btn-primary"%>
+    <% else %>
+      <%= f.submit "Update", class: "btn btn-primary"%>
+    <% end %>
+  </div>
+<% end %>
+  
