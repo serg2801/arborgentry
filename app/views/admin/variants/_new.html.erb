@@ -62,6 +62,14 @@
         </div>
 
         <br>
+        <%= f.fields_for :option_values do |opt| %>
+        <% 1.times { @variant.option_values.build }%>
+        <%= opt.object %>
+          <%= opt.text_field :name %>
+          <%#= option_types_form.link_to_remove "Remove this task" %>
+        <% end %>
+        <p><%#= f.link_to_add "Add a task", :tasks %></p>
+
         <div class="toggle-custom">
           <label class="col-lg-3 col-md-4 control-label" for="">Is Master</label>
           <div class="col-lg-9 col-md-8">

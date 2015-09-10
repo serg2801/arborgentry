@@ -6,6 +6,7 @@ class Admin::VariantsController < ApplicationController
 
 	def new
 		@variant = Variant.new
+		# 3.times { @variant.option_values.build }
 	end
 
 	def create
@@ -30,7 +31,7 @@ class Admin::VariantsController < ApplicationController
 
 	private
 	def variant_params
-		params.require(:variant).permit(:product_id, :sku, :barcode, :weight, :weight_unit, :price, :compare_price, :is_master)
+		params.require(:variant).permit(:product_id, :sku, :barcode, :weight, :weight_unit, :price, :compare_price, :is_master, option_values_attributes: [:id, :name, :_destroy])
 	end
 
 	def set_variants

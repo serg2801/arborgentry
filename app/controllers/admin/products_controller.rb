@@ -11,9 +11,16 @@ class Admin::ProductsController < ApplicationController
   def show
     admin_product_path(@product)
   end
-
+  
   def new
     @product = Product.new
+    1.times do 
+      variant = @product.variants.build
+      1.times do
+        option_type = variant.option_types.build
+        1.times{option_type.option_values.build}
+      end
+    end
     respond_with(@product)
   end
 
@@ -46,6 +53,6 @@ class Admin::ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :slug, :meta_description, :meta_keywords, :publish_date, :vendor_id)
+      params.require(:product).permit(:name, :description, :slug, :meta_description, :meta_keywords, :publish_date, :vendor_id,variants_attributes: [:id, :price, :sku, :barcode, :weight, :weight_unit, :compare_price, :is_master, :_destroy, option_types_attributes: [:id, :name, :_destroy, option_values_attributes: [:id, :name, :_destroy]]])
     end
 end

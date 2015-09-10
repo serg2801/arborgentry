@@ -49,3 +49,21 @@
 //= require main
 //= require tables-data
 //= require dashboard
+//= require jquery_nested_form
+//= require jquery.validate.min
+
+
+function remove_fields(link) {
+	$(link).prev("input[type=hidden]").val(true);
+	$(link).closest(".fields").hide();
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g");
+  content = content.replace(regexp, new_id)
+  $(link).before(content);
+  // $(link).up().insert({
+  //       before: content.replace(regexp, new_id)
+  // });
+}

@@ -1,0 +1,69 @@
+<div class="row">
+	<center><h3> Variants</h3></center>
+</div>
+<div class="row">
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :sku %>
+    </div>
+    <div class="col-xs-8">
+      <%= f.text_field :sku, class: 'form-control', required: true %>
+    </div>
+  </div>
+</div><br>
+<div class="row">
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :price %>
+    </div>
+    <div class="col-xs-8">
+      <%= f.text_field :price, class: 'form-control', required: true %>
+    </div>
+  </div>
+</div><br>
+<div class="row">
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :compare_price %>
+    </div>
+    <div class="col-xs-8">
+      <%= f.text_field :compare_price, class: 'form-control', required: true %>
+    </div>
+  </div>
+</div><br>
+<div class="row">
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :barcode %>
+    </div>
+    <div class="col-xs-8">
+      <%= f.text_field :barcode, class: 'form-control', required: true %>
+    </div>
+  </div>
+</div><br>
+<div class="row">
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :weight %>
+    </div>
+    <div class="col-xs-8">
+      <%= f.text_field :weight, class: 'form-control' %>
+    </div>
+  </div>
+</div><br>
+<div class="row">
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :weight_unit %>
+    </div>
+    <div class="col-xs-8">
+      <%= f.text_field :weight_unit, class: 'form-control' %>
+    </div>
+  </div>
+</div><br>
+<%= f.fields_for :option_types do |opt_type| %>
+  <%= render 'option_type_fields', :f => opt_type %>
+<% end %>
+<div class="row">
+<p><%= link_to_add_fields "Add Type", f, :option_types %></p> </div>   
+          <%#= opt.link_to_remove "Remove this option" %>
