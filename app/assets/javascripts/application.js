@@ -13,6 +13,8 @@
 //= require pace
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
+//= require dropzone
 //= require bootstrap
 //= require modernizr.custom
 //= require jRespond.min

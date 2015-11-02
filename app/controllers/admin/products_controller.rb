@@ -18,7 +18,10 @@ class Admin::ProductsController < ApplicationController
       variant = @product.variants.build
       1.times do
         option_type = variant.option_types.build
-        1.times{option_type.option_values.build}
+        1.times do
+          option_value = option_type.option_values.build
+          1.times{option_value.option_images.build}
+        end
       end
     end
     respond_with(@product)
@@ -53,6 +56,6 @@ class Admin::ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :slug, :meta_description, :meta_keywords, :publish_date, :vendor_id,variants_attributes: [:id, :price, :sku, :barcode, :weight, :weight_unit, :compare_price, :is_master, :_destroy, option_types_attributes: [:id, :name, :_destroy, option_values_attributes: [:id, :name, :_destroy]]])
+      params.require(:product).permit(:name, :description, :slug, :meta_description, :meta_keywords, :publish_date, :vendor_id,variants_attributes: [:id, :price, :sku, :barcode, :weight, :weight_unit, :compare_price, :is_master, :_destroy, option_types_attributes: [:id, :name, :_destroy, option_values_attributes: [:id, :name, :_destroy, option_images_attributes: [:id, :image, :_destroy]]]])
     end
 end

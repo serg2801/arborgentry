@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :inquiries, :only => [:index, :destroy, :show]
     resources :companies
     resources :products
+    resources :option_images
   end
 
   # root 'home#index'

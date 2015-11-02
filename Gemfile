@@ -41,3 +41,5 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 gem 'devise'
 gem "nested_form"
+gem 'dropzonejs-rails'
+gem 'remotipart', '~> 1.2'

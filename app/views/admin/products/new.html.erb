@@ -24,4 +24,45 @@
 </div>
 <script type="text/javascript">
   $('#new_product').validate();
+
+    setTimeout(function(){
+
+    console.log($('#gallery-dropzone'))
+    }, 10000)
+    // $(function(){
+    //   if ($('#gallery-dropzone').length) {
+    //     Dropzone.options.galleryDropzone = false;
+    //     baseUrl1 = $('#gallery-dropzone').attr('action');
+    //     window.galleryDropzone = new Dropzone('#gallery-dropzone', {
+    //       addRemoveLinks: true,
+    //       acceptedFiles: ".jpeg,.jpg,.png,.gif",
+    //       success: function(file, response) {
+    //         file.id = response.id
+    //         $(file.previewElement).addClass('dz-success')
+    //       },
+    //       removedfile: function(file) {
+    //         $.ajax({
+    //           type: 'DELETE',
+    //           dataType: 'json',
+    //           url: baseUrl1 + "/" + file.id,
+    //           success: function() {
+    //             $(file.previewTemplate).fadeOut();
+
+    //           }
+    //         });
+    //       }
+    //     });
+    //     // $.getJSON(baseUrl1 + ".json", function(data) {
+    //     //   var i, image, len, results;
+    //     //   results = [];
+    //     //   for (i = 0, len = data.length; i < len; i++) {
+    //     //     image = data[i];
+    //     //     galleryDropzone.options.addedfile.call(galleryDropzone, image);
+    //     //     results.push(galleryDropzone.options.thumbnail.call(galleryDropzone, image, image.thumb));
+    //     //   }
+    //     //   return results;
+    //     // });
+    //   }
+    // })  
+  
 </script>

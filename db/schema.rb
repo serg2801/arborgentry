@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903181339) do
+ActiveRecord::Schema.define(version: 20151101162451) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -58,6 +58,18 @@ ActiveRecord::Schema.define(version: 20150903181339) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "option_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "option_value_id"
+  end
+
+  add_index "option_images", ["option_value_id"], name: "index_option_images_on_option_value_id"
 
   create_table "option_types", force: true do |t|
     t.string   "name"
