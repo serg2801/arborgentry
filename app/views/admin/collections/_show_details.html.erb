@@ -18,6 +18,15 @@
             <div class="col-xs-8">
               <label><%= collection.description %></label>
             </div>
+            <div class="col-xs-4">
+              Product
+            </div><br>
+            <% collection.products.find_each do |p| %>
+              <div class="col-xs-8">
+                <label><%= p.name %></label>
+                <img <%= p.option_images.present? ? "src="+p.option_images.first.image(:medium) : "alt=no_image" %>><br>
+              </div>
+            <% end %>
           </div>
       </div>
       <div class="modal-footer">

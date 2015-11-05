@@ -9,6 +9,16 @@
     <strong>Description:</strong>
     <%= @collection.description %>
   </p>
+
+  <p>
+    <strong>Product:</strong>
+    <%#= render "products", products: @collection.products %>
+    <% @collection.products.find_each do |p| %>
+      <%= p.name %>
+      <img <%= p.option_images.present? ? "src="+p.option_images.first.image(:medium) : "alt=no_image" %>><br>
+    <% end %>
+  </p>
+
   <%= link_to 'Edit', edit_admin_collection_path(@collection) %> |
   <%= link_to 'Back', admin_collections_path %>
 </div>
