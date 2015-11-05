@@ -1,0 +1,7 @@
+<tr>
+  <td><%= collection.title %></td>
+  <td><%= collection.description %></td>
+  <td><%= link_to 'Show', admin_collection_path(collection), remote: true %></td>
+  <td><%= link_to 'Edit', edit_admin_collection_path(collection) %></td>
+  <td><%= link_to 'Destroy', admin_collection_path(collection), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

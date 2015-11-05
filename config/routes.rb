@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :companies
     resources :products
     resources :option_images
+    resources :collections
   end
 
   # root 'home#index'

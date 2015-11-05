@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<div class="row" style="padding:10% 0px 0px 45%">
+  <p>
+    <strong>Title:</strong>
+    <%= @collection.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @collection.description %>
+  </p>
+  <%= link_to 'Edit', edit_admin_collection_path(@collection) %> |
+  <%= link_to 'Back', admin_collections_path %>
+</div>
