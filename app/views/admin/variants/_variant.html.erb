@@ -1,0 +1,12 @@
+<tr>
+  <td><%= variant.id %></td>
+  <td><%= Product.find(variant.product_id).name %></td>
+  <td><%= variant.sku %></td>
+  <td><%= variant.barcode %></td>
+  <td><%= variant.weight %></td>
+  <td><%= variant.weight_unit %></td>
+  <td><%= variant.price %></td>
+  <td><%= variant.compare_price %></td>
+  <td><%= variant.is_master %></td>
+  <td><%= link_to "Edit", edit_admin_variant_path(variant), remote: true %> / <%= link_to "Delete", admin_variant_path(variant), method: :delete,remote: true, data: { confirm: 'Are you sure?' } %></td>
+</tr>  

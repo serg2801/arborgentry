@@ -1,0 +1,36 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel">Collection Detail</h4>
+    </div>
+      <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-4">
+              Title
+            </div>
+            <div class="col-xs-8">
+            <label><%= collection.title %></label>
+            </div>
+            <div class="col-xs-4">
+              Decsription
+            </div>
+            <div class="col-xs-8">
+              <label><%= collection.description %></label>
+            </div>
+            <div class="col-xs-4">
+              Product
+            </div><br>
+            <% collection.products.find_each do |p| %>
+              <div class="col-xs-8">
+                <label><%= p.name %></label>
+                <img <%= p.option_images.present? ? "src="+p.option_images.first.image(:medium) : "alt=no_image" %>><br>
+              </div>
+            <% end %>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+  </div>
+</div>

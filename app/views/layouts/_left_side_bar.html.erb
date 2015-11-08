@@ -17,7 +17,10 @@
           <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">settings <span class="caret"></span>
           </button>
           <ul class="dropdown-menu right" role="menu">
-            <li><a href="profile.html"><i class="fa fa-edit"></i>Edit profile</a>
+           <!--  <li><a href="<%#= edit_vendor_registration_path(current_vendor) %>"><i class="fa fa-edit"></i>Edit profile</a> -->
+
+            <li><a href="<%= edit_vendor_registration_path %>"><i class="fa fa-edit"></i>Edit profile</a>
+
             </li>
             <li><a href="#"><i class="fa fa-money"></i>Windraws</a>
             </li>
@@ -56,7 +59,7 @@
               <li><a href="forms-layouts.html"><span class="txt">Form layouts</span></a></li>
               <li><a href="forms-wizard.html"><span class="txt">Form wizard</span></a></li>
               <li><a href="forms-validation.html"><span class="txt">Form validation</span></a></li>
-              <li><a href="code-editor.html"><span class="txt">Code editor</span></a></li>
+              <li><%=  link_to("Inquiries", admin_inquiries_path) %></li>
             </ul>
           </li>
           <li>

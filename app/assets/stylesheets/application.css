@@ -11,6 +11,7 @@
  * file per style scope.
  *= require icons
  *= require bootstrap
+ *= require dropzone/basic
  *= require plugins
  *= require main
  *= require custom

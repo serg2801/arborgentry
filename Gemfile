@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
-
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -40,4 +40,6 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
-
+gem "nested_form"
+gem 'dropzonejs-rails'
+gem 'remotipart', '~> 1.2'

@@ -13,6 +13,8 @@
 //= require pace
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
+//= require dropzone
 //= require bootstrap
 //= require modernizr.custom
 //= require jRespond.min
@@ -34,6 +36,10 @@
 //= require flot/jquery.flot.tooltip.min
 //= require flot/jquery.flot.curvedLines
 //= require sparklines/jquery.sparkline
+//= require datatables/jquery.dataTables
+//= require datatables/dataTables.tableTools
+//= require datatables/dataTables.bootstrap
+//= require datatables/dataTables.responsive
 //= require progressbars/progressbar
 //= require plugins/waypoint/waypoints
 //= require plugins/weather/skyicons
@@ -43,4 +49,23 @@
 //= require plugins/misc/countTo/jquery.countTo
 //= require jquery.dynamic
 //= require main
+//= require tables-data
 //= require dashboard
+//= require jquery_nested_form
+//= require jquery.validate.min
+
+
+function remove_fields(link) {
+	$(link).prev("input[type=hidden]").val(true);
+	$(link).closest(".fields").hide();
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g");
+  content = content.replace(regexp, new_id)
+  $(link).before(content);
+  // $(link).up().insert({
+  //       before: content.replace(regexp, new_id)
+  // });
+}

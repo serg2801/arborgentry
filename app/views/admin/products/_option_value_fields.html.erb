@@ -1,0 +1,79 @@
+<br>
+<div class="row fields">
+  <div class="form-group">
+    <div class="col-xs-3">
+      <%= f.label :option_value %>
+    </div>
+    <div class="col-xs-4">
+      <%= f.text_field :name, class: 'form-control', required: true %>
+    </div>
+
+    <div class="col-xs-1">
+	    <%= link_to_remove_fields "remove", f %>
+		</div>
+  </div>
+    <div class="row">
+      <div class="col-xs-12">
+      <%= f.fields_for :option_images do |opt_img| %>
+        <%= render 'option_image_fields', :f => opt_img %>
+        <%#= f.link_to_add "Add a option value", :option_values %>
+      <% end %>
+      </div>
+    </div>
+
+    <%#= form_for(admin_option_images_path(OptionImage.new), html: { multipart: true, class: "dropzone", id: 'gallery-dropzone'}) do |f|  %>
+      <!-- <div class="fallback"> -->
+        <!-- <%#= f.file_field :image %><br> -->
+        <%#= f.submit "Upload" %>
+      <!-- </div> -->
+    <%# end %>
+
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    
+  <p><%= link_to_add_fields "Add Image", f, :option_images %></p>
+  </div>
+</div>
+
+<script type="text/javascript">
+    // setTimeout(function(){
+
+    // console.log($('#gallery-dropzone'))
+    // }, 10000)
+    // $(function(){
+      // if ($('#gallery-dropzone').length) {
+      //   Dropzone.options.galleryDropzone = false;
+      //   baseUrl1 = $('#gallery-dropzone').attr('action');
+      //   window.galleryDropzone = new Dropzone('#gallery-dropzone', {
+      //     addRemoveLinks: true,
+      //     acceptedFiles: ".jpeg,.jpg,.png,.gif",
+      //     success: function(file, response) {
+      //       file.id = response.id
+      //       $(file.previewElement).addClass('dz-success')
+      //     },
+      //     removedfile: function(file) {
+      //       $.ajax({
+      //         type: 'DELETE',
+      //         dataType: 'json',
+      //         url: baseUrl1 + "/" + file.id,
+      //         success: function() {
+      //           $(file.previewTemplate).fadeOut();
+
+      //         }
+      //       });
+      //     }
+      //   });
+      //   // $.getJSON(baseUrl1 + ".json", function(data) {
+      //   //   var i, image, len, results;
+      //   //   results = [];
+      //   //   for (i = 0, len = data.length; i < len; i++) {
+      //   //     image = data[i];
+      //   //     galleryDropzone.options.addedfile.call(galleryDropzone, image);
+      //   //     results.push(galleryDropzone.options.thumbnail.call(galleryDropzone, image, image.thumb));
+      //   //   }
+      //   //   return results;
+      //   // });
+      // }
+    // })  
+</script>

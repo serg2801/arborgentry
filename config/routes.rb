@@ -1,17 +1,38 @@
 Rails.application.routes.draw do
+  
+  devise_for :customers
+  namespace :admin do
+    resources :inquiries, :only => [:index, :destroy, :show]
+    resources :companies
+    resources :products
+    resources :option_images
+    resources :collections
+  end
+
   # root 'home#index'
   # get 'home/login'
   # get 'home/registration'
+  get 'home/welcome'
+ 
   devise_for :vendors, :controllers => {:confirmations => 'confirmations'}
   devise_scope :vendor do
     patch "/confirm" => "confirmations#confirm"
     authenticated :vendor do
-      root 'home#index', as: :authenticated_root
+      root :to =>'home#index', as: :authenticated_root
     end
 
-    unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+    unauthenticated :vendor do
+      # root 'devise/sessions#new', as: :unauthenticated_root
+      root :to =>'home#welcome', as: :unauthenticated_root
     end
+  end    
+
+  resources :vendors, only: [:index, :edit, :update, :destroy]
+  resources :product_types
+  namespace :admin do
+    resources :categories
+    resources :channels
+    resources :variants
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -10,7 +10,10 @@ class Vendor < ActiveRecord::Base
   has_many :vendor_channels
 
   has_many :companies, :through =>  :vendor_companies
-  has_many :vendor_companies
+  has_many :vendor_companies, dependent: :destroy
+
+  has_attached_file :sample_photo, styles: {thumb: "100x100#", small: "300x300#", medium: "500x500#", large: "800x800#"}
+  validates_attachment_content_type :sample_photo, content_type: ['image/jpeg', 'image/png', 'application/pdf']  
 
   def password_required?
     super if confirmed?
