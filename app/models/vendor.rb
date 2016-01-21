@@ -25,4 +25,9 @@ class Vendor < ActiveRecord::Base
     self.errors[:password_confirmation] << "does not match password" if password != password_confirmation
     password == password_confirmation && !password.blank?
   end
+
+  after_create :send_admin_mail
+  def send_admin_mail
+    VendorMailer.send_admin_mail(self).deliver
+  end
 end

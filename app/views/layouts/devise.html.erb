@@ -15,7 +15,7 @@
   <meta name="msapplication-TileColor" content="#3399cc" />
 </head>
 <body class="<%= params[:controller] != "devise/registrations" ? 'login-page' : 'signup-page'%>">
-  <div class="container <%= params[:controller] != "devise/registrations" ? 'login-container' : '' %>">
+  <div class="container <%= params[:controller] != "registrations" ? 'login-container' : '' %>">
   <%= yield%>  
   </div>
   <div class="container">

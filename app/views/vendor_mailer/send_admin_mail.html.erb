@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Vendor</title>
+</head>
+<body>
+Hi,
+<br/>
+Please review new vendor registration detail :
+
+<table>
+	<caption>Please review new vendor registration detail :</caption>
+	<tbody>
+		<tr>
+			<td>Vendor Name</td>
+			<td><%= @vendor.vendor_name%></td>
+		</tr>
+		<tr>
+			<td>First Name</td>
+			<td><%= @vendor.first_name%></td>
+		</tr>
+		<tr>
+			<td>Last Name</td>
+			<td><%= @vendor.last_name%></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><%= @vendor.email%></td>
+		</tr>
+		<tr>
+			<td>Phone number</td>
+			<td><%= @vendor.phone_number%></td>
+		</tr>
+		<tr>
+			<td>web site url</td>
+			<td><%= @vendor.web_site_url%></td>
+		</tr>
+		<tr>
+			<td>Business Address</td>
+			<td><%= @vendor.business_address%></td>
+		</tr>
+		<tr>
+			<td>City</td>
+			<td><%= @vendor.city%></td>
+		</tr>
+		<tr>
+			<td>State</td>
+			<td><%= @vendor.state%></td>
+		</tr>
+		<tr>
+			<td>Country</td>
+			<td><%= @vendor.country%></td>
+		</tr>
+		<tr>
+			<td>Zipcode</td>
+			<td><%= @vendor.zipcode%></td>
+		</tr>
+	</tbody>
+</table>
+<style type="text/css" media="screen">
+	table, th, td {
+   	border: 1px solid black;
+	}
+</style>
+</body>
+</html>

@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   # get 'home/login'
   # get 'home/registration'
   get 'home/welcome'
- 
-  devise_for :vendors, :controllers => {:confirmations => 'confirmations'}
+  get 'thank_you' => 'home#thank_you'
+  devise_for :vendors, :controllers => {:confirmations => 'confirmations',  registrations: "registrations"}
   devise_scope :vendor do
     patch "/confirm" => "confirmations#confirm"
     authenticated :vendor do

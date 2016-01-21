@@ -14,12 +14,17 @@
 </head>
 <body>
 <div id="error-msg">
+
+<% if params[:action] != "thank_you" %>
 <%= render "layouts/home_header"%>
+<% end %>
   <% if flash.present? %>
     <%#= render 'layouts/messages' %>
   <% end %>
 </div>
 <%= yield %>
+<% if params[:action] != "thank_you" %>
 <%= render "layouts/home_footer" %>
+<% end %>
 </body>
 </html>
