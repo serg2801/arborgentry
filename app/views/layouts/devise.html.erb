@@ -14,7 +14,7 @@
   <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
   <meta name="msapplication-TileColor" content="#3399cc" />
 </head>
-<body class="<%= params[:controller] != "devise/registrations" ? 'login-page' : 'signup-page'%>">
+<body class="<%= params[:controller] != "registrations" ? 'login-page' : 'signup-page'%>">
   <div class="container <%= params[:controller] != "registrations" ? 'login-container' : '' %>">
   <%= yield%>  
   </div>
