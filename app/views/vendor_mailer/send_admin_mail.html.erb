@@ -62,7 +62,30 @@ Hi,
 			<td>Additional Information</td>
 			<td><%= @vendor.additional_information%></td>
 		</tr>
-		
+		<tr>
+			<td>Company </td>
+			<td>
+				<% @vendor.companies.each do |company| %>
+					<%= company.title %><br/>
+				<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td>Business Category</td>
+			<td>
+				<% @vendor.categories.each do |category| %>
+					<%= category.title %><br/>
+				<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td>Channel </td>
+			<td>
+				<% @vendor.channels.each do |channel| %>
+					<%= channel.title %><br/>
+				<% end %>
+			</td>
+		</tr>
 	</tbody>
 </table>
 <style type="text/css" media="screen">
