@@ -21,5 +21,14 @@ module ApplicationHelper
 	  href = html_options[:href] || '#'
 
 	  content_tag(:a, name, html_options.merge(:href => href, :onclick => onclick))
-	end	
+	end
+
+	def flash_class(level)
+		case level.to_sym
+			when :notice then "alert alert-success"
+			when :info then "alert alert-info"
+			when :alert then "alert alert-danger"
+			when :warning then "alert alert-warning"
+		end
+	end
 end

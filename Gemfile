@@ -43,3 +43,7 @@ gem 'devise'
 gem "nested_form"
 gem 'dropzonejs-rails'
 gem 'remotipart', '~> 1.2'
+
+gem 'mailman', require: false
+gem 'mail'
+gem 'pry'
