@@ -95,9 +95,10 @@
           <li>
             <a href="#"><i class="l-basic-mail"></i> <span class="txt">Email</span></a>
             <ul class="sub">
+              <li><%= link_to 'Connect to email', new_config_email_path, class: 'txt' %></li>
               <li><a href="email-inbox.html"><span class="txt">Inbox</span></a></li>
-              <li><a href="email-read.html"><span class="txt">Read email</span></a></li>
-              <li><a href="email-write.html"><span class="txt">Write email</span></a></li>
+              <li><%= link_to 'Read email', read_emails_path, class: 'txt' %></li>
+              <li><%= link_to 'Write email', write_emails_path, class: 'txt' %></li>
             </ul>
           </li>
           <li>

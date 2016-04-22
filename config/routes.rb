@@ -35,7 +35,16 @@ Rails.application.routes.draw do
     resources :variants
   end
 
-  resources :messages, only: [ :index, :show, :destroy ]
+  resources :messages, only: [ :create, :new, :destroy ]
+  resources :config_emails, only: [:new, :create, :edit, :update ]
+
+  # get 'read_emails', to: 'config_emails#show'
+  get 'read_emails', to: 'messages#read_emails'
+  get 'write_emails', to: 'messages#write_emails'
+  get 'show_message_read', to: 'messages#show_message_read'
+  get 'show_message_write', to: 'messages#show_message_write'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

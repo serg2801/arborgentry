@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412135011) do
+ActiveRecord::Schema.define(version: 20160420083353) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -42,9 +42,13 @@ ActiveRecord::Schema.define(version: 20160412135011) do
     t.string   "server_email"
     t.string   "username"
     t.string   "password_encrypted"
+    t.integer  "vendor_id"
+    t.boolean  "status",             default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "config_emails", ["vendor_id"], name: "index_config_emails_on_vendor_id"
 
   create_table "customers", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -79,9 +83,14 @@ ActiveRecord::Schema.define(version: 20160412135011) do
     t.text     "body"
     t.string   "to"
     t.string   "from"
+    t.integer  "status"
+    t.date     "date"
+    t.integer  "config_email_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "messages", ["config_email_id"], name: "index_messages_on_config_email_id"
 
   create_table "option_images", force: true do |t|
     t.datetime "created_at"

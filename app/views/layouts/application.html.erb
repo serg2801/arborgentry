@@ -3,7 +3,7 @@
 <head>
   <title>Dashboard | Dynamic Admin Template</title>
   <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700' rel='stylesheet' type='text/css'>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/ico/apple-touch-icon-144-precomposed.png">
@@ -12,24 +12,26 @@
   <link rel="apple-touch-icon-precomposed" href="/assets/images/ico/apple-touch-icon-57-precomposed.png">
   <link rel="icon" href="img/ico/favicon.ico" type="image/png">
   <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
-  <meta name="msapplication-TileColor" content="#3399cc" />
+  <meta name="msapplication-TileColor" content="#3399cc"/>
 </head>
 <body>
-<%= render "layouts/header"%>
+
 <div id="wrapper">
   <!-- .page-sidebar -->
-  <%= render "layouts/left_side_bar"%>
+  <%= render "layouts/left_side_bar" %>
   <!-- / page-sidebar -->
   <!-- Start #right-sidebar -->
-  <%= render "layouts/right_side_bar"%>
-<div id="error-msg">
-  <% if flash.present? %>
-    <%= render 'layouts/messages' %>
-  <% end %>
-</div>
-<%= yield %>
-<%= render "layouts/footer" %>
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <%= render "layouts/right_side_bar" %>
+  <div id="error-msg">
+    <% if flash.present? %>
+        <%= render 'layouts/messages' %>
+    <% end %>
+  </div>
+  <%= render "layouts/header" %>
+  <%= yield %>
+  <%= render "layouts/footer" %>
+  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  </div>
 </div>
 </body>
 </html>
