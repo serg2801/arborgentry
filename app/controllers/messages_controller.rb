@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
 
   def read_emails
     @emails = current_vendor.config_emails
-    @config_emails = current_vendor.config_emails.last
+    @config_emails = current_vendor.config_emails.first
     #@messages = @config_emails.messages
     @messages = @config_emails.messages.where(status: 0)
 
