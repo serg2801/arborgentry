@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
 
   def destroy
     if @message.destroy
-      redirect_to messages_path
+      redirect_to inbox_path
       flash[:notice] = "Your message was deleted!"
     end
   end

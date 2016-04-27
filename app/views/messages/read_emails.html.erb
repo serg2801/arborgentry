@@ -1,18 +1,21 @@
-<script>
-    $(document).ready(function () {
-        alert('sss');
-        //$("#checkAll").click(function(){
-        //    console.log(this.checked);
-        //    $('.email_checkbox').prop('checked', this.checked);
-        //});
-    });
-</script>
+<!--<script type="text/javascript">-->
+//    alert('1');
+//    $(document).on('page:load', function () {
+//        alert('sss');
+//        $("#checkAll").click(function(){
+//            alert('sss');
+//            console.log(this.checked);
+//            $('.email_checkbox').prop('checked', this.checked);
+//        });
+//    });
+<!--</script>-->
 <div class="page-content-wrapper row pg_top">
   <div class="container">
     <div class="messages_header">
       <p><%= button_to "New Message", new_message_path, :class => "button btn-submit-app", :method => :get %></p>
-      <input type="checkbox" class="email_checkbox_header" id="checkAll" value="">
-      <button type="button" class="delete_email btn-group btn-group-xs">Delete Email</button>
+      <h3 class="">Read Email</h3>
+      <!--<input type="checkbox" class="email_checkbox_header" id="checkAll" value="">-->
+      <!--<button type="button" class="delete_email btn-group btn-group-xs">Delete Email</button>-->
       <p class="email_header"><%= @config_emails.username %></p>
     </div>
     <div class="messages">
@@ -23,7 +26,7 @@
           <% @messages.each do |message| %>
 
               <div class="message">
-                <input type="checkbox" class="email_checkbox" value="">
+                <!--<input type="checkbox" class="email_checkbox" value="">-->
                 <%= link_to show_message_read_path(:id => message.id) do %>
                     <p class="email_address"><%= message.from %></p>
 
@@ -34,6 +37,7 @@
                     </div>
 
                     <p class="email_date"><%= message.date %></p>
+                    <p><%= link_to 'Destroy', message_path(message), method: :delete, data: { confirm: 'Are you sure?' } %></p>
                 <% end %>
               </div>
 
