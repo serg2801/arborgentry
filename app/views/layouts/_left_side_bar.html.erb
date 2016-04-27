@@ -100,11 +100,11 @@
 
               <% if @config_emails.nil? %>
                   <li><%= link_to 'Connect to email', new_config_email_path, class: 'txt' %></li>
-                  <li><a href="email-inbox.html"><span class="txt">Inbox</span></a></li>
+                  <li><%= link_to 'Inbox', inbox_path, class: 'txt' %></li>
                   <li><%= link_to 'Read email', read_emails_path, class: 'txt' %></li>
                   <li><%= link_to 'Write email', write_emails_path, class: 'txt' %></li>
               <% else %>
-                  <li><a href="email-inbox.html"><span class="txt">Inbox</span></a></li>
+                  <li><%= link_to 'Inbox', inbox_path, class: 'txt' %></li>
                   <li><%= link_to 'Read email', read_emails_path, class: 'txt' %></li>
                   <li><%= link_to 'Write email', write_emails_path, class: 'txt' %></li>
               <% end %>

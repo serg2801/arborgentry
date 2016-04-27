@@ -4,4 +4,6 @@ class Message < ActiveRecord::Base
 
   enum status: [ :read, :write ]
 
+  acts_as_readable :on => :created_at
+
 end

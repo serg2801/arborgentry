@@ -36,6 +36,16 @@ class MessagesController < ApplicationController
     @config_emails = current_vendor.config_emails.first
     #@messages = @config_emails.messages
     @messages = @config_emails.messages.where(status: 0)
+    @messages = @messages.read_by(current_vendor)
+
+    get_emails(@emails)
+  end
+
+  def inbox
+    @emails = current_vendor.config_emails
+    @config_emails = current_vendor.config_emails.first
+    #@messages = @config_emails.messages
+    @messages = @config_emails.messages.where(status: 0)
 
     get_emails(@emails)
   end
@@ -49,10 +59,12 @@ class MessagesController < ApplicationController
 
   def show_message_read
     @message = Message.find(params[:id])
+    @message.mark_as_read! :for => current_vendor
   end
 
   def show_message_write
     @message = Message.find(params[:id])
+    @message.mark_as_read! :for => current_vendor
   end
 
   private

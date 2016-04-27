@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420083353) do
+ActiveRecord::Schema.define(version: 20160427111155) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -155,6 +155,16 @@ ActiveRecord::Schema.define(version: 20160420083353) do
   end
 
   add_index "products", ["vendor_id"], name: "index_products_on_vendor_id"
+
+  create_table "read_marks", force: true do |t|
+    t.integer  "readable_id"
+    t.string   "readable_type", null: false
+    t.integer  "reader_id"
+    t.string   "reader_type",   null: false
+    t.datetime "timestamp"
+  end
+
+  add_index "read_marks", ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index"
 
   create_table "variants", force: true do |t|
     t.string   "sku"

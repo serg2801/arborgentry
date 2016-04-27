@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
   # get 'read_emails', to: 'config_emails#show'
   get 'read_emails', to: 'messages#read_emails'
+  get 'inbox', to: 'messages#inbox'
   get 'write_emails', to: 'messages#write_emails'
   get 'show_message_read', to: 'messages#show_message_read'
   get 'show_message_write', to: 'messages#show_message_write'
