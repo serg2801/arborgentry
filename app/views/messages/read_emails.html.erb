@@ -20,7 +20,7 @@
     </div>
     <div class="messages">
 
-      <% if @messages === [] %>
+      <% if @messages === [] || @messages === nil %>
           <h3>No messages!</h3>
       <% else %>
           <% @messages.each do |message| %>

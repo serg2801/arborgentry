@@ -19,7 +19,7 @@ class ConfigEmailsController < ApplicationController
     @config_email = ConfigEmail.new(config_email_params.merge(vendor_id: current_vendor.id, server_email: server_email))
     @config_email.password_encrypted = ConfigEmail.encryption(config_email[:password_encrypted])
     if @config_email.save
-      render 'messages/read_emails'
+      render 'messages/write_emails'
       flash[:notice] = 'Config email has been add!.'
     else
       render 'new'

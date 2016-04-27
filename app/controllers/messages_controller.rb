@@ -35,26 +35,39 @@ class MessagesController < ApplicationController
     @emails = current_vendor.config_emails
     @config_emails = current_vendor.config_emails.first
     #@messages = @config_emails.messages
-    @messages = @config_emails.messages.where(status: 0)
-    @messages = @messages.read_by(current_vendor)
-
-    get_emails(@emails)
+    if @config_emails.nil?
+      redirect_to new_config_email_path
+      flash[:notice] = "Please connect your email address!!!"
+    else
+      @messages = @config_emails.messages.where(status: 0)
+      @messages = @messages.read_by(current_vendor)
+      get_emails(@emails)
+    end
   end
 
   def inbox
     @emails = current_vendor.config_emails
     @config_emails = current_vendor.config_emails.first
-    #@messages = @config_emails.messages
-    @messages = @config_emails.messages.where(status: 0)
-
-    get_emails(@emails)
+    if @config_emails.nil?
+      redirect_to new_config_email_path
+      flash[:notice] = "Please connect your email address!!!"
+    else
+      #@messages = @config_emails.messages
+      @messages = @config_emails.messages.where(status: 0)
+      get_emails(@emails)
+    end
   end
 
   def write_emails
     @emails = current_vendor.config_emails
     @config_emails = current_vendor.config_emails.last
     #@messages = @config_emails.messages
-    @messages = @config_emails.messages.where(status: 1)
+    if @config_emails.nil?
+      redirect_to new_config_email_path
+      flash[:notice] = "Please connect your email address!!!"
+    else
+      @messages = @config_emails.messages.where(status: 1)
+    end
   end
 
   def show_message_read
