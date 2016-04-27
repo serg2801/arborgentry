@@ -51,6 +51,7 @@ gem 'bcrypt'
 gem "figaro"
 gem 'daemons-rails'
 gem 'unread'
+gem 'tinymce-rails'
 
 
 gem 'pry'

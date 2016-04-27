@@ -2,6 +2,6 @@
   <div class="container">
     <p>To: <%= @message.to %></p>
     <p>Subject: <%= @message.subject %></p>
-    <p>Body: <%= @message.body %></p>
+    <p>Body: <%= render html: @message.body.html_safe %></p>
   </div>
 </div>

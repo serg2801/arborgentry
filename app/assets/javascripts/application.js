@@ -53,6 +53,7 @@
 //= require tables-data
 //= require dashboard
 //= require jquery_nested_form
+//= require tinymce-jquery
 // require turbolinks
 
 

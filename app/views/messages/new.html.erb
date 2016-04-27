@@ -1,53 +1,7 @@
+<%= tinymce_assets %>
 <div class = "page-content-wrapper row pg_top">
   <div class="container">
-    <%= form_for @message do |f| %>
-        <div class="row">
-          <div class="col-lg-12">
-            <!-- col-lg-12 start here -->
-            <div class="panel panel-default toggle panelMove panelClose panelRefresh" id="dyn_0">
-              <!-- Start .panel -->
-              <div class="panel-heading">
-                <h4 class="panel-title">Write email from <%= @from %></h4>
-
-                <div class="panel-controls panel-controls-right">
-                  <a class="panel-refresh" href="#"><i class="fa fa-circle-o"></i></a>
-                  <a class="toggle panel-minimize" href="#"><i class="fa fa-angle-up"></i></a>
-                  <a class="panel-close" href="#"><i class="fa fa-times"></i></a>
-                </div>
-              </div>
-              <div class="panel-body pt0 pb0">
-                <div class="form-horizontal group-border stripped" id="validate">
-                  <div class="form-group">
-                    <%= f.label :to, 'To', :class => "col-lg-2 col-md-3 control-label" %>
-                    <div class="col-lg-10 col-md-9">
-                      <%= f.text_field :to, :class => "form-control requires", :placeholder => 'example@gmail.com', :required => true %>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <%= f.label :subject, 'Subject', :class => "col-lg-2 col-md-3 control-label" %>
-                    <div class="col-lg-10 col-md-9">
-                      <%= f.text_field :subject, :class => "form-control", :placeholder => 'Subject ...', :required => true %>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <%= f.label :body, 'Body', :class => "col-lg-2 col-md-3 control-label" %>
-                    <div class="col-lg-10 col-md-9">
-                      <%= f.text_area :body, :class => "form-control", :placeholder => 'Body message ...', :required => true %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 m-b-lg">
-            <%= f.submit 'Send', :class => "btn-submit-app" %>
-          </div>
-        </div>
-    <% end %>
+    <%= render 'form' %>
   </div>
 </div>
 </div>
