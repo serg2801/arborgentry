@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   layout :resolve_layout
   before_filter :authenticate_vendor! , :except => [:welcome, :thank_you]
   def index
+    @config_emails = current_vendor.config_emails.last
   end
 
   def login

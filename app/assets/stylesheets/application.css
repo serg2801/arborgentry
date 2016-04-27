@@ -15,6 +15,7 @@
  *= require plugins
  *= require main
  *= require custom
+ *= require messages
  */
 
 #flash_alert{

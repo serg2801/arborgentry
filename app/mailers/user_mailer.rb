@@ -23,7 +23,7 @@ class UserMailer < ActionMailer::Base
 
   def send_email(message, config_email)
     @message = message
-    binding.pry
+    # binding.pry
     @url  = message_url(@message)
     delivery_options = { address: "smtp." + "#{config_email.server_email}",
                          port: 587,
@@ -33,6 +33,7 @@ class UserMailer < ActionMailer::Base
                          authentication: 'login',
                          enable_starttls_auto: true}
     mail to: @message.to,
+         from: @message.from,
          subject: @message.subject,
          delivery_method_options: delivery_options
   end

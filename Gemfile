@@ -49,6 +49,7 @@ gem 'mail'
 gem 'bcrypt'
 gem "figaro"
 gem 'daemons-rails'
+gem 'jquery-turbolinks'
 
 
 gem 'pry'

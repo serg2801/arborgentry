@@ -247,7 +247,7 @@
   }
   .headline{
     height:auto;
-    line-height: auto;
+    /*line-height: auto;*/
   }
 }
 

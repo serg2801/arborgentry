@@ -1,3 +1,65 @@
-// Place all the styles related to the messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.container {
+  .messages_header{
+    overflow: hidden;
+    width: 90%;
+    border-bottom: 2px solid lightgrey;
+    padding: 10px 0;
+
+    .email_checkbox_header {
+      width: 5%;
+      float: left;
+    }
+    .delete_email {
+      width: 10%;
+      float: left;
+      margin-right: 10px;
+    }
+    .email_header {
+      width: 30%;
+      float: left;
+    }
+  }
+  .messages {
+
+    .message {
+      overflow: hidden;
+      width: 90%;
+      border-bottom: 1px solid lightgrey;
+      padding-top: 5px;
+
+      .email_checkbox {
+        width: 5%;
+        float: left;
+      }
+
+      .email_address {
+        width: 30%;
+        float: left;
+        color: #2f333f;
+      }
+
+      .email_subject_body {
+        width: 50%;
+        float: left;
+        overflow: hidden;
+
+        .email_subject {
+          width: 20%;
+          float: left;
+          color: #2f333f;
+        }
+        .email_body {
+          width: 30%;
+          float: left;
+          color: rgba(0,0,0,.42);
+        }
+      }
+
+      .email_date {
+        width: 15%;
+        float: left;
+        color: #2f333f;
+      }
+    }
+  }
+}

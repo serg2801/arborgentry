@@ -5,6 +5,8 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
+    config_emails = current_vendor.config_emails.last
+    @from = config_emails.username
   end
 
   def create
@@ -13,8 +15,10 @@ class MessagesController < ApplicationController
     # binding.pry
     @message.write!
     if @message.save
-      redirect_to show_message_write_path(:id => @message.id)
       UserMailer.send_email(@message, config_emails).deliver
+      # redirect_to show_message_write_path(:id => @message.id)
+      redirect_to write_emails_path
+      flash[:notice] = "Your message was sent!"
     else
       render "new"
     end

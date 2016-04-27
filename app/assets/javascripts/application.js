@@ -13,6 +13,8 @@
 //= require pace
 //= require jquery
 //= require jquery_ujs
+// require turbolinks
+
 //= require jquery.remotipart
 //= require dropzone
 //= require bootstrap
@@ -52,7 +54,7 @@
 //= require tables-data
 //= require dashboard
 //= require jquery_nested_form
-//= require jquery.validate.min
+
 
 
 function remove_fields(link) {

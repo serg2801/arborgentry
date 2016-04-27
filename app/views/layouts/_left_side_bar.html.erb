@@ -11,13 +11,15 @@
       <div class="user-info clearfix">
         <img src="/assets/avatars/128.jpg" alt="avatar">
         <span class="name">SuggeElson</span>
+
         <div class="btn-group">
           <button type="button" class="btn btn-default btn-xs"><i class="l-basic-gear"></i>
           </button>
-          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">settings <span class="caret"></span>
+          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">settings
+            <span class="caret"></span>
           </button>
           <ul class="dropdown-menu right" role="menu">
-           <!--  <li><a href="<%#= edit_vendor_registration_path(current_vendor) %>"><i class="fa fa-edit"></i>Edit profile</a> -->
+            <!--  <li><a href="<%#= edit_vendor_registration_path(current_vendor) %>"><i class="fa fa-edit"></i>Edit profile</a> -->
 
             <li><a href="<%= edit_vendor_registration_path %>"><i class="fa fa-edit"></i>Edit profile</a>
 
@@ -59,7 +61,7 @@
               <li><a href="forms-layouts.html"><span class="txt">Form layouts</span></a></li>
               <li><a href="forms-wizard.html"><span class="txt">Form wizard</span></a></li>
               <li><a href="forms-validation.html"><span class="txt">Form validation</span></a></li>
-              <li><%=  link_to("Inquiries", admin_inquiries_path) %></li>
+              <li><%= link_to("Inquiries", admin_inquiries_path) %></li>
             </ul>
           </li>
           <li>
@@ -95,10 +97,17 @@
           <li>
             <a href="#"><i class="l-basic-mail"></i> <span class="txt">Email</span></a>
             <ul class="sub">
-              <li><%= link_to 'Connect to email', new_config_email_path, class: 'txt' %></li>
-              <li><a href="email-inbox.html"><span class="txt">Inbox</span></a></li>
-              <li><%= link_to 'Read email', read_emails_path, class: 'txt' %></li>
-              <li><%= link_to 'Write email', write_emails_path, class: 'txt' %></li>
+
+              <% if @config_emails.nil? %>
+                  <li><%= link_to 'Connect to email', new_config_email_path, class: 'txt' %></li>
+                  <li><a href="email-inbox.html"><span class="txt">Inbox</span></a></li>
+                  <li><%= link_to 'Read email', read_emails_path, class: 'txt' %></li>
+                  <li><%= link_to 'Write email', write_emails_path, class: 'txt' %></li>
+              <% else %>
+                  <li><a href="email-inbox.html"><span class="txt">Inbox</span></a></li>
+                  <li><%= link_to 'Read email', read_emails_path, class: 'txt' %></li>
+                  <li><%= link_to 'Write email', write_emails_path, class: 'txt' %></li>
+              <% end %>
             </ul>
           </li>
           <li>
@@ -137,16 +146,21 @@
       <!--  .sidebar-panel -->
       <div class="sidebar-panel">
         <h5 class="sidebar-panel-title">Server stats</h5>
+
         <div class="sidebar-panel-content">
           <div class="sidebar-stat mb10">
-            <p class="color-white mb5 mt5"><i class="fa fa-hdd-o mr5"></i> Disk Space <span class="pull-right small">30%</span></p>
+            <p class="color-white mb5 mt5"><i class="fa fa-hdd-o mr5"></i> Disk Space
+              <span class="pull-right small">30%</span></p>
+
             <div class="progress flat transparent progress-bar-xs">
               <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
             </div>
             <span class="dib s12 mt5 per100 text-center">3001.56 / 10000 MB</span>
           </div>
           <div class="sidebar-stat">
-            <p class="color-white mb5 mt5"><i class="glyphicon glyphicon-transfer mr5"></i> Bandwidth Transfer <span class="pull-right small">78%</span></p>
+            <p class="color-white mb5 mt5"><i class="glyphicon glyphicon-transfer mr5"></i> Bandwidth Transfer
+              <span class="pull-right small">78%</span></p>
+
             <div class="progress flat transparent progress-bar-xs">
               <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%;"></div>
             </div>
@@ -158,4 +172,4 @@
     <!-- End .sidebar-scrollarea -->
   </div>
   <!-- End .sidebar-inner -->
-  </aside>
+</aside>

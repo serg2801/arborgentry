@@ -1,33 +1,29 @@
 <div class="page-content-wrapper row pg_top">
   <div class="container">
-    <%= button_to "New Message", new_message_path, :class => "button", :method => :get  %>
-    <h2 class="row"><%= @config_emails.username %></h2>
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <!--<th colspan="1"></th>-->
-        <th>From</th>
-        <th>Subject</th>
-        <th>Date</th>
-      </tr>
-      </thead>
-      <tbody>
+    <div class="messages_header">
+      <p><%= button_to "New Message", new_message_path, :class => "button btn-submit-app", :method => :get  %></p>
+      <h3 class="">Sent Email</h3>
+      <input type="checkbox" class="email_checkbox_header" id="checkAll" value="">
+      <button type="button" class="delete_email btn-group btn-group-xs">Delete Email</button>
+    </div>
+    <div class="messages">
       <% @messages.each do |message| %>
-          <tr>
-            <td>
-              <%= link_to show_message_read_path(:id => message.id) do %>
-                <table>
-                  <tr>
-                    <td><%= message.from %></td>
-                    <td><%= message.subject %></td>
-                    <td><%= message.date %></td>
-                  </tr>
-                </table>
-              <% end %>
-            </td>
-          </tr>
+
+          <div class="message">
+            <input type="checkbox" class="email_checkbox" value="">
+            <%= link_to show_message_read_path(:id => message.id) do %>
+                <p class="email_address"><%= message.from %></p>
+
+                <div class="email_subject_body">
+                  <p class="email_subject"><%= message.subject  %></p>
+                  <p class="email_body"><%= message.body %></p>
+                </div>
+
+                <p class="email_date"><%= message.date %></p>
+            <% end %>
+          </div>
+
       <% end %>
-      </tbody>
-    </table>
+    </div>
   </div>
 </div>
