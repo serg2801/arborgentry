@@ -43,4 +43,4 @@
 # Mongo Explorer plugin:
 # .idea/mongoSettings.xml
 # Ignore application configuration
-
+/config/application.yml
