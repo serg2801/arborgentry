@@ -1,7 +1,7 @@
 require 'net/pop'
 
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :destroy]
+  before_action :set_message, only: [:destroy]
 
   def new
     @message = Message.new
@@ -12,13 +12,11 @@ class MessagesController < ApplicationController
   def create
     config_emails = current_vendor.config_emails.last
     @message = Message.new(message_params.merge(date: DateTime.now.to_date, from: config_emails.username, config_email_id: config_emails.id))
-    # binding.pry
     @message.write!
     if @message.save
       UserMailer.send_email(@message, config_emails).deliver
-      # redirect_to show_message_write_path(:id => @message.id)
       redirect_to write_emails_path
-      flash[:notice] = "Your message was sent!"
+      flash[:info] = "Your message was sent!"
     else
       render "new"
     end
@@ -27,7 +25,7 @@ class MessagesController < ApplicationController
   def destroy
     if @message.destroy
       redirect_to inbox_path
-      flash[:notice] = "Your message was deleted!"
+      flash[:info] = "Your message was deleted!"
     end
   end
 
@@ -37,11 +35,11 @@ class MessagesController < ApplicationController
     #@messages = @config_emails.messages
     if @config_emails.nil?
       redirect_to new_config_email_path
-      flash[:notice] = "Please connect your email address!!!"
+      flash[:warning] = "Please connect your email address!!!"
     else
+      get_emails(@emails)
       @messages = @config_emails.messages.where(status: 0)
       @messages = @messages.read_by(current_vendor)
-      get_emails(@emails)
     end
   end
 
@@ -50,21 +48,22 @@ class MessagesController < ApplicationController
     @config_emails = current_vendor.config_emails.first
     if @config_emails.nil?
       redirect_to new_config_email_path
-      flash[:notice] = "Please connect your email address!!!"
+      flash[:warning] = "Please connect your email address!!!"
     else
+      get_emails(@emails)
       #@messages = @config_emails.messages
       @messages = @config_emails.messages.where(status: 0)
-      get_emails(@emails)
+
     end
   end
 
   def write_emails
     @emails = current_vendor.config_emails
-    @config_emails = current_vendor.config_emails.last
+    @config_emails = current_vendor.config_emails.first
     #@messages = @config_emails.messages
     if @config_emails.nil?
       redirect_to new_config_email_path
-      flash[:notice] = "Please connect your email address!!!"
+      flash[:warning] = "Please connect your email address!!!"
     else
       @messages = @config_emails.messages.where(status: 1)
     end
@@ -91,7 +90,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:to, :from, :body, :subject, :date, :status, :config_email_id)
+    params.require(:message).permit(:to, :from, :body, :subject, :date, :status, :config_email_id, :file)
   end
 
   def decryption(password)

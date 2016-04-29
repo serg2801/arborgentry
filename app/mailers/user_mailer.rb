@@ -14,6 +14,28 @@ class UserMailer < ActionMailer::Base
         body << part.decode_body
       end
 
+
+
+      # if message.multipart?
+      #   email_html = message.html_part.body.decoded  #parsing of html content of the email
+      #   email_text = message.text_part.body.decoded  # parsing of text content of the email
+      #   email_attachments = []   # an array which can be used to store object records of the attachments..
+      #   message.attachments.each do |attachment|
+      #     file = StringIO.new(attachment.decoded)
+      #     file.class.class_eval { attr_accessor :original_filename, :content_type }
+      #     file.original_filename = attachment.filename
+      #     file.content_type = attachment.mime_type
+      #     attachment = Attachment.new    # an attachment model and all the attachments are saved here...
+      #     attachment.attached_file = file
+      #     attachment.save
+      #     email_attachments << attachment   # adding all attachment objects one by one in the array...
+      #   end
+      # else
+      #   email_html = message.body.decoded    # in this case its a plain email so html body is same as text body..
+      #   email_text = message.body.decoded
+      #   email_attachments = []   # no attachments :)
+      # end
+
        m = Message.new(subject: message.subject, body: message.body.decoded, from: message.from.to_s,
                       to: message.to.to_s, date: message.date, config_email_id: id_config_email)
       m.read!
@@ -23,7 +45,7 @@ class UserMailer < ActionMailer::Base
 
   def send_email(message, config_email)
     @message = message
-    # binding.pry
+    attachments["#{@message.file}"] = File.read("#{Rails.root}/public/#{@message.file}") if @message.file.nil?
     @url  = message_url(@message)
     delivery_options = { address: "smtp." + "#{config_email.server_email}",
                          port: 587,

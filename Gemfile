@@ -53,5 +53,8 @@ gem 'daemons-rails'
 gem 'unread'
 gem 'tinymce-rails'
 
+gem "rmagick"
+gem "carrierwave"
+
 
 gem 'pry'

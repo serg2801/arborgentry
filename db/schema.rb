@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427111155) do
+ActiveRecord::Schema.define(version: 20160429092148) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20160427111155) do
     t.integer  "config_email_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file"
   end
 
   add_index "messages", ["config_email_id"], name: "index_messages_on_config_email_id"

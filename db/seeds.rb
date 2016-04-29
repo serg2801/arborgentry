@@ -39,3 +39,5 @@ Channel.create(title: '3rd party ecommerce site')
 
 Vendor.create(email: 'admin@tendemarbor.com', :password => "password", :admin => true)
 Vendor.create(email: 'vendor@tendemarbor.com', :password => "password")
+Vendor.create(email: 'test@test.com', :password => "password")
+Vendor.create(email: 'test1@test1.com', :password => "password")

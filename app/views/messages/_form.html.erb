@@ -36,6 +36,13 @@
                   <%= f.text_area :body, :class => "tinymce", :placeholder => 'Body message ...' %>
                 </div>
               </div>
+
+              <div class="form-group">
+                <%= f.label :file, 'File', :class => "col-lg-2 col-md-3 control-label" %>
+                <div class="col-lg-10 col-md-9">
+                  <%= f.file_field :file %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
