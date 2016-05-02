@@ -1,9 +1,14 @@
 class UserMailer < ActionMailer::Base
 
+  # @@config_email
+
+  def current_vendor_config_email(config_email)
+    @@config_email = config_email
+  end
+
   def receive(message)
     message_id = message.subject[/^update (\d+)$/, 1]
-    config_email = ConfigEmail.find_by(username: message.to)
-    id_config_email = config_email.id
+    id_config_email = @@config_email.id
     if message_id.present?
       # part_to_use = message.html_part || message.text_part || message
       Message.update(message_id, body: message.body.decoded)

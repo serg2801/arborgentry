@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [ :create, :new, :destroy ]
-  resources :config_emails, only: [:new, :create, :edit, :update ]
+  resources :config_emails, only: [:new, :create, :edit, :update, :show ]
 
   # get 'read_emails', to: 'config_emails#show'
   get 'read_emails', to: 'messages#read_emails'

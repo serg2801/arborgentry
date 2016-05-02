@@ -52,6 +52,8 @@
         .email_body {
           width: 30%;
           float: left;
+        }
+        p {
           color: rgba(0,0,0,.42);
         }
       }
@@ -61,6 +63,9 @@
         float: left;
         color: #2f333f;
       }
+    }
+    .unread_message {
+      background: gainsboro;
     }
   }
 }

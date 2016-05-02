@@ -1,13 +1,11 @@
 <!--<script type="text/javascript">-->
-//    alert('1');
-//    $(document).on('page:load', function () {
-//        alert('sss');
-//        $("#checkAll").click(function(){
+
+//        $(document).on('click', "#checkAll", function(){
 //            alert('sss');
 //            console.log(this.checked);
 //            $('.email_checkbox').prop('checked', this.checked);
 //        });
-//    });
+//
 <!--</script>-->
 <div class="page-content-wrapper row pg_top">
   <div class="container">
@@ -33,7 +31,7 @@
                     <div class="email_subject_body">
                       <p class="email_subject"><%= message.subject %></p>
 
-                      <p class="email_body"><%= message.body %></p>
+                      <p class="email_body"><%= render html: message.body.html_safe %></p>
                     </div>
 
                     <p class="email_date"><%= message.date %></p>

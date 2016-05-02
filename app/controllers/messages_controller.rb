@@ -5,12 +5,12 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-    config_emails = current_vendor.config_emails.last
+    config_emails = current_vendor.config_emails.first
     @from = config_emails.username
   end
 
   def create
-    config_emails = current_vendor.config_emails.last
+    config_emails = current_vendor.config_emails.first
     @message = Message.new(message_params.merge(date: DateTime.now.to_date, from: config_emails.username, config_email_id: config_emails.id))
     @message.write!
     if @message.save
@@ -37,7 +37,6 @@ class MessagesController < ApplicationController
       redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
     else
-      get_emails(@emails)
       @messages = @config_emails.messages.where(status: 0)
       @messages = @messages.read_by(current_vendor)
     end
@@ -81,14 +80,6 @@ class MessagesController < ApplicationController
 
   private
 
-  # Before filters
-
-  def set_message
-    @message = Message.find(params[:id])
-  end
-
-  private
-
   def message_params
     params.require(:message).permit(:to, :from, :body, :subject, :date, :status, :config_email_id, :file)
   end
@@ -113,15 +104,22 @@ class MessagesController < ApplicationController
           puts 'No mails.'
         else
           pop.each_mail do |mail|
+            UserMailer.current_vendor_config_email(config_email)
             UserMailer.receive(mail.pop)
             mail.delete
           end
           pop.finish
+
         end
       end
     end
   end
 
+  # Before filters
+
+  def set_message
+    @message = Message.find(params[:id])
+  end
 
 end
 

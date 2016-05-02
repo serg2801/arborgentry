@@ -1,0 +1,29 @@
+<script type="text/javascript">
+    $(document).on('click', "#show_password", function () {
+        alert('show_password');
+    });
+
+    $(document).on('click', "#test_connection", function () {
+        alert('test_connection');
+    });
+</script>
+<div class="page-content-wrapper row pg_top">
+  <div class="container">
+    <h1>Your email config.</h1>
+
+    <div class="config_email">
+      <p><%= link_to 'Edit Email Config', edit_config_email_path(@config_email) %></p>
+
+      <p>Email address: <%= @config_email.username %></p>
+
+      <div>
+        <p class="email_password">Password: <span>**********</span></p>
+        <button type="button" class="show_password btn-group btn-group-xs" id="show_password">Show password</button>
+      </div>
+      <div>
+        <p>For testing your email address click button Test Connection.</p>
+        <button type="button" class="test_connection btn-group btn-group-xs" id="test_connection">Test Connection</button>
+      </div>
+    </div>
+  </div>
+</div>

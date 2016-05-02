@@ -104,6 +104,7 @@
                   <li><%= link_to 'Read email', read_emails_path, class: 'txt' %></li>
                   <li><%= link_to 'Write email', write_emails_path, class: 'txt' %></li>
               <% else %>
+                  <li><%= link_to 'Show Config Email', config_email_path(@config_emails), class: 'txt' %></li>
                   <li><%= link_to 'Inbox', inbox_path, class: 'txt' %></li>
                   <li><%= link_to 'Read email', read_emails_path, class: 'txt' %></li>
                   <li><%= link_to 'Write email', write_emails_path, class: 'txt' %></li>

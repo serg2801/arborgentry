@@ -46,11 +46,9 @@ gem "nested_form"
 gem 'dropzonejs-rails'
 gem 'remotipart', '~> 1.2'
 
-gem 'mailman', require: false
 gem 'mail'
 gem 'bcrypt'
 gem "figaro"
-gem 'daemons-rails'
 gem 'unread'
 gem 'tinymce-rails'
 
