@@ -16,6 +16,7 @@
  *= require main
  *= require custom
  *= require messages
+ *= require config_emails
  */
 
 #flash_alert{

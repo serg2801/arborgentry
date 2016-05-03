@@ -2,7 +2,8 @@ require 'net/pop'
 
 class ConfigEmailsController < ApplicationController
 
-  before_action :set_config_email, only: [:edit, :update, :show]
+  before_action :get_config_email, only: [:edit, :update, :show]
+  before_action :get_config
 
   def new
     @config_email = ConfigEmail.new
@@ -12,7 +13,7 @@ class ConfigEmailsController < ApplicationController
   end
 
   def show
-    @config_emails = current_vendor.config_emails.first
+    # @config_emails = current_vendor.config_emails.first
   end
 
   def create
@@ -45,7 +46,39 @@ class ConfigEmailsController < ApplicationController
       render 'edit'
       flash[:warning] = "Error!"
     end
+  end
 
+  def decryption_password
+    begin
+      password = @config_emails.password_encrypted
+      cipher = OpenSSL::Cipher.new('AES-128-ECB')
+      cipher.decrypt()
+      cipher.key = ENV["key_encrypt_decrypt"]
+      tempkey = Base64.decode64(password)
+      crypt = cipher.update(tempkey)
+      crypt << cipher.final()
+      # return crypt
+      render status: 200, json: crypt.to_json
+    rescue Exception => exc
+      puts ("Message for the decryption log file for message #{password} = #{exc.message}")
+    end
+  end
+
+  def test_connection
+    begin
+      config_email = @config_emails
+      Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
+      Net::POP3.start('pop.' + "#{config_email.server_email}", 995, config_email.username, ConfigEmail.decryption(config_email.password_encrypted)) do |pop|
+        if pop.started?
+          pop.finish
+          puts 'OK!'
+          render status: 200, :json => { message: 'Success!' }
+        end
+      end
+    rescue Exception => e
+      puts ("#{e.message}")
+      render status: 500, :json => { message: e.message }
+    end
   end
 
   private
@@ -56,8 +89,12 @@ class ConfigEmailsController < ApplicationController
 
   #Before filters
 
-  def set_config_email
+  def get_config_email
     @config_email = ConfigEmail.find(params[:id])
+  end
+
+  def get_config
+    @config_emails = current_vendor.config_emails.first
   end
 
 end

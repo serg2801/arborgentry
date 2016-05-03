@@ -1,12 +1,13 @@
 require 'net/pop'
 
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:destroy]
+  before_action :get_message, only: [:destroy]
+  before_action :get_config_email
 
   def new
     @message = Message.new
-    config_emails = current_vendor.config_emails.first
-    @from = config_emails.username
+    # @config_emails = current_vendor.config_emails.first
+    @from = @config_emails.username
   end
 
   def create
@@ -31,7 +32,7 @@ class MessagesController < ApplicationController
 
   def read_emails
     @emails = current_vendor.config_emails
-    @config_emails = current_vendor.config_emails.first
+    # @config_emails = current_vendor.config_emails.first
     #@messages = @config_emails.messages
     if @config_emails.nil?
       redirect_to new_config_email_path
@@ -44,7 +45,7 @@ class MessagesController < ApplicationController
 
   def inbox
     @emails = current_vendor.config_emails
-    @config_emails = current_vendor.config_emails.first
+    # @config_emails = current_vendor.config_emails.first
     if @config_emails.nil?
       redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
@@ -58,7 +59,7 @@ class MessagesController < ApplicationController
 
   def write_emails
     @emails = current_vendor.config_emails
-    @config_emails = current_vendor.config_emails.first
+    # @config_emails = current_vendor.config_emails.first
     #@messages = @config_emails.messages
     if @config_emails.nil?
       redirect_to new_config_email_path
@@ -69,11 +70,13 @@ class MessagesController < ApplicationController
   end
 
   def show_message_read
+    # @config_emails = current_vendor.config_emails.first
     @message = Message.find(params[:id])
     @message.mark_as_read! :for => current_vendor
   end
 
   def show_message_write
+    # @config_emails = current_vendor.config_emails.first
     @message = Message.find(params[:id])
     @message.mark_as_read! :for => current_vendor
   end
@@ -97,28 +100,35 @@ class MessagesController < ApplicationController
   end
 
   def get_emails(config_emails)
-    config_emails.each do |config_email|
-      Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
-      Net::POP3.start('pop.' + "#{config_email.server_email}", 995, config_email.username, decryption(config_email.password_encrypted)) do |pop|
-        if pop.mails.empty?
-          puts 'No mails.'
-        else
-          pop.each_mail do |mail|
-            UserMailer.current_vendor_config_email(config_email)
-            UserMailer.receive(mail.pop)
-            mail.delete
+    begin
+      config_emails.each do |config_email|
+        Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
+        Net::POP3.start('pop.' + "#{config_email.server_email}", 995, config_email.username, decryption(config_email.password_encrypted)) do |pop|
+          if pop.mails.empty?
+            puts 'No mails.'
+          else
+            pop.each_mail do |mail|
+              UserMailer.current_vendor_config_email(config_email)
+              UserMailer.receive(mail.pop)
+              mail.delete
+            end
+            pop.finish
           end
-          pop.finish
-
         end
       end
+    rescue Exception => e
+      puts ("#{e.message}")
     end
   end
 
   # Before filters
 
-  def set_message
+  def get_message
     @message = Message.find(params[:id])
+  end
+
+  def get_config_email
+    @config_emails = current_vendor.config_emails.first
   end
 
 end

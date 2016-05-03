@@ -33,4 +33,16 @@ class ConfigEmail < ActiveRecord::Base
     end
   end
 
+  def self.decryption(password)
+    cipher = OpenSSL::Cipher.new('AES-128-ECB')
+    cipher.decrypt()
+    cipher.key = ENV["key_encrypt_decrypt"]
+    tempkey = Base64.decode64(password)
+    crypt = cipher.update(tempkey)
+    crypt << cipher.final()
+    return crypt
+  rescue Exception => exc
+    puts ("Message for the decryption log file for message #{password} = #{exc.message}")
+  end
+
 end

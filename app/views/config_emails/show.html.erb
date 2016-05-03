@@ -1,10 +1,33 @@
 <script type="text/javascript">
     $(document).on('click', "#show_password", function () {
-        alert('show_password');
+        $.ajax({
+            type: 'GET',
+            dataType: 'JSON',
+            url: '<%= decryption_password_path %>',
+            success: function (data) {
+                if ($('#decryption_password_js').hasClass('encryption_password_js')) {
+                    $('#decryption_password_js').text(data);
+                    $("#decryption_password_js").removeClass("encryption_password_js").addClass("decryption_password_js");
+                    $("#show_password").html('Hide password');
+                } else {
+                    $('#decryption_password_js').text("**********");
+                    $("#decryption_password_js").removeClass("decryption_password_js").addClass("encryption_password_js");
+                    $("#show_password").html('Show password');
+                }
+            }
+        });
     });
 
     $(document).on('click', "#test_connection", function () {
-        alert('test_connection');
+        $.ajax({
+            type: 'GET',
+            dataType: 'JSON',
+            url: '<%= test_connection_path %>',
+        }).done(function (data) {
+            $('.test_connection_message_js').text(data.message);
+            $('.test_connection_message_js').css('background-color', '#cfebff');
+
+        })
     });
 </script>
 <div class="page-content-wrapper row pg_top">
@@ -17,12 +40,16 @@
       <p>Email address: <%= @config_email.username %></p>
 
       <div>
-        <p class="email_password">Password: <span>**********</span></p>
+        <p class="email_password">Password:
+          <span id="decryption_password_js" class="encryption_password_js">**********</span></p>
         <button type="button" class="show_password btn-group btn-group-xs" id="show_password">Show password</button>
       </div>
       <div>
         <p>For testing your email address click button Test Connection.</p>
-        <button type="button" class="test_connection btn-group btn-group-xs" id="test_connection">Test Connection</button>
+        <button type="button" class="test_connection_button btn-group btn-group-xs" id="test_connection">Test
+          Connection
+        </button>
+        <p class="test_connection_message"><span class="test_connection_message_js"></span></p>
       </div>
     </div>
   </div>
