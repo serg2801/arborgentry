@@ -1,7 +1,13 @@
 <div class="page-content-wrapper row pg_top">
   <div class="container">
-    <p>From: <%= @message.from %></p>
-    <p>Subject: <%= @message.subject %></p>
-    <p>Body: <%= render html: @message.body.html_safe %></p>
+    <div class="message_read" >
+      <p>From: <%= @message.from %></p>
+      <p>Subject: <%= @message.subject %></p>
+      <p>Body: <%= render html: @message.body.html_safe %></p>
+    </div>
+    <div class="message_reply_to">
+      <%#= render 'form_reply_to' %>
+    </div>
+
   </div>
 </div>

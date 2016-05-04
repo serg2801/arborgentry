@@ -1,12 +1,11 @@
 class UserMailer < ActionMailer::Base
 
-  # @@config_email
-
   def current_vendor_config_email(config_email)
     @@config_email = config_email
   end
 
   def receive(message)
+    # binding.pry
     message_id = message.subject[/^update (\d+)$/, 1]
     id_config_email = @@config_email.id
     if message_id.present?
