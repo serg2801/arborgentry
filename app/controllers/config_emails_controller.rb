@@ -13,7 +13,6 @@ class ConfigEmailsController < ApplicationController
   end
 
   def show
-    # @config_emails = current_vendor.config_emails.first
   end
 
   def create
@@ -24,7 +23,7 @@ class ConfigEmailsController < ApplicationController
     @config_email = ConfigEmail.new(config_email_params.merge(vendor_id: current_vendor.id, server_email: server_email))
     @config_email.password_encrypted = ConfigEmail.encryption(config_email[:password_encrypted])
     if @config_email.save
-      redirect_to inbox_path
+      redirect_to config_email_path(@config_email)
       flash[:info] = 'Config email has been add!.'
     else
       render 'new'
@@ -72,12 +71,12 @@ class ConfigEmailsController < ApplicationController
         if pop.started?
           pop.finish
           puts 'OK!'
-          render status: 200, :json => { message: 'Success!' }
+          render status: 200, :json => { message: 'Success!', error_js: false }
         end
       end
     rescue Exception => e
       puts ("#{e.message}")
-      render status: 500, :json => { message: e.message }
+      render status: 200, :json => { message: e.message, error_js: true }
     end
   end
 

@@ -5,13 +5,14 @@
             dataType: 'JSON',
             url: '<%= decryption_password_path %>',
             success: function (data) {
-                if ($('#decryption_password_js').hasClass('encryption_password_js')) {
-                    $('#decryption_password_js').text(data);
-                    $("#decryption_password_js").removeClass("encryption_password_js").addClass("decryption_password_js");
+                var span_password_show = $('#decryption_password_js');
+                if (span_password_show.hasClass('encryption_password_js')) {
+                    span_password_show.text(data);
+                    span_password_show.removeClass("encryption_password_js").addClass("decryption_password_js");
                     $("#show_password").html('Hide password');
                 } else {
-                    $('#decryption_password_js').text("**********");
-                    $("#decryption_password_js").removeClass("decryption_password_js").addClass("encryption_password_js");
+                    span_password_show.text("**********");
+                    span_password_show.removeClass("decryption_password_js").addClass("encryption_password_js");
                     $("#show_password").html('Show password');
                 }
             }
@@ -24,8 +25,14 @@
             dataType: 'JSON',
             url: '<%= test_connection_path %>',
         }).done(function (data) {
-            $('.test_connection_message_js').text(data.message);
-            $('.test_connection_message_js').css('background-color', '#cfebff');
+            var span_test_connection = $('.test_connection_message_js');
+            if (data.error_js){
+                span_test_connection.text(data.message);
+                span_test_connection.css('background-color', '#fcf4da');
+            }else{
+                span_test_connection.text(data.message);
+                span_test_connection.css('background-color', '#cfebff');
+            }
 
         })
     });

@@ -6,16 +6,14 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-    # @config_emails = current_vendor.config_emails.first
     @from = @config_emails.username
   end
 
   def create
-    config_emails = current_vendor.config_emails.first
-    @message = Message.new(message_params.merge(date: DateTime.now.to_date, from: config_emails.username, config_email_id: config_emails.id))
+    @message = Message.new(message_params.merge(date: DateTime.now.to_date, from: @config_emails.username, config_email_id: @config_emails.id))
     @message.write!
     if @message.save
-      UserMailer.send_email(@message, config_emails).deliver
+      UserMailer.send_email(@message, @config_emails).deliver
       redirect_to write_emails_path
       flash[:info] = "Your message was sent!"
     else
@@ -32,8 +30,6 @@ class MessagesController < ApplicationController
 
   def read_emails
     @emails = current_vendor.config_emails
-    # @config_emails = current_vendor.config_emails.first
-    #@messages = @config_emails.messages
     if @config_emails.nil?
       redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
@@ -44,23 +40,38 @@ class MessagesController < ApplicationController
   end
 
   def inbox
-    @emails = current_vendor.config_emails
-    # @config_emails = current_vendor.config_emails.first
+    config_emails = current_vendor.config_emails
     if @config_emails.nil?
       redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
     else
-      get_emails(@emails)
-      #@messages = @config_emails.messages
+      begin
+        config_emails.each do |config_email|
+          Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
+          Net::POP3.start('pop.' + "#{config_email.server_email}", 995, config_email.username, decryption(config_email.password_encrypted)) do |pop|
+            if pop.mails.empty?
+              puts 'No mails.'
+            else
+              pop.each_mail do |mail|
+                UserMailer.current_vendor_config_email(config_email)
+                UserMailer.receive(mail.pop)
+                mail.delete
+              end
+              pop.finish
+            end
+          end
+        end
+      rescue Exception => e
+        puts ("#{e.message}")
+        @exc = e.message
+        flash[:warning] = 'Error' + "#{@exc}"
+      end
       @messages = @config_emails.messages.where(status: 0)
-
     end
   end
 
   def write_emails
     @emails = current_vendor.config_emails
-    # @config_emails = current_vendor.config_emails.first
-    #@messages = @config_emails.messages
     if @config_emails.nil?
       redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
@@ -70,13 +81,11 @@ class MessagesController < ApplicationController
   end
 
   def show_message_read
-    # @config_emails = current_vendor.config_emails.first
     @message = Message.find(params[:id])
     @message.mark_as_read! :for => current_vendor
   end
 
   def show_message_write
-    # @config_emails = current_vendor.config_emails.first
     @message = Message.find(params[:id])
     @message.mark_as_read! :for => current_vendor
   end
@@ -99,28 +108,6 @@ class MessagesController < ApplicationController
     puts ("Message for the decryption log file for message #{password} = #{exc.message}")
   end
 
-  def get_emails(config_emails)
-    begin
-      config_emails.each do |config_email|
-        Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
-        Net::POP3.start('pop.' + "#{config_email.server_email}", 995, config_email.username, decryption(config_email.password_encrypted)) do |pop|
-          if pop.mails.empty?
-            puts 'No mails.'
-          else
-            pop.each_mail do |mail|
-              UserMailer.current_vendor_config_email(config_email)
-              UserMailer.receive(mail.pop)
-              mail.delete
-            end
-            pop.finish
-          end
-        end
-      end
-    rescue Exception => e
-      puts ("#{e.message}")
-    end
-  end
-
   # Before filters
 
   def get_message
@@ -132,22 +119,6 @@ class MessagesController < ApplicationController
   end
 
 end
-
-# @config_emails = ConfigEmail.all
-# @config_emails.each do |config_email|
-#   Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
-#   Net::POP3.start('pop.' + "#{config_email.server_email}", 995, config_email.username, decryption(config_email.password_encrypted)) do |pop|
-#     if pop.mails.empty?
-#       puts 'No mails.'
-#     else
-#       pop.each_mail do |mail|
-#         UserMailer.receive(mail.pop)
-#         mail.delete
-#       end
-#       pop.finish
-#     end
-#   end
-# end
 
 
 
