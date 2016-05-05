@@ -7,12 +7,16 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     @from = @config_emails.username
+    @message_attachment = @message.message_attachments.build
   end
 
   def create
     @message = Message.new(message_params.merge(date: DateTime.now.to_date, from: @config_emails.username, config_email_id: @config_emails.id))
     @message.write!
     if @message.save
+      params[:message_attachments]['file'].each do |a|
+        @message_attachment = @message.message_attachments.create!(:file => a)
+      end
       UserMailer.send_email(@message, @config_emails).deliver
       redirect_to write_emails_path
       flash[:info] = "Your message was sent!"
@@ -104,7 +108,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:to, :from, :body, :subject, :date, :status, :config_email_id, :file)
+    params.require(:message).permit(:to, :from, :body, :subject, :date, :status, :config_email_id, {message_attachments: []})
   end
 
   def decryption(password)

@@ -49,7 +49,11 @@ class UserMailer < ActionMailer::Base
 
   def send_email(message, config_email)
     @message = message
-    attachments["#{@message.file}"] = File.read("#{Rails.root}/public/#{@message.file}") if @message.file.nil?
+    unless @message.message_attachments.nil?
+      @message.message_attachments.each do |attachment|
+        attachments["#{attachment.file}"] = File.read("#{Rails.root}/public/#{attachment.file}")
+      end
+    end
     @url  = message_url(@message)
     delivery_options = { address: "smtp." + "#{config_email.server_email}",
                          port: 587,
