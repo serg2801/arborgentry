@@ -1,11 +1,18 @@
+<script type="text/javascript">
+
+        $(document).on('click', "#checkAll", function(){
+            $('.email_checkbox').prop('checked', this.checked);
+        });
+
+</script>
 <div class="page-content-wrapper row pg_top">
   <div class="container">
     <div class="messages_header">
       <p><%= button_to "New Message", new_message_path, :class => "button btn-submit-app", :method => :get %></p>
 
       <h3 class="">Sent Email</h3>
-      <!--<input type="checkbox" class="email_checkbox_header" id="checkAll" value="">-->
-      <!--<button type="button" class="delete_email btn-group btn-group-xs">Delete Email</button>-->
+      <input type="checkbox" class="email_checkbox_header" id="checkAll" value="">
+      <button type="button" class="delete_email btn-group btn-group-xs">Trash</button>
     </div>
     <div class="messages">
       <% if @messages === [] || @messages === nil %>
@@ -13,7 +20,8 @@
       <% else %>
           <% @messages.each do |message| %>
               <div class="message">
-                <!--<input type="checkbox" class="email_checkbox" value="">-->
+                <input type="checkbox" class="email_checkbox" value="">
+                <%#= check_box_tag "messages_ids[]", message.id, class: "email_checkbox" %>
                 <%= link_to show_message_write_path(:id => message.id) do %>
                     <p class="email_address"><%= message.from %></p>
 
@@ -25,7 +33,7 @@
                     </div>
 
                     <p class="email_date"><%= message.date %></p>
-                    <p><%= link_to 'Destroy', message_path(message), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+                    <p><%#= link_to 'Destroy', message_path(message), method: :delete, data: { confirm: 'Are you sure?' } %></p>
                 <% end %>
               </div>
 
