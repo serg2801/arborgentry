@@ -35,16 +35,18 @@ Rails.application.routes.draw do
     resources :variants
   end
 
-  resources :messages, only: [ :create, :new, :destroy ]
+  resources :messages, only: [ :create, :new ]
   resources :config_emails, only: [:new, :create, :edit, :update, :show ]
   get '/decryption_password' => 'config_emails#decryption_password'
   get '/test_connection' => 'config_emails#test_connection'
 
-  # get 'read_emails', to: 'config_emails#show'
-  get 'read_emails', to: 'messages#read_emails'
-  get 'inbox', to: 'messages#inbox'
-  get 'write_emails', to: 'messages#write_emails'
-  get 'show_message_read', to: 'messages#show_message_read'
+  put 'move_to_trash',      to: 'messages#move_to_trash'
+  delete 'destroy_emails',  to: 'messages#destroy_emails'
+  get 'read_emails',        to: 'messages#read_emails'
+  get 'inbox',              to: 'messages#inbox'
+  get 'trash',              to: 'messages#trash'
+  get 'write_emails',       to: 'messages#write_emails'
+  get 'show_message_read',  to: 'messages#show_message_read'
   get 'show_message_write', to: 'messages#show_message_write'
 
 

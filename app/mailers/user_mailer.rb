@@ -54,7 +54,7 @@ class UserMailer < ActionMailer::Base
         attachments["#{attachment.file}"] = File.read("#{Rails.root}/public/#{attachment.file}")
       end
     end
-    @url  = message_url(@message)
+    # @url  = message_url(@message)
     delivery_options = { address: "smtp." + "#{config_email.server_email}",
                          port: 587,
                          domain: config_email.server_email,

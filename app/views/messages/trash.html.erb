@@ -4,9 +4,9 @@
         $(".email_checkbox").change(function() {
             var count_checkbox = $('.email_checkbox:checked').size();
             if (count_checkbox > 0) {
-                $('#move_to_trash').prop('disabled', false);
+                $('#delete_emails').prop('disabled', false);
             }else {
-                $('#move_to_trash').prop('disabled', true);
+                $('#delete_emails').prop('disabled', true);
             }
         });
     });
@@ -22,22 +22,22 @@
         $('.email_checkbox').prop('checked', this.checked);
         $("#checkAll").change(function() {
             if ($('#checkAll').is(":checked")) {
-                $('#move_to_trash').prop('disabled', false);
+                $('#delete_emails').prop('disabled', false);
             }else {
-                $('#move_to_trash').prop('disabled', true);
+                $('#delete_emails').prop('disabled', true);
             }
         });
     });
 
-    $(document).on('click', "#move_to_trash", function () {
+    $(document).on('click', "#delete_emails", function () {
         var messages_ids = []
         $('.email_checkbox:checked').each(function(){
             messages_ids.push($(this).val());
         });
         $.ajax({
-            type: 'PUT',
+            type: 'DELETE',
             dataType: 'JSON',
-            url: '<%= move_to_trash_path %>',
+            url: '<%= destroy_emails_path %>',
             data: {"messages_ids": messages_ids},
             success: function (data) {
                 $('.email_checkbox:checked').each(function(){
@@ -46,7 +46,7 @@
                 var count_messages = $('.email_checkbox').size();
                 if (count_messages == 0) {
                     $('#checkAll').prop('checked', false);
-                    $('#move_to_trash').prop('disabled', true);
+                    $('#delete_emails').prop('disabled', true);
                 }
             }
         });
@@ -57,9 +57,9 @@
   <div class="container">
     <div class="messages_header">
       <p><%= button_to "New Message", new_message_path, :class => "button btn-submit-app", :method => :get %></p>
-      <h3 class="">Read Email</h3>
+      <h3 class="">Trash</h3>
       <input type="checkbox" class="email_checkbox_header" id="checkAll" value="">
-      <button type="button" class="delete_email btn-group btn-group-xs" id="move_to_trash" disabled>Trash</button>
+      <button type="button" class="delete_email btn-group btn-group-xs" id="delete_emails" disabled>Delete</button>
       <p class="email_header"><%= @config_emails.username %></p>
     </div>
     <div class="messages">

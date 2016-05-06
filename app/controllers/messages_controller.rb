@@ -1,7 +1,7 @@
 require 'net/pop'
 
 class MessagesController < ApplicationController
-  before_action :get_message, only: [:destroy]
+
   before_action :get_config_email
 
   def new
@@ -14,8 +14,10 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params.merge(date: DateTime.now.to_date, from: @config_emails.username, config_email_id: @config_emails.id))
     @message.write!
     if @message.save
-      params[:message_attachments]['file'].each do |a|
-        @message_attachment = @message.message_attachments.create!(:file => a)
+      unless params[:message_attachments].nil?
+        params[:message_attachments]['file'].each do |a|
+          @message_attachment = @message.message_attachments.create!(:file => a)
+        end
       end
       UserMailer.send_email(@message, @config_emails).deliver
       redirect_to write_emails_path
@@ -25,10 +27,22 @@ class MessagesController < ApplicationController
     end
   end
 
-  def destroy
-    if @message.destroy
-      redirect_to inbox_path
-      flash[:info] = "Your message was deleted!"
+  def destroy_emails
+    @messages = Message.find(params[:messages_ids])
+    @messages.each do |message|
+      message.destroy
+    end
+    # flash[:info] = "Your message was destroy!"
+    render status: 200, :json => {}
+  end
+
+  def trash
+    @emails = current_vendor.config_emails
+    if @config_emails.nil?
+      redirect_to new_config_email_path
+      flash[:warning] = "Please connect your email address!!!"
+    else
+      @messages = @config_emails.messages.where(trash: true)
     end
   end
 
@@ -38,7 +52,7 @@ class MessagesController < ApplicationController
       redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
     else
-      @messages = @config_emails.messages.where(status: 0)
+      @messages = @config_emails.messages.where(status: 0, trash: false)
       @messages = @messages.read_by(current_vendor)
     end
   end
@@ -70,7 +84,7 @@ class MessagesController < ApplicationController
         @exc = e.message
         flash[:warning] = 'Error' + "#{@exc}"
       end
-      @messages = @config_emails.messages.where(status: 0)
+      @messages = @config_emails.messages.where(status: 0, trash: false)
     end
   end
 
@@ -80,7 +94,7 @@ class MessagesController < ApplicationController
       redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
     else
-      @messages = @config_emails.messages.where(status: 1)
+      @messages = @config_emails.messages.where(status: 1, trash: false)
     end
   end
 
@@ -105,6 +119,16 @@ class MessagesController < ApplicationController
     @message.mark_as_read! :for => current_vendor
   end
 
+  def move_to_trash
+    @messages = Message.find(params[:messages_ids])
+    @messages.each do |message|
+      message.update(trash: true)
+    end
+    # flash[:info] = "Your message was move to trash!"
+    render status: 200, :json => {}
+
+  end
+
   private
 
   def message_params
@@ -124,10 +148,6 @@ class MessagesController < ApplicationController
   end
 
   # Before filters
-
-  def get_message
-    @message = Message.find(params[:id])
-  end
 
   def get_config_email
     @config_emails = current_vendor.config_emails.first

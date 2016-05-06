@@ -1,7 +1,55 @@
 <script type="text/javascript">
 
+    $(document).on('click', ".email_checkbox", function(){
+        $(".email_checkbox").change(function() {
+            var count_checkbox = $('.email_checkbox:checked').size();
+            if (count_checkbox > 0) {
+                $('#move_to_trash').prop('disabled', false);
+        }else {
+                $('#move_to_trash').prop('disabled', true);
+            }
+        });
+    });
+
         $(document).on('click', "#checkAll", function(){
+            var count_messages = $('.email_checkbox').size();
+            if (count_messages > 0) {
+                $('#checkAll').prop('disabled', false);
+            } else {
+                $('#checkAll').prop('disabled', true);
+                $('#checkAll').prop('checked', false);
+            }
             $('.email_checkbox').prop('checked', this.checked);
+            $("#checkAll").change(function() {
+                if ($('#checkAll').is(":checked")) {
+                    $('#move_to_trash').prop('disabled', false);
+                }else {
+                    $('#move_to_trash').prop('disabled', true);
+                }
+            });
+        });
+
+        $(document).on('click', "#move_to_trash", function () {
+            var messages_ids = []
+            $('.email_checkbox:checked').each(function(){
+                messages_ids.push($(this).val());
+            });
+            $.ajax({
+                type: 'PUT',
+                dataType: 'JSON',
+                url: '<%= move_to_trash_path %>',
+                data: {"messages_ids": messages_ids},
+                success: function (data) {
+                    $('.email_checkbox:checked').each(function(){
+                        $(".message_" + $(this).val()).remove();
+                    });
+                    var count_messages = $('.email_checkbox').size();
+                    if (count_messages == 0) {
+                        $('#checkAll').prop('checked', false);
+                        $('#move_to_trash').prop('disabled', true);
+                    }
+                }
+            });
         });
 
 </script>
@@ -12,29 +60,31 @@
 
       <h3 class="">Sent Email</h3>
       <input type="checkbox" class="email_checkbox_header" id="checkAll" value="">
-      <button type="button" class="delete_email btn-group btn-group-xs">Trash</button>
+      <button type="button" class="delete_email btn-group btn-group-xs" id="move_to_trash" disabled>Trash</button>
     </div>
     <div class="messages">
       <% if @messages === [] || @messages === nil %>
           <h3>No messages!</h3>
       <% else %>
           <% @messages.each do |message| %>
-              <div class="message">
-                <input type="checkbox" class="email_checkbox" value="">
-                <%#= check_box_tag "messages_ids[]", message.id, class: "email_checkbox" %>
-                <%= link_to show_message_write_path(:id => message.id) do %>
-                    <p class="email_address"><%= message.from %></p>
+              <div class="message <%= "message_" + "#{message.id}" %>">
+                <div class="block_left">
+                  <%= check_box_tag "messages_ids[]", message.id, false, class: 'email_checkbox' %>
+                </div>
+                <div class="block_right">
+                  <%= link_to show_message_write_path(:id => message.id), class: 'message_link' do %>
+                      <p class="email_address"><%= message.from %></p>
 
-                    <div class="email_subject_body">
-                      <p class="email_subject"><%= message.subject %></p>
+                      <div class="email_subject_body">
+                        <p class="email_subject"><%= message.subject %></p>
 
-                      <p class="email_body"><%= render html: message.body.html_safe %></p>
+                        <p class="email_body"><%= render html: message.body.html_safe %></p>
 
-                    </div>
+                      </div>
 
-                    <p class="email_date"><%= message.date %></p>
-                    <p><%#= link_to 'Destroy', message_path(message), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-                <% end %>
+                      <p class="email_date"><%= message.date %></p>
+                  <% end %>
+                </div>
               </div>
 
           <% end %>
