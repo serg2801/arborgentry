@@ -48,7 +48,7 @@ class MessagesController < ApplicationController
 
   def read_emails
     @emails = current_vendor.config_emails
-    if @config_emails.nil?
+    if @config_emails.blank?
       redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
     else
@@ -58,27 +58,12 @@ class MessagesController < ApplicationController
   end
 
   def inbox
-    config_emails = current_vendor.config_emails
-    if @config_emails.nil?
+    if @config_emails.blank?
       redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
     else
       begin
-        config_emails.each do |config_email|
-          Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
-          Net::POP3.start('pop.' + "#{config_email.server_email}", 995, config_email.username, decryption(config_email.password_encrypted)) do |pop|
-            if pop.mails.empty?
-              puts 'No mails.'
-            else
-              pop.each_mail do |mail|
-                UserMailer.current_vendor_config_email(config_email)
-                UserMailer.receive(mail.pop)
-                mail.delete
-              end
-              pop.finish
-            end
-          end
-        end
+        current_vendor.receive_emails
       rescue Exception => e
         puts ("#{e.message}")
         @exc = e.message
@@ -135,17 +120,7 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:to, :from, :body, :subject, :date, :status, :config_email_id, {message_attachments: []})
   end
 
-  def decryption(password)
-    cipher = OpenSSL::Cipher.new('AES-128-ECB')
-    cipher.decrypt()
-    cipher.key = ENV["key_encrypt_decrypt"]
-    tempkey = Base64.decode64(password)
-    crypt = cipher.update(tempkey)
-    crypt << cipher.final()
-    return crypt
-  rescue Exception => exc
-    puts ("Message for the decryption log file for message #{password} = #{exc.message}")
-  end
+
 
   # Before filters
 

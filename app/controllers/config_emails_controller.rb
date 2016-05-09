@@ -51,12 +51,11 @@ class ConfigEmailsController < ApplicationController
     begin
       password = @config_emails.password_encrypted
       cipher = OpenSSL::Cipher.new('AES-128-ECB')
-      cipher.decrypt()
+      cipher.decrypt
       cipher.key = ENV["key_encrypt_decrypt"]
       tempkey = Base64.decode64(password)
       crypt = cipher.update(tempkey)
-      crypt << cipher.final()
-      # return crypt
+      crypt << cipher.final
       render status: 200, json: crypt.to_json
     rescue Exception => exc
       puts ("Message for the decryption log file for message #{password} = #{exc.message}")

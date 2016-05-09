@@ -173,7 +173,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
-  mail
   nested_form
   paperclip (~> 4.1)
   pg
