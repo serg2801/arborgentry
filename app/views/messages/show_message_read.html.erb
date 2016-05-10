@@ -1,13 +1,31 @@
+<!--<div class="page-content-wrapper row pg_top">-->
+<!--<div class="container">-->
+<!--<div class="message_read" >-->
+<!--<p>From: <%#= @message.from %></p>-->
+<!--<p>Subject: <%#= @message.subject %></p>-->
+<!--<p>Body: <%#= render html: @message.body.html_safe %></p>-->
+<!--</div>-->
+<!--<div class="message_reply_to">-->
+<!--<%#= render 'form_reply_to' %>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
 <div class="page-content-wrapper row pg_top">
   <div class="container">
-    <div class="message_read" >
-      <p>From: <%= @message.from %></p>
-      <p>Subject: <%= @message.subject %></p>
-      <p>Body: <%= render html: @message.body.html_safe %></p>
-    </div>
-    <div class="message_reply_to">
-      <%#= render 'form_reply_to' %>
-    </div>
+    <div class="inbox">
+      <%= render 'site_bar' %>
+      <div class="right_block">
+        <%= render 'header_buttons' %>
+        <div class="show_message">
+          <p>From: <%= @message.from %></p>
 
+          <p>Subject: <%= @message.subject %></p>
+
+          <p>Body: <%= render html: @message.body.html_safe %></p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

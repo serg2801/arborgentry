@@ -1,7 +1,25 @@
+<!--<div class="page-content-wrapper row pg_top">-->
+  <!--<div class="container">-->
+    <!--<p>To: <%#= @message.to %></p>-->
+    <!--<p>Subject: <%#= @message.subject %></p>-->
+    <!--<p>Body: <%#= render html: @message.body.html_safe %></p>-->
+  <!--</div>-->
+<!--</div>-->
+
 <div class="page-content-wrapper row pg_top">
   <div class="container">
-    <p>To: <%= @message.to %></p>
-    <p>Subject: <%= @message.subject %></p>
-    <p>Body: <%= render html: @message.body.html_safe %></p>
+    <div class="inbox">
+      <%= render 'site_bar' %>
+      <div class="right_block">
+        <%= render 'header_buttons' %>
+        <div class="show_message">
+          <p>From: <%= @message.from %></p>
+
+          <p>Subject: <%= @message.subject %></p>
+
+          <p>Body: <%= render html: @message.body.html_safe %></p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -5,8 +5,10 @@
             var count_checkbox = $('.email_checkbox:checked').size();
             if (count_checkbox > 0) {
                 $('#move_to_trash').prop('disabled', false);
+                $('#move_to_trash').addClass('bg_button');
         }else {
                 $('#move_to_trash').prop('disabled', true);
+                $('#move_to_trash').removeClass('bg_button');
             }
         });
     });
@@ -23,8 +25,10 @@
             $("#checkAll").change(function() {
                 if ($('#checkAll').is(":checked")) {
                     $('#move_to_trash').prop('disabled', false);
+                    $('#move_to_trash').addClass('bg_button');
                 }else {
                     $('#move_to_trash').prop('disabled', true);
+                    $('#move_to_trash').removeClass('bg_button');
                 }
             });
         });
@@ -53,42 +57,86 @@
         });
 
 </script>
+<!--<div class="page-content-wrapper row pg_top">-->
+  <!--<div class="container">-->
+    <!--<div class="messages_header">-->
+      <!--<p><%#= button_to "New Message", new_message_path, :class => "button btn-submit-app", :method => :get %></p>-->
+
+      <!--<h3 class="">Sent Email</h3>-->
+      <!--<input type="checkbox" class="email_checkbox_header" id="checkAll" value="">-->
+      <!--<button type="button" class="delete_email btn-group btn-group-xs" id="move_to_trash" disabled>Trash</button>-->
+    <!--</div>-->
+    <!--<div class="messages">-->
+      <!--<%# if @messages === [] || @messages === nil %>-->
+          <!--<h3>No messages!</h3>-->
+      <!--<%# else %>-->
+          <!--<%# @messages.each do |message| %>-->
+              <!--<div class="message <%#= "message_" + "#{message.id}" %>">-->
+                <!--<div class="block_left">-->
+                  <!--<%#= check_box_tag "messages_ids[]", message.id, false, class: 'email_checkbox' %>-->
+                <!--</div>-->
+                <!--<div class="block_right">-->
+                  <!--<%#= link_to show_message_write_path(:id => message.id), class: 'message_link' do %>-->
+                      <!--<p class="email_address"><%#= message.from %></p>-->
+
+                      <!--<div class="email_subject_body">-->
+                        <!--<p class="email_subject"><%#= message.subject %></p>-->
+
+                        <!--<p class="email_body"><%#= render html: message.body.html_safe %></p>-->
+
+                      <!--</div>-->
+
+                      <!--<p class="email_date"><%#= message.date %></p>-->
+                  <!--<%# end %>-->
+                <!--</div>-->
+              <!--</div>-->
+
+          <!--<%# end %>-->
+      <!--<%# end %>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+
 <div class="page-content-wrapper row pg_top">
   <div class="container">
-    <div class="messages_header">
-      <p><%= button_to "New Message", new_message_path, :class => "button btn-submit-app", :method => :get %></p>
+    <div class="inbox">
+      <%= render 'site_bar' %>
+      <div class="right_block">
+        <%= render 'header_buttons' %>
+        <div class="search_message">
+          <input type="checkbox" class="email_checkbox_header" id="checkAll" value="">
+          <input placeholder="Search for email..." class="search_email" name="search" form="data">
+        </div>
+        <div class="messages">
+          <% if @messages === [] || @messages === nil %>
+              <h3>No messages!</h3>
+          <% else %>
+              <% @messages.each do |message| %>
+                  <div class="message <%= "message_" + "#{message.id}" %>">
+                    <div class="block_left">
+                      <%= check_box_tag "messages_ids[]", message.id, false, class: 'email_checkbox' %>
+                    </div>
+                    <div class="block_right">
+                      <%= link_to show_message_write_path(:id => message.id), class: 'message_link' do %>
+                          <p class="email_address"><%#= message.from %>avatar</p>
 
-      <h3 class="">Sent Email</h3>
-      <input type="checkbox" class="email_checkbox_header" id="checkAll" value="">
-      <button type="button" class="delete_email btn-group btn-group-xs" id="move_to_trash" disabled>Trash</button>
-    </div>
-    <div class="messages">
-      <% if @messages === [] || @messages === nil %>
-          <h3>No messages!</h3>
-      <% else %>
-          <% @messages.each do |message| %>
-              <div class="message <%= "message_" + "#{message.id}" %>">
-                <div class="block_left">
-                  <%= check_box_tag "messages_ids[]", message.id, false, class: 'email_checkbox' %>
-                </div>
-                <div class="block_right">
-                  <%= link_to show_message_write_path(:id => message.id), class: 'message_link' do %>
-                      <p class="email_address"><%= message.from %></p>
+                          <div class="email_subject_body">
+                            <p class="email_subject"><%= message.subject %></p>
 
-                      <div class="email_subject_body">
-                        <p class="email_subject"><%= message.subject %></p>
+                            <!--<p class="email_body"><%#= render html: message.body.html_safe %></p>-->
 
-                        <p class="email_body"><%= render html: message.body.html_safe %></p>
+                          </div>
 
-                      </div>
-
-                      <p class="email_date"><%= message.date %></p>
-                  <% end %>
-                </div>
-              </div>
-
+                          <p class="email_date"><%= message.date %></p>
+                      <% end %>
+                    </div>
+                  </div>
+              <% end %>
           <% end %>
-      <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

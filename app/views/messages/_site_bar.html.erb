@@ -1,0 +1,71 @@
+<div class="left_block">
+  <!--<button type="button" class="btn btn-danger compose">Compose</button>-->
+  <%= button_to "Compose", new_message_path, :class => "btn btn-danger compose", :method => :get %>
+  <ul class="list">
+    <li class="list_links">
+      <%= link_to inbox_path, :title => 'Index' do %>
+          <i class="fa fa-inbox" aria-hidden="true"></i>
+          <span class="name_link">Inbox</span>
+          <span class="count_message count_message_inbox"><%= @inbox_messages %></span>
+      <% end %>
+    </li>
+    <li class="list_links">
+      <%= link_to '#', :title => 'Starred' do %>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <span class="name_link">Starred</span>
+          <span class="count_message count_message_starred">-</span>
+      <% end %>
+    </li>
+    <li class="list_links">
+      <%= link_to '#', :title => 'Important' do %>
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+          <span class="name_link">Important</span>
+          <span class="count_message count_message_important">-</span>
+      <% end %>
+    </li>
+    <li class="list_links">
+      <%= link_to write_emails_path, :title => 'Send' do %>
+          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+          <span class="name_link">Send</span>
+          <span class="count_message count_message_send"><%= @write_messages %></span>
+      <% end %>
+    </li>
+    <li class="list_links">
+      <%= link_to '#', :title => 'Drafts' do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+          <span class="name_link">Drafts</span>
+          <span class="count_message count_message_drafts">-</span>
+      <% end %>
+    </li>
+    <li class="list_links">
+      <%= link_to trash_path, :title => 'Trash' do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          <span class="name_link">Trash</span>
+          <span class="count_message count_message_trash"><%= @trash_messages %></span>
+      <% end %>
+    </li>
+  </ul>
+  <h5>LABELS</h5>
+  <ul class="list">
+    <li class="list_links">
+      <i class="fa fa-circle-o fa_work" aria-hidden="true"></i>
+      <span>Work</span>
+    </li>
+    <li class="list_links">
+      <i class="fa fa-circle-o fa_private" aria-hidden="true"></i>
+      <span>Private</span>
+    </li>
+    <li class="list_links">
+      <i class="fa fa-circle-o fa_travel" aria-hidden="true"></i>
+      <span>Travel</span>
+    </li>
+    <li class="list_links">
+      <i class="fa fa-circle-o fa_promotions" aria-hidden="true"></i>
+      <span>Promotions</span>
+    </li>
+    <li class="list_links">
+      <i class="fa fa-circle-o fa_updates" aria-hidden="true"></i>
+      <span>Updates</span>
+    </li>
+  </ul>
+</div>

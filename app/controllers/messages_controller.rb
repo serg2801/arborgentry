@@ -3,6 +3,7 @@ require 'net/pop'
 class MessagesController < ApplicationController
 
   before_action :get_config_email
+  before_action :count_messages, only: [ :inbox, :trash, :read_emails, :write_emails, :new, :show_message_read, :show_message_write ]
 
   def new
     @message = Message.new
@@ -126,6 +127,13 @@ class MessagesController < ApplicationController
 
   def get_config_email
     @config_emails = current_vendor.config_emails.first
+  end
+
+  def count_messages
+    @config_emails = current_vendor.config_emails.first
+    @write_messages = @config_emails.messages.where(status: 1, trash: false).count
+    @inbox_messages = @config_emails.messages.where(status: 0, trash: false).count
+    @trash_messages = @config_emails.messages.where(trash: true).count
   end
 
 end
