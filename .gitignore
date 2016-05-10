@@ -16,6 +16,7 @@
 /tmp
 /public/system
 /public/system/option_images
+/config/database.yml
 
 .ruby-gemset
 .ruby-version
