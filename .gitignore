@@ -17,7 +17,7 @@
 /public/system
 /public/system/option_images
 /config/database.yml
-
+passenger.3000.pid.lock
 .ruby-gemset
 .ruby-version
 
