@@ -130,10 +130,15 @@ class MessagesController < ApplicationController
   end
 
   def count_messages
-    @config_emails = current_vendor.config_emails.first
-    @write_messages = @config_emails.messages.where(status: 1, trash: false).count
-    @inbox_messages = @config_emails.messages.where(status: 0, trash: false).count
-    @trash_messages = @config_emails.messages.where(trash: true).count
+    if @config_emails.nil?
+      redirect_to new_config_email_path
+      flash[:warning] = "Please connect your email address!!!"
+    else
+      @config_emails = current_vendor.config_emails.first
+      @write_messages = @config_emails.messages.where(status: 1, trash: false).count
+      @inbox_messages = @config_emails.messages.where(status: 0, trash: false).count
+      @trash_messages = @config_emails.messages.where(trash: true).count
+    end
   end
 
 end
