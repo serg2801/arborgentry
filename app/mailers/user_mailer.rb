@@ -7,8 +7,8 @@ class UserMailer < ActionMailer::Base
   def receive(message)
     id_config_email = @@config_email.id
     if message.multipart?
-      email_body_html = message.html_part.decoded
-      email_body_text = message.text_part.decoded
+      email_body_html = message.html_part
+      # email_body_text = message.text_part
       @message = Message.new(subject: message.subject, body: email_body_html, from: message.from.to_s,
                              to: message.to.to_s, date: message.date, config_email_id: id_config_email)
       @message.read!
@@ -16,6 +16,7 @@ class UserMailer < ActionMailer::Base
       unless message.attachments.blank?
         message.attachments.each do |attachment|
           file = StringIO.new(attachment.decoded)
+          # file = StringIO.new(attachment)
           file.class.class_eval { attr_accessor :original_filename, :content_type }
           file.original_filename = attachment.filename
           file.content_type = attachment.mime_type
@@ -26,10 +27,12 @@ class UserMailer < ActionMailer::Base
         end
       end
     else
-      email_body_html = message.decoded
-      email_body_text = message.decoded
+      email_body_html = message.html_part
+      # email_body_text = message.decoded
+      # email_body_html = message.html_part
+      # email_body_text = message.text_part
       email_attachments = []
-      @message = Message.new(subject: message.subject, body: email_body_text, from: message.from.to_s,
+      @message = Message.new(subject: message.subject, body: email_body_html, from: message.from.to_s,
                              to: message.to.to_s, date: message.date, config_email_id: id_config_email)
       @message.read!
       @message.save

@@ -26,8 +26,8 @@ class Vendor < ActiveRecord::Base
 
   def receive_emails
     self.config_emails.each do |config_email|
-      Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
-      Net::POP3.start('pop.' + "#{config_email.server_email}", 995, config_email.username, decryption(config_email.password_encrypted)) do |pop|
+      # Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
+      Net::POP3.start('pop.' + "#{config_email.server_email}", 110, config_email.username, decryption(config_email.password_encrypted)) do |pop|
         if pop.mails.empty?
           puts 'No mails.'
         else
