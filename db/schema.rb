@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505162949) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20160516194710) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -49,9 +46,10 @@ ActiveRecord::Schema.define(version: 20160505162949) do
     t.boolean  "status",             default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "port"
   end
 
-  add_index "config_emails", ["vendor_id"], name: "index_config_emails_on_vendor_id", using: :btree
+  add_index "config_emails", ["vendor_id"], name: "index_config_emails_on_vendor_id"
 
   create_table "customers", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -68,8 +66,8 @@ ActiveRecord::Schema.define(version: 20160505162949) do
     t.datetime "updated_at"
   end
 
-  add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
-  add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
+  add_index "customers", ["email"], name: "index_customers_on_email", unique: true
+  add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
 
   create_table "inquiries", force: true do |t|
     t.string   "topic"
@@ -103,7 +101,7 @@ ActiveRecord::Schema.define(version: 20160505162949) do
     t.boolean  "trash",           default: false
   end
 
-  add_index "messages", ["config_email_id"], name: "index_messages_on_config_email_id", using: :btree
+  add_index "messages", ["config_email_id"], name: "index_messages_on_config_email_id"
 
   create_table "option_images", force: true do |t|
     t.datetime "created_at"
@@ -115,7 +113,7 @@ ActiveRecord::Schema.define(version: 20160505162949) do
     t.integer  "option_value_id"
   end
 
-  add_index "option_images", ["option_value_id"], name: "index_option_images_on_option_value_id", using: :btree
+  add_index "option_images", ["option_value_id"], name: "index_option_images_on_option_value_id"
 
   create_table "option_types", force: true do |t|
     t.string   "name"
@@ -124,7 +122,7 @@ ActiveRecord::Schema.define(version: 20160505162949) do
     t.integer  "variant_id"
   end
 
-  add_index "option_types", ["variant_id"], name: "index_option_types_on_variant_id", using: :btree
+  add_index "option_types", ["variant_id"], name: "index_option_types_on_variant_id"
 
   create_table "option_values", force: true do |t|
     t.string   "name"
@@ -133,7 +131,7 @@ ActiveRecord::Schema.define(version: 20160505162949) do
     t.datetime "updated_at"
   end
 
-  add_index "option_values", ["option_type_id"], name: "index_option_values_on_option_type_id", using: :btree
+  add_index "option_values", ["option_type_id"], name: "index_option_values_on_option_type_id"
 
   create_table "product_collections", force: true do |t|
     t.integer  "product_id"
@@ -142,8 +140,8 @@ ActiveRecord::Schema.define(version: 20160505162949) do
     t.datetime "updated_at"
   end
 
-  add_index "product_collections", ["collection_id"], name: "index_product_collections_on_collection_id", using: :btree
-  add_index "product_collections", ["product_id"], name: "index_product_collections_on_product_id", using: :btree
+  add_index "product_collections", ["collection_id"], name: "index_product_collections_on_collection_id"
+  add_index "product_collections", ["product_id"], name: "index_product_collections_on_product_id"
 
   create_table "product_types", force: true do |t|
     t.string   "name"
@@ -167,7 +165,7 @@ ActiveRecord::Schema.define(version: 20160505162949) do
     t.datetime "updated_at"
   end
 
-  add_index "products", ["vendor_id"], name: "index_products_on_vendor_id", using: :btree
+  add_index "products", ["vendor_id"], name: "index_products_on_vendor_id"
 
   create_table "read_marks", force: true do |t|
     t.integer  "readable_id"
@@ -177,7 +175,7 @@ ActiveRecord::Schema.define(version: 20160505162949) do
     t.datetime "timestamp"
   end
 
-  add_index "read_marks", ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", using: :btree
+  add_index "read_marks", ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index"
 
   create_table "variants", force: true do |t|
     t.string   "sku"
@@ -192,7 +190,7 @@ ActiveRecord::Schema.define(version: 20160505162949) do
     t.integer  "product_id"
   end
 
-  add_index "variants", ["product_id"], name: "index_variants_on_product_id", using: :btree
+  add_index "variants", ["product_id"], name: "index_variants_on_product_id"
 
   create_table "vendor_categories", force: true do |t|
     t.integer  "vendor_id"
@@ -250,8 +248,8 @@ ActiveRecord::Schema.define(version: 20160505162949) do
     t.datetime "sample_photo_updated_at"
   end
 
-  add_index "vendors", ["confirmation_token"], name: "index_vendors_on_confirmation_token", unique: true, using: :btree
-  add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true, using: :btree
-  add_index "vendors", ["reset_password_token"], name: "index_vendors_on_reset_password_token", unique: true, using: :btree
+  add_index "vendors", ["confirmation_token"], name: "index_vendors_on_confirmation_token", unique: true
+  add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true
+  add_index "vendors", ["reset_password_token"], name: "index_vendors_on_reset_password_token", unique: true
 
 end

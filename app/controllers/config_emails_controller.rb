@@ -17,10 +17,10 @@ class ConfigEmailsController < ApplicationController
 
   def create
     config_email = params[:config_email]
-    email = config_email[:username]
-    email_mas = email.split('@')
-    server_email = email_mas[1]
-    @config_email = ConfigEmail.new(config_email_params.merge(vendor_id: current_vendor.id, server_email: server_email))
+    # email = config_email[:username]
+    # email_mas = email.split('@')
+    # server_email = email_mas[1]
+    @config_email = ConfigEmail.new(config_email_params.merge(vendor_id: current_vendor.id))
     @config_email.password_encrypted = ConfigEmail.encryption(config_email[:password_encrypted])
     if @config_email.save
       redirect_to config_email_path(@config_email)
@@ -33,10 +33,10 @@ class ConfigEmailsController < ApplicationController
 
   def update
     config_email = params[:config_email]
-    email = config_email[:username]
-    email_mas = email.split('@')
-    server_email = email_mas[1]
-    @config_email.update(config_email_params.merge(vendor_id: current_vendor.id, server_email: server_email))
+    # email = config_email[:username]
+    # email_mas = email.split('@')
+    # server_email = email_mas[1]
+    @config_email.update(config_email_params.merge(vendor_id: current_vendor.id))
     @config_email.password_encrypted = ConfigEmail.encryption(config_email[:password_encrypted])
     if @config_email.save
       redirect_to config_email_path
@@ -64,9 +64,14 @@ class ConfigEmailsController < ApplicationController
 
   def test_connection
     begin
+      # binding.pry
       config_email = @config_emails
       # Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
-      Net::POP3.start('pop.' + "#{config_email.server_email}", 110, config_email.username, ConfigEmail.decryption(config_email.password_encrypted)) do |pop|
+      # http = Net::HTTP.new(host, port)
+      # http.use_ssl = true
+      # http.ssl_version = :SSLv3
+      # http.start { ... }
+      Net::POP3.start(config_email.server_email, config_email.port, config_email.username, ConfigEmail.decryption(config_email.password_encrypted)) do |pop|
         if pop.started?
           pop.finish
           puts 'OK!'
@@ -82,7 +87,7 @@ class ConfigEmailsController < ApplicationController
   private
 
   def config_email_params
-    params.require(:config_email).permit(:server_email, :username, :password_encrypted, :vendor_id, :status)
+    params.require(:config_email).permit(:server_email, :username, :password_encrypted, :vendor_id, :status, :port)
   end
 
   #Before filters

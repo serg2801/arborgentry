@@ -23,6 +23,20 @@
               </div>
 
               <div class="form-group">
+                <%= f.label :server_email, 'SERVER', :class => "col-lg-2 col-md-3 control-label" %>
+                <div class="col-lg-10 col-md-9">
+                  <%= f.text_field :server_email, :class => "form-control requires", :placeholder => 'pop.1and1.com', :required => true %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :port, 'PORT', :class => "col-lg-2 col-md-3 control-label" %>
+                <div class="col-lg-10 col-md-9">
+                  <%= f.text_field :port, :class => "form-control requires", :placeholder => '110', :required => true %>
+                </div>
+              </div>
+
+              <div class="form-group">
                 <%= f.label :password_encrypted, 'PASSWORD FOR EMAIL', :class => "col-lg-2 col-md-3 control-label" %>
                 <div class="col-lg-10 col-md-9">
                   <%= f.password_field :password_encrypted, :class => "form-control", :placeholder => 'Password', :required => true %>
