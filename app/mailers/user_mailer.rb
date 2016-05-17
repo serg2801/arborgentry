@@ -7,7 +7,7 @@ class UserMailer < ActionMailer::Base
   def receive(message)
     id_config_email = @@config_email.id
     if message.multipart?
-      email_body_html = message.html_part
+      email_body_html = message.html_part.decoded
       # email_body_text = message.text_part
       @message = Message.new(subject: message.subject, body: email_body_html, from: message.from.to_s,
                              to: message.to.to_s, date: message.date, config_email_id: id_config_email)
@@ -27,7 +27,7 @@ class UserMailer < ActionMailer::Base
         end
       end
     else
-      email_body_html = message.html_part
+      email_body_html = message.decoded
       # email_body_text = message.decoded
       # email_body_html = message.html_part
       # email_body_text = message.text_part
@@ -47,13 +47,20 @@ class UserMailer < ActionMailer::Base
       end
     end
     # @url  = message_url(@message)
-    delivery_options = {address: "smtp." + "#{config_email.server_email}",
-                        port: 587,
-                        domain: config_email.server_email,
+    # delivery_options = {address: "smtp." + "#{config_email.server_email}",
+    #                     port: 587,
+    #                     domain: config_email.server_email,
+    #                     user_name: config_email.username,
+    #                     password: decryption(config_email.password_encrypted),
+    #                     authentication: 'login',
+    #                     enable_starttls_auto: true}
+    delivery_options = {address: "smtp.1and1.com",
+                        port: 25,
+                        # domain: config_email.server_email,
                         user_name: config_email.username,
                         password: decryption(config_email.password_encrypted),
-                        authentication: 'login',
-                        enable_starttls_auto: true}
+                        # authentication: 'login',
+                        authentication: 'plain'}
     mail to: @message.to,
          from: @message.from,
          subject: @message.subject,
