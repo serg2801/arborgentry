@@ -15,11 +15,6 @@ class ConfigEmail < ActiveRecord::Base
             format: { with: VALID_EMAIL_REGEX }
 
 
-  # def encrypt_password(password)
-  #   salt = BCrypt::Engine.generate_salt
-  #   encrypted_password = BCrypt::Engine.hash_secret(password, salt)
-  # end
-
   def self.encryption(password)
     begin
       cipher = OpenSSL::Cipher.new('AES-128-ECB')
@@ -43,6 +38,12 @@ class ConfigEmail < ActiveRecord::Base
     return crypt
   rescue Exception => exc
     puts ("Message for the decryption log file for message #{password} = #{exc.message}")
+  end
+
+  def self.parse_out_server(server_email)
+    out_server = 'smtp.'
+    mas = server_email.split('.')
+    out_server + mas[1] + '.' + mas[2]
   end
 
 end

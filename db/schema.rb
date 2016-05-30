@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516194710) do
+ActiveRecord::Schema.define(version: 20160530142001) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160516194710) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "port"
+    t.string   "smtp_server"
   end
 
   add_index "config_emails", ["vendor_id"], name: "index_config_emails_on_vendor_id"

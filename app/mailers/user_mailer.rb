@@ -46,21 +46,26 @@ class UserMailer < ActionMailer::Base
         attachments["#{attachment.file}"] = File.read("#{Rails.root}/public/#{attachment.file}")
       end
     end
-    # @url  = message_url(@message)
-    # delivery_options = {address: "smtp." + "#{config_email.server_email}",
-    #                     port: 587,
-    #                     domain: config_email.server_email,
-    #                     user_name: config_email.username,
-    #                     password: decryption(config_email.password_encrypted),
-    #                     authentication: 'login',
-    #                     enable_starttls_auto: true}
-    delivery_options = {address: "smtp.1and1.com",
-                        port: 25,
-                        # domain: config_email.server_email,
-                        user_name: config_email.username,
-                        password: decryption(config_email.password_encrypted),
-                        # authentication: 'login',
-                        authentication: 'plain'}
+    case (config_email.smtp_server)
+      when 'pop.gmail.com'
+        delivery_options = {address: config_email.smtp_server,
+                            port: 587,
+                            domain: config_email.server_email,
+                            user_name: config_email.username,
+                            password: decryption(config_email.password_encrypted),
+                            authentication: 'login',
+                            enable_starttls_auto: true}
+      else
+        delivery_options = {address: config_email.smtp_server,
+                            port: 25,
+                            # domain: config_email.server_email,
+                            user_name: config_email.username,
+                            password: decryption(config_email.password_encrypted),
+                            # authentication: 'login',
+                            authentication: 'plain'}
+    end
+
+
     mail to: @message.to,
          from: @message.from,
          subject: @message.subject,

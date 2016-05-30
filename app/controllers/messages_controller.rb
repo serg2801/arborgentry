@@ -21,8 +21,8 @@ class MessagesController < ApplicationController
         end
       end
       UserMailer.send_email(@message, @config_emails).deliver
-      redirect_to write_emails_path
       flash[:info] = "Your message was sent!"
+      redirect_to write_emails_path
     else
       render "new"
     end
@@ -40,8 +40,8 @@ class MessagesController < ApplicationController
   def trash
     @emails = current_vendor.config_emails
     if @config_emails.nil?
-      redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
+      redirect_to new_config_email_path
     else
       @messages = @config_emails.messages.where(trash: true)
     end
@@ -50,8 +50,8 @@ class MessagesController < ApplicationController
   def read_emails
     @emails = current_vendor.config_emails
     if @config_emails.blank?
-      redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
+      redirect_to new_config_email_path
     else
       @messages = @config_emails.messages.where(status: 0, trash: false)
       @messages = @messages.read_by(current_vendor)
@@ -60,8 +60,8 @@ class MessagesController < ApplicationController
 
   def inbox
     if @config_emails.blank?
-      redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
+      redirect_to new_config_email_path
     else
       begin
         current_vendor.receive_emails
@@ -77,8 +77,8 @@ class MessagesController < ApplicationController
   def write_emails
     @emails = current_vendor.config_emails
     if @config_emails.nil?
-      redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
+      redirect_to new_config_email_path
     else
       @messages = @config_emails.messages.where(status: 1, trash: false)
     end
@@ -131,8 +131,8 @@ class MessagesController < ApplicationController
 
   def count_messages
     if @config_emails.nil?
-      redirect_to new_config_email_path
       flash[:warning] = "Please connect your email address!!!"
+      redirect_to new_config_email_path
     else
       @config_emails = current_vendor.config_emails.first
       @write_messages = @config_emails.messages.where(status: 1, trash: false).count

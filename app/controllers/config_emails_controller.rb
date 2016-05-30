@@ -17,33 +17,29 @@ class ConfigEmailsController < ApplicationController
 
   def create
     config_email = params[:config_email]
-    # email = config_email[:username]
-    # email_mas = email.split('@')
-    # server_email = email_mas[1]
     @config_email = ConfigEmail.new(config_email_params.merge(vendor_id: current_vendor.id))
     @config_email.password_encrypted = ConfigEmail.encryption(config_email[:password_encrypted])
+    @config_email.smtp_server = ConfigEmail.parse_out_server(config_email[:server_email])
     if @config_email.save
-      redirect_to config_email_path(@config_email)
       flash[:info] = 'Config email has been add!.'
+      redirect_to config_email_path(@config_email)
     else
-      render 'new'
       flash[:warning] = "Error! Please fill out all forms!"
+      render 'new'
     end
   end
 
   def update
     config_email = params[:config_email]
-    # email = config_email[:username]
-    # email_mas = email.split('@')
-    # server_email = email_mas[1]
     @config_email.update(config_email_params.merge(vendor_id: current_vendor.id))
     @config_email.password_encrypted = ConfigEmail.encryption(config_email[:password_encrypted])
+    @config_email.smtp_server = ConfigEmail.parse_out_server(config_email[:server_email])
     if @config_email.save
+      flash[:info] = 'Config email has been successfully updated!'
       redirect_to config_email_path
-      flash[:info] = 'Config email has been successfully edited!'
     else
-      render 'edit'
       flash[:warning] = "Error!"
+      render 'edit'
     end
   end
 
@@ -64,30 +60,30 @@ class ConfigEmailsController < ApplicationController
 
   def test_connection
     begin
-      # binding.pry
       config_email = @config_emails
-      # Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
-      # http = Net::HTTP.new(host, port)
-      # http.use_ssl = true
-      # http.ssl_version = :SSLv3
-      # http.start { ... }
+      case (config_email.server_email)
+        when 'pop.gmail.com'
+          Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
+        else
+          ""
+      end
       Net::POP3.start(config_email.server_email, config_email.port, config_email.username, ConfigEmail.decryption(config_email.password_encrypted)) do |pop|
         if pop.started?
           pop.finish
           puts 'OK!'
-          render status: 200, :json => { message: 'Success!', error_js: false }
+          render status: 200, :json => {message: 'Success!', error_js: false}
         end
       end
     rescue Exception => e
       puts ("#{e.message}")
-      render status: 200, :json => { message: e.message, error_js: true }
+      render status: 200, :json => {message: e.message, error_js: true}
     end
   end
 
   private
 
   def config_email_params
-    params.require(:config_email).permit(:server_email, :username, :password_encrypted, :vendor_id, :status, :port)
+    params.require(:config_email).permit(:server_email, :username, :password_encrypted, :vendor_id, :status, :port, :smtp_server)
   end
 
   #Before filters

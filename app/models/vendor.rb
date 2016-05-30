@@ -18,6 +18,8 @@ class Vendor < ActiveRecord::Base
   has_attached_file :sample_photo, styles: {thumb: "100x100#", small: "300x300#", medium: "500x500#", large: "800x800#"}
   validates_attachment_content_type :sample_photo, content_type: ['image/jpeg', 'image/png', 'application/pdf']
 
+  after_create :send_admin_mail
+
   acts_as_reader
 
   def password_required?
@@ -26,6 +28,12 @@ class Vendor < ActiveRecord::Base
 
   def receive_emails
     self.config_emails.each do |config_email|
+      case (config_email.server_email)
+        when 'pop.gmail.com'
+          Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
+        else
+          ""
+      end
       # Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
       # Net::POP3.start('pop.' + "#{config_email.server_email}", 110, config_email.username, decryption(config_email.password_encrypted)) do |pop|
       Net::POP3.start(config_email.server_email, config_email.port, config_email.username, ConfigEmail.decryption(config_email.password_encrypted)) do |pop|
@@ -50,7 +58,6 @@ class Vendor < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
 
-  after_create :send_admin_mail
   def send_admin_mail
     VendorMailer.send_admin_mail(self).deliver
   end
