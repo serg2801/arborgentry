@@ -9,8 +9,8 @@ class UserMailer < ActionMailer::Base
     if message.multipart?
       email_body_html = message.html_part.decoded
       # email_body_text = message.text_part
-      @message = Message.new(subject: message.subject, body: email_body_html, from: message.from.to_s,
-                             to: message.to.to_s, date: message.date, config_email_id: id_config_email)
+      @message = Message.new(subject: message.subject, body: email_body_html, from: message.from.to_a[0],
+                             to: message.to.to_a[0], date: message.date, config_email_id: id_config_email)
       @message.read!
       @message.save
       unless message.attachments.blank?

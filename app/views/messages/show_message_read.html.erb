@@ -24,6 +24,12 @@
           <p>Subject: <%= @message.subject %></p>
 
           <p>Body: <%= render html: @message.body.html_safe %></p>
+          <% unless @message.message_attachments.blank? %>
+              <i class="fa fa-paperclip" aria-hidden="true"></i>
+              <% @message.message_attachments.each do |message_attachment| %>
+                  <%= image_tag(message_attachment, :alt => "img") %>
+              <% end %>
+          <% end %>
         </div>
       </div>
     </div>

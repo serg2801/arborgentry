@@ -13,11 +13,22 @@
       <div class="right_block">
         <%= render 'header_buttons' %>
         <div class="show_message">
-          <p>From: <%= @message.from %></p>
+          <p class="from_message">From: <%= @message.from %></p>
 
-          <p>Subject: <%= @message.subject %></p>
+          <h3 class="subject_message"><%= @message.subject %></h3>
 
-          <p>Body: <%= render html: @message.body.html_safe %></p>
+          <div class="message_body"><%= render html: @message.body.html_safe %></div>
+          <% unless @message.message_attachments.blank? %>
+              <p class="message_attachments_count"><%= @message.message_attachments.count %> Attachments</p>
+              <div class="message_attachments">
+                <% @message.message_attachments.each do |message_attachment| %>
+                    <div class="message_attachment">
+                      <%= image_tag(message_attachment.file, :alt => "img", class: 'message_attachment_img') %>
+                      <p class="message_attachment_download"><%= link_to('download', "#{message_attachment.file}", :download => message_attachment.file) %></p>
+                    </div>
+                <% end %>
+              </div>
+          <% end %>
         </div>
       </div>
     </div>

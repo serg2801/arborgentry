@@ -26,8 +26,9 @@
       overflow: hidden;
       border-bottom: 1px solid lightgrey;
       padding-top: 5px;
+      height: 52px;
 
-      .block_left {
+      .block_email_checkbox {
         float: left;
         width: 5%;
         .email_checkbox {
@@ -36,43 +37,50 @@
           margin-left: 15px;
         }
       }
-      .block_right {
+      .container_message {
         float: left;
         width: 95%;
 
         .message_link {
           float: left;
           width: 95%;
+          text-decoration: none;
 
-          .email_address {
-            width: 30%;
+          .block_avatar {
+            width: 5%;
             float: left;
             color: #2f333f;
+
+            .avatar img {
+              height: 40px;
+              width: 40px;
+            }
           }
 
-          .email_subject_body {
-            width: 50%;
-            float: left;
+          .content_message {
+            width: 95%;
+            //float: left;
             overflow: hidden;
 
-            .email_subject {
-              width: 20%;
-              float: left;
+            .content_top {
+              overflow: hidden;
+              margin-bottom: 4px;
+
+              .email_address {
+                color: #2f333f;
+                float: left;
+              }
+              .email_date {
+                color: #2f333f;
+                float: right;
+                i {
+                  margin-right: 10px;
+                }
+              }
+            }
+            .content_bottom {
               color: #2f333f;
             }
-            .email_body {
-              width: 30%;
-              float: left;
-            }
-            p {
-              color: rgba(0,0,0,.42);
-            }
-          }
-
-          .email_date {
-            width: 15%;
-            float: left;
-            color: #2f333f;
           }
         }
 
@@ -236,6 +244,41 @@
           padding: 5px 10px;
         }
       }
+    }
+  }
+  .show_message {
+    margin: 0 10px 10px;
+
+    .message_attachments {
+
+      overflow: hidden;
+      border-bottom: solid gainsboro 1px;
+
+      .message_attachment {
+
+        float: left;
+
+        .message_attachment_img {
+          width: 200px;
+          height: 200px;
+          border: solid 1px;
+          margin-left: 25px;
+        }
+        .message_attachment_download {
+          text-align: center;
+          padding: 15px;
+        }
+      }
+    }
+    .from_message {
+      border-bottom: solid gainsboro 1px;
+    }
+    .subject_message {
+      border-bottom: solid gainsboro 1px;
+    }
+    .message_body {
+      padding: 10px;
+      border-bottom: solid gainsboro 1px;
     }
   }
 }

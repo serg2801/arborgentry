@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530142001) do
+ActiveRecord::Schema.define(version: 20160531092048) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20160530142001) do
     t.string   "to"
     t.string   "from"
     t.integer  "status"
-    t.date     "date"
+    t.datetime "date",                            null: false
     t.integer  "config_email_id"
     t.datetime "created_at"
     t.datetime "updated_at"

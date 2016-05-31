@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params.merge(date: DateTime.now.to_date, from: @config_emails.username, config_email_id: @config_emails.id))
+    @message = Message.new(message_params.merge(date: DateTime.now, from: @config_emails.username, config_email_id: @config_emails.id))
     @message.write!
     if @message.save
       unless params[:message_attachments].nil?
@@ -44,7 +44,7 @@ class MessagesController < ApplicationController
       flash[:warning] = "Please connect your email address!!!"
       redirect_to new_config_email_path
     else
-      @messages = @config_emails.messages.where(trash: true)
+      @messages = @config_emails.messages.where(trash: true).order("date desc")
     end
   end
 
@@ -54,7 +54,7 @@ class MessagesController < ApplicationController
       flash[:warning] = "Please connect your email address!!!"
       redirect_to new_config_email_path
     else
-      @messages = @config_emails.messages.where(status: 0, trash: false)
+      @messages = @config_emails.messages.where(status: 0, trash: false).order("date desc")
       @messages = @messages.read_by(current_vendor)
     end
   end
@@ -71,7 +71,7 @@ class MessagesController < ApplicationController
         @exc = e.message
         flash[:warning] = 'Error' + "#{@exc}"
       end
-      @messages = @config_emails.messages.where(status: 0, trash: false)
+      @messages = @config_emails.messages.where(status: 0, trash: false).order("date desc")
     end
   end
 
@@ -81,7 +81,7 @@ class MessagesController < ApplicationController
       flash[:warning] = "Please connect your email address!!!"
       redirect_to new_config_email_path
     else
-      @messages = @config_emails.messages.where(status: 1, trash: false)
+      @messages = @config_emails.messages.where(status: 1, trash: false).order("date desc")
     end
   end
 
