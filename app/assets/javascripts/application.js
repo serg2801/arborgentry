@@ -54,6 +54,7 @@
 //= require dashboard
 //= require jquery_nested_form
 //= require tinymce-jquery
+//= require messages
 // require turbolinks
 
 

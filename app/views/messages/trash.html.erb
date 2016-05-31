@@ -1,38 +1,5 @@
 <script type="text/javascript">
 
-    $(document).on('click', ".email_checkbox", function () {
-        $(".email_checkbox").change(function () {
-            var count_checkbox = $('.email_checkbox:checked').size();
-            if (count_checkbox > 0) {
-                $('#move_to_trash').prop('disabled', false);
-                $('#move_to_trash').addClass('bg_button');
-            } else {
-                $('#move_to_trash').prop('disabled', true);
-                $('#move_to_trash').removeClass('bg_button');
-            }
-        });
-    });
-
-    $(document).on('click', "#checkAll", function () {
-        var count_messages = $('.email_checkbox').size();
-        if (count_messages > 0) {
-            $('#checkAll').prop('disabled', false);
-        } else {
-            $('#checkAll').prop('disabled', true);
-            $('#checkAll').prop('checked', false);
-        }
-        $('.email_checkbox').prop('checked', this.checked);
-        $("#checkAll").change(function () {
-            if ($('#checkAll').is(":checked")) {
-                $('#move_to_trash').prop('disabled', false);
-                $('#move_to_trash').addClass('bg_button');
-            } else {
-                $('#move_to_trash').prop('disabled', true);
-                $('#move_to_trash').removeClass('bg_button');
-            }
-        });
-    });
-
     $(document).on('click', "#move_to_trash", function () {
         var messages_ids = []
         $('.email_checkbox:checked').each(function () {
@@ -44,6 +11,7 @@
             url: '<%= destroy_emails_path %>',
             data: {"messages_ids": messages_ids},
             success: function (data) {
+                $('.count_message_trash').text(data.count_trash);
                 $('.email_checkbox:checked').each(function () {
                     $(".message_" + $(this).val()).remove();
                 });
@@ -57,50 +25,6 @@
     });
 
 </script>
-<!--<div class="page-content-wrapper row pg_top">-->
-  <!--<div class="container">-->
-    <!--<div class="messages_header">-->
-      <!--<p><%#= button_to "New Message", new_message_path, :class => "button btn-submit-app", :method => :get %></p>-->
-
-      <!--<h3 class="">Trash</h3>-->
-      <!--<input type="checkbox" class="email_checkbox_header" id="checkAll" value="">-->
-      <!--<button type="button" class="delete_email btn-group btn-group-xs" id="delete_emails" disabled>Delete</button>-->
-      <!--<p class="email_header"><%#= @config_emails.username %></p>-->
-    <!--</div>-->
-    <!--<div class="messages">-->
-
-      <!--<%# if @messages === [] || @messages === nil %>-->
-          <!--<h3>No messages!</h3>-->
-      <!--<%# else %>-->
-          <!--<%# @messages.each do |message| %>-->
-              <!--<div class="message <%#= "message_" + "#{message.id}" %>">-->
-                <!--<div class="block_left">-->
-                  <!--<%#= check_box_tag "messages_ids[]", message.id, false, class: 'email_checkbox' %>-->
-                <!--</div>-->
-                <!--<div class="block_right">-->
-                  <!--<%#= link_to show_message_write_path(:id => message.id), class: 'message_link' do %>-->
-                      <!--<p class="email_address"><%#= message.from %></p>-->
-
-                      <!--<div class="email_subject_body">-->
-                        <!--<p class="email_subject"><%#= message.subject %></p>-->
-
-                        <!--<p class="email_body"><%#= render html: message.body.html_safe %></p>-->
-
-                      <!--</div>-->
-
-                      <!--<p class="email_date"><%#= message.date %></p>-->
-                  <!--<%# end %>-->
-                <!--</div>-->
-              <!--</div>-->
-
-          <!--<%# end %>-->
-      <!--<%# end %>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-
-
-
 
 <div class="page-content-wrapper row pg_top">
   <div class="container">

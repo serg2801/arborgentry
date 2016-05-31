@@ -34,7 +34,8 @@ class MessagesController < ApplicationController
       message.destroy
     end
     # flash[:info] = "Your message was destroy!"
-    render status: 200, :json => {}
+    @trash_messages = @config_emails.messages.where(trash: true).count
+    render status: 200, :json => { count_trash: @trash_messages }
   end
 
   def trash
@@ -110,8 +111,11 @@ class MessagesController < ApplicationController
     @messages.each do |message|
       message.update(trash: true)
     end
-    # flash[:info] = "Your message was move to trash!"
-    render status: 200, :json => {}
+    @config_emails = current_vendor.config_emails.first
+    @write_messages = @config_emails.messages.where(status: 1, trash: false).count
+    @inbox_messages = @config_emails.messages.where(status: 0, trash: false).count
+    @trash_messages = @config_emails.messages.where(trash: true).count
+    render status: 200, :json => { count_inbox: @inbox_messages, count_write: @write_messages, count_trash: @trash_messages }
 
   end
 

@@ -1,33 +1,33 @@
 <script type="text/javascript">
 
-    $(document).on('click', ".email_checkbox", function(){
-        $(".email_checkbox").change(function() {
-            var count_checkbox = $('.email_checkbox:checked').size();
-            if (count_checkbox > 0) {
-                $('#move_to_trash').prop('disabled', false);
-            }else {
-                $('#move_to_trash').prop('disabled', true);
-            }
-        });
-    });
-
-    $(document).on('click', "#checkAll", function(){
-        var count_messages = $('.email_checkbox').size();
-        if (count_messages > 0) {
-            $('#checkAll').prop('disabled', false);
-        } else {
-            $('#checkAll').prop('disabled', true);
-            $('#checkAll').prop('checked', false);
-        }
-        $('.email_checkbox').prop('checked', this.checked);
-        $("#checkAll").change(function() {
-            if ($('#checkAll').is(":checked")) {
-                $('#move_to_trash').prop('disabled', false);
-            }else {
-                $('#move_to_trash').prop('disabled', true);
-            }
-        });
-    });
+//    $(document).on('click', ".email_checkbox", function(){
+//        $(".email_checkbox").change(function() {
+//            var count_checkbox = $('.email_checkbox:checked').size();
+//            if (count_checkbox > 0) {
+//                $('#move_to_trash').prop('disabled', false);
+//            }else {
+//                $('#move_to_trash').prop('disabled', true);
+//            }
+//        });
+//    });
+//
+//    $(document).on('click', "#checkAll", function(){
+//        var count_messages = $('.email_checkbox').size();
+//        if (count_messages > 0) {
+//            $('#checkAll').prop('disabled', false);
+//        } else {
+//            $('#checkAll').prop('disabled', true);
+//            $('#checkAll').prop('checked', false);
+//        }
+//        $('.email_checkbox').prop('checked', this.checked);
+//        $("#checkAll").change(function() {
+//            if ($('#checkAll').is(":checked")) {
+//                $('#move_to_trash').prop('disabled', false);
+//            }else {
+//                $('#move_to_trash').prop('disabled', true);
+//            }
+//        });
+//    });
 
     $(document).on('click', "#move_to_trash", function () {
         var messages_ids = []

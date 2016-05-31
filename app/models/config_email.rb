@@ -3,7 +3,6 @@ require 'base64'
 class ConfigEmail < ActiveRecord::Base
 
   belongs_to :vendor
-
   has_many :messages
 
   before_save { username.downcase! }
