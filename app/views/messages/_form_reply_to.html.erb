@@ -1,5 +1,5 @@
 <%= tinymce %>
-<%= form_for @message do |f| %>
+<%= form_for :message, :url => url_for(:controller => "messages", :action => "message_reply_to"), :id => :message_id, :html => {:multipart => true} do |f| %>
     <div class="row">
       <div class="col-lg-12">
         <!-- col-lg-12 start here -->
@@ -27,7 +27,7 @@
               <div class="form-group">
                 <%= f.label :file, 'File', :class => "col-lg-2 col-md-3 control-label" %>
                 <div class="col-lg-10 col-md-9">
-                  <%= f.file_field :file %>
+                  <%= f.file_field :file, :multiple => true %>
                 </div>
               </div>
             </div>

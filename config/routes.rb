@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   get 'write_emails',       to: 'messages#write_emails'
   get 'show_message_read',  to: 'messages#show_message_read'
   get 'show_message_write', to: 'messages#show_message_write'
+  post 'message_reply_to',  to: 'messages#message_reply_to'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

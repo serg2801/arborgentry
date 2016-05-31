@@ -88,17 +88,6 @@ class MessagesController < ApplicationController
   def show_message_read
     @message = Message.find(params[:id])
     @message.mark_as_read! :for => current_vendor
-
-    # @to =
-    # @message_reply_to = Message.new(message_params.merge(date: DateTime.now.to_date, from: @config_emails.username, config_email_id: @config_emails.id))
-    # if @message_reply_to.save
-    #   UserMailer.send_email(@message_reply_to, @config_emails).deliver
-    #   redirect_to write_emails_path
-    #   flash[:info] = "Your message was sent!"
-    # else
-    #   render "form_reply_to"
-    # end
-
   end
 
   def show_message_write
@@ -116,7 +105,20 @@ class MessagesController < ApplicationController
     @inbox_messages = @config_emails.messages.where(status: 0, trash: false).count
     @trash_messages = @config_emails.messages.where(trash: true).count
     render status: 200, :json => { count_inbox: @inbox_messages, count_write: @write_messages, count_trash: @trash_messages }
+  end
 
+  def message_reply_to
+    binding.pry
+
+    # @to =
+    # @message_reply_to = Message.new(message_params.merge(date: DateTime.now.to_date, from: @config_emails.username, config_email_id: @config_emails.id))
+    # if @message_reply_to.save
+    #   UserMailer.send_email(@message_reply_to, @config_emails).deliver
+    #   redirect_to write_emails_path
+    #   flash[:info] = "Your message was sent!"
+    # else
+    #   render "form_reply_to"
+    # end
   end
 
   private
