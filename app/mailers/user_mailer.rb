@@ -7,9 +7,9 @@ class UserMailer < ActionMailer::Base
   def receive(message)
     id_config_email = @@config_email.id
     if message.multipart?
-      email_body_html = message.html_part.decoded
-      # email_body_text = message.text_part
-      @message = Message.new(subject: message.subject, body: email_body_html, from: message.from.to_a[0],
+      # email_body_html = message.html_part.decoded
+      email_body_text = message.text_part.decoded
+      @message = Message.new(subject: message.subject, body: email_body_text, from: message.from.to_a[0],
                              to: message.to.to_a[0], date: message.date, config_email_id: id_config_email)
       @message.read!
       @message.save
@@ -32,8 +32,8 @@ class UserMailer < ActionMailer::Base
       # email_body_html = message.html_part
       # email_body_text = message.text_part
       email_attachments = []
-      @message = Message.new(subject: message.subject, body: email_body_html, from: message.from.to_s,
-                             to: message.to.to_s, date: message.date, config_email_id: id_config_email)
+      @message = Message.new(subject: message.subject, body: email_body_html, from: message.from.to_a[0],
+                             to: message.to.to_a[0], date: message.date, config_email_id: id_config_email)
       @message.read!
       @message.save
     end

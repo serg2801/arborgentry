@@ -9,7 +9,7 @@ class ConfigEmail < ActiveRecord::Base
   before_save { server_email.downcase! }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
-  validates :password_encrypted, :port, :server_email, presence: true
+  validates :password_encrypted, :port, :server_email, :server_name, presence: true
   validates :username, uniqueness: true, presence: true,
             format: { with: VALID_EMAIL_REGEX }
 

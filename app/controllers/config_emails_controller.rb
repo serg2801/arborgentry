@@ -1,4 +1,5 @@
 require 'net/pop'
+require 'net/imap'
 
 class ConfigEmailsController < ApplicationController
 
@@ -67,12 +68,23 @@ class ConfigEmailsController < ApplicationController
         else
           ""
       end
-      Net::POP3.start(config_email.server_email, config_email.port, config_email.username, ConfigEmail.decryption(config_email.password_encrypted)) do |pop|
-        if pop.started?
+      if config_email.server_name == "POP"
+        Net::POP3.start(config_email.server_email, config_email.port, config_email.username, ConfigEmail.decryption(config_email.password_encrypted)) do |pop|
+          if pop.started?
+            pop.finish
+            puts 'OK!'
+            render status: 200, :json => {message: 'Success!', error_js: false}
+          end
           pop.finish
-          puts 'OK!'
+        end
+      else
+        imap = Net::IMAP.new(config_email.server_email, config_email.port, true)
+        imap_login = imap.login(config_email.username, ConfigEmail.decryption(config_email.password_encrypted))
+        if imap_login[:name] == 'OK'
           render status: 200, :json => {message: 'Success!', error_js: false}
         end
+        imap.logout
+        imap.disconnect
       end
     rescue Exception => e
       puts ("#{e.message}")
@@ -83,7 +95,7 @@ class ConfigEmailsController < ApplicationController
   private
 
   def config_email_params
-    params.require(:config_email).permit(:server_email, :username, :password_encrypted, :vendor_id, :status, :port, :smtp_server)
+    params.require(:config_email).permit(:server_email, :username, :password_encrypted, :vendor_id, :status, :port, :smtp_server, :server_name)
   end
 
   #Before filters

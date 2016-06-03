@@ -26,7 +26,7 @@ class Vendor < ActiveRecord::Base
     super if confirmed?
   end
 
-  def receive_emails
+  def receive_emails_pop
     self.config_emails.each do |config_email|
       case (config_email.server_email)
         when 'pop.gmail.com'
@@ -34,8 +34,6 @@ class Vendor < ActiveRecord::Base
         else
           ""
       end
-      # Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
-      # Net::POP3.start('pop.' + "#{config_email.server_email}", 110, config_email.username, decryption(config_email.password_encrypted)) do |pop|
       Net::POP3.start(config_email.server_email, config_email.port, config_email.username, ConfigEmail.decryption(config_email.password_encrypted)) do |pop|
         if pop.mails.empty?
           puts 'No mails.'
@@ -48,6 +46,26 @@ class Vendor < ActiveRecord::Base
           pop.finish
         end
       end
+    end
+  end
+
+  def receive_emails_imap
+    self.config_emails.each do |config_email|
+      imap = Net::IMAP.new(config_email.server_email, config_email.port, true)
+      imap.login(config_email.username, ConfigEmail.decryption(config_email.password_encrypted))
+      imap.select('INBOX')
+      if imap.search(["NOT", "SEEN"]).empty?
+        puts 'No mails.'
+      else
+        imap.search(["NOT", "SEEN"]).each do |message_id|
+          msg = imap.fetch(message_id,'RFC822')[0].attr['RFC822']
+          mail = Mail.read_from_string msg
+          UserMailer.current_vendor_config_email(config_email)
+          UserMailer.receive(mail)
+        end
+      end
+      imap.logout
+      imap.disconnect
     end
   end
 

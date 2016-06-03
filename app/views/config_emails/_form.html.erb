@@ -23,6 +23,16 @@
               </div>
 
               <div class="form-group">
+                <%= f.label :server_name, 'POP/IMAP', :class => "col-lg-2 col-md-3 control-label" %>
+                <div class="col-lg-10 col-md-9">
+                  <%= f.radio_button(:server_name, "POP") %>
+                  <%= f.label(:server_name, "POP Server") %>
+                  <%= f.radio_button(:server_name, "IMAP") %>
+                  <%= f.label(:server_name, "IMAP Server") %>
+                </div>
+              </div>
+
+              <div class="form-group">
                 <%= f.label :server_email, 'SERVER', :class => "col-lg-2 col-md-3 control-label" %>
                 <div class="col-lg-10 col-md-9">
                   <%= f.text_field :server_email, :class => "form-control requires", :placeholder => 'pop.1and1.com', :required => true %>

@@ -1,4 +1,5 @@
 require 'net/pop'
+require 'net/imap'
 
 class MessagesController < ApplicationController
 
@@ -33,7 +34,6 @@ class MessagesController < ApplicationController
     @messages.each do |message|
       message.destroy
     end
-    # flash[:info] = "Your message was destroy!"
     @trash_messages = @config_emails.messages.where(trash: true).count
     render status: 200, :json => { count_trash: @trash_messages }
   end
@@ -65,7 +65,11 @@ class MessagesController < ApplicationController
       redirect_to new_config_email_path
     else
       begin
-        current_vendor.receive_emails
+        if @config_emails.server_name == "POP"
+          current_vendor.receive_emails_pop
+        else
+          current_vendor.receive_emails_imap
+        end
       rescue Exception => e
         puts ("#{e.message}")
         @exc = e.message
@@ -73,6 +77,7 @@ class MessagesController < ApplicationController
       end
       @messages = @config_emails.messages.where(status: 0, trash: false).order("date desc")
     end
+    @inbox_messages = @config_emails.messages.where(status: 0, trash: false).count
   end
 
   def write_emails
@@ -108,8 +113,6 @@ class MessagesController < ApplicationController
   end
 
   def message_reply_to
-    binding.pry
-
     # @to =
     # @message_reply_to = Message.new(message_params.merge(date: DateTime.now.to_date, from: @config_emails.username, config_email_id: @config_emails.id))
     # if @message_reply_to.save
@@ -148,6 +151,3 @@ class MessagesController < ApplicationController
   end
 
 end
-
-
-

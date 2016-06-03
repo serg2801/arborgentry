@@ -44,6 +44,7 @@
     <div class="config_email">
       <p><%= link_to 'Edit Email Config', edit_config_email_path(@config_email) %></p>
 
+      <p><%= @config_email.server_name %></p>
       <p>Email address: <%= @config_email.username %></p>
       <p>Server: <%= @config_email.server_email %></p>
       <p>Port: <%= @config_email.port %></p>
