@@ -10,17 +10,17 @@
       <% end %>
     </li>
     <li class="list_links">
-      <%= link_to '#', :title => 'Starred' do %>
+      <%= link_to starred_path, :title => 'Starred' do %>
           <i class="fa fa-star" aria-hidden="true"></i>
           <span class="name_link">Starred</span>
-          <span class="count_message count_message_starred">-</span>
+          <span class="count_message count_message_starred"><%= @starred_messages %></span>
       <% end %>
     </li>
     <li class="list_links">
-      <%= link_to '#', :title => 'Important' do %>
+      <%= link_to important_path, :title => 'Important' do %>
           <i class="fa fa-info-circle" aria-hidden="true"></i>
           <span class="name_link">Important</span>
-          <span class="count_message count_message_important">-</span>
+          <span class="count_message count_message_important"><%= @important_messages %></span>
       <% end %>
     </li>
     <li class="list_links">

@@ -25,13 +25,53 @@
         });
     });
 
+    $(document).on('click', ".link_star", function () {
+        var this_start = $(this);
+        var message_id = $(this).attr('data-message-id');
+        $.ajax({
+            type: 'PUT',
+            dataType: 'JSON',
+            url: '<%= edit_starred_path %>',
+            data: {"id": message_id},
+            success: function (data) {
+                if (this_start.find('.fa').hasClass( "fa-star" )){
+                    this_start.children('.fa').removeClass( "fa-star starred_true" );
+                    this_start.children('.fa').addClass( "fa-star-o starred_false" );
+                }else {
+                    this_start.children('.fa').removeClass( "fa-star-o starred_false" );
+                    this_start.children('.fa').addClass( "fa-star starred_true" );
+                }
+            }
+        });
+    });
+
+    $(document).on('click', ".link_important", function () {
+        var this_start = $(this);
+        var message_id = $(this).attr('data-message-id');
+        $.ajax({
+            type: 'PUT',
+            dataType: 'JSON',
+            url: '<%= edit_important_path %>',
+            data: {"id": message_id},
+            success: function (data) {
+                if (this_start.find('.fa').hasClass( "important_true" )){
+                    this_start.children('.fa').removeClass( "important_true" );
+                    this_start.children('.fa').addClass( "important_false" );
+                }else {
+                    this_start.children('.fa').removeClass( "important_false" );
+                    this_start.children('.fa').addClass( "important_true" );
+                }
+            }
+        });
+    });
+
 </script>
 <div class="page-content-wrapper row pg_top">
   <div class="container">
     <div class="inbox">
       <%= render 'site_bar' %>
       <div class="right_block">
-        <%= render 'header_buttons'%>
+        <%= render 'header_buttons' %>
         <div class="search_message">
           <input type="checkbox" class="email_checkbox_header" id="checkAll" value="">
           <input placeholder="Search for email..." class="search_email" name="search" form="data">
@@ -46,6 +86,7 @@
                         <div class="block_email_checkbox">
                           <%= check_box_tag "messages_ids[]", message.id, false, class: 'email_checkbox' %>
                         </div>
+                        <%= render 'message_starred', :message => message %>
                         <div class="container_message">
                           <%= link_to show_message_write_path(:id => message.id), class: 'message_link' do %>
                               <div class="block_avatar">
@@ -54,6 +95,7 @@
                               <div class="content_message">
                                 <div class="content_top">
                                   <span class="email_address"><%= message.from %></span>
+
                                   <div class="email_date">
                                     <% unless message.message_attachments.blank? %>
                                         <i class="fa fa-paperclip" aria-hidden="true"></i>
@@ -64,7 +106,6 @@
                                 <div class="content_bottom">
                                   <span class="email_subject"><%= message.subject %></span>
                                 </div>
-                                <!--<p class="email_body"><%#= render html: message.body.html_safe %></p>-->
                               </div>
                           <% end %>
                         </div>
@@ -74,6 +115,7 @@
                         <div class="block_email_checkbox">
                           <%= check_box_tag "messages_ids[]", message.id, false, class: 'email_checkbox' %>
                         </div>
+                        <%= render 'message_starred', :message => message %>
                         <div class="container_message">
                           <%= link_to show_message_write_path(:id => message.id), class: 'message_link' do %>
                               <div class="block_avatar">
@@ -82,6 +124,7 @@
                               <div class="content_message">
                                 <div class="content_top">
                                   <span class="email_address"><%= message.from %></span>
+
                                   <div class="email_date">
                                     <% unless message.message_attachments.blank? %>
                                         <i class="fa fa-paperclip" aria-hidden="true"></i>
@@ -92,7 +135,6 @@
                                 <div class="content_bottom">
                                   <span class="email_subject"><%= message.subject %></span>
                                 </div>
-                                <!--<p class="email_body"><%#= render html: message.body.html_safe %></p>-->
                               </div>
                           <% end %>
                         </div>

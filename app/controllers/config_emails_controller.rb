@@ -71,12 +71,10 @@ class ConfigEmailsController < ApplicationController
       if config_email.server_name == "POP"
         Net::POP3.start(config_email.server_email, config_email.port, config_email.username, ConfigEmail.decryption(config_email.password_encrypted)) do |pop|
           if pop.started?
-
             pop.finish
             puts 'OK!'
             render status: 200, :json => {message: 'Success!', error_js: false}
           end
-
         end
       else
         imap = Net::IMAP.new(config_email.server_email, config_email.port, true)

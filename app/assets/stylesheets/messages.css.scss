@@ -1,6 +1,6 @@
 .container {
   padding-top: 10px;
-  .messages_header{
+  .messages_header {
     overflow: hidden;
     //width: 90%;
     border-bottom: 2px solid lightgrey;
@@ -37,13 +37,47 @@
           margin-left: 15px;
         }
       }
+      .email_starred {
+        width: 25px;
+        float: left;
+        margin-top: 4px;
+
+        .link_star {
+          color: gainsboro;
+
+          .starred_false {
+            font-size: 20px;
+          }
+          .starred_true {
+            font-size: 20px;
+            color: #FFFF00;
+          }
+        }
+      }
+      .important_email {
+        width: 25px;
+        float: left;
+        padding-top: 5px;
+
+        .link_important {
+          color: gainsboro;
+        }
+        .important_false {
+          font-size: 18px;
+          color: gainsboro;
+        }
+        .important_true {
+          font-size: 18px;
+          color: firebrick;
+        }
+      }
       .container_message {
         float: left;
-        width: 95%;
+        width: 85%;
 
         .message_link {
           float: left;
-          width: 95%;
+          width: 100%;
           text-decoration: none;
 
           .block_avatar {
@@ -59,8 +93,8 @@
 
           .content_message {
             width: 95%;
-            //float: left;
             overflow: hidden;
+            padding-left: 5px;
 
             .content_top {
               overflow: hidden;
@@ -86,8 +120,8 @@
 
       }
     }
-    .unread_message{
-      font-weight:bold;
+    .unread_message {
+      font-weight: bold;
     }
     .mark_message {
       background: gainsboro;
@@ -201,8 +235,11 @@
         margin: 0;
       }
       .top_block {
+        overflow: hidden;
 
         .left_buttons {
+          width: 50%;
+          float: left;
           padding: 5px;
           overflow: hidden;
           .icon_panel {
@@ -229,6 +266,12 @@
               background: firebrick;
             }
           }
+        }
+        .paginate_block {
+          width: 50%;
+          float: right;
+          text-align: right;
+          padding-right:15px;
         }
       }
       .search_message {

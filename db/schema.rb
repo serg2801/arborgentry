@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603132306) do
+ActiveRecord::Schema.define(version: 20160606124059) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(version: 20160603132306) do
     t.string   "file"
     t.string   "message_id"
     t.boolean  "trash",           default: false
+    t.boolean  "starred",         default: false
+    t.boolean  "important",       default: false
   end
 
   add_index "messages", ["config_email_id"], name: "index_messages_on_config_email_id"

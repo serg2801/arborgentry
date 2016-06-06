@@ -15,10 +15,20 @@
       <a class="panel-refresh" href="#"><i class="fa fa-share" aria-hidden="true"></i></a>
     </div>
     <div class="icon_panel icon_panel_button">
-      <button type="button" class="delete_email btn-group btn-group-xs" id="move_to_trash" disabled><i class="fa fa-trash" aria-hidden="true"></i></button>
+      <button type="button" class="delete_email btn-group btn-group-xs" id="move_to_trash" disabled>
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
     </div>
     <div class="icon_panel">
       <a class="panel-refresh" href="#"><i class="fa fa-print" aria-hidden="true"></i></a>
     </div>
+  </div>
+  <div class="paginate_block">
+    <% case (params[:action]) %>
+    <% when ("show_message_write") %>
+
+    <% else %>
+        <%= paginate @messages %>
+    <% end %>
   </div>
 </div>

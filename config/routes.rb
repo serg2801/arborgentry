@@ -41,6 +41,10 @@ Rails.application.routes.draw do
   get '/test_connection' => 'config_emails#test_connection'
 
   put 'move_to_trash',      to: 'messages#move_to_trash'
+  put 'edit_starred',       to: 'messages#edit_starred'
+  put 'edit_important',     to: 'messages#edit_important'
+  get 'starred',            to: 'messages#starred'
+  get 'important',          to: 'messages#important'
   delete 'destroy_emails',  to: 'messages#destroy_emails'
   get 'read_emails',        to: 'messages#read_emails'
   get 'inbox',              to: 'messages#inbox'

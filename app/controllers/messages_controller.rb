@@ -4,7 +4,7 @@ require 'net/imap'
 class MessagesController < ApplicationController
 
   before_action :get_config_email
-  before_action :count_messages, only: [ :inbox, :trash, :read_emails, :write_emails, :new, :show_message_read, :show_message_write ]
+  before_action :count_messages, only: [ :inbox, :trash, :read_emails, :write_emails, :new, :show_message_read, :show_message_write, :starred, :important ]
 
   def new
     @message = Message.new
@@ -44,7 +44,7 @@ class MessagesController < ApplicationController
       flash[:warning] = "Please connect your email address!!!"
       redirect_to new_config_email_path
     else
-      @messages = @config_emails.messages.where(trash: true).order("date desc")
+      @messages = @config_emails.messages.where(trash: true).order("date desc").page(params[:page]).per(20)
     end
   end
 
@@ -54,7 +54,7 @@ class MessagesController < ApplicationController
       flash[:warning] = "Please connect your email address!!!"
       redirect_to new_config_email_path
     else
-      @messages = @config_emails.messages.where(status: 0, trash: false).order("date desc")
+      @messages = @config_emails.messages.where(status: 0, trash: false).order("date desc").page(params[:page]).per(20)
       @messages = @messages.read_by(current_vendor)
     end
   end
@@ -75,7 +75,7 @@ class MessagesController < ApplicationController
         @exc = e.message
         flash[:warning] = 'Error' + "#{@exc}"
       end
-      @messages = @config_emails.messages.where(status: 0, trash: false).order("date desc")
+      @messages = @config_emails.messages.where(status: 0, trash: false).order("date desc").page(params[:page]).per(20)
     end
     @inbox_messages = @config_emails.messages.where(status: 0, trash: false).count
   end
@@ -86,7 +86,7 @@ class MessagesController < ApplicationController
       flash[:warning] = "Please connect your email address!!!"
       redirect_to new_config_email_path
     else
-      @messages = @config_emails.messages.where(status: 1, trash: false).order("date desc")
+      @messages = @config_emails.messages.where(status: 1, trash: false).order("date desc").page(params[:page]).per(20)
     end
   end
 
@@ -109,7 +109,51 @@ class MessagesController < ApplicationController
     @write_messages = @config_emails.messages.where(status: 1, trash: false).count
     @inbox_messages = @config_emails.messages.where(status: 0, trash: false).count
     @trash_messages = @config_emails.messages.where(trash: true).count
-    render status: 200, :json => { count_inbox: @inbox_messages, count_write: @write_messages, count_trash: @trash_messages }
+    @starred_messages = @config_emails.messages.where(starred: true).count
+    @important_messages = @config_emails.messages.where(important: true).count
+    render status: 200, :json => { count_inbox: @inbox_messages, count_write: @write_messages, count_trash: @trash_messages, count_starred: @starred_messages, count_important: @important_messages }
+  end
+
+  def edit_starred
+    @message = Message.find(params[:id])
+    if @message.starred
+      @message.update(starred: false)
+      render status: 200, :json => { }
+    else
+      @message.update(starred: true)
+      render status: 200, :json => { }
+    end
+  end
+
+  def edit_important
+    @message = Message.find(params[:id])
+    if @message.important
+      @message.update(important: false)
+      render status: 200, :json => { }
+    else
+      @message.update(important: true)
+      render status: 200, :json => { }
+    end
+  end
+
+  def starred
+    @emails = current_vendor.config_emails
+    if @config_emails.nil?
+      flash[:warning] = "Please connect your email address!!!"
+      redirect_to new_config_email_path
+    else
+      @messages = @config_emails.messages.where(starred: true).order("date desc").page(params[:page]).per(20)
+    end
+  end
+
+  def important
+    @emails = current_vendor.config_emails
+    if @config_emails.nil?
+      flash[:warning] = "Please connect your email address!!!"
+      redirect_to new_config_email_path
+    else
+      @messages = @config_emails.messages.where(important: true).order("date desc").page(params[:page]).per(20)
+    end
   end
 
   def message_reply_to
@@ -131,7 +175,6 @@ class MessagesController < ApplicationController
   end
 
 
-
   # Before filters
 
   def get_config_email
@@ -147,6 +190,8 @@ class MessagesController < ApplicationController
       @write_messages = @config_emails.messages.where(status: 1, trash: false).count
       @inbox_messages = @config_emails.messages.where(status: 0, trash: false).count
       @trash_messages = @config_emails.messages.where(trash: true).count
+      @starred_messages = @config_emails.messages.where(starred: true).count
+      @important_messages = @config_emails.messages.where(important: true).count
     end
   end
 
