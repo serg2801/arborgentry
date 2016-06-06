@@ -26,7 +26,7 @@
   <div class="paginate_block">
     <% case (params[:action]) %>
     <% when ("show_message_write") %>
-
+    <% when ("new") %>
     <% else %>
         <%= paginate @messages %>
     <% end %>

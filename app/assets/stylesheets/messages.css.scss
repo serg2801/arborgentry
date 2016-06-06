@@ -43,7 +43,7 @@
         margin-top: 4px;
 
         .link_star {
-          color: gainsboro;
+          color: grey;
 
           .starred_false {
             font-size: 20px;
@@ -60,11 +60,10 @@
         padding-top: 5px;
 
         .link_important {
-          color: gainsboro;
         }
         .important_false {
           font-size: 18px;
-          color: gainsboro;
+          color: grey;
         }
         .important_true {
           font-size: 18px;
@@ -125,6 +124,9 @@
     }
     .mark_message {
       background: gainsboro;
+    }
+    .not_mark_message {
+      background: white;
     }
   }
   .inbox {
@@ -322,6 +324,34 @@
     .message_body {
       padding: 10px;
       border-bottom: solid gainsboro 1px;
+    }
+  }
+  .form_for_replay_to {
+
+    .form_reply_to {
+      padding-top: 10px;
+      border: solid 1px gainsboro;
+      margin: 8px;
+
+      .from_block {
+        overflow: hidden;
+        border: solid 1px gainsboro;
+        margin: 0px 10px 10px;
+        i {
+          float: left;
+          margin: 8px;
+          font-size: 16px;
+          width: 20px;
+        }
+        p {
+          float: left;
+          width: 250px;
+          margin: 5px;
+        }
+      }
+      .reply_to_uploader {
+        margin-top: 10px;
+      }
     }
   }
 }

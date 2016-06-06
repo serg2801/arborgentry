@@ -23,7 +23,7 @@
           <% end %>
         </div>
         <div class="form_for_replay_to">
-          <%#= render :partial => "form_reply_to", :locals => {:message => Message.new, :message_id => @message.id} %>
+          <%= render :partial => "form_reply_to", :locals => { :message => Message.new(), :message_obj => @message } %>
         </div>
       </div>
     </div>
