@@ -1,38 +1,24 @@
 <%= tinymce %>
 <%= form_for :message, :url => url_for(:controller => "messages", :action => "message_reply_to",), :html => {:multipart => true} do |f| %>
-    <div class="row">
-      <div class="col-lg-12">
-        <!-- col-lg-12 start here -->
-        <div class="form_reply_to">
-          <!-- Start .panel -->
-          <div class="from_block">
-            <i class="fa fa-reply" aria-hidden="true"></i>
-
-            <p class=""><%= message_obj.to %></p>
-          </div>
-          <div class="panel-body">
-
-            <div class="form-group">
-              <%= f.label :body, 'Body', :class => "col-lg-1 col-md-2 control-label" %>
-              <div class="col-lg-11 col-md-10">
-                <%= f.text_area :body, :class => "tinymce", :placeholder => 'Body message ...' %>
-              </div>
-            </div>
-
-            <div class="reply_to_uploader">
-              <%= f.label :file, 'File', :class => "col-lg-1 col-md-2 control-label" %>
-              <div class="col-lg-11 col-md-10">
-                <%= f.file_field :file, :multiple => true %>
-              </div>
-            </div>
-
-          </div>
+    <div class="row col-lg-12">
+      <div class="form_reply_to">
+        <div class="from_block">
+          <i class="fa fa-reply" aria-hidden="true"></i>
+          <p><%= message_obj.from %></p>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12 m-b-lg">
-        <%= f.submit 'Reply', :class => "btn-info" %>
+        <div class="col-lg-12 col-md-12 reply_to_body">
+          <% message_id = message_obj.id %>
+          <%= hidden_field_tag :message_id, message_id %>
+          <pre>
+            <%= f.text_area :body, :class => "tinymce", :rows => 15, :cols => 60  %>
+          </pre>
+        </div>
+        <div class="reply_to_uploader">
+          <%= f.file_field :file, :multiple => true %>
+        </div>
+        <div class="reply_submit">
+          <%= f.submit 'Reply', :class => "btn-info" %>
+        </div>
       </div>
     </div>
 <% end %>

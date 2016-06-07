@@ -55,6 +55,7 @@
 //= require jquery_nested_form
 //= require tinymce-jquery
 //= require messages
+//= require jquery-filestyle
 // require turbolinks
 
 

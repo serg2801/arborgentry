@@ -4,7 +4,7 @@ require 'net/imap'
 class MessagesController < ApplicationController
 
   before_action :get_config_email
-  before_action :count_messages, only: [ :inbox, :trash, :read_emails, :write_emails, :new, :show_message_read, :show_message_write, :starred, :important ]
+  before_action :count_messages, only: [:inbox, :trash, :read_emails, :write_emails, :new, :show_message_read, :show_message_write, :starred, :important]
 
   def new
     @message = Message.new
@@ -35,7 +35,7 @@ class MessagesController < ApplicationController
       message.destroy
     end
     @trash_messages = @config_emails.messages.where(trash: true).count
-    render status: 200, :json => { count_trash: @trash_messages }
+    render status: 200, :json => {count_trash: @trash_messages}
   end
 
   def trash
@@ -96,6 +96,7 @@ class MessagesController < ApplicationController
   end
 
   def show_message_write
+    @emails = current_vendor.config_emails
     @message = Message.find(params[:id])
     @message.mark_as_read! :for => current_vendor
   end
@@ -111,17 +112,17 @@ class MessagesController < ApplicationController
     @trash_messages = @config_emails.messages.where(trash: true).count
     @starred_messages = @config_emails.messages.where(starred: true).count
     @important_messages = @config_emails.messages.where(important: true).count
-    render status: 200, :json => { count_inbox: @inbox_messages, count_write: @write_messages, count_trash: @trash_messages, count_starred: @starred_messages, count_important: @important_messages }
+    render status: 200, :json => {count_inbox: @inbox_messages, count_write: @write_messages, count_trash: @trash_messages, count_starred: @starred_messages, count_important: @important_messages}
   end
 
   def edit_starred
     @message = Message.find(params[:id])
     if @message.starred
       @message.update(starred: false)
-      render status: 200, :json => { }
+      render status: 200, :json => {}
     else
       @message.update(starred: true)
-      render status: 200, :json => { }
+      render status: 200, :json => {}
     end
   end
 
@@ -129,10 +130,10 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     if @message.important
       @message.update(important: false)
-      render status: 200, :json => { }
+      render status: 200, :json => {}
     else
       @message.update(important: true)
-      render status: 200, :json => { }
+      render status: 200, :json => {}
     end
   end
 
@@ -157,15 +158,25 @@ class MessagesController < ApplicationController
   end
 
   def message_reply_to
-    # @to =
-    # @message_reply_to = Message.new(message_params.merge(date: DateTime.now.to_date, from: @config_emails.username, config_email_id: @config_emails.id))
-    # if @message_reply_to.save
-    #   UserMailer.send_email(@message_reply_to, @config_emails).deliver
-    #   redirect_to write_emails_path
-    #   flash[:info] = "Your message was sent!"
-    # else
-    #   render "form_reply_to"
-    # end
+    message = Message.find(params[:message_id])
+    mas = message.subject.split
+    if mas[0] == "Re:"
+      @message_reply_to = Message.new(subject: message.subject, body: params[:message][:body], from: message.to, to: message.from, config_email_id: @config_emails.id, date: DateTime.now)
+    else
+      subject = "Re: " + message.subject
+      @message_reply_to = Message.new(subject: subject, body: params[:message][:body], from: message.to, to: message.from, config_email_id: @config_emails.id, date: DateTime.now)
+    end
+    @message_reply_to.write!
+    if @message_reply_to.save
+      unless params[:message][:file].nil?
+        params[:message][:file].each do |a|
+          @message_attachment = @message_reply_to.message_attachments.create!(:file => a)
+        end
+      end
+      UserMailer.send_email(@message_reply_to, @config_emails).deliver
+      flash[:info] = "Your message was sent!"
+      redirect_to write_emails_path
+    end
   end
 
   private

@@ -1,3 +1,47 @@
+<script type="text/javascript" xmlns="http://www.w3.org/1999/html">
+
+    $(document).on('click', ".link_star", function () {
+        var this_start = $(this);
+        var message_id = $(this).attr('data-message-id');
+        $.ajax({
+            type: 'PUT',
+            dataType: 'JSON',
+            url: '<%= edit_starred_path %>',
+            data: {"id": message_id},
+            success: function (data) {
+                if (this_start.find('.fa').hasClass( "fa-star" )){
+                    this_start.children('.fa').removeClass( "fa-star starred_true" );
+                    this_start.children('.fa').addClass( "fa-star-o starred_false" );
+                }else {
+                    this_start.children('.fa').removeClass( "fa-star-o starred_false" );
+                    this_start.children('.fa').addClass( "fa-star starred_true" );
+                }
+            }
+        });
+    });
+
+    $(document).on('click', ".link_important", function () {
+        var this_start = $(this);
+        var message_id = $(this).attr('data-message-id');
+        $.ajax({
+            type: 'PUT',
+            dataType: 'JSON',
+            url: '<%= edit_important_path %>',
+            data: {"id": message_id},
+            success: function (data) {
+                if (this_start.find('.fa').hasClass( "important_true" )){
+                    this_start.children('.fa').removeClass( "important_true" );
+                    this_start.children('.fa').addClass( "important_false" );
+                }else {
+                    this_start.children('.fa').removeClass( "important_false" );
+                    this_start.children('.fa').addClass( "important_true" );
+                }
+            }
+        });
+    });
+
+</script>
+
 <div class="page-content-wrapper row pg_top">
   <div class="container">
     <div class="inbox">
@@ -5,13 +49,46 @@
       <div class="right_block">
         <%= render 'header_buttons' %>
         <div class="show_message">
-          <p class="from_message">From: <%= @message.from %></p>
+          <div class="message_show_top">
+            <p class="from_message">From: <%= @message.from %></p>
+            <% if @message.starred %>
+                <div class="email_starred">
+                  <%= link_to '#', class: 'link_star', :'data-message-id' => @message.id, title: 'Not marked.' do %>
+                      <i class="fa fa-star starred_true" aria-hidden="true"></i>
+                  <% end %>
+                </div>
+            <% else %>
+                <div class="email_starred">
+                  <%= link_to '#', class: 'link_star', :'data-message-id' => @message.id, title: 'Marked.' do %>
+                      <i class="fa fa-star-o starred_false" aria-hidden="true"></i>
+                  <% end %>
+                </div>
+            <% end %>
+            <% if @message.important %>
+                <div class="important_email">
+                  <%= link_to '#', class: 'link_important', :'data-message-id' => @message.id, title: 'To note as not important.' do %>
+                      <i class="fa fa-info-circle important_true" aria-hidden="true"></i>
+                  <% end %>
+                </div>
+            <% else %>
+                <div class="important_email">
+                  <%= link_to '#', class: 'link_important', :'data-message-id' => @message.id, title: 'To note as not important.' do %>
+                      <i class="fa fa-info-circle important_false" aria-hidden="true"></i>
+                  <% end %>
+                </div>
+            <% end %>
+          </div>
 
           <h3 class="subject_message"><%= @message.subject %></h3>
 
-          <div class="message_body"><%= render html: @message.body.html_safe %></div>
+          <div class="message_body">
+            <pre>
+              <%= render html: @message.body.html_safe %>
+            </pre>
+          </div>
           <% unless @message.message_attachments.blank? %>
               <p class="message_attachments_count"><%= @message.message_attachments.count %> Attachments</p>
+
               <div class="message_attachments">
                 <% @message.message_attachments.each do |message_attachment| %>
                     <div class="message_attachment">
@@ -23,7 +100,7 @@
           <% end %>
         </div>
         <div class="form_for_replay_to">
-          <%= render :partial => "form_reply_to", :locals => { :message => Message.new(), :message_obj => @message } %>
+          <%= render :partial => "form_reply_to", :locals => {:message => Message.new(), :message_obj => @message} %>
         </div>
       </div>
     </div>

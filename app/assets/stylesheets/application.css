@@ -17,6 +17,7 @@
  *= require custom
  *= require messages
  *= require config_emails
+ *= require jquery-filestyle
  */
 
 #flash_alert{

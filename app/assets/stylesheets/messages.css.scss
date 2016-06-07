@@ -315,15 +315,54 @@
         }
       }
     }
-    .from_message {
-      border-bottom: solid gainsboro 1px;
-    }
     .subject_message {
       border-bottom: solid gainsboro 1px;
     }
     .message_body {
       padding: 10px;
       border-bottom: solid gainsboro 1px;
+    }
+    .message_show_top {
+      overflow:  hidden;
+      border-bottom: solid gainsboro 1px;
+
+      .from_message {
+        width: 50%;
+        float: left;
+      }
+      .email_starred {
+        width: 25px;
+        float: right;
+        margin-top: 4px;
+
+        .link_star {
+          color: grey;
+
+          .starred_false {
+            font-size: 20px;
+          }
+          .starred_true {
+            font-size: 20px;
+            color: #FFFF00;
+          }
+        }
+      }
+      .important_email {
+        width: 25px;
+        float: right;
+        padding-top: 5px;
+
+        .link_important {
+        }
+        .important_false {
+          font-size: 18px;
+          color: grey;
+        }
+        .important_true {
+          font-size: 18px;
+          color: firebrick;
+        }
+      }
     }
   }
   .form_for_replay_to {
@@ -349,8 +388,46 @@
           margin: 5px;
         }
       }
+      .reply_to_body {
+        padding: 10px;
+      }
       .reply_to_uploader {
         margin-top: 10px;
+        input {
+          padding: 0 0 10px 10px;
+        }
+      }
+      .reply_submit {
+        width: 100px;
+        padding: 10px;
+
+        input {
+          width: 100px;
+        }
+      }
+    }
+  }
+  .new_message_form {
+    .new_message {
+      padding: 5px 0 5px 5px;
+
+      .message_to {
+        margin-bottom: 10px;
+      }
+      .message_subject {
+        margin-bottom: 10px;
+      }
+      .message_body {
+        margin-bottom: 10px;
+      }
+      .message_attachments {
+        margin-bottom: 10px;
+      }
+      .message_send {
+        width: 100px;
+        input {
+          width: 100px;
+        }
       }
     }
   }
