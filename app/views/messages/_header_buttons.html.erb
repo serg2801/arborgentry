@@ -1,34 +1,53 @@
-<div class="top_block">
-  <div class="left_buttons">
-    <div class="btn_menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="icon_panel">
-      <a class="panel-refresh" href="#"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-    </div>
-    <div class="icon_panel">
-      <a class="panel-refresh" href="#"><i class="fa fa-reply" aria-hidden="true"></i></a>
-    </div>
-    <div class="icon_panel">
-      <a class="panel-refresh" href="#"><i class="fa fa-share" aria-hidden="true"></i></a>
-    </div>
-    <div class="icon_panel icon_panel_button">
-      <button type="button" class="delete_email btn-group btn-group-xs" id="move_to_trash" disabled>
-        <i class="fa fa-trash" aria-hidden="true"></i>
-      </button>
-    </div>
-    <div class="icon_panel">
-      <a class="panel-refresh" href="#"><i class="fa fa-print" aria-hidden="true"></i></a>
-    </div>
+<!--<div class="top_block">-->
+  <!--<div class="left_buttons">-->
+    <!--<div class="btn_menu">-->
+      <!--<span></span>-->
+      <!--<span></span>-->
+      <!--<span></span>-->
+    <!--</div>-->
+    <!--<div class="icon_panel">-->
+      <!--<a class="panel-refresh" href="#"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
+    <!--</div>-->
+    <!--<div class="icon_panel">-->
+      <!--<a class="panel-refresh" href="#"><i class="fa fa-reply" aria-hidden="true"></i></a>-->
+    <!--</div>-->
+    <!--<div class="icon_panel">-->
+      <!--<a class="panel-refresh" href="#"><i class="fa fa-share" aria-hidden="true"></i></a>-->
+    <!--</div>-->
+    <!--<div class="icon_panel icon_panel_button">-->
+      <!--<button type="button" class="delete_email btn-group btn-group-xs" id="move_to_trash" disabled>-->
+        <!--<i class="fa fa-trash" aria-hidden="true"></i>-->
+      <!--</button>-->
+    <!--</div>-->
+    <!--<div class="icon_panel">-->
+      <!--<a class="panel-refresh" href="#"><i class="fa fa-print" aria-hidden="true"></i></a>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="paginate_block">-->
+
+  <!--</div>-->
+<!--</div>-->
+
+<div class="email-toolbar col-lg-12">
+  <div class="pull-left" role="toolbar">
+    <button id="email-toggle" class="email-toggle" type="button">
+      <span class="sr-only">Toggle email nav</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="#" id="refresh-inbox" class="btn btn-default tip mr5" title="Refresh inbox"><i class="fa fa-refresh"></i></a>
+    <a href="email-write.html" class="btn btn-default tip mr5" title="Reply"><i class="fa fa-mail-reply"></i></a>
+    <a href="#" class="btn btn-default tip mr5" title="Forward"><i class="fa fa-mail-forward"></i></a>
+    <a href="#" class="btn btn-danger tip mr5 delete_email" id="move_to_trash" title="Delete"><i class="fa fa-trash-o"></i></a>
+    <a href="#" class="btn btn-default tip mr5" title="Print"><i class="fa fa-print"></i></a>
   </div>
-  <div class="paginate_block">
+  <ul class="email-pager">
     <% case (params[:action]) %>
     <% when ("show_message_write") %>
     <% when ("new") %>
     <% else %>
         <%= paginate @messages %>
     <% end %>
-  </div>
+  </ul>
 </div>

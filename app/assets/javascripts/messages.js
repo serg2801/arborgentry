@@ -33,9 +33,9 @@ $(document).on('click', "#checkAll", function () {
 $(document).on('click', ".email_checkbox", function () {
     $(".email_checkbox").change(function () {
         if ($('.email_checkbox').is(":checked")) {
-            $(this).parents('.message').addClass( "mark_message" );
+            $(this).parents('.list-group-item').addClass( "highlight" );
         } else {
-            $(this).parents('.message').removeClass( "mark_message" );
+            $(this).parents('.list-group-item').removeClass( "highlight" );
         }
     });
 });

@@ -850,27 +850,27 @@
                     }
                 }
                 
-                sortItem.sortable({
-                    items: items,
-                    connectWith: sortItem,
-                    handle: handle,
-                    placeholder: "panel-placeholder",
-                    forcePlaceholderSize: true,
-                    helper: 'original',
-                    forceHelperSize: true, 
-                    cursor: "move",
-                    delay: 200,
-                    opacity: 0.8,
-                    zIndex: 10000,
-                    tolerance: "pointer", 
-                    iframeFix: false,   
-                    revert: true,                       
-                    update: function (event, ui) {
-                        if (plugin.settings.panels.rememberSortablePosition) {
-                            panelSavePosition(ui.item);
-                        }                       
-                    }
-                });
+                //sortItem.sortable({
+                //    items: items,
+                //    connectWith: sortItem,
+                //    handle: handle,
+                //    placeholder: "panel-placeholder",
+                //    forcePlaceholderSize: true,
+                //    helper: 'original',
+                //    forceHelperSize: true,
+                //    cursor: "move",
+                //    delay: 200,
+                //    opacity: 0.8,
+                //    zIndex: 10000,
+                //    tolerance: "pointer",
+                //    iframeFix: false,
+                //    revert: true,
+                //    update: function (event, ui) {
+                //        if (plugin.settings.panels.rememberSortablePosition) {
+                //            panelSavePosition(ui.item);
+                //        }
+                //    }
+                //});
 
                 // reset panel position for page
                 $('.reset-layout').click(function(e) {

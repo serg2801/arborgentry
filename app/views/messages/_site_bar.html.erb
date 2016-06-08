@@ -1,71 +1,62 @@
-<div class="left_block">
-  <!--<button type="button" class="btn btn-danger compose">Compose</button>-->
-  <%= button_to "Compose", new_message_path, :class => "btn btn-danger compose", :method => :get %>
-  <ul class="list">
-    <li class="list_links">
+<div id="email-sidebar">
+  <!-- Start #email-sidebar -->
+  <div class="p15">
+    <%= button_to "Compose", new_message_path, id: 'write-email', :class => "btn btn-danger btn-block uppercase", :method => :get %>
+    <!--<a id="write-email" href="email-write.html" class="btn btn-danger btn-block uppercase">compose</a>-->
+  </div>
+  <ul id="email-nav" class="nav nav-pills nav-stacked">
+    <li>
       <%= link_to inbox_path, :title => 'Index' do %>
-          <i class="fa fa-inbox" aria-hidden="true"></i>
-          <span class="name_link">Inbox</span>
-          <span class="count_message count_message_inbox"><%= @inbox_messages %></span>
+          <i class="glyphicon glyphicon-inbox"></i>
+          Inbox
+          <span class="label label-primary"><%= @inbox_messages %></span>
       <% end %>
     </li>
-    <li class="list_links">
+    <li>
       <%= link_to starred_path, :title => 'Starred' do %>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <span class="name_link">Starred</span>
-          <span class="count_message count_message_starred"><%= @starred_messages %></span>
+          <i class="glyphicon glyphicon-star"></i>
+          Starred
+          <span class="label label-warning"><%= @starred_messages %></span>
       <% end %>
     </li>
-    <li class="list_links">
+    <li>
       <%= link_to important_path, :title => 'Important' do %>
-          <i class="fa fa-info-circle" aria-hidden="true"></i>
-          <span class="name_link">Important</span>
-          <span class="count_message count_message_important"><%= @important_messages %></span>
+          <i class="glyphicon glyphicon-info-sign"></i>
+          Important
+          <span class="label label-danger"><%= @important_messages %></span>
       <% end %>
     </li>
-    <li class="list_links">
+    <li>
       <%= link_to write_emails_path, :title => 'Send' do %>
-          <i class="fa fa-paper-plane" aria-hidden="true"></i>
-          <span class="name_link">Send</span>
-          <span class="count_message count_message_send"><%= @write_messages %></span>
+          <i class="glyphicon glyphicon-send"></i>
+          Send
+          <span class="label label-success"><%= @write_messages %></span>
       <% end %>
     </li>
-    <li class="list_links">
+    <li>
       <%= link_to '#', :title => 'Drafts' do %>
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-          <span class="name_link">Drafts</span>
-          <span class="count_message count_message_drafts">-</span>
+          <i class="glyphicon glyphicon-pencil"></i>
+          Drafts
+          <span class="label label-info">-</span>
       <% end %>
     </li>
-    <li class="list_links">
+    <li>
       <%= link_to trash_path, :title => 'Trash' do %>
-          <i class="fa fa-trash" aria-hidden="true"></i>
-          <span class="name_link">Trash</span>
-          <span class="count_message count_message_trash"><%= @trash_messages %></span>
+          <i class="glyphicon glyphicon-trash"></i>
+          Trash
+          <span class="label label-danger"><%= @trash_messages %></span>
       <% end %>
     </li>
-  </ul>
-  <h5>LABELS</h5>
-  <ul class="list">
-    <li class="list_links">
-      <i class="fa fa-circle-o fa_work" aria-hidden="true"></i>
-      <span>Work</span>
+    <li class="nav-header">Labels</li>
+    <li><a href="#"><span class="circle"></span> Work</a>
     </li>
-    <li class="list_links">
-      <i class="fa fa-circle-o fa_private" aria-hidden="true"></i>
-      <span>Private</span>
+    <li><a href="#"><span class="circle color-red"></span> Private</a>
     </li>
-    <li class="list_links">
-      <i class="fa fa-circle-o fa_travel" aria-hidden="true"></i>
-      <span>Travel</span>
+    <li><a href="#"><span class="circle color-green"></span> Travel</a>
     </li>
-    <li class="list_links">
-      <i class="fa fa-circle-o fa_promotions" aria-hidden="true"></i>
-      <span>Promotions</span>
+    <li><a href="#"><span class="circle color-blue"></span> Promotions</a>
     </li>
-    <li class="list_links">
-      <i class="fa fa-circle-o fa_updates" aria-hidden="true"></i>
-      <span>Updates</span>
+    <li><a href="#"><span class="circle color-yellow"></span> Updates</a>
     </li>
   </ul>
 </div>
