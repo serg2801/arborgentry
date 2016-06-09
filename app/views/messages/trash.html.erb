@@ -1,80 +1,31 @@
 <script type="text/javascript">
-
-    $(document).on('click', "#move_to_trash", function () {
-        var messages_ids = []
-        $('.email_checkbox:checked').each(function () {
-            messages_ids.push($(this).val());
-        });
-        $.ajax({
-            type: 'DELETE',
-            dataType: 'JSON',
-            url: '<%= destroy_emails_path %>',
-            data: {"messages_ids": messages_ids},
-            success: function (data) {
-                $('.count_message_trash').text(data.count_trash);
-                $('.email_checkbox:checked').each(function () {
-                    $(".message_" + $(this).val()).remove();
-                });
-                var count_messages = $('.email_checkbox').size();
-                if (count_messages == 0) {
-                    $('#checkAll').prop('checked', false);
-                    $('#move_to_trash').prop('disabled', true);
+    $(document).ready(function() {
+        $(document).on('click', "#move_to_trash", function () {
+            var messages_ids = []
+            $('.email_checkbox:checked').each(function () {
+                messages_ids.push($(this).val());
+            });
+            $.ajax({
+                type: 'DELETE',
+                dataType: 'JSON',
+                url: '<%= destroy_emails_path %>',
+                data: {"messages_ids": messages_ids},
+                success: function (data) {
+                    $('.count_message_trash').text(data.count_trash);
+                    $('.email_checkbox:checked').each(function () {
+                        $(".message_" + $(this).val()).remove();
+                    });
+                    var count_messages = $('.email_checkbox').size();
+                    if (count_messages == 0) {
+                        $('#checkAll').prop('checked', false);
+                        $('#move_to_trash').prop('disabled', true);
+                    }
                 }
-            }
+            });
         });
     });
 
 </script>
-
-<!--<div class="page-content-wrapper row pg_top">-->
-<!--<div class="container">-->
-<!--<div class="inbox">-->
-<!--<%#= render 'site_bar' %>-->
-<!--<div class="right_block">-->
-<!--<%#= render 'header_buttons' %>-->
-<!--<div class="search_message">-->
-<!--<input type="checkbox" class="email_checkbox_header" id="checkAll" value="">-->
-<!--<input placeholder="Search for email..." class="search_email" name="search" form="data">-->
-<!--</div>-->
-<!--<div class="messages">-->
-<!--<%# if @messages === [] || @messages === nil %>-->
-<!--<h3>No messages!</h3>-->
-<!--<%# else %>-->
-<!--<%# @messages.each do |message| %>-->
-<!--<div class="message <%#= "message_" + "#{message.id}" %>">-->
-<!--<div class="block_email_checkbox">-->
-<!--<%#= check_box_tag "messages_ids[]", message.id, false, class: 'email_checkbox' %>-->
-<!--</div>-->
-<!--<div class="container_message">-->
-<!--<%#= link_to show_message_write_path(:id => message.id), class: 'message_link' do %>-->
-<!--<div class="block_avatar">-->
-<!--<span class="avatar"><%#= image_tag "avatars/default_avatar.png" %></span>-->
-<!--</div>-->
-<!--<div class="content_message">-->
-<!--<div class="content_top">-->
-<!--<span class="email_address"><%#= message.from %></span>-->
-<!--<div class="email_date">-->
-<!--<%# unless message.message_attachments.blank? %>-->
-<!--<i class="fa fa-paperclip" aria-hidden="true"></i>-->
-<!--<%# end %>-->
-<!--<span><%#= time_ago_in_words(message.date) %> ago.</span>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="content_bottom">-->
-<!--<span class="email_subject"><%#= message.subject %></span>-->
-<!--</div>-->
-<!--&lt;!&ndash;<p class="email_body"><%#= render html: message.body.html_safe %></p>&ndash;&gt;-->
-<!--</div>-->
-<!--<%# end %>-->
-<!--</div>-->
-<!--</div>-->
-<!--<%# end %>-->
-<!--<%# end %>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
 
 <!-- .page-content -->
 <div class="page-content sidebar-page right-sidebar-page clearfix">
@@ -84,7 +35,7 @@
       <!-- Start .page-content-inner -->
       <div id="page-header" class="clearfix">
         <div class="page-header">
-          <h2>Email inbox</h2>
+          <h2>Email trash</h2>
           <span class="txt">List of your emails</span>
         </div>
         <div class="header-stats">
@@ -147,11 +98,15 @@
                                                     <i class="fa fa-paperclip"></i>
                                               <% end %>
                                             </span>
-                                            <span class="email-inbox-date text-muted"><%= time_ago_in_words(message.date) %>
-                                              ago.</span>
+                                      <% my_time = Time.now - 23.hours %>
+                                      <% if message.date > my_time %>
+                                          <span class="email-inbox-date text-muted"><%= message.date.strftime('%H:%M') %></span>
+                                      <% else %>
+                                          <span class="email-inbox-date text-muted"><%= message.date.strftime('%d %b') %></span>
+                                      <% end %>
                                     </div>
                                     <p class="email-txt-preview">
-                                      <%= message.body %>
+                                      <%= message.subject %>
                                     </p>
                                 <% end %>
                               </div>

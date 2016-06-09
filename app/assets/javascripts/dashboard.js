@@ -142,19 +142,19 @@ $(document).ready(function() {
 			}
 	    };   
 
-    	$.plot($("#line-chart-payments"), [ 
-    		{
-    			label: "PayPal", 
-    			data: d1,
-    			lines: {fillColor: chartColours.gray}	
-    		}, 
-    		{	
-    			label: "Credit Card", 
-    			data: d2,
-    			lines: {fillColor: chartColours.teal}
-    		} 
-
-    	], options);
+    	//$.plot($("#line-chart-payments"), [
+    	//	{
+    	//		label: "PayPal",
+    	//		data: d1,
+    	//		lines: {fillColor: chartColours.gray}
+    	//	},
+    	//	{
+    	//		label: "Credit Card",
+    	//		data: d2,
+    	//		lines: {fillColor: chartColours.teal}
+    	//	}
+        //
+    	//], options);
 
 	});
 
@@ -270,13 +270,13 @@ $(document).ready(function() {
 		  	url: 'http://api.randomuser.me/',
 		  	dataType: 'json',
 		  	success: function(data){
-		    	res = data.results[0].user;
-			    $.gritter.add({
-					title: capitalise(res.name.first) + ' ' + capitalise(res.name.last),
-					text: 'Is come online',
-					image: res.picture.thumbnail,
-					close_icon: 'l-arrows-remove s16'
-				});	
+                //res = data.results[0].user;
+                //$.gritter.add({
+				//	title: capitalise(res.name.first) + ' ' + capitalise(res.name.last),
+				//	text: 'Is come online',
+				//	image: res.picture.thumbnail,
+				//	close_icon: 'l-arrows-remove s16'
+				//});
 		  	}
 		});		
 	}, 10000);

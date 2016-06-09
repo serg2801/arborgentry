@@ -1663,7 +1663,7 @@ var Progress = function Progress(container, opts) {
     } else {
         element = container;
     }
-    element.appendChild(svgView.svg);
+    //element.appendChild(svgView.svg);
 
     var newOpts = utils.extend({
         attachment: this

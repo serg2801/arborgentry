@@ -27,7 +27,9 @@ gem 'remotipart', '~> 1.2'
 gem 'bcrypt'
 gem "figaro"
 gem 'unread'
+gem 'bootstrap-sass'
 gem 'summernote-rails'
+gem "font-awesome-rails"
 
 gem "rmagick"
 gem "carrierwave"

@@ -1,24 +1,25 @@
-<%= tinymce %>
 <%= form_for :message, :url => url_for(:controller => "messages", :action => "message_reply_to",), :html => {:multipart => true} do |f| %>
-    <div class="row col-lg-12">
-      <div class="form_reply_to">
-        <div class="from_block">
-          <i class="fa fa-reply" aria-hidden="true"></i>
-          <p><%= message_obj.from %></p>
-        </div>
-        <div class="col-lg-12 col-md-12 reply_to_body">
-          <% message_id = message_obj.id %>
-          <%= hidden_field_tag :message_id, message_id %>
-          <pre>
-            <%= f.text_area :body, :class => "tinymce", :rows => 15, :cols => 60  %>
-          </pre>
-        </div>
-        <div class="reply_to_uploader">
-          <%= f.file_field :file, :multiple => true %>
-        </div>
-        <div class="reply_submit">
-          <%= f.submit 'Reply', :class => "btn-info" %>
-        </div>
+    <div class="form-group">
+      <% message_id = message_obj.id %>
+      <%= hidden_field_tag :message_id, message_id %>
+      <div class="col-lg-12">
+        <!--<pre>-->
+        <%= f.text_area :body, as: :summernote, id: "email-reply-text-area" %>
+        <!--</pre>-->
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-12">
+        <%= f.button 'Reply', :class => "btn btn-primary btn-lg" %>
       </div>
     </div>
 <% end %>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#email-reply-text-area').summernote({
+            height: 200,
+        });
+    });
+</script>

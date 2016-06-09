@@ -1,0 +1,19 @@
+<% if message.starred %>
+    <span class="link_star" data-message-id="<%= message.id %>">
+        <i class="fa fa-star starred_true" aria-hidden="true"></i>
+      </span>
+<% else %>
+    <span class="link_star" data-message-id="<%= message.id %>">
+        <i class="fa fa-star-o starred_false" aria-hidden="true"></i>
+      </span>
+<% end %>
+
+<% if message.important %>
+    <span class="link_important" data-message-id="<%= message.id %>">
+        <i class="fa fa-info-circle important_true" aria-hidden="true"></i>
+      </span>
+<% else %>
+    <span class="link_important" data-message-id="<%= message.id %>">
+        <i class="fa fa-info-circle important_false" aria-hidden="true"></i>
+      </span>
+<% end %>

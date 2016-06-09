@@ -1,437 +1,75 @@
-.container {
-  padding-top: 10px;
-  .messages_header {
-    overflow: hidden;
-    //width: 90%;
-    border-bottom: 2px solid lightgrey;
-    padding: 10px 0;
-
-    .email_checkbox_header {
-      width: 5%;
-      float: left;
-    }
-    .delete_email {
-      width: 10%;
-      float: left;
-      margin-right: 10px;
-    }
-    .email_header {
-      width: 30%;
-      float: left;
-    }
-  }
-  .messages {
-
-    .message {
-      overflow: hidden;
-      border-bottom: 1px solid lightgrey;
-      padding-top: 5px;
-      height: 52px;
-
-      .block_email_checkbox {
-        float: left;
-        width: 5%;
-        .email_checkbox {
-          height: 17px;
-          width: 17px;
-          margin-left: 15px;
-        }
-      }
-      .email_starred {
-        width: 25px;
-        float: left;
-        margin-top: 4px;
-
-        .link_star {
-          color: grey;
-
-          .starred_false {
-            font-size: 20px;
-          }
-          .starred_true {
-            font-size: 20px;
-            color: #FFFF00;
-          }
-        }
-      }
-      .important_email {
-        width: 25px;
-        float: left;
-        padding-top: 5px;
-
-        .link_important {
-        }
-        .important_false {
-          font-size: 18px;
-          color: grey;
-        }
-        .important_true {
-          font-size: 18px;
-          color: firebrick;
-        }
-      }
-      .container_message {
-        float: left;
-        width: 85%;
-
-        .message_link {
-          float: left;
-          width: 100%;
-          text-decoration: none;
-
-          .block_avatar {
-            width: 5%;
-            float: left;
-            color: #2f333f;
-
-            .avatar img {
-              height: 40px;
-              width: 40px;
-            }
-          }
-
-          .content_message {
-            width: 95%;
-            overflow: hidden;
-            padding-left: 5px;
-
-            .content_top {
-              overflow: hidden;
-              margin-bottom: 4px;
-
-              .email_address {
-                color: #2f333f;
-                float: left;
-              }
-              .email_date {
-                color: #2f333f;
-                float: right;
-                i {
-                  margin-right: 10px;
-                }
-              }
-            }
-            .content_bottom {
-              color: #2f333f;
-            }
-          }
-        }
-
-      }
-    }
+.email-wrapper {
+  .list-group {
     .unread_message {
       font-weight: bold;
     }
-    .mark_message {
-      background: gainsboro;
-    }
-    .not_mark_message {
-      background: white;
+    .container_message {
+
+      .list-group-item {
+
+        .email-inbox-info {
+          .link_star {
+            color: grey;
+            font-size: 15px;
+
+            .starred_true {
+              color: #FFFF00;
+            }
+          }
+          .link_important {
+            color: grey;
+            font-size: 15px;
+
+            .important_true {
+              color: firebrick;
+            }
+          }
+        }
+      }
     }
   }
-  .inbox {
-    overflow: hidden;
-    .left_block {
-      float: left;
-      width: 16%;
-      background: #F0FAFF;
-      font-size: 15px;
-      .compose {
-        width: 95%;
-        margin: 10px 5px;
-      }
-      .list {
-        padding: 0;
-        width: 95%;
-        margin: 5px 5px;
-        .list_links {
-          list-style-type: none;
-          margin: 10px 5px;
-          a {
-            color: #000000;
-            .fa {
-              padding-right: 12px;
-              font-size: 18px;
-            }
-            .name_link {
-
-            }
-            .count_message {
-              float: right;
-              padding: 0 3px;
-              border-radius: 4px;
-              color: white;
-            }
-            .count_message_inbox {
-              background: #0bacd3;
-            }
-            .count_message_starred {
-              background: orange;
-            }
-            .count_message_important {
-              background: firebrick;
-            }
-            .count_message_send {
-              background: forestgreen;
-            }
-            .count_message_drafts {
-              background: #0bacd3;
-            }
-            .count_message_trash {
-              background: firebrick;
-            }
+  .email-write {
+    .form-group {
+      .pull-left {
+        .jfilestyle {
+          input {
+            display: none;
           }
-        }
-      }
-      h5 {
-        padding-left: 10px;
-        margin: 16px 0;
-      }
-      .fa_work {
-        color: black;
-      }
-      .fa_private {
-        color: firebrick;
-      }
-      .fa_travel {
-        color: forestgreen;
-      }
-      .fa_promotions {
-        color: #0bacd3;
-      }
-      .fa_updates {
-        color: orange;
-      }
-    }
-    .right_block {
-      float: left;
-      width: 83%;
-      background: white;
-      font-size: 15px;
-
-      .btn_menu {
-        float: left;
-        border: 1px solid #0bacd3;
-        cursor: pointer;
-        -khtml-border-radius: 4px;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
-        position: relative;
-        width: 40px;
-        padding: 6px 8px;
-        background: none;
-        margin: 5px 0 5px 15px;
-
-        span {
-          display: block;
-          width: 22px;
-          height: 2px;
-          border-radius: 1px;
-          background: #0bacd3;
-          margin-bottom: 4px;
-        }
-      }
-
-      .btn_menu :last-child {
-        margin: 0;
-      }
-      .top_block {
-        overflow: hidden;
-
-        .left_buttons {
-          width: 50%;
-          float: left;
-          padding: 5px;
-          overflow: hidden;
-          .icon_panel {
-            float: left;
-            width: 40px;
-            padding: 3px 13px;
-            background: gainsboro;
-            margin: 5px 0 5px 15px;
-            border-radius: 5px;
-            a {
-              color: black;
-            }
-          }
-          .icon_panel_button {
-            padding: 0;
-            .delete_email {
-              width: 40px;
-              background: gainsboro;
+          .focus-jfilestyle {
+            label {
               border: none;
-              border-radius: 5px;
-              height: 27px;
-            }
-            .bg_button {
-              background: firebrick;
             }
           }
         }
-        .paginate_block {
-          width: 50%;
-          float: right;
-          text-align: right;
-          padding-right:15px;
-        }
       }
-      .search_message {
-        background: #F0FAFF;
-        .email_checkbox_header {
-          margin: 15px;
-          width: 17px;
-          height: 17px;
-        }
-        .search_email {
-          width: 25%;
-          margin: 15px 0;
-          padding: 5px 10px;
-        }
-      }
-    }
-  }
-  .show_message {
-    margin: 0 10px 10px;
-
-    .message_attachments {
-
-      overflow: hidden;
-      border-bottom: solid gainsboro 1px;
-
-      .message_attachment {
-
-        float: left;
-
-        .message_attachment_img {
-          width: 200px;
-          height: 200px;
-          border: solid 1px;
-          margin-left: 25px;
-        }
-        .message_attachment_download {
-          text-align: center;
-          padding: 15px;
-        }
-      }
-    }
-    .subject_message {
-      border-bottom: solid gainsboro 1px;
-    }
-    .message_body {
-      padding: 10px;
-      border-bottom: solid gainsboro 1px;
-    }
-    .message_show_top {
-      overflow:  hidden;
-      border-bottom: solid gainsboro 1px;
-
-      .from_message {
-        width: 50%;
-        float: left;
-      }
-      .email_starred {
-        width: 25px;
-        float: right;
-        margin-top: 4px;
-
-        .link_star {
-          color: grey;
-
-          .starred_false {
-            font-size: 20px;
-          }
-          .starred_true {
-            font-size: 20px;
-            color: #FFFF00;
+      .note-editor {
+        .note-btn-group {
+          .note-btn {
+            i:before {
+              font-family: FontAwesome;
+            }
+            span:before {
+              font-family: FontAwesome;
+            }
           }
         }
       }
-      .important_email {
-        width: 25px;
-        float: right;
-        padding-top: 5px;
-
-        .link_important {
-        }
-        .important_false {
-          font-size: 18px;
-          color: grey;
-        }
-        .important_true {
-          font-size: 18px;
-          color: firebrick;
+    }
+  }
+  .email-read-reply {
+    .note-editor {
+      .note-btn-group {
+        .note-btn {
+          i:before {
+            font-family: FontAwesome;
+          }
+          span:before {
+            font-family: FontAwesome;
+          }
         }
       }
     }
-  }
-  .form_for_replay_to {
 
-    .form_reply_to {
-      padding-top: 10px;
-      border: solid 1px gainsboro;
-      margin: 8px;
-
-      .from_block {
-        overflow: hidden;
-        border: solid 1px gainsboro;
-        margin: 0px 10px 10px;
-        i {
-          float: left;
-          margin: 8px;
-          font-size: 16px;
-          width: 20px;
-        }
-        p {
-          float: left;
-          width: 250px;
-          margin: 5px;
-        }
-      }
-      .reply_to_body {
-        padding: 10px;
-      }
-      .reply_to_uploader {
-        margin-top: 10px;
-        input {
-          padding: 0 0 10px 10px;
-        }
-      }
-      .reply_submit {
-        width: 100px;
-        padding: 10px;
-
-        input {
-          width: 100px;
-        }
-      }
-    }
-  }
-  .new_message_form {
-    .new_message {
-      padding: 5px 0 5px 5px;
-
-      .message_to {
-        margin-bottom: 10px;
-      }
-      .message_subject {
-        margin-bottom: 10px;
-      }
-      .message_body {
-        margin-bottom: 10px;
-      }
-      .message_attachments {
-        margin-bottom: 10px;
-      }
-      .message_send {
-        width: 100px;
-        input {
-          width: 100px;
-        }
-      }
-    }
-  }
-  .highlight:hover {
-    background: #fffdbc !important;
   }
 }
+
