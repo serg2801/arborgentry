@@ -17,8 +17,8 @@
                     var count_messages = $('.email_checkbox').size();
                     if (count_messages == 0) {
                         $('#checkAll').prop('checked', false);
-                        $('#move_to_trash').prop('disabled', true);
                     }
+                    $('#move_to_trash').addClass('move_to_trash_disabled');
                 }
             });
         });

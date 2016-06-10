@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   delete 'destroy_emails',  to: 'messages#destroy_emails'
   get 'read_emails',        to: 'messages#read_emails'
   get 'inbox',              to: 'messages#inbox'
+  get 'refresh_inbox',      to: 'messages#refresh_inbox'
   get 'trash',              to: 'messages#trash'
   get 'write_emails',       to: 'messages#write_emails'
   get 'show_message_read',  to: 'messages#show_message_read'

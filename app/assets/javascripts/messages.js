@@ -3,10 +3,10 @@ $(document).ready(function() {
         $(".email_checkbox").change(function () {
             var count_checkbox = $('.email_checkbox:checked').size();
             if (count_checkbox > 0) {
-                $('#move_to_trash').prop('disabled', false);
+                $('#move_to_trash').removeClass('move_to_trash_disabled');
                 $('#move_to_trash').addClass('bg_button');
             } else {
-                $('#move_to_trash').prop('disabled', true);
+                $('#move_to_trash').addClass('move_to_trash_disabled');
                 $('#move_to_trash').removeClass('bg_button');
             }
         });
@@ -23,10 +23,10 @@ $(document).ready(function() {
         $('.email_checkbox').prop('checked', this.checked);
         $("#checkAll").change(function () {
             if ($('#checkAll').is(":checked")) {
-                $('#move_to_trash').prop('disabled', false);
+                $('#move_to_trash').removeClass('move_to_trash_disabled');
                 $('#move_to_trash').addClass('bg_button');
             } else {
-                $('#move_to_trash').prop('disabled', true);
+                $('#move_to_trash').addClass('move_to_trash_disabled');
                 $('#move_to_trash').removeClass('bg_button');
             }
         });

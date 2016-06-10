@@ -19,8 +19,8 @@
                     var count_messages = $('.email_checkbox').size();
                     if (count_messages == 0) {
                         $('#checkAll').prop('checked', false);
-                        $('#move_to_trash').prop('disabled', true);
                     }
+                    $('#move_to_trash').addClass('move_to_trash_disabled');
                 }
             });
         });
@@ -141,7 +141,7 @@
                                                     <i class="fa fa-paperclip"></i>
                                               <% end %>
                                             </span>
-                                      <% my_time = Time.now - 23.hours %>
+                                      <% my_time = Time.now - 24.hours %>
                                       <% if message.date > my_time %>
                                           <span class="email-inbox-date text-muted"><%= message.date.strftime('%H:%M') %></span>
                                       <% else %>

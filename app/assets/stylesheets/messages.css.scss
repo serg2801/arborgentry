@@ -33,7 +33,7 @@
       .pull-left {
         .jfilestyle {
           input {
-            display: none;
+            //display: none;
           }
           .focus-jfilestyle {
             label {
@@ -42,34 +42,10 @@
           }
         }
       }
-      .note-editor {
-        .note-btn-group {
-          .note-btn {
-            i:before {
-              font-family: FontAwesome;
-            }
-            span:before {
-              font-family: FontAwesome;
-            }
-          }
-        }
-      }
     }
   }
-  .email-read-reply {
-    .note-editor {
-      .note-btn-group {
-        .note-btn {
-          i:before {
-            font-family: FontAwesome;
-          }
-          span:before {
-            font-family: FontAwesome;
-          }
-        }
-      }
-    }
-
-  }
+  .move_to_trash_disabled {
+    pointer-events: none;
+    cursor: default;}
 }
 

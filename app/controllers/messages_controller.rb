@@ -80,6 +80,28 @@ class MessagesController < ApplicationController
     @inbox_messages = @config_emails.messages.where(status: 0, trash: false).count
   end
 
+  def refresh_inbox
+    if @config_emails.blank?
+      flash[:warning] = "Please connect your email address!!!"
+      redirect_to new_config_email_path
+    else
+      begin
+        if @config_emails.server_name == "POP"
+          current_vendor.receive_emails_pop
+        else
+          current_vendor.receive_emails_imap
+        end
+      rescue Exception => e
+        puts ("#{e.message}")
+        @exc = e.message
+        flash[:warning] = 'Error' + "#{@exc}"
+      end
+      @messages = @config_emails.messages.where(status: 0, trash: false).order("date desc").page(params[:page]).per(20)
+    end
+    @inbox_messages = @config_emails.messages.where(status: 0, trash: false).count
+    render status: 200, :json => {}
+  end
+
   def write_emails
     @emails = current_vendor.config_emails
     if @config_emails.nil?
@@ -197,6 +219,7 @@ class MessagesController < ApplicationController
       flash[:warning] = "Please connect your email address!!!"
       redirect_to new_config_email_path
     else
+      @inbox_messages_unread = @config_emails.messages.where(status: 0, trash: false).unread_by(current_vendor).count
       @config_emails = current_vendor.config_emails.first
       @write_messages = @config_emails.messages.where(status: 1, trash: false).count
       @inbox_messages = @config_emails.messages.where(status: 0, trash: false).count

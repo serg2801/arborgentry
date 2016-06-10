@@ -9,7 +9,7 @@
       <%= link_to inbox_path, :title => 'Index' do %>
           <i class="glyphicon glyphicon-inbox"></i>
           Inbox
-          <span class="label label-primary"><%= @inbox_messages %></span>
+          <span class="label label-primary"><%= @inbox_messages %> <%= '(' + @inbox_messages_unread.to_s + ')' unless @inbox_messages_unread < 0 %></span>
       <% end %>
     </li>
     <li>

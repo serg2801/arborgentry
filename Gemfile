@@ -28,7 +28,7 @@ gem 'bcrypt'
 gem "figaro"
 gem 'unread'
 gem 'bootstrap-sass'
-gem 'summernote-rails'
+# gem 'summernote-rails'
 gem "font-awesome-rails"
 
 gem "rmagick"
