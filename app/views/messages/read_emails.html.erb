@@ -1,7 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $(document).on('click', "#move_to_trash", function () {
-            var messages_ids = []
+            var messages_ids = [];
             $('.email_checkbox:checked').each(function () {
                 messages_ids.push($(this).val());
             });
@@ -11,6 +11,8 @@
                 url: '<%= move_to_trash_path %>',
                 data: {"messages_ids": messages_ids},
                 success: function (data) {
+                    $('.count_message_send').text(data.count_write);
+                    $('.count_message_trash').text(data.count_trash);
                     $('.email_checkbox:checked').each(function () {
                         $(".message_" + $(this).val()).remove();
                     });
@@ -23,7 +25,8 @@
             });
         });
 
-        $(document).on('click', ".link_star", function () {
+        $(document).on('click', ".link_star", function (e) {
+            e.preventDefault();
             var this_start = $(this);
             var message_id = $(this).attr('data-message-id');
             $.ajax({
@@ -43,7 +46,8 @@
             });
         });
 
-        $(document).on('click', ".link_important", function () {
+        $(document).on('click', ".link_important", function (e) {
+            e.preventDefault();
             var this_start = $(this);
             var message_id = $(this).attr('data-message-id');
             $.ajax({
@@ -65,50 +69,112 @@
     });
 
 </script>
-<div class="page-content-wrapper row pg_top">
-  <div class="container">
-    <div class="messages_header">
-      <h3 class="">Read Email</h3>
-      <input type="checkbox" class="email_checkbox_header" id="checkAll" value="">
-      <p class="email_header"><%= @config_emails.username %></p>
-    </div>
-    <div class="messages">
 
-      <% if @messages === [] || @messages === nil %>
-          <h3>No messages!</h3>
-      <% else %>
-          <% @messages.each do |message| %>
-              <div class="message <%= "message_" + "#{message.id}" %>">
-                <div class="block_email_checkbox">
-                  <%= check_box_tag "messages_ids[]", message.id, false, class: 'email_checkbox' %>
-                </div>
-                <%= render 'starred_important', :message => message %>
-                <div class="container_message">
-                  <%= link_to show_message_write_path(:id => message.id), class: 'message_link' do %>
-                      <div class="block_avatar">
-                        <span class="avatar"><%= image_tag "avatars/default_avatar.png" %></span>
-                      </div>
-                      <div class="content_message">
-                        <div class="content_top">
-                          <span class="email_address"><%= message.from %></span>
+<div id="wrapper">
+  <!-- .page-content -->
+  <div class="page-content sidebar-page right-sidebar-page clearfix">
+    <!-- .page-content-wrapper -->
+    <div class="page-content-wrapper">
+      <div class="page-content-inner">
+        <!-- Start .page-content-inner -->
+        <div id="page-header" class="clearfix">
+          <div class="page-header">
+            <h2>Email send</h2>
+            <span class="txt">List of your emails</span>
+          </div>
+          <div class="header-stats">
+            <div class="spark clearfix">
+              <div class="spark-info"><span class="number">2345</span>Visitors</div>
+              <div id="spark-visitors" class="sparkline"></div>
+            </div>
+            <div class="spark clearfix">
+              <div class="spark-info"><span class="number">17345</span>Views</div>
+              <div id="spark-templateviews" class="sparkline"></div>
+            </div>
+            <div class="spark clearfix">
+              <div class="spark-info"><span class="number">3700$</span>Sales</div>
+              <div id="spark-sales" class="sparkline"></div>
+            </div>
+          </div>
+        </div>
+        <div id="email-app-wrapper">
+          <!-- Start #email-app-wrapper -->
+          <%= render 'site_bar' %>
+          <!--End #email-sidebar -->
+          <div id="email-content">
+            <!-- Start #email-content -->
+            <div class="email-wrapper">
+              <div class="panel panel-default plain mb0 bshadowNone brad0 bl br bb bt checkall">
+                <!-- Start .panel -->
+                <div class="panel-body p0">
+                  <%= render 'header_buttons' %>
+                  <div class="email-toolbar-search col-lg-12">
+                    <div class="checkbox-custom">
+                      <input type="checkbox" class="email_checkbox_header" id="checkAll" value="">
+                      <label for="masterCheck"></label>
+                    </div>
+                    <input type="text" placeholder="Search for email..." class="search_email form-control input-xlarge" name="search">
+                  </div>
+                  <div class="email-list col-lg-12">
+                    <ul class="list-group">
+                      <% if @messages === [] || @messages === nil %>
+                          <h3>No messages!</h3>
+                      <% else %>
+                          <% @messages.each do |message| %>
 
-                          <div class="email_date">
-                            <% unless message.message_attachments.blank? %>
-                                <i class="fa fa-paperclip" aria-hidden="true"></i>
-                            <% end %>
-                            <span><%= time_ago_in_words(message.date) %> ago.</span>
-                          </div>
-                        </div>
-                        <div class="content_bottom">
-                          <span class="email_subject"><%= message.subject %></span>
-                        </div>
-                        <!--<p class="email_body"><%#= render html: message.body.html_safe %></p>-->
-                      </div>
-                  <% end %>
+                              <div class="message <%= "message_" + "#{message.id}" %>">
+                                <div class="container_message">
+                                  <%= link_to show_message_write_path(:id => message.id), class: 'list-group-item email-list-item clearfix' do %>
+                                      <div class="email-list-checkbox">
+                                        <div class="checkbox-custom">
+                                          <%= check_box_tag "messages_ids[]", message.id, false, class: 'email_checkbox' %>
+                                          <label for="check"></label>
+                                        </div>
+                                      </div>
+                                      <%= image_tag "avatars/3.jpg", alt: 'avatar', class: 'email-inbox-avatar' %>
+                                      <p class="email-inbox-name"><%= message.from %></p>
+
+                                      <div class="email-inbox-info">
+                                        <%= render 'starred_important', :message => message %>
+                                        <span class="email-inbox-favorite"><i class="fa fa-heart color-red-light"></i></span>
+                                            <span class="email-inbox-attachment">
+                                              <% unless message.message_attachments.blank? %>
+                                                    <i class="fa fa-paperclip"></i>
+                                              <% end %>
+                                            </span>
+                                        <% my_time = Time.now - 24.hours %>
+                                        <% if message.date > my_time %>
+                                            <span class="email-inbox-date text-muted"><%= message.date.strftime('%H:%M') %></span>
+                                        <% else %>
+                                            <span class="email-inbox-date text-muted"><%= message.date.strftime('%d %b') %></span>
+                                        <% end %>
+                                      </div>
+                                      <p class="email-txt-preview">
+                                        <%= message.subject %>
+                                      </p>
+                                  <% end %>
+                                </div>
+                              </div>
+
+
+                          <% end %>
+                      <% end %>
+                    </ul>
+                  </div>
                 </div>
               </div>
-          <% end %>
-      <% end %>
+              <!-- End .panel -->
+            </div>
+            <!--End .email-wrapper -->
+          </div>
+          <!--End #email-content -->
+        </div>
+        <!-- End #email-app-wrapper -->
+      </div>
+      <!-- End .page-content-inner -->
     </div>
+    <!-- / page-content-wrapper -->
   </div>
+  <!-- / page-content -->
 </div>
+<!-- / #wrapper -->

@@ -54,8 +54,8 @@ class MessagesController < ApplicationController
       flash[:warning] = "Please connect your email address!!!"
       redirect_to new_config_email_path
     else
-      @messages = @config_emails.messages.where(status: 0, trash: false).order("date desc").page(params[:page]).per(20)
-      @messages = @messages.read_by(current_vendor)
+      @messages = @config_emails.messages.where(status: 0, trash: false).read_by(current_vendor).order("date desc").page(params[:page]).per(20)
+      # @messages = @messages.read_by(current_vendor)
     end
   end
 

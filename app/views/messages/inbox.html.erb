@@ -129,7 +129,6 @@
                                               <label for="check"></label>
                                             </div>
                                           </div>
-                                          <%#= render 'starred_important', :message => message %>
                                           <%= image_tag "avatars/3.jpg", alt: 'avatar', class: 'email-inbox-avatar' %>
                                           <p class="email-inbox-name"><%= message.from %></p>
 
@@ -141,14 +140,12 @@
                                                     <i class="fa fa-paperclip"></i>
                                               <% end %>
                                             </span>
-                                            <%#= @message.date.strftime('%d %b' ' @ ' '%H:%M') %>
                                             <% my_time = Time.now + 1.day %>
                                             <% if message.date < my_time %>
                                                 <span class="email-inbox-date text-muted"><%= message.date.strftime('%H:%M') %></span>
                                             <% else %>
                                                 <span class="email-inbox-date text-muted"><%= message.date.strftime('%d %b') %></span>
                                             <% end %>
-                                            <!--<span class="email-inbox-date text-muted"><%#= time_ago_in_words(message.date) %> ago.</span>-->
                                           </div>
                                           <p class="email-txt-preview">
                                             <%= message.subject %>
@@ -166,7 +163,6 @@
                                               <label for="check"></label>
                                             </div>
                                           </div>
-                                          <%#= render 'starred_important', :message => message %>
                                           <%= image_tag "avatars/6.jpg", alt: 'avatar', class: 'email-inbox-avatar' %>
                                           <p class="email-inbox-name"><%= message.from %></p>
 
@@ -184,7 +180,6 @@
                                             <% else %>
                                                 <span class="email-inbox-date text-muted"><%= message.date.strftime('%d %b') %></span>
                                             <% end %>
-                                            <!--<span class="email-inbox-date text-muted"><%#= time_ago_in_words(message.date) %> ago.</span>-->
                                           </div>
                                           <p class="email-txt-preview">
                                             <%= message.subject %>

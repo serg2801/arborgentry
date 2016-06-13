@@ -78,7 +78,7 @@
                     <% else %>
                         <% @messages.each do |message| %>
 
-                            <div class="message unread_message <%= "message_" + "#{message.id}" %>">
+                            <div class="message <%= "message_" + "#{message.id}" %>">
                               <div class="container_message">
                                 <%= link_to show_message_write_path(:id => message.id), class: 'list-group-item email-list-item clearfix' do %>
                                     <div class="email-list-checkbox">
