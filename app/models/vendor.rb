@@ -19,13 +19,15 @@ class Vendor < ActiveRecord::Base
   has_attached_file :sample_photo, styles: {thumb: "100x100#", small: "300x300#", medium: "500x500#", large: "800x800#"}
   validates_attachment_content_type :sample_photo, content_type: ['image/jpeg', 'image/png', 'application/pdf']
 
-  after_create :send_admin_mail
+  # after_create :send_admin_mail
 
   acts_as_reader
 
-  def password_required?
-    super if confirmed?
-  end
+  enum role: [ :admin, :vendor_admin, :vendor_user1, :vendor_user2, :vendor_user3 ]
+
+  # def password_required?
+  #   super if confirmed?
+  # end
 
   def receive_emails_pop
     self.config_emails.each do |config_email|
@@ -77,9 +79,9 @@ class Vendor < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
 
-  def send_admin_mail
-    VendorMailer.send_admin_mail(self).deliver
-  end
+  # def send_admin_mail
+  #   VendorMailer.send_admin_mail(self).deliver
+  # end
 
   private
 

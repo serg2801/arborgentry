@@ -20,10 +20,10 @@
               <%= f.text_field :phone_number, class: "form-control", placeholder: "Contact Number" %>
             </div>
             <div class="col-xs-4">
-              Country
+              Role
             </div>
             <div class="col-xs-8">
-              <%= f.text_field :country, class: "form-control", placeholder: "Country"%>
+              <%= f.select( :role, Vendor.roles.keys.map {|role| [role.titleize,role]}, {:class => "form-control"})%>
             </div>
           </div>
       </div>

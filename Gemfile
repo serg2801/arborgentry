@@ -32,6 +32,7 @@ gem "font-awesome-rails"
 
 gem "rmagick"
 gem "carrierwave"
+gem "pundit"
 
 
 gem 'pry'

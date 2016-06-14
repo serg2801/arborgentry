@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     end
   end    
 
-  resources :vendors, only: [:index, :edit, :update, :destroy]
+  resources :vendors, only: [:index, :new, :edit, :create, :update, :destroy]
+  get 'all_vendor_users', to: 'vendors#all_vendor_users'
   resources :product_types
   namespace :admin do
     resources :categories
