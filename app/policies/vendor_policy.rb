@@ -6,7 +6,30 @@ class VendorPolicy
     @vendor = modal
   end
 
-  def all_vendor_users?
+  def index?
+    @current_vendor.admin? || @current_vendor.vendor_admin?
+  end
+
+  def show?
+  end
+
+  def new_vendor?
     @current_vendor.vendor_admin?
+  end
+
+  def create_vendor?
+    @current_vendor.vendor_admin?
+  end
+
+  def edit?
+    @current_vendor.vendor_admin?  || @current_vendor.admin?
+  end
+
+  # def update?
+  #   @current_vendor.admin? # || @current_vendor.admin?
+  # end
+
+  def destroy?
+    @current_vendor.vendor_admin?  || @current_vendor.admin?
   end
 end

@@ -23,7 +23,7 @@
               Role
             </div>
             <div class="col-xs-8">
-              <%= f.select( :role, Vendor.roles.keys.map {|role| [role.titleize,role]}, {:class => "form-control"})%>
+              <%= f.select(:role, Vendor.roles.keys.map { |role| [role.titleize, role] }, {}, {:class => "form-control requires"}) %>
             </div>
           </div>
       </div>

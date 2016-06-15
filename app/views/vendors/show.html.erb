@@ -1,0 +1,94 @@
+<!-- .page-content -->
+<div class="page-content sidebar-page right-sidebar-page clearfix">
+  <!-- .page-content-wrapper -->
+  <div class="page-content-wrapper">
+    <div class="page-content-inner">
+      <!-- Start .page-content-inner -->
+      <div id="page-header" class="clearfix">
+        <div class="page-header">
+          <h2>Show Vendor</h2>
+          <span class="txt">List of your emails</span>
+        </div>
+        <div class="header-stats">
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">2345</span>Visitors</div>
+            <div id="spark-visitors" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">17345</span>Views</div>
+            <div id="spark-templateviews" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">3700$</span>Sales</div>
+            <div id="spark-sales" class="sparkline"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <!-- Start #email-app-wrapper -->
+        <p>
+          <strong>Vendor Name:</strong>
+          <%= @vendor.vendor_name %>
+        </p>
+
+        <p>
+          <strong>First Name:</strong>
+          <%= @vendor.first_name %>
+        </p>
+
+        <p>
+          <strong>Last Name:</strong>
+          <%= @vendor.last_name %>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <%= @vendor.email %>
+        </p>
+
+        <p>
+          <strong>Phone number:</strong>
+          <%= @vendor.phone_number %>
+        </p>
+
+        <p>
+          <strong>Web site url:</strong>
+          <%= @vendor.web_site_url %>
+        </p>
+
+        <p>
+          <strong>City:</strong>
+          <%= @vendor.city %>
+        </p>
+
+        <p>
+          <strong>State:</strong>
+          <%= @vendor.state %>
+        </p>
+
+        <p>
+          <strong>Country:</strong>
+          <%= @vendor.country %>
+        </p>
+
+        <p>
+          <strong>Zipcode:</strong>
+          <%= @vendor.zipcode %>
+        </p>
+
+        <p>
+          <strong>Additional Information:</strong>
+          <%= @vendor.additional_information %>
+        </p>
+
+        <%= link_to 'Edit', edit_vendor_path(@vendor) %> |
+        <%= link_to 'Back', vendors_path %>
+        <!--End #email-content -->
+      </div>
+      <!-- End #email-app-wrapper -->
+    </div>
+    <!-- End .page-content-inner -->
+  </div>
+  <!-- / page-content-wrapper -->
+</div>
+<!-- / page-content -->

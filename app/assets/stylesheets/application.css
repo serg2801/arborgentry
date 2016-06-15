@@ -20,6 +20,7 @@
  *= require jquery-filestyle
  *= require font-awesome
  *= require summernote
+ *= require vendors
  */
 
 #flash_alert{

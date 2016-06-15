@@ -25,10 +25,11 @@ Rails.application.routes.draw do
       # root 'devise/sessions#new', as: :unauthenticated_root
       root :to =>'home#welcome', as: :unauthenticated_root
     end
-  end    
+  end
 
-  resources :vendors, only: [:index, :new, :edit, :create, :update, :destroy]
-  get 'all_vendor_users', to: 'vendors#all_vendor_users'
+  resources :vendors, only: [:destroy, :edit, :update, :show, :index ]
+  get 'new_vendor',  to: 'vendors#new_vendor'
+  post 'new_vendor', to: 'vendors#create_vendor'
   resources :product_types
   namespace :admin do
     resources :categories

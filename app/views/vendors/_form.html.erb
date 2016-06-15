@@ -1,0 +1,116 @@
+<%= form_for @vendor, :url => url_for(:controller => "vendors", :action => "new_vendor") do |f| %>
+    <div class="row">
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          Role
+        </div>
+        <div class="col-xs-8">
+          <%= f.select(:role, Vendor.roles.keys.map { |role| [role.titleize, role] }, {}, {:class => "form-control requires"}) %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          Vendor Name
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :vendor_name, class: 'form-control', placeholder: 'Vendor Name' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          First Name
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          Last Name
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          Email
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          Phone number
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :phone_number, class: 'form-control', placeholder: 'Phone number' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          Web site url
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :web_site_url, class: 'form-control', placeholder: 'Web site url' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          City
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :city, class: 'form-control', placeholder: 'City' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          State
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :state, class: 'form-control', placeholder: 'State' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          Country
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :country, class: 'form-control', placeholder: 'Country' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          Zipcode
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :zipcode, class: 'form-control', placeholder: 'Zipcode' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          Additional Information
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :additional_information, class: 'form-control', placeholder: 'Additional Information' %>
+        </div>
+      </div>
+
+    </div>
+    <div class="">
+      <%= f.submit "Save", class: "btn btn-primary" %>
+    </div>
+<% end %>
