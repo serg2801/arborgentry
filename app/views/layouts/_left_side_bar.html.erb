@@ -54,10 +54,7 @@
                 <a href="#"><i class="l-ecommerce-graph1"></i> <span class="txt">Vendors</span></a>
                 <ul class="sub">
                   <li>
-                    <%= link_to vendors_path do %>
-                        <span class="txt">All vendors</span>
-                    <% end %>
-                  </li>
+                    <%= link_to('All vendors', vendors_path)%></li>
                   <li><a href="#"><span class="txt">New Vendor</span></a></li>
                 </ul>
               </li>
@@ -65,31 +62,32 @@
           <li>
             <a href="#"><i class="l-ecommerce-graph1"></i> <span class="txt">Charts</span></a>
             <ul class="sub">
-              <li><a href="#"><span class="txt">Flot charts</span></a></li>
-              <li><a href="#"><span class="txt">Morris charts</span></a></li>
-              <li><a href="#"><span class="txt">Chartjs </span></a></li>
-              <li><a href="#"><span class="txt">Other charts</span></a></li>
+              <li><%= link_to('Flot charts', flot_charts_path) %></li>
+              <li><%= link_to('Morris charts', morris_charts_path) %></li>
+              <li><%= link_to('Chartjs', chart_js_path) %></li>
+              <li><%= link_to('Other charts', other_charts_path) %></li>
             </ul>
           </li>
           <li>
             <a href="#"><i class="l-basic-webpage-txt"></i><span class="txt">Forms</span></a>
             <ul class="sub">
-              <li><a href="#"><span class="txt">Basic forms</span></a></li>
-              <li><a href="#"><span class="txt">Advanced forms</span></a></li>
-              <li><a href="#"><span class="txt">Form layouts</span></a></li>
-              <li><a href="#"><span class="txt">Form wizard</span></a></li>
-              <li><a href="#"><span class="txt">Form validation</span></a></li>
-              <li><%= link_to("Inquiries", admin_inquiries_path) %></li>
+              <li><%= link_to('Basic forms', basic_forms_path) %></li>
+              <li><%= link_to('Advanced forms', advanced_forms_path) %></li>
+              <li><%= link_to('Form layouts', form_layouts_path) %></li>
+              <li><%= link_to('Form wizard', form_wizard_path) %></li>
+              <li><%= link_to('Form validation', form_validation_path) %></li>
+              <li><%= link_to('Code Editor', code_editor_path) %></li>
+              <!--<li><%#= link_to("Inquiries", admin_inquiries_path) %></li>-->
             </ul>
           </li>
           <li>
             <a href="#"><i class="l-software-layout-header-3columns"></i><span class="txt">Tables</span></a>
             <ul class="sub">
-              <li><a href="#"><span class="txt">Basic tables</span></a></li>
-              <li><a href="#"><span class="txt">Data tables</span></a></li>
-              <li><a href="#"><span class="txt">Editable tables</span></a></li>
-              <li><a href="#"><span class="txt">Ajax tables</span></a></li>
-              <li><a href="#"><span class="txt">Pricing tables</span></a></li>
+              <li><%= link_to('Basic tables', basic_tables_path) %></li>
+              <li><%= link_to('Data tables', data_tables_path) %></li>
+              <li><%= link_to('Editable tables', editable_tables_path) %></li>
+              <li><%= link_to('Ajax tables', ajax_tables_path) %></li>
+              <li><%= link_to('Pricing tables', pricing_tables_path) %></li>
             </ul>
           </li>
           <li>

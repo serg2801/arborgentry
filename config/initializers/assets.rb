@@ -12,3 +12,16 @@ Rails.application.config.assets.precompile += %w( registration.css )
 
 Rails.application.config.assets.precompile += %w( home.js )
 Rails.application.config.assets.precompile += %w( home.css )
+
+Rails.application.config.assets.precompile += %w( charts-flot.js )
+Rails.application.config.assets.precompile += %w( charts-morris.js )
+Rails.application.config.assets.precompile += %w( charts-chartjs.js )
+Rails.application.config.assets.precompile += %w( charts-other.js )
+
+Rails.application.config.assets.precompile += %w( forms-basic.js )
+Rails.application.config.assets.precompile += %w( forms-wizard.js )
+Rails.application.config.assets.precompile += %w( forms-advanced.js )
+Rails.application.config.assets.precompile += %w( blank.js )
+Rails.application.config.assets.precompile += %w( forms-validation.js )
+
+Rails.application.config.assets.precompile += %w( tables-basic.js )

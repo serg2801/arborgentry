@@ -1,0 +1,614 @@
+<!-- .page-content -->
+<div class="page-content sidebar-page right-sidebar-page clearfix">
+  <!-- .page-content-wrapper -->
+  <div class="page-content-wrapper">
+    <div class="page-content-inner">
+      <!-- Start .page-content-inner -->
+      <div id="page-header" class="clearfix">
+        <div class="page-header">
+          <h2>Basic Forms</h2>
+          <span class="txt">Simple form elements</span>
+        </div>
+        <div class="header-stats">
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">2345</span>Visitors</div>
+            <div id="spark-visitors" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">17345</span>Views</div>
+            <div id="spark-templateviews" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">3700$</span>Sales</div>
+            <div id="spark-sales" class="sparkline"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Start .row -->
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- col-lg-12 start here -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Form elements</h4>
+            </div>
+            <div class="panel-body pt0 pb0">
+              <form class="form-horizontal group-border stripped">
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Default input</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control" name="default">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3  control-label" for="">Password field</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="password" class="form-control" id="passwordfield" placeholder="Type your password">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Disabled</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control" name="disabled" disabled placeholder="This is disabled filed">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Read only</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control" name="readonly" readonly placeholder="Read only field">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Predefined value</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control" name="predefined" value="http://">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Placeholder</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control" name="placeholder" placeholder="This is placeholder text">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">With tooltip</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control tip" title="Shine new tooltip" name="tooltip" placeholder="Hover for tooltip action">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Static control</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <p class="form-control-static">Jonh Doe</p>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Rounded input</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control input-rounded" name="default">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Help block</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <div class="row">
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" class="form-control">
+                        <span class="help-block">Left help block</span>
+                      </div>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" class="form-control">
+                        <span class="help-block text-center">Center help block</span>
+                      </div>
+                      <div class="col-lg-4 col-md-4">
+                        <input type="text" class="form-control">
+                        <span class="help-block text-right">Right help block</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3  control-label" for="">With icons</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="input-group input-icon">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-user s16"></i></span>
+                          <input type="text" class="form-control" placeholder="Icon on left">
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="input-group input-icon">
+                          <input type="text" class="form-control" placeholder="Icon on right">
+                          <span class="input-group-addon"><i class="fa fa-key s16"></i> </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group has-success">
+                  <label class="col-lg-2 col-md-3 control-label">Success input</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control" placeholder="Success Field">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group has-warning">
+                  <label class="col-lg-2 col-md-3 control-label">Warning input</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control" placeholder="Warning Field">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group has-error">
+                  <label class="col-lg-2 col-md-3 control-label">Error input</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control" placeholder="Error Field">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">File upload</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="file" class="filestyle" data-buttonText="Find file" data-buttonName="btn-danger" data-iconName="fa fa-plus">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group form-group-vertical">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Vertical form group</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control" name="default" placeholder="Your Name">
+                    <input type="email" class="form-control" name="email" placeholder="Your Email">
+                    <input type="password" class="form-control" name="password" placeholder="Your Password">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label">Grid input sizes</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6">
+                        <input type="text" class="form-control" placeholder=".col-lg-6">
+                      </div>
+                      <div class="col-lg-3 col-md-3">
+                        <input type="text" class="form-control" placeholder=".col-lg-3">
+                      </div>
+                      <div class="col-lg-3 col-md-3">
+                        <input type="text" class="form-control" placeholder=".col-lg-3">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+              </form>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Checkboxes, radios and selects</h4>
+            </div>
+            <div class="panel-body pt0 pb0">
+              <form class="form-horizontal group-border stripped">
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label">Checkboxes</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <div class="checkbox-custom">
+                      <input type="checkbox" value="option1" id="checkbox1">
+                      <label for="checkbox1">Unchecked</label>
+                    </div>
+                    <div class="checkbox-custom">
+                      <input type="checkbox" value="option2" checked="checked" id="checkbox2">
+                      <label for="checkbox2">Checked</label>
+                    </div>
+                    <div class="checkbox-custom">
+                      <input type="checkbox" value="option3" disabled="disabled" id="checkbox3">
+                      <label for="checkbox3">Disabled</label>
+                    </div>
+                    <div class="checkbox-custom">
+                      <input type="checkbox" value="option4" checked="checked" disabled="disabled" id="checkbox4">
+                      <label for="checkbox4">Checked and disabled</label>
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label">Inline Checkboxes</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <div class="checkbox-custom checkbox-inline">
+                      <input type="checkbox" value="option1" id="checkbox5">
+                      <label for="checkbox5">Unchecked</label>
+                    </div>
+                    <div class="checkbox-custom checkbox-inline">
+                      <input type="checkbox" value="option2" checked="checked" id="checkbox6">
+                      <label for="checkbox6">Checked</label>
+                    </div>
+                    <div class="checkbox-custom checkbox-inline">
+                      <input type="checkbox" value="option3" disabled="disabled" id="checkbox7">
+                      <label for="checkbox7">Disabled</label>
+                    </div>
+                    <div class="checkbox-custom checkbox-inline">
+                      <input type="checkbox" value="option4" checked="checked" disabled="disabled" id="checkbox8">
+                      <label for="checkbox8">Checked and disabled</label>
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group div -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label">Check all</label>
+
+                  <div id="checkAllExample" class="col-lg-10 col-md-9">
+                    <div class="checkbox-custom">
+                      <input class="check-all" type="checkbox" value="option1" id="checkbox9">
+                      <label for="checkbox9">Check all</label>
+                    </div>
+                    <div class="children">
+                      <div class="checkbox-custom">
+                        <input class="check" type="checkbox" value="option2" id="checkbox10">
+                        <label for="checkbox10">Option 1</label>
+                      </div>
+                      <div class="checkbox-custom">
+                        <input class="check" type="checkbox" value="option3" id="checkbox11">
+                        <label for="checkbox11">Option 2</label>
+                      </div>
+                      <div class="checkbox-custom">
+                        <input class="check" type="checkbox" value="option4" id="checkbox12">
+                        <label for="checkbox12">Option 3</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label">Radios</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <div class="radio-custom">
+                      <input type="radio" name="radio" value="option1" id="radio1">
+                      <label for="radio1">Unchecked</label>
+                    </div>
+                    <div class="radio-custom">
+                      <input type="radio" name="radio" value="option2" checked="checked" id="radio2">
+                      <label for="radio2">Checked</label>
+                    </div>
+                    <div class="radio-custom">
+                      <input type="radio" name="radio" value="option3" disabled="disabled" id="radio3">
+                      <label for="radio3">Disabled</label>
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label">Inline radios</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <div class="radio-custom radio-inline">
+                      <input type="radio" name="radio1" value="option1" id="radio4">
+                      <label for="radio4">Unchecked</label>
+                    </div>
+                    <div class="radio-custom radio-inline">
+                      <input type="radio" name="radio1" value="option2" checked="checked" id="radio5">
+                      <label for="radio5">Checked</label>
+                    </div>
+                    <div class="radio-custom radio-inline">
+                      <input type="radio" name="radio1" value="option3" disabled="disabled" id="radio6">
+                      <label for="radio6">Disabled</label>
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label">Simple select</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <select class="form-control">
+                      <optgroup label="Alaskan/Hawaiian Time Zone">
+                        <option value="AK">Alaska</option>
+                        <option value="HI">Hawaii</option>
+                      </optgroup>
+                      <optgroup label="Pacific Time Zone">
+                        <option value="CA">California</option>
+                        <option value="NV">Nevada</option>
+                        <option value="OR">Oregon</option>
+                        <option value="WA">Washington</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label">Multiple select</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <select style="height:200px;" class="form-control" multiple>
+                      <optgroup label="Alaskan/Hawaiian Time Zone">
+                        <option value="AK">Alaska</option>
+                        <option value="HI">Hawaii</option>
+                      </optgroup>
+                      <optgroup label="Pacific Time Zone">
+                        <option value="CA">California</option>
+                        <option value="NV">Nevada</option>
+                        <option value="OR">Oregon</option>
+                        <option value="WA">Washington</option>
+                      </optgroup>
+                    </select>
+                    <span class="help-block color-red">Multiple select (Hold CTRL key )</span>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+              </form>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Different size</h4>
+            </div>
+            <div class="panel-body pt0 pb0">
+              <form class="form-horizontal group-border stripped">
+                <div class="form-group form-group-vertical">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Input size</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control input-sm" name="default" placeholder=".input-sm">
+                    <input type="text" class="form-control" name="default" placeholder="default height">
+                    <input type="text" class="form-control input-lg" name="default" placeholder=".input-lg">
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label">Predefined width:</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <input type="text" class="form-control input-mini">
+                    <span class="help-block"><code>.input-mini</code></span>
+                    <input type="text" class="form-control input-small">
+                    <span class="help-block"><code>.input-small</code></span>
+                    <input type="text" class="form-control input-medium">
+                    <span class="help-block"><code>.input-medium</code></span>
+                    <input type="text" class="form-control input-large">
+                    <span class="help-block"><code>.input-large</code></span>
+                    <input type="text" class="form-control input-xlarge">
+                    <span class="help-block"><code>.input-xlarge</code></span>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group form-group-vertical">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Select size</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <select class="form-control input-sm">
+                      <option value="1">Choice 1</option>
+                      <option value="1">Choice 2</option>
+                      <option value="1">Choice 3</option>
+                    </select>
+                    <select class="form-control">
+                      <option value="1">Choice 1</option>
+                      <option value="1">Choice 2</option>
+                      <option value="1">Choice 3</option>
+                    </select>
+                    <select class="form-control input-lg">
+                      <option value="1">Choice 1</option>
+                      <option value="1">Choice 2</option>
+                      <option value="1">Choice 3</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+              </form>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Input groups</h4>
+            </div>
+            <div class="panel-body pt0 pb0">
+              <form class="form-horizontal group-border stripped">
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Append input group</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <div class="input-group">
+                      <span class="input-group-addon">@</span>
+                      <input type="text" class="form-control" placeholder="Username">
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Prepend input group</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Username">
+                      <span class="input-group-addon">@</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Both input groups</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <div class="input-group">
+                      <span class="input-group-addon">$</span>
+                      <input type="text" class="form-control" placeholder="Username">
+                      <span class="input-group-addon">.00</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">With buttons</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6">
+                        <div class="input-group">
+                                                                <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">Go!</button>
+                                            </span>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="input-group">
+                          <input type="text" class="form-control">
+                                                                <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">Go!</button>
+                                            </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">With dropdowns</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6">
+                        <div class="input-group">
+                          <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu left">
+                              <li><a href="#">Action</a>
+                              </li>
+                              <li><a href="#">Another action</a>
+                              </li>
+                              <li><a href="#">Something else here</a>
+                              </li>
+                              <li class="divider"></li>
+                              <li><a href="#">Separated link</a>
+                              </li>
+                            </ul>
+                          </div>
+                          <!-- /btn-group -->
+                          <input type="text" class="form-control">
+                        </div>
+                        <!-- /input-group -->
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="input-group">
+                          <input type="text" class="form-control">
+
+                          <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu right">
+                              <li><a href="#">Action</a>
+                              </li>
+                              <li><a href="#">Another action</a>
+                              </li>
+                              <li><a href="#">Something else here</a>
+                              </li>
+                              <li class="divider"></li>
+                              <li><a href="#">Separated link</a>
+                              </li>
+                            </ul>
+                          </div>
+                          <!-- /btn-group -->
+                        </div>
+                        <!-- /input-group -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+              </form>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Textareas</h4>
+            </div>
+            <div class="panel-body pt0 pb0">
+              <form class="form-horizontal group-border stripped">
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Normal text area</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <textarea class="form-control" rows="3"></textarea>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">With icon</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <textarea class="form-control icon-textarea" rows="3"></textarea>
+                    <i class="fa fa-comments textarea-icon s16"></i>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">Elastic textarea</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <textarea class="form-control elastic" rows="3"></textarea>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+                <div class="form-group">
+                  <label class="col-lg-2 col-md-3 control-label" for="">With input limit</label>
+
+                  <div class="col-lg-10 col-md-9">
+                    <textarea class="form-control limitTextarea" maxlength="250" rows="3"></textarea>
+                  </div>
+                </div>
+                <!-- End .form-group  -->
+              </form>
+            </div>
+          </div>
+          <!-- End .panel -->
+        </div>
+        <!-- col-lg-12 end here -->
+      </div>
+      <!-- End .row -->
+    </div>
+    <!-- End .page-content-inner -->
+  </div>
+  <!-- / page-content-wrapper -->
+</div>
+<%= javascript_include_tag 'forms-basic' %>

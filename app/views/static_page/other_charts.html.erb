@@ -1,0 +1,153 @@
+<div class="page-content sidebar-page right-sidebar-page clearfix">
+  <!-- .page-content-wrapper -->
+  <div class="page-content-wrapper">
+    <div class="page-content-inner">
+      <!-- Start .page-content-inner -->
+      <div id="page-header" class="clearfix">
+        <div class="page-header">
+          <h2>Other charts element</h2>
+          <span class="txt">Sparklines gauges and etc.</span>
+        </div>
+        <div class="header-stats">
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">2345</span>Visitors</div>
+            <div id="spark-visitors" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">17345</span>Views</div>
+            <div id="spark-templateviews" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">3700$</span>Sales</div>
+            <div id="spark-sales" class="sparkline"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Start .row -->
+      <div class="row">
+        <div class="col-lg-6">
+          <!-- col-lg-6 start here -->
+          <div class="panel panel-default plain toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Easy pie charts</h4>
+            </div>
+            <div class="panel-body">
+              <div class="pie-charts">
+                <div class="easy-pie-chart" data-percent="45">45%</div>
+                <div class="label">New Visitors</div>
+              </div>
+              <div class="pie-charts red-pie">
+                <div class="easy-pie-chart-red" data-percent="7">7%</div>
+                <div class="label">Drop rate</div>
+              </div>
+              <div class="pie-charts green-pie">
+                <div class="easy-pie-chart-green" data-percent="28">28%</div>
+                <div class="label">Returning</div>
+              </div>
+              <div class="pie-charts blue-pie">
+                <div class="easy-pie-chart-blue" data-percent="65">65%</div>
+                <div class="label">From Google</div>
+              </div>
+              <div class="pie-charts yellow-pie">
+                <div class="easy-pie-chart-yellow" data-percent="23">23%</div>
+                <div class="label">Direct Hits</div>
+              </div>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default plain toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Glow gauge</h4>
+            </div>
+            <div class="panel-body">
+              <div class="glow-gauge">
+                <canvas id="glow-gauge" width="100" height="60"></canvas>
+              </div>
+              <div class="glow-gauge">
+                <canvas id="glow-red-gauge" width="100" height="60"></canvas>
+              </div>
+              <div class="glow-gauge">
+                <canvas id="glow-green-gauge" width="100" height="60"></canvas>
+              </div>
+              <div class="glow-gauge">
+                <canvas id="glow-yellow-gauge" width="100" height="60"></canvas>
+              </div>
+            </div>
+          </div>
+          <!-- End .panel -->
+        </div>
+        <!-- col-lg-6 end here -->
+        <div class="col-lg-6">
+          <!-- col-lg-6 start here -->
+          <div class="panel panel-default plain toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Sparklines</h4>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <!-- Start .row -->
+                <div class="col-md-3 col-md-6 col-sm-12">
+                  <div id="spark-line" class="sparkline"></div>
+                </div>
+                <div class="col-md-3 col-md-6 col-sm-12">
+                  <div id="spark-line-blue" class="sparkline"></div>
+                </div>
+                <div class="col-md-3 col-md-6 col-sm-12">
+                  <div id="spark-line-red" class="sparkline"></div>
+                </div>
+                <div class="col-md-3 col-md-6 col-sm-12">
+                  <div id="spark-line-green" class="sparkline"></div>
+                </div>
+              </div>
+              <!-- End .row -->
+              <div class="page-header">
+                <h5>Bar</h5>
+              </div>
+              <div class="row">
+                <!-- Start .row -->
+                <div class="col-md-3 col-md-6 col-sm-12">
+                  <div id="spark-bar" class="sparkline"></div>
+                </div>
+                <div class="col-md-3 col-md-6 col-sm-12">
+                  <div id="spark-bar-blue" class="sparkline"></div>
+                </div>
+                <div class="col-md-3 col-md-6 col-sm-12">
+                  <div id="spark-bar-red" class="sparkline"></div>
+                </div>
+                <div class="col-md-3 col-md-6 col-sm-12">
+                  <div id="spark-bar-green" class="sparkline"></div>
+                </div>
+              </div>
+              <!-- End .row -->
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default plain toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Gauge</h4>
+            </div>
+            <div class="panel-body">
+              <div class="gauge">
+                <canvas id="gauge" width="100" height="60"></canvas>
+                <canvas id="gauge-red" width="100" height="60"></canvas>
+                <canvas id="gauge-blue" width="100" height="60"></canvas>
+                <canvas id="gauge-green" width="100" height="60"></canvas>
+                <canvas id="gauge-percent" width="100" height="60"></canvas>
+              </div>
+            </div>
+          </div>
+          <!-- End .panel -->
+        </div>
+        <!-- col-lg-6 end here -->
+      </div>
+      <!-- End .row -->
+    </div>
+    <!-- End .page-content-inner -->
+  </div>
+  <!-- / page-content-wrapper -->
+</div>
+<%= javascript_include_tag 'charts-other' %>

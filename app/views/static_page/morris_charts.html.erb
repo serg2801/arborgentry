@@ -1,0 +1,104 @@
+<div class="page-content sidebar-page right-sidebar-page clearfix">
+  <!-- .page-content-wrapper -->
+  <div class="page-content-wrapper">
+    <div class="page-content-inner">
+      <!-- Start .page-content-inner -->
+      <div id="page-header" class="clearfix">
+        <div class="page-header">
+          <h2>Morris charts</h2>
+          <span class="txt">Good-looking charts made easy.</span>
+        </div>
+        <div class="header-stats">
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">2345</span>Visitors</div>
+            <div id="spark-visitors" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">17345</span>Views</div>
+            <div id="spark-templateviews" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">3700$</span>Sales</div>
+            <div id="spark-sales" class="sparkline"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Start .row -->
+      <div class="row">
+        <div class="col-lg-6">
+          <!-- col-lg-6 start here -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Line chart with points</h4>
+            </div>
+            <div class="panel-body">
+              <div id="morris-line-chart" style="width: 100%; height:250px;"></div>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Area chart</h4>
+            </div>
+            <div class="panel-body">
+              <div id="morris-area-chart" style="width: 100%; height:250px;"></div>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Donut chart</h4>
+            </div>
+            <div class="panel-body">
+              <div id="morris-donut" style="width: 100%; height:250px;"></div>
+            </div>
+          </div>
+          <!-- End .panel -->
+        </div>
+        <!-- col-lg-6 end here -->
+        <div class="col-lg-6">
+          <!-- col-lg-6 start here -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Line chart without points</h4>
+            </div>
+            <div class="panel-body">
+              <div id="morris-line-chart-nopoints" style="width: 100%; height:250px;"></div>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Bar chart</h4>
+            </div>
+            <div class="panel-body">
+              <div id="morris-bar-chart" style="width: 100%; height:250px;"></div>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Stacked bars</h4>
+            </div>
+            <div class="panel-body">
+              <div id="morris-bar-stacked" style="width: 100%; height:250px;"></div>
+            </div>
+          </div>
+          <!-- End .panel -->
+        </div>
+        <!-- col-lg-6 end here -->
+      </div>
+      <!-- End .row -->
+    </div>
+    <!-- End .page-content-inner -->
+  </div>
+  <!-- / page-content-wrapper -->
+</div>
+<!-- / page-content -->
+<%= javascript_include_tag 'charts-morris' %>

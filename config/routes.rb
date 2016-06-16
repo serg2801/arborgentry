@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :customers
   namespace :admin do
     resources :inquiries, :only => [:index, :destroy, :show]
@@ -57,7 +57,26 @@ Rails.application.routes.draw do
   get 'show_message_write', to: 'messages#show_message_write'
   post 'message_reply_to',  to: 'messages#message_reply_to'
 
+  #Charts
+  get 'flot_charts',     to: 'static_page#flot_charts'
+  get 'morris_charts',   to: 'static_page#morris_charts'
+  get 'chart_js',        to: 'static_page#chart_js'
+  get 'other_charts',    to: 'static_page#other_charts'
 
+  #Forms
+  get 'basic_forms',     to: 'static_page#basic_forms'
+  get 'advanced_forms',  to: 'static_page#advanced_forms'
+  get 'form_layouts',    to: 'static_page#form_layouts'
+  get 'form_wizard',     to: 'static_page#form_wizard'
+  get 'form_validation', to: 'static_page#form_validation'
+  get 'code_editor',     to: 'static_page#code_editor'
+
+  #Tables
+  get 'basic_tables',    to: 'static_page#basic_tables'
+  get 'data_tables',     to: 'static_page#data_tables'
+  get 'editable_tables', to: 'static_page#editable_tables'
+  get 'ajax_tables',     to: 'static_page#ajax_tables'
+  get 'pricing_tables',  to: 'static_page#pricing_tables'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -26,16 +26,16 @@
 //= require jquery.quicksearch
 //= require bootbox
 //= require date
-// require flot/jquery.flot.custom
-// require flot/jquery.flot.pie
-// require flot/jquery.flot.resize
-// require flot/jquery.flot.time
-// require flot/jquery.flot.growraf
-// require flot/jquery.flot.categories
-// require flot/jquery.flot.stack
-// require flot/jquery.flot.orderBars
-// require flot/jquery.flot.tooltip.min
-// require flot/jquery.flot.curvedLines
+//= require flot/jquery.flot.custom
+//= require flot/jquery.flot.pie
+//= require flot/jquery.flot.resize
+//= require flot/jquery.flot.time
+//= require flot/jquery.flot.growraf
+//= require flot/jquery.flot.categories
+//= require flot/jquery.flot.stack
+//= require flot/jquery.flot.orderBars
+//= require flot/jquery.flot.tooltip.min
+//= require flot/jquery.flot.curvedLines
 //= require sparklines/jquery.sparkline
 //= require datatables/jquery.dataTables
 //= require datatables/dataTables.tableTools
@@ -56,7 +56,36 @@
 //= require summernote
 //= require messages
 //= require jquery-filestyle
-// require turbolinks
+
+
+// Charts
+//= require jquery.easy-pie-chart
+//= require morris
+//= require raphael
+//= require Chart
+//= require canvasGauge/gauge
+//= require gauge
+
+//Forms
+//= require bootstrap/bootstrap-wizard/jquery.bootstrap.wizard
+//= require bootstrap/bootstrap-filestyle/bootstrap-filestyle
+//= require bootstrap/maxlength/bootstrap-maxlength
+//= require bootstrap/dual-list-box/jquery.bootstrap-duallistbox
+//= require bootstrap/spinner/jquery.bootstrap-touchspin
+//= require bootstrap/bootstrap-datepicker/bootstrap-datepicker
+//= require bootstrap/bootstrap-timepicker/bootstrap-timepicker
+//= require bootstrap/bootstrap-colorpicker/bootstrap-colorpicker
+//= require bootstrap/bootstrap-tagsinput/bootstrap-tagsinput
+//= require bootstrap/bootstrap-markdown/bootstrap-markdown
+//= require autosize/jquery.autosize
+//= require validation/jquery.validate
+//= require validation/additional-methods
+//= require checkall/jquery.checkAll
+//= require fancyselect/fancySelect
+//= require select2/select2
+//= require maskedinput/jquery.maskedinput
+//= require typeahead.bundle
+
 
 
 
