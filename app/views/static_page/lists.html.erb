@@ -1,0 +1,313 @@
+  <div class="page-content sidebar-page right-sidebar-page clearfix">
+    <!-- .page-content-wrapper -->
+    <div class="page-content-wrapper">
+      <div class="page-content-inner">
+        <!-- Start .page-content-inner -->
+        <div id="page-header" class="clearfix">
+          <div class="page-header">
+            <h2>Lists</h2>
+            <span class="txt">Normal and draggable lists</span>
+          </div>
+          <div class="header-stats">
+            <div class="spark clearfix">
+              <div class="spark-info"><span class="number">2345</span>Visitors</div>
+              <div id="spark-visitors" class="sparkline"></div>
+            </div>
+            <div class="spark clearfix">
+              <div class="spark-info"><span class="number">17345</span>Views</div>
+              <div id="spark-templateviews" class="sparkline"></div>
+            </div>
+            <div class="spark clearfix">
+              <div class="spark-info"><span class="number">3700$</span>Sales</div>
+              <div id="spark-sales" class="sparkline"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Start .row -->
+        <div class="row">
+          <div class="col-lg-6 col-md-6 sortable-layout">
+            <!-- col-lg-6 start here -->
+            <div class="panel panel-default toggle panelClose panelRefresh panelMove">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Nestabe lists</h4>
+              </div>
+              <div class="panel-body">
+                <div class="dd" id="nestable">
+                  <ol class="dd-list">
+                    <li class="dd-item" data-id="1">
+                      <div class="dd-handle">Item 1</div>
+                    </li>
+                    <li class="dd-item" data-id="2">
+                      <div class="dd-handle">Item 2</div>
+                      <ol class="dd-list">
+                        <li class="dd-item" data-id="3">
+                          <div class="dd-handle">Item 3</div>
+                        </li>
+                        <li class="dd-item" data-id="4">
+                          <div class="dd-handle">Item 4</div>
+                        </li>
+                        <li class="dd-item" data-id="5">
+                          <div class="dd-handle">Item 5</div>
+                          <ol class="dd-list">
+                            <li class="dd-item" data-id="6">
+                              <div class="dd-handle">Item 6</div>
+                            </li>
+                            <li class="dd-item" data-id="7">
+                              <div class="dd-handle">Item 7</div>
+                            </li>
+                            <li class="dd-item" data-id="8">
+                              <div class="dd-handle">Item 8</div>
+                            </li>
+                          </ol>
+                        </li>
+                        <li class="dd-item" data-id="9">
+                          <div class="dd-handle">Item 9</div>
+                        </li>
+                        <li class="dd-item" data-id="10">
+                          <div class="dd-handle">Item 10</div>
+                        </li>
+                      </ol>
+                    </li>
+                    <li class="dd-item" data-id="11">
+                      <div class="dd-handle">Item 11</div>
+                    </li>
+                    <li class="dd-item" data-id="12">
+                      <div class="dd-handle">Item 12</div>
+                    </li>
+                  </ol>
+                </div>
+                <form class="form-horizontal">
+                  <textarea class="form-control" id="nestable-output"></textarea>
+                </form>
+              </div>
+            </div>
+            <!-- End .panel -->
+            <div class="panel panel-default toggle panelClose panelRefresh panelMove">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Unorder list</h4>
+              </div>
+              <div class="panel-body">
+                <p><code>&lt;ul&gt;</code>
+                </p>
+                <ul>
+                  <li>Lorem ipsum dolor sit amet</li>
+                  <li>Consectetur adipiscing elit</li>
+                  <li>Integer molestie lorem at massa</li>
+                  <li>Facilisis in pretium nisl aliquet</li>
+                  <li>Nulla volutpat aliquam velit
+                    <ul>
+                      <li>Phasellus iaculis neque</li>
+                      <li>Purus sodales ultricies</li>
+                      <li>Vestibulum laoreet porttitor</li>
+                      <li>Ac tristique libero volutpat at</li>
+                    </ul>
+                  </li>
+                  <li>Faucibus porta lacus fringilla vel</li>
+                  <li>Aenean sit amet erat nunc</li>
+                  <li>Eget porttitor lorem</li>
+                </ul>
+              </div>
+            </div>
+            <!-- End .panel -->
+            <div class="panel panel-default toggle panelClose panelRefresh panelMove">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Description list</h4>
+              </div>
+              <div class="panel-body">
+                <p><code>&lt;dl&gt;</code>
+                </p>
+                <dl>
+                  <dt>Description lists</dt>
+                  <dd>A description list is perfect for defining terms.</dd>
+                  <dt>Euismod</dt>
+                  <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                  <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                  <dt>Malesuada porta</dt>
+                  <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                </dl>
+              </div>
+            </div>
+            <!-- End .panel -->
+            <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                <h4 class="panel-title">Basic list group</h4>
+              </div>
+              <div class="panel-body">
+                <ul class="list-group">
+                  <li class="list-group-item">Cras justo odio</li>
+                  <li class="list-group-item">Dapibus ac facilisis in</li>
+                  <li class="list-group-item">Morbi leo risus</li>
+                  <li class="list-group-item">Porta ac consectetur ac</li>
+                  <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+              </div>
+            </div>
+            <!-- End .panel -->
+            <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                <h4 class="panel-title">List group with contextual classes</h4>
+              </div>
+              <div class="panel-body">
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+                  <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+                  <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+                  <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+                  <li class="list-group-item list-group-item-dark">Vestibulum at eros</li>
+                </ul>
+              </div>
+            </div>
+            <!-- End .panel -->
+          </div>
+          <!-- col-lg-6 end here -->
+          <div class="col-lg-6 col-md-6 sortable-layout">
+            <!-- col-lg-6 start here -->
+            <div class="panel panel-default toggle panelClose panelRefresh panelMove">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Nestabe lists with handles</h4>
+              </div>
+              <div class="panel-body">
+                <div class="dd" id="nestable3">
+                  <ol class="dd-list">
+                    <li class="dd-item dd3-item" data-id="13">
+                      <div class="dd-handle dd3-handle">Drag</div>
+                      <div class="dd3-content">Item 13</div>
+                    </li>
+                    <li class="dd-item dd3-item" data-id="14">
+                      <div class="dd-handle dd3-handle">Drag</div>
+                      <div class="dd3-content">Item 14</div>
+                    </li>
+                    <li class="dd-item dd3-item" data-id="15">
+                      <div class="dd-handle dd3-handle">Drag</div>
+                      <div class="dd3-content">Item 15</div>
+                      <ol class="dd-list">
+                        <li class="dd-item dd3-item" data-id="16">
+                          <div class="dd-handle dd3-handle">Drag</div>
+                          <div class="dd3-content">Item 16</div>
+                        </li>
+                        <li class="dd-item dd3-item" data-id="17">
+                          <div class="dd-handle dd3-handle">Drag</div>
+                          <div class="dd3-content">Item 17</div>
+                        </li>
+                        <li class="dd-item dd3-item" data-id="18">
+                          <div class="dd-handle dd3-handle">Drag</div>
+                          <div class="dd3-content">Item 18</div>
+                        </li>
+                      </ol>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            <!-- End .panel -->
+            <div class="panel panel-default toggle panelClose panelRefresh panelMove">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Unstyled list</h4>
+              </div>
+              <div class="panel-body">
+                <p><code>&lt;ul class="unstyled"&gt;</code>
+                </p>
+                <ul class="list-unstyled">
+                  <li>Lorem ipsum dolor sit amet</li>
+                  <li>Consectetur adipiscing elit</li>
+                  <li>Integer molestie lorem at massa</li>
+                  <li>Facilisis in pretium nisl aliquet</li>
+                  <li>Nulla volutpat aliquam velit
+                    <ul>
+                      <li>Phasellus iaculis neque</li>
+                      <li>Purus sodales ultricies</li>
+                      <li>Vestibulum laoreet porttitor sem</li>
+                      <li>Ac tristique libero volutpat at</li>
+                    </ul>
+                  </li>
+                  <li>Faucibus porta lacus fringilla vel</li>
+                  <li>Aenean sit amet erat nunc</li>
+                  <li>Eget porttitor lorem</li>
+                </ul>
+              </div>
+            </div>
+            <!-- End .panel -->
+            <div class="panel panel-default toggle panelClose panelRefresh panelMove">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Horizontal description list</h4>
+              </div>
+              <div class="panel-body">
+                <p><code>&lt;dl class="dl-horizontal"&gt;</code>
+                </p>
+                <dl class="dl-horizontal">
+                  <dt>Description lists</dt>
+                  <dd>A description list is perfect for defining terms.</dd>
+                  <dt>Euismod</dt>
+                  <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                  <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                  <dt>Malesuada porta</dt>
+                  <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                  <dt>Felis euismod semper eget lacinia</dt>
+                  <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+                </dl>
+              </div>
+            </div>
+            <!-- End .panel -->
+            <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                <h4 class="panel-title">List group with links</h4>
+              </div>
+              <div class="panel-body">
+                <div class="list-group">
+                  <a href="#" class="list-group-item active">Cras justo odio</a>
+                  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item">Morbi leo risus</a>
+                  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item">Vestibulum at eros</a>
+                </div>
+              </div>
+            </div>
+            <!-- End .panel -->
+            <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                <h4 class="panel-title">List group with custom content</h4>
+              </div>
+              <div class="panel-body">
+                <div class="list-group">
+                  <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">
+                      Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+                    </p>
+                  </a>
+                  <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">
+                      Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+                    </p>
+                  </a>
+                  <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">
+                      Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- End .panel -->
+          </div>
+          <!-- col-lg-6 end here -->
+        </div>
+        <!-- End .row -->
+      </div>
+      <!-- End .page-content-inner -->
+    </div>
+    <!-- / page-content-wrapper -->
+  </div>
+<%= javascript_include_tag 'list' %>

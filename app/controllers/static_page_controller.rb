@@ -47,4 +47,51 @@ class StaticPageController < ApplicationController
 
   def pricing_tables
   end
+
+
+  def icons
+  end
+
+  def typography
+  end
+
+  def tabs
+  end
+
+  def accordions
+  end
+
+  def buttons
+  end
+
+  def notifications
+  end
+
+  def modals
+  end
+
+  def sliders
+  end
+
+  def progressbar
+  end
+
+  def lists
+  end
+
+  def grid
+  end
+
+  def other
+  end
+
+  def portlets
+  end
+
+  #Maps
+  def google_maps
+  end
+
+  def vector_maps
+  end
 end

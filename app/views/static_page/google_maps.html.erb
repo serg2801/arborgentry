@@ -1,0 +1,84 @@
+<div class="page-content sidebar-page right-sidebar-page clearfix">
+  <!-- .page-content-wrapper -->
+  <div class="page-content-wrapper">
+    <div class="page-content-inner">
+      <!-- Start .page-content-inner -->
+      <div id="page-header" class="clearfix">
+        <div class="page-header">
+          <h2>Google maps</h2>
+          <span class="txt">Show the maps locations and much more</span>
+        </div>
+        <div class="header-stats">
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">2345</span>Visitors</div>
+            <div id="spark-visitors" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">17345</span>Views</div>
+            <div id="spark-templateviews" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">3700$</span>Sales</div>
+            <div id="spark-sales" class="sparkline"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Start .row -->
+      <div class="row">
+        <div class="col-lg-6 col-md-6 sortable-layout">
+          <!-- col-lg-6 start here -->
+          <div class="panel panel-default plain toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title"><i class="fa fa-map-marker"></i> Basic map</h4>
+            </div>
+            <div class="panel-body">
+              <div id="gmap" style="width:100%;height:300px;"></div>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default plain toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title"><i class="im-target"></i> Geolocation</h4>
+            </div>
+            <div class="panel-body">
+              <div id="gmap-geolocation" style="width:100%;height:300px;"></div>
+            </div>
+          </div>
+          <!-- End .panel -->
+        </div>
+        <!-- col-lg-6 end here -->
+        <div class="col-lg-6 col-md-6 sortable-layout">
+          <!-- col-lg-6 start here -->
+          <div class="panel panel-default plain toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Routes</h4>
+            </div>
+            <div class="panel-body">
+              <div id="gmap-routes" style="width:100%;height:300px;"></div>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default plain toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Street panorama</h4>
+            </div>
+            <div class="panel-body">
+              <div id="gmap-street-panorama" style="width:100%;height:300px;"></div>
+            </div>
+          </div>
+          <!-- End .panel -->
+        </div>
+        <!-- col-lg-6 end here -->
+      </div>
+      <!-- End .row -->
+    </div>
+    <!-- End .page-content-inner -->
+  </div>
+  <!-- / page-content-wrapper -->
+</div>
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<%= javascript_include_tag 'maps-google' %>

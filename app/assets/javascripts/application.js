@@ -67,6 +67,7 @@
 //= require gauge
 
 //Forms
+//= require plugins/misc/touchpunch/jquery.ui.touch-punch
 //= require bootstrap/bootstrap-wizard/jquery.bootstrap.wizard
 //= require bootstrap/bootstrap-filestyle/bootstrap-filestyle
 //= require bootstrap/maxlength/bootstrap-maxlength
@@ -77,6 +78,7 @@
 //= require bootstrap/bootstrap-colorpicker/bootstrap-colorpicker
 //= require bootstrap/bootstrap-tagsinput/bootstrap-tagsinput
 //= require bootstrap/bootstrap-markdown/bootstrap-markdown
+//= require bootstrap/bootstrap-slider/bootstrap-slider
 //= require autosize/jquery.autosize
 //= require validation/jquery.validate
 //= require validation/additional-methods
@@ -85,6 +87,12 @@
 //= require select2/select2
 //= require maskedinput/jquery.maskedinput
 //= require typeahead.bundle
+//= require tabdrop/bootstrap-tabdrop
+//= require progressbar/jquery.circliful
+//= require nestable/jquery.nestable
+//= require waypoint/waypoints
+
+//= require plugins/misc/gmaps/gmaps
 
 
 

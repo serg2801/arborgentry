@@ -25,3 +25,11 @@ Rails.application.config.assets.precompile += %w( blank.js )
 Rails.application.config.assets.precompile += %w( forms-validation.js )
 
 Rails.application.config.assets.precompile += %w( tables-basic.js )
+
+Rails.application.config.assets.precompile += %w( tabs.js )
+Rails.application.config.assets.precompile += %w( notifications.js )
+Rails.application.config.assets.precompile += %w( modals.js )
+Rails.application.config.assets.precompile += %w( sliders.js )
+Rails.application.config.assets.precompile += %w( progressbars.js )
+Rails.application.config.assets.precompile += %w( list.js )
+Rails.application.config.assets.precompile += %w( maps-google.js )

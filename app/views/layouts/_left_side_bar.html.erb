@@ -93,22 +93,26 @@
           <li>
             <a href="#"><i class="l-software-layers2"></i><span class="txt">UI Elements</span></a>
             <ul class="sub">
-              <li><a href="#"><span class="txt">Icons</span></a></li>
-              <li><a href="#"><span class="txt">Typography</span></a></li>
-              <li><a href="#"><span class="txt">Tabs</span></a></li>
-              <li><a href="#"><span class="txt">Accordions</span></a></li>
-              <li><a href="#"><span class="txt">Buttons</span></a></li>
-              <li><a href="#"><span class="txt">Notifications</span></a></li>
-              <li><a href="#"><span class="txt">Modals</span></a></li>
-              <li><a href="#"><span class="txt">Sliders</span></a></li>
-              <li><a href="#"><span class="txt">Progressbars</span></a></li>
-              <li><a href="#"><span class="txt">Lists</span></a></li>
-              <li><a href="#"><span class="txt">Grid</span></a></li>
-              <li><a href="#"><span class="txt">Other</span></a></li>
+              <li><%= link_to('Icons', icons_path) %></li>
+              <li><%= link_to('Typography', typography_path) %></li>
+              <li><%= link_to('Tabs', tabs_path) %></li>
+              <li><%= link_to('Accordions', accordions_path) %></li>
+              <li><%= link_to('Buttons', buttons_path) %></li>
+              <li><%= link_to('Notifications', notifications_path) %></li>
+              <li><%= link_to('Modals', modals_path) %></li>
+              <li><%= link_to('Sliders', sliders_path) %></li>
+              <li><%= link_to('Progressbars', progressbar_path) %></li>
+              <li><%= link_to('Lists', lists_path) %></li>
+              <li><%= link_to('Grid', grid_path) %></li>
+              <li><%= link_to('Other', other_path) %></li>
             </ul>
           </li>
           <li>
-            <a href="#"><i class="l-software-layout-header"></i><span class="txt">Portlets</span><span class="label">22</span></a>
+            <%= link_to portlets_path do %>
+                <i class="l-software-layout-header"></i>
+                <span class="txt">Portlets</span>
+                <span class="label">22</span>
+            <% end %>
           </li>
           <li>
             <a href="#"><i class="l-basic-mail"></i> <span class="txt">Email</span></a>
@@ -129,8 +133,8 @@
           <li>
             <a href="#"><i class="l-basic-geolocalize-01"></i><span class="txt">Maps</span></a>
             <ul class="sub">
-              <li><a href="#"><span class="txt">Google maps</span></a></li>
-              <li><a href="#"><span class="txt">Vector maps</span></a></li>
+              <li><%= link_to('Google maps', google_maps_path) %></li>
+              <li><%= link_to('Vector maps', vector_maps_path) %></li>
             </ul>
           </li>
           <li>

@@ -77,6 +77,27 @@ Rails.application.routes.draw do
   get 'editable_tables', to: 'static_page#editable_tables'
   get 'ajax_tables',     to: 'static_page#ajax_tables'
   get 'pricing_tables',  to: 'static_page#pricing_tables'
+
+  #Ui Elements
+  get 'icons',         to: 'static_page#icons'
+  get 'typography',    to: 'static_page#typography'
+  get 'tabs',          to: 'static_page#tabs'
+  get 'accordions',    to: 'static_page#accordions'
+  get 'buttons',       to: 'static_page#buttons'
+  get 'notifications', to: 'static_page#notifications'
+  get 'modals',        to: 'static_page#modals'
+  get 'sliders',       to: 'static_page#sliders'
+  get 'progressbar',   to: 'static_page#progressbar'
+  get 'lists',         to: 'static_page#lists'
+  get 'grid',          to: 'static_page#grid'
+  get 'other',         to: 'static_page#other'
+
+
+  get 'portlets',      to: 'static_page#portlets'
+
+  #Maps
+  get 'google_maps',      to: 'static_page#google_maps'
+  get 'vector_maps',      to: 'static_page#vector_maps'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

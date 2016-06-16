@@ -1,0 +1,522 @@
+<div class="page-content sidebar-page right-sidebar-page clearfix">
+  <!-- .page-content-wrapper -->
+  <div class="page-content-wrapper">
+    <div class="page-content-inner">
+      <!-- Start .page-content-inner -->
+      <div id="page-header" class="clearfix">
+        <div class="page-header">
+          <h2>Modals</h2>
+          <span class="txt">Big collection of modals examples</span>
+        </div>
+        <div class="header-stats">
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">2345</span>Visitors</div>
+            <div id="spark-visitors" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">17345</span>Views</div>
+            <div id="spark-templateviews" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">3700$</span>Sales</div>
+            <div id="spark-sales" class="sparkline"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Start .row -->
+      <div class="row">
+        <div class="col-lg-6 col-md-6 sortable-layout">
+          <!-- col-lg-6 start here -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Bootbox.js</h4>
+            </div>
+            <div class="panel-body">
+              <div class="bs-callout bs-callout-info fade in mt0">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Show bootstrap modal fast via bootbox.js plugin.
+              </div>
+              <button id="alert-modal" type="button" class="btn btn-primary mr5 mb10">Alert modal</button>
+              <button id="confirm-modal" type="button" class="btn btn-danger mr5 mb10">Confirm modal</button>
+              <button id="prompt-modal" type="button" class="btn btn-success mr5 mb10">Prompt modal</button>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">External content</h4>
+            </div>
+            <div class="panel-body">
+              <div class="bs-callout bs-callout-info fade in mt0">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Content will be loaded one time via jQuery's load method and injected into the .modal-content div. If
+                you're using the data-api, you may alternatively use the href attribute to specify the remote source
+              </div>
+              <button id="remote-modal" type="button" class="btn btn-default mr5 mb10">Remote modal</button>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Panel in modal</h4>
+            </div>
+            <div class="panel-body">
+              <div class="bs-callout bs-callout-info fade in mt0">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Show bootstrap panel in modal window
+              </div>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#panelModal">Panel modal
+              </button>
+            </div>
+          </div>
+          <!-- End .panel -->
+        </div>
+        <!-- col-lg-6 end here -->
+        <div class="col-lg-6 col-md-6 sortable-layout">
+          <!-- col-lg-6 start here -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Different sizes</h4>
+            </div>
+            <div class="panel-body">
+              <div class="bs-callout bs-callout-info fade in mt0">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Set a different width and height to modal.
+              </div>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#mySmallModal">Small Modal
+              </button>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#myLargeModal">Large Modal
+              </button>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#myModal">Short modal</button>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#myModal2">Long modal</button>
+              <div class="page-header">
+                <h5>Different open effects</h5>
+              </div>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#modal-style1">FadeIn</button>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#modal-style2">FadeIn &amp;
+                scale
+              </button>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#modal-style3">SlideIn (right)
+              </button>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#modal-style4">SlideIn (left)
+              </button>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#modal-style5">SlideIn
+                (bottom)
+              </button>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#modal-style6">Super scale
+              </button>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Static backdrop</h4>
+            </div>
+            <div class="panel-body">
+              <div class="bs-callout bs-callout-info fade in mt0">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Specify static for a backdrop which doesn't close the modal on click.
+              </div>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#backDropModal">Launch modal
+              </button>
+            </div>
+          </div>
+          <!-- End .panel -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Video in modal</h4>
+            </div>
+            <div class="panel-body">
+              <div class="bs-callout bs-callout-info fade in mt0">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                Show youtube embeded video in modal
+              </div>
+              <button class="btn btn-default mr5 mb10" data-toggle="modal" data-target="#videoModal" data-theVideo="http://www.youtube.com/embed/K703vlIgens">Video
+                modal
+              </button>
+            </div>
+          </div>
+          <!-- End .panel -->
+        </div>
+        <!-- col-lg-6 end here -->
+      </div>
+      <!-- End .row -->
+    </div>
+    <!-- End .page-content-inner -->
+    <!-- Panel Modal -->
+    <div class="modal fade" id="panelModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body p0">
+            <div class="panel panel-primary mb0">
+              <!-- Start .panel -->
+              <div class="panel-heading">
+                <h4 class="panel-title">Panel in modal</h4>
+
+                <div class="panel-controls">
+                  <a href="#" data-dismiss="modal"><i class="im-close"></i></a>
+                </div>
+              </div>
+              <div class="panel-body">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis harum, architecto rem minus doloremque
+                quis tempora quisquam, iusto qui labore repudiandae beatae ipsa, placeat necessitatibus deserunt. Eos,
+                repellat laboriosam tenetur.
+              </div>
+            </div>
+            <!-- End .panel -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel2">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <div>
+              <iframe width="100%" height="350" src=""></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Backdrop Modal -->
+    <div class="modal fade" id="backDropModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel2">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sed dolores iusto ab vero tempora in earum
+              accusantium quas iure repellendus fugit ipsa reiciendis. Id illo natus sequi ex eveniet!
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+    <!-- Ajax Modal -->
+    <div class="modal fade" id="ajax-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+    <!-- Short Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel2">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sed dolores iusto ab vero tempora in earum
+              accusantium quas iure repellendus fugit ipsa reiciendis. Id illo natus sequi ex eveniet!
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+    <!-- Long Modal -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel2">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+    <!-- Small Modal -->
+    <div class="modal fade" id="mySmallModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="mySmallModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+    <!-- Lare Modal -->
+    <div class="modal fade" id="myLargeModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+    <!--Style 1 Fade in scale modal -->
+    <div class="modal fade modal-style1" id="modal-style1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="mySmallModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+    <!--Style 2 Fade in scale modal -->
+    <div class="modal fade modal-style2" id="modal-style2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="mySmallModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+    <!--Style 3 slide from the right -->
+    <div class="modal fade modal-style3" id="modal-style3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="mySmallModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+    <!--Style 4 slide from the left -->
+    <div class="modal fade modal-style4" id="modal-style4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="mySmallModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+    <!--Style 5 slide from the bottom -->
+    <div class="modal fade modal-style5" id="modal-style5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="mySmallModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+    <!--Style 6 Super scale modal -->
+    <div class="modal fade modal-style6" id="modal-style6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="mySmallModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+              id
+              est laborum.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+  </div>
+  <!-- / page-content-wrapper -->
+</div>
+<%= javascript_include_tag 'modals.js' %>
