@@ -98,6 +98,19 @@ Rails.application.routes.draw do
   #Maps
   get 'google_maps',      to: 'static_page#google_maps'
   get 'vector_maps',      to: 'static_page#vector_maps'
+
+  #Pages
+  get 'login',         to: 'static_page#login'
+  get 'lock_screen',   to: 'static_page#lock_screen'
+  get 'register',      to: 'static_page#register'
+  get 'lost_password', to: 'static_page#lost_password'
+  get 'user_profile',  to: 'static_page#user_profile'
+  get 'calendar',      to: 'static_page#calendar'
+  get 'time_line',     to: 'static_page#time_line'
+  get 'gallery',       to: 'static_page#gallery'
+  get 'invoice',       to: 'static_page#invoice'
+  get 'blank_page',    to: 'static_page#blank_page'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

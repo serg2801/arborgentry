@@ -33,3 +33,8 @@ Rails.application.config.assets.precompile += %w( sliders.js )
 Rails.application.config.assets.precompile += %w( progressbars.js )
 Rails.application.config.assets.precompile += %w( list.js )
 Rails.application.config.assets.precompile += %w( maps-google.js )
+Rails.application.config.assets.precompile += %w( maps-vector.js )
+Rails.application.config.assets.precompile += %w( profile.js )
+
+Rails.application.config.assets.precompile += %w( calendar.js )
+Rails.application.config.assets.precompile += %w( gallery.js )

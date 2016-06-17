@@ -94,4 +94,36 @@ class StaticPageController < ApplicationController
 
   def vector_maps
   end
+
+  #Pages
+
+  def login
+  end
+
+  def lock_screen
+  end
+
+  def register
+  end
+
+  def lost_password
+  end
+
+  def user_profile
+  end
+
+  def calendar
+  end
+
+  def time_line
+  end
+
+  def gallery
+  end
+
+  def invoice
+  end
+
+  def blank_page
+  end
 end

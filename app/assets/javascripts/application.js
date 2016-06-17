@@ -94,6 +94,12 @@
 
 //= require plugins/misc/gmaps/gmaps
 
+//= require plugins/misc/vectormaps/jquery-jvectormap-1.2.2.min
+//= require plugins/misc/vectormaps/maps/jquery-jvectormap-world-mill-en
+
+//= require moment
+//= require fullcalendar
+
 
 
 
