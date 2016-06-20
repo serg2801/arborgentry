@@ -1,4 +1,5 @@
 class Vendor < ActiveRecord::Base
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   require 'net/pop'

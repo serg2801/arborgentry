@@ -32,6 +32,8 @@ gem "font-awesome-rails"
 
 gem "rmagick"
 gem "carrierwave"
+
+gem "rolify"
 gem "pundit"
 
 

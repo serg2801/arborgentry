@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614100637) do
+ActiveRecord::Schema.define(version: 20160620075109) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -181,6 +181,18 @@ ActiveRecord::Schema.define(version: 20160614100637) do
 
   add_index "read_marks", ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index"
 
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "vendor_id"
+  end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], name: "index_roles_on_name"
+
   create_table "variants", force: true do |t|
     t.string   "sku"
     t.string   "barcode"
@@ -250,12 +262,18 @@ ActiveRecord::Schema.define(version: 20160614100637) do
     t.string   "sample_photo_content_type"
     t.integer  "sample_photo_file_size"
     t.datetime "sample_photo_updated_at"
-    t.integer  "role"
     t.integer  "parent_vendor_id"
   end
 
   add_index "vendors", ["confirmation_token"], name: "index_vendors_on_confirmation_token", unique: true
   add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true
   add_index "vendors", ["reset_password_token"], name: "index_vendors_on_reset_password_token", unique: true
+
+  create_table "vendors_roles", id: false, force: true do |t|
+    t.integer "vendor_id"
+    t.integer "role_id"
+  end
+
+  add_index "vendors_roles", ["vendor_id", "role_id"], name: "index_vendors_roles_on_vendor_id_and_role_id"
 
 end
