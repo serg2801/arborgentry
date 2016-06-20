@@ -1,0 +1,28 @@
+<%= form_for @role do |f| %>
+    <div class="row">
+
+      <div class="form-group">
+        <div class="col-xs-4">
+          Role Name
+        </div>
+        <div class="col-xs-8">
+          <%= f.text_field :name, class: 'form-control', placeholder: 'Role Name' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <% Permission.all.each do |permission| %>
+            <div class="col-sm-offset-4 col-sm-10">
+              <div class="checkbox-custom">
+                <%= check_box_tag "role[permission_ids][]", permission.id, nil, :id => "cmt_#{permission.id}" %>
+                <label for="cmt_<%= permission.id %>"><%= permission.name.upcase %></label>
+              </div>
+            </div>
+        <% end %>
+      </div>
+
+    </div>
+    <div class="">
+      <%= f.submit "Save", class: "btn btn-primary" %>
+    </div>
+<% end %>

@@ -5,7 +5,7 @@ class VendorsController < ApplicationController
   before_action :set_vendor, only: [:show, :edit, :update, :destroy]
 
   def index
-    @vendors = Vendor.where.not(role: 'admin')
+    # @vendors = Vendor.where.not(role: 'admin')
     @all_vendor_users = Vendor.where(parent_vendor_id: current_vendor.id)
     authorize Vendor
   end

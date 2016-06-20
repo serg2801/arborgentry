@@ -41,3 +41,9 @@ Vendor.create(email: 'admin@tendemarbor.com', :password => "password", :admin =>
 Vendor.create(email: 'vendor@tendemarbor.com', :password => "password")
 Vendor.create(email: 'test@test.com', :password => "password")
 Vendor.create(email: 'test1@test1.com', :password => "password")
+
+
+Permission.create(name: 'Permissions Vendors Create Destroy', description: 'Permissions Vendors Create Destroy', key: 'vendors_create_destroy')
+Permission.create(name: 'Permissions Vendors Show', description: 'Permissions Vendors Show', key: 'vendors_show')
+Permission.create(name: 'Permissions Vendors Update', description: 'Permissions Vendors Update', key: 'vendors_update')
+Permission.create(name: 'Permissions Email', description: 'Permissions Email', key: 'email_all_action')

@@ -6,7 +6,7 @@
       <!-- Start .page-content-inner -->
       <div id="page-header" class="clearfix">
         <div class="page-header">
-          <h2>Data tables</h2>
+          <h2>Roles</h2>
           <span class="txt">Represent big amount of data</span>
         </div>
         <div class="header-stats">
@@ -32,26 +32,20 @@
           <div class="panel panel-default toggle panelMove panelClose panelRefresh">
             <!-- Start .panel -->
             <div class="panel-heading">
-              <h4 class="panel-title">Vendor List</h4>
-              <% if current_vendor.has_role? :vendor_admin %>
-                  <%= link_to 'New Vendor', new_vendor_path, class: "btn btn-primary btn-raised btn-sm" %>
-              <% end %>
+              <h4 class="panel-title">Role List</h4>
+              <%= link_to 'New Role', new_role_path, class: "btn btn-primary btn-raised btn-sm" %>
             </div>
             <div class="panel-body">
               <table id="responsive-datatables" class="table table-bordered table-striped table-hover dt-responsive non-responsive" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Edit / Delete</th>
+                  <th>Name</th>
+                  <th>Created</th>
+                  <th>Show / Delete</th>
                 </tr>
                 </thead>
                 <tbody id="vendor-list">
-                <% if current_vendor.has_role? :admin %>
-                    <%#= render @vendors %>
-                <% elsif current_vendor.has_role? :vendor_admin %>
-                    <%= render @all_vendor_users %>
-                <% end %>
+                <%= render @roles %>
                 </tbody>
               </table>
             </div>

@@ -1,0 +1,8 @@
+<tr>
+  <td><%= role.name %></td>
+  <td><%= role.created_at.strftime('%H:%M | %d %b %Y') %></td>
+  <td>
+    <%= link_to "Show", role_path(role) %> /
+    <%= link_to "Delete", role_path(role), method: :delete, data: {confirm: "You sure?"}, remote: true %>
+  </td>
+</tr>

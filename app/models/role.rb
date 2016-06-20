@@ -10,4 +10,15 @@ class Role < ActiveRecord::Base
             :allow_nil => true
 
   scopify
+
+  has_many :permissions, :through => :role_permissions
+  has_many :role_permissions, dependent: :destroy
+
+  validates :name, presence: true
+
+
+  def has_permission?(key)
+    permissions.include? key.to_s
+  end
+
 end

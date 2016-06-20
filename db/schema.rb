@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620075109) do
+ActiveRecord::Schema.define(version: 20160620143329) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -137,6 +137,14 @@ ActiveRecord::Schema.define(version: 20160620075109) do
 
   add_index "option_values", ["option_type_id"], name: "index_option_values_on_option_type_id"
 
+  create_table "permissions", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "product_collections", force: true do |t|
     t.integer  "product_id"
     t.integer  "collection_id"
@@ -180,6 +188,13 @@ ActiveRecord::Schema.define(version: 20160620075109) do
   end
 
   add_index "read_marks", ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index"
+
+  create_table "role_permissions", force: true do |t|
+    t.integer  "role_id"
+    t.integer  "permission_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name"

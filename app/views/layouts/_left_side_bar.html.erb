@@ -49,13 +49,27 @@
                 <span class="txt">Dashboard</span>
             <% end %>
           </li>
-          <% if current_vendor.vendor_admin? %>
+          <% if current_vendor.has_role? :vendor_admin %>
               <li>
-                <a href="#"><i class="l-ecommerce-graph1"></i> <span class="txt">Vendors</span></a>
+                <a href="#">
+                  <i class="l-software-layout-header-3columns"></i>
+                  <span class="txt">User Accounts</span>
+                </a>
                 <ul class="sub">
                   <li>
-                    <%= link_to('All vendors', vendors_path)%></li>
-                  <li><a href="#"><span class="txt">New Vendor</span></a></li>
+                    <%= link_to('Vendor Accounts', vendors_path)%></li>
+                </ul>
+              </li>
+          <% end %>
+          <% if current_vendor.has_role? :vendor_admin %>
+              <li>
+                <a href="#">
+                  <i class="l-software-layout-header-3columns"></i>
+                  <span class="txt">User Roles</span>
+                </a>
+                <ul class="sub">
+                  <li>
+                    <%= link_to('Roles', roles_path)%></li>
                 </ul>
               </li>
           <% end %>

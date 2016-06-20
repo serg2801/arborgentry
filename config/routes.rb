@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   resources :messages, only: [ :create, :new ]
   resources :config_emails, only: [:new, :create, :edit, :update, :show ]
+  resources :roles, only: [:new, :create, :show, :index, :destroy ]
   get '/decryption_password' => 'config_emails#decryption_password'
   get '/test_connection' => 'config_emails#test_connection'
 
