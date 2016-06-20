@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617153149) do
+ActiveRecord::Schema.define(version: 20160614100637) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -181,12 +181,6 @@ ActiveRecord::Schema.define(version: 20160617153149) do
 
   add_index "read_marks", ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index"
 
-  create_table "roles", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "variants", force: true do |t|
     t.string   "sku"
     t.string   "barcode"
@@ -258,7 +252,6 @@ ActiveRecord::Schema.define(version: 20160617153149) do
     t.datetime "sample_photo_updated_at"
     t.integer  "role"
     t.integer  "parent_vendor_id"
-    t.integer  "role_id"
   end
 
   add_index "vendors", ["confirmation_token"], name: "index_vendors_on_confirmation_token", unique: true
