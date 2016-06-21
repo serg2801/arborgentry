@@ -7,9 +7,8 @@ class VendorPolicy
   end
 
   def index?
-    # @current_vendor.has_role? :vendor_admin || :admin
-    # @current_vendor.roles.first.has_permission?(@current_vendor.roles.first.id)
-    @current_vendor.roles.first.has_permission?(:key)
+    @current_vendor.has_role? :vendor_admin || :admin
+    # @current_vendor.roles.first.has_permission?(:vendors_index)
   end
 
   def show?

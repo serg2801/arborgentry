@@ -1,0 +1,3 @@
+$('#role-list').html('');
+$('#role-list').html('<%= escape_javascript(render @roles) %>');
+$('#error-msg').html('<%= escape_javascript(render 'layouts/messages') %>');

@@ -6,7 +6,7 @@
           Role
         </div>
         <div class="col-xs-8">
-          <%#= f.select(:role, Vendor.roles.keys.map { |role| [role.titleize, role] }, {}, {:class => "form-control requires"}) %>
+          <%= select_tag 'role_id', options_for_select(Role.where(vendor_id: current_vendor.id).collect{ |u| [u.name, u.id] }), {:class => "form-control requires"} %>
         </div>
       </div>
 

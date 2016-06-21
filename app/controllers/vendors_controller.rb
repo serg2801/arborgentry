@@ -22,7 +22,9 @@ class VendorsController < ApplicationController
     # o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
     # password_string = (0...20).map { o[rand(o.length)] }.join
     password_string = 'password'
+    role = Role.find(params[:role_id])
     @vendor = Vendor.new(vendor_params.merge(parent_vendor_id: current_vendor.id, password: password_string, password_confirmation: password_string))
+    @vendor.add_role role.name
     if @vendor.save
       flash[:success] = 'Vendor added successfully.'
       redirect_to @vendor
@@ -43,7 +45,11 @@ class VendorsController < ApplicationController
 
   def update
     if @vendor.update_attributes(vendor_params)
-      @vendors = Vendor.where('admin = (?)', false)
+      role = @vendor.roles.first.name
+      @vendor.remove_role :"#{role}"
+      new_role = Role.find(params[:role_id])
+      @vendor.add_role new_role.name
+      @vendors = Vendor.where(parent_vendor_id: current_vendor.id)
       flash[:success] = 'Vendor updated successfully.'
       respond_to do |format|
         format.html
@@ -56,7 +62,7 @@ class VendorsController < ApplicationController
 
   def destroy
     @vendor.destroy
-    @vendors = Vendor.where('admin = (?)', false)
+    @vendors = Vendor.where(parent_vendor_id: current_vendor.id)
     flash[:success] = 'Vendor deleted successfully.'
     respond_to do |format|
       format.html

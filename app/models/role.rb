@@ -15,10 +15,15 @@ class Role < ActiveRecord::Base
   has_many :role_permissions, dependent: :destroy
 
   validates :name, presence: true
+  validates :permissions, presence: true
 
 
   def has_permission?(key)
-    permissions.include? key.to_s
+    mas_key = []
+    permissions.each do |permission|
+      mas_key << permission.key
+    end
+    mas_key.include? key.to_s
   end
 
 end

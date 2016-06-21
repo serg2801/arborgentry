@@ -1,0 +1,57 @@
+<!-- .page-content -->
+<div class="page-content sidebar-page right-sidebar-page clearfix">
+  <!-- .page-content-wrapper -->
+  <div class="page-content-wrapper">
+    <div class="page-content-inner">
+      <!-- Start .page-content-inner -->
+      <div id="page-header" class="clearfix">
+        <div class="page-header">
+          <h2>Role</h2>
+        </div>
+        <div class="header-stats">
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">2345</span>Visitors</div>
+            <div id="spark-visitors" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">17345</span>Views</div>
+            <div id="spark-templateviews" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">3700$</span>Sales</div>
+            <div id="spark-sales" class="sparkline"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Start .row -->
+      <div class="row">
+        <div class="col-lg-6 col-md-6 sortable-layout">
+          <!-- col-lg-6 start here -->
+          <div class="panel panel-default plain toggle panelMove panelClose panelRefresh">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title"><%= @role.name %></h4>
+            </div>
+            <% @role.permissions.each do |permission| %>
+                <div class="panel-body">
+                  <div class="page-header">
+                    <h5><%= permission.name %></h5>
+                  </div>
+                  <div class="well"><%= permission.description %></div>
+                </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+      <!-- End .row -->
+    </div>
+    <!-- End .page-content-inner -->
+  </div>
+  <!-- / page-content-wrapper -->
+</div>
+<!-- / page-content -->
+<!-- Back to top -->
+<div id="back-to-top">
+  <a href="#">Back to Top</a>
+</div>

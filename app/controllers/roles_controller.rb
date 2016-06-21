@@ -13,12 +13,13 @@ class RolesController < ApplicationController
   end
 
   def create
-    binding.pry
     @role = Role.new(name: params[:role]['name'], vendor_id: current_vendor.id)
     @permissions = params[:role][:permission_ids]
-    @permissions.each do |permission|
-      @permission = Permission.find(permission)
-      @role.permissions << @permission
+    unless @permissions.blank?
+      @permissions.each do |permission|
+        @permission = Permission.find(permission)
+        @role.permissions << @permission
+      end
     end
     if @role.save
       flash[:info] = 'Role has been add!.'
@@ -31,11 +32,13 @@ class RolesController < ApplicationController
 
   def destroy
     @role = Role.find(params[:id])
-    if @role.destroy
-      flash[:success] = 'Role deleted successfully.'
-      redirect_to roles_path
+    @role.destroy
+    @roles = Role.where(vendor_id: current_vendor.id)
+    flash[:success] = 'Role deleted successfully.'
+    respond_to do |format|
+      format.html
+      format.js
     end
-
   end
 
 
