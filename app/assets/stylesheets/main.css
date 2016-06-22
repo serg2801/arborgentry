@@ -1930,11 +1930,11 @@ li.L9 {
   display: block;
   width: 32px;
   height: 32px;
-  background: rgba(0, 0, 0, 0.4) url(/assets/backtop.png) no-repeat center center;
+  background: rgba(0, 0, 0, 0.4) url(backtop.png) no-repeat center center;
   text-indent: -9999px;
   border-radius: 3px;
   transition: all;
-  transition-duration: 0.4;
+  /*transition-duration: 0.4;*/
 }
 #back-to-top a:hover {
   background-color: #303946;
@@ -2039,7 +2039,7 @@ li.L9 {
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0);
   transition: box-shadow 0.3s ease;
   border: none;
-  background-color: none;
+  /*background-color: none;*/
 }
 .dotstyle li a {
   top: 0;
@@ -3103,19 +3103,19 @@ fieldset[disabled] .pricing-table.yellow .pricing-bottom .price .btn.active {
   background-color: rgba(255, 255, 255, 0.7);
 }
 .weather.snow {
-  background-image: url(/assets/weather/snow.png);
+  background-image: url(weather/snow.png);
 }
 .weather.rain {
-  background-image: url(/assets/weather/rain.png);
+  background-image: url(weather/rain.png);
 }
 .weather.clear {
-  background-image: url(/assets/weather/clear.png);
+  background-image: url(weather/clear.png);
 }
 .weather.cloud {
-  background-image: url(/assets/weather/cloud.png);
+  background-image: url(weather/cloud.png);
 }
 .weather.sunny {
-  background-image: url(/assets/weather/sunny.png);
+  background-image: url(weather/sunny.png);
 }
 /* -----------------------------------------
    Recent comments
