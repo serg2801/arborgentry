@@ -7,7 +7,7 @@ class VendorPolicy
   end
 
   def index?
-    @current_vendor.has_role? :vendor_admin || :admin
+    @current_vendor.has_role? :vendor_admin
     # @current_vendor.roles.first.has_permission?(:vendors_index)
   end
 
@@ -23,7 +23,7 @@ class VendorPolicy
   end
 
   def edit?
-    @current_vendor.has_role? :vendor_admin || :admin
+    @current_vendor.has_role? :vendor_admin
   end
 
   # def update?
@@ -31,6 +31,6 @@ class VendorPolicy
   # end
 
   def destroy?
-    @current_vendor.has_role? :vendor_admin || :admin
+    @current_vendor.has_role? :vendor_admin
   end
 end

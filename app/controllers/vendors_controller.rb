@@ -45,10 +45,7 @@ class VendorsController < ApplicationController
 
   def update
     if @vendor.update_attributes(vendor_params)
-      role = @vendor.roles.first.name
-      @vendor.remove_role :"#{role}"
-      new_role = Role.find(params[:role_id])
-      @vendor.add_role new_role.name
+      @vendor.update_role(params[:role_id])
       @vendors = Vendor.where(parent_vendor_id: current_vendor.id)
       flash[:success] = 'Vendor updated successfully.'
       respond_to do |format|

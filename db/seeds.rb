@@ -36,15 +36,17 @@ Channel.create(title: 'Show room')
 Channel.create(title: 'Brick and Mortar retail store')
 Channel.create(title: '3rd party ecommerce site')
 
-
+# Vendor
 Vendor.create(email: 'admin@tendemarbor.com', :password => "password", :admin => true)
 Vendor.create(email: 'vendor@tendemarbor.com', :password => "password")
-Vendor.create(email: 'test@test.com', :password => "password")
-Vendor.create(email: 'test1@test1.com', :password => "password")
+Vendor.create(email: 'vendor_admin@tendemarbor.com', :password => "password")
+Vendor.create(email: 'vendor_admin2@tendemarbor.com', :password => "password")
 
-
-Permission.create(name: 'Permissions Vendors Create Destroy', description: 'Permissions Vendors Create Destroy', key: 'vendors_create_destroy')
-Permission.create(name: 'Permissions Vendors Show', description: 'Permissions Vendors Show', key: 'vendors_show')
-Permission.create(name: 'Permissions Vendors Update', description: 'Permissions Vendors Update', key: 'vendors_update')
+# Permission
 Permission.create(name: 'Permissions Vendors Index', description: 'Vendors Index', key: 'vendors_index')
 Permission.create(name: 'Permissions Email', description: 'Permissions Email', key: 'email_all_action')
+
+# Role
+Role.create(name: 'admin')
+Role.create(name: 'vendor_admin')
+Role.create(name: 'vendor_default')

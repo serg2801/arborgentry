@@ -1,11 +1,12 @@
 class RolesController < ApplicationController
 
+  before_action :set_role, only: [ :show, :destroy ]
+
   def index
     @roles = Role.where(vendor_id: current_vendor.id)
   end
 
   def show
-    @role = Role.find(params[:id])
   end
 
   def new
@@ -31,7 +32,7 @@ class RolesController < ApplicationController
   end
 
   def destroy
-    @role = Role.find(params[:id])
+    @role.add_default_role
     @role.destroy
     @roles = Role.where(vendor_id: current_vendor.id)
     flash[:success] = 'Role deleted successfully.'
@@ -41,5 +42,11 @@ class RolesController < ApplicationController
     end
   end
 
+
+  #Before filters
+
+  def set_role
+    @role = Role.find(params[:id])
+  end
 
 end

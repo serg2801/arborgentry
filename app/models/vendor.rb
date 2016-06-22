@@ -73,6 +73,15 @@ class Vendor < ActiveRecord::Base
     end
   end
 
+  def update_role(role_id)
+    unless self.roles.blank?
+      role = self.roles.first.name
+      self.remove_role role
+    end
+    new_role = Role.find(role_id)
+    self.add_role new_role.name
+  end
+
   def password_match?
     self.errors[:password] << "can't be blank" if password.blank?
     self.errors[:password_confirmation] << "can't be blank" if password_confirmation.blank?
