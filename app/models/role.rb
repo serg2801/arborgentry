@@ -27,7 +27,6 @@ class Role < ActiveRecord::Base
   end
 
   def add_default_role
-    binding.pry
     vendors = Vendor.with_role self.name
     vendors.each do |vendor|
       vendor.add_role :default_user
