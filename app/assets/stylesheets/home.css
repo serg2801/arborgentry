@@ -10,7 +10,24 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  
- *= require bootstrap.min
- *= require media-queries
- *= require style
+
+ * require media-queries
+ * require style
+
+ *= require shop_css/animate
+ *= require shop_css/bootstrap
+ *= require shop_css/et-line-icons
+ *= require shop_css/font-awesome.min
+ *= require shop_css/extralayers
+ *= require shop_css/settings
+ *= require shop_css/magnific-popup
+ *= require shop_css/owl.carousel
+ *= require shop_css/owl.transitions
+ *= require shop_css/full-slider
+ *= require shop_css/text-effect
+ *= require shop_css/menu-hamburger
+ *= require shop_css/style
+ *= require shop_css/responsive
+ * require shop_css/style-ie
+
  */
