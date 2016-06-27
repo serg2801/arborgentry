@@ -33,7 +33,7 @@
             <!-- Start .panel -->
             <div class="panel-heading">
               <h4 class="panel-title">Vendor List</h4>
-              <% if current_vendor.has_role? :vendor_admin %>
+              <% if @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin %>
                   <%= link_to 'New Vendor', new_vendor_path, class: "btn btn-primary btn-raised btn-sm" %>
               <% end %>
             </div>
@@ -42,16 +42,18 @@
                 <thead>
                 <tr>
                   <th>Email</th>
-                  <th>Role</th>
+                  <% if current_vendor.has_role? :vendor_admin %>
+                      <th>Role</th>
+                  <% end %>
                   <th>Edit / Delete</th>
                 </tr>
                 </thead>
                 <tbody id="vendor-list">
-                <% if current_vendor.has_role? :admin %>
-                    <%#= render @vendors %>
-                <% elsif current_vendor.has_role? :vendor_admin %>
-                    <%= render @all_vendor_users %>
-                <% end %>
+                <%# if current_vendor.has_role? :admin %>
+                <%#= render @vendors %>
+                <%# elsif current_vendor.has_role? :vendor_admin %>
+                <%= render @all_vendor_users %>
+                <%# end %>
                 </tbody>
               </table>
             </div>

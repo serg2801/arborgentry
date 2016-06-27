@@ -1,15 +1,17 @@
-<%= form_for @vendor, :url => url_for(:controller => "vendors", :action => "new_vendor") do |f| %>
+<%= form_for @vendor, :url => url_for(:controller => 'vendors', :action => 'new_vendor') do |f| %>
     <div class="row">
 
-      <div class="form-group">
-        <div class="col-xs-4">
-          Role
-        </div>
-        <div class="col-xs-8">
-          <%= select_tag 'role_id', options_for_select(Role.where(vendor_id: current_vendor.id).collect{ |u| [u.name, u.id] }), {:class => "form-control requires"} %>
-        </div>
-      </div>
 
+      <% if current_vendor.has_role? :vendor_admin %>
+          <div class="form-group">
+            <div class="col-xs-4">
+              Role
+            </div>
+            <div class="col-xs-8">
+              <%= select_tag 'role_id', options_for_select(Role.where(vendor_id: current_vendor.id).collect { |u| [u.name, u.id] }), {:class => 'form-control requires'} %>
+            </div>
+          </div>
+      <% end %>
       <div class="form-group">
         <div class="col-xs-4">
           Vendor Name
@@ -110,7 +112,7 @@
       </div>
 
     </div>
-    <div class="">
-      <%= f.submit "Save", class: "btn btn-primary" %>
+    <div class="form_save">
+      <%= f.submit 'Save', class: "btn btn-primary" %>
     </div>
 <% end %>

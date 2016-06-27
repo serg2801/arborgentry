@@ -49,7 +49,7 @@
                 <span class="txt">Dashboard</span>
             <% end %>
           </li>
-          <% if current_vendor.has_role? :vendor_admin %>
+          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
               <li>
                 <a href="#">
                   <i class="l-software-layout-header-3columns"></i>
@@ -61,7 +61,7 @@
                 </ul>
               </li>
           <% end %>
-          <% if current_vendor.has_role? :vendor_admin %>
+          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
               <li>
                 <a href="#">
                   <i class="l-software-layout-header-3columns"></i>
