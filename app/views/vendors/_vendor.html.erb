@@ -6,6 +6,7 @@
   </td>
   <% if current_vendor.has_role? :vendor_admin %>
       <td><%= vendor.roles.map { |pole| pole.name } %></td>
+      <td><%= link_to "Log In", logged_in_as_other_vendor_path(vendor) %></td>
   <% end %>
   <td>
     <%= link_to "Edit", edit_vendor_path(vendor), remote: true %> /
