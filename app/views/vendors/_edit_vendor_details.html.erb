@@ -19,12 +19,14 @@
             <div class="col-xs-8">
               <%= f.text_field :phone_number, class: "form-control", placeholder: "Contact Number" %>
             </div>
-            <div class="col-xs-4">
-              Role
-            </div>
-            <div class="col-xs-8">
-              <%= select_tag 'role_id', options_for_select(Role.where(vendor_id: current_vendor.id).collect{ |u| [u.name, u.id] }), {:class => "form-control requires"} %>
-            </div>
+            <% if current_vendor.has_role? :vendor_admin %>
+                <div class="col-xs-4">
+                  Role
+                </div>
+                <div class="col-xs-8">
+                  <%= select_tag 'role_id', options_for_select(Role.where(vendor_id: current_vendor.id).collect{ |u| [u.name, u.id] }), {:class => "form-control requires"} %>
+                </div>
+            <% end %>
           </div>
       </div>
       <div class="modal-footer">

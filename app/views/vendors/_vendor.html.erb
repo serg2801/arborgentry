@@ -4,7 +4,9 @@
         <%= vendor.email %>
     <% end %>
   </td>
-  <td><%= vendor.roles.map { |pole| pole.name } %></td>
+  <% if current_vendor.has_role? :vendor_admin %>
+      <td><%= vendor.roles.map { |pole| pole.name } %></td>
+  <% end %>
   <td>
     <%= link_to "Edit", edit_vendor_path(vendor), remote: true %> /
     <%= link_to "Delete", vendor_path(vendor), method: :delete, data: {confirm: "You sure?"}, remote: true %>

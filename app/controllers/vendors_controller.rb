@@ -5,7 +5,6 @@ class VendorsController < ApplicationController
   before_action :set_vendor, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @vendors = Vendor.where.not(role: 'admin')
     @all_vendor_users = Vendor.where(parent_vendor_id: current_vendor.id)
     authorize Vendor
   end
@@ -22,9 +21,14 @@ class VendorsController < ApplicationController
     # o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
     # password_string = (0...20).map { o[rand(o.length)] }.join
     password_string = 'password'
-    role = Role.find(params[:role_id])
-    @vendor = Vendor.new(vendor_params.merge(parent_vendor_id: current_vendor.id, password: password_string, password_confirmation: password_string))
-    @vendor.add_role role.name
+    if current_vendor.has_role? :admin
+      @vendor = Vendor.new(vendor_params.merge(parent_vendor_id: current_vendor.id, password: password_string, password_confirmation: password_string))
+      @vendor.add_role :vendor_admin
+    elsif current_vendor.has_role? :vendor_admin
+      role = Role.find(params[:role_id])
+      @vendor = Vendor.new(vendor_params.merge(parent_vendor_id: current_vendor.id, password: password_string, password_confirmation: password_string))
+      @vendor.add_role role.name
+    end
     if @vendor.save
       flash[:success] = 'Vendor added successfully.'
       redirect_to @vendor
