@@ -37,10 +37,10 @@ Channel.create(title: 'Brick and Mortar retail store')
 Channel.create(title: '3rd party ecommerce site')
 
 # Vendor
-Vendor.create(email: 'admin@tendemarbor.com', :password => "password", :admin => true)
-Vendor.create(email: 'vendor@tendemarbor.com', :password => "password")
-Vendor.create(email: 'vendor_admin@tendemarbor.com', :password => "password")
-Vendor.create(email: 'vendor_admin2@tendemarbor.com', :password => "password")
+Vendor.create(email: 'admin@tandemarbor.com', :password => "password", :admin => true)
+Vendor.create(email: 'vendor@tandemarbor.com', :password => "password")
+Vendor.create(email: 'vendor_admin@tandemarbor.com', :password => "password")
+Vendor.create(email: 'vendor_admin2@tandemarbor.com', :password => "password")
 
 # Permission
 Permission.create(name: 'Permissions Vendors Index', description: 'Vendors Index', key: 'vendors_index')
