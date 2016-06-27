@@ -31,3 +31,9 @@
  * require shop_css/style-ie
 
  */
+#error-msg .alert-notice {
+    background-color: #b2ede8;
+    border-color: #63c8be;
+    color: #0a776c;
+
+}

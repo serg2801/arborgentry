@@ -49,7 +49,7 @@ class VendorsController < ApplicationController
 
   def update
     if @vendor.update_attributes(vendor_params)
-      @vendor.update_role(params[:role_id])
+      @vendor.update_role(params[:role_id]) if current_vendor.has_role? :vendor_admin
       @vendors = Vendor.where(parent_vendor_id: current_vendor.id)
       flash[:success] = 'Vendor updated successfully.'
       respond_to do |format|
