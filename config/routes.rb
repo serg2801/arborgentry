@@ -28,8 +28,12 @@ Rails.application.routes.draw do
   end
 
   resources :vendors, only: [:destroy, :edit, :update, :show, :index ]
-  get 'new_vendor',  to: 'vendors#new_vendor'
-  post 'new_vendor', to: 'vendors#create_vendor'
+
+  get  'new_vendor',                            to: 'vendors#new_vendor'
+  post 'new_vendor',                            to: 'vendors#create_vendor'
+  get  'vendors/:id/logged_in_as_other_vendor', to: 'vendors#logged_in_as_vendor', as: :logged_in_as_other_vendor
+  get  'back_login_by_admin',                   to: 'vendors#back_login_by_admin', as: :back_login_by_admin
+
   resources :product_types
   namespace :admin do
     resources :categories

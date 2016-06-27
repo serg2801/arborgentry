@@ -31,4 +31,12 @@ module ApplicationHelper
 			when :warning then "alert alert-warning"
 		end
 	end
+
+	def link_to_reloggin
+		unless session[:relogin_id].blank?
+      content_tag :li do
+      	link_to "Back login by admin", back_login_by_admin_path, class: 'btn-info btn'
+      end
+    end
+	end
 end

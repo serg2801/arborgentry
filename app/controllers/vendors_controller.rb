@@ -2,7 +2,7 @@ class VendorsController < ApplicationController
   # before_action :is_admin?, only: [:index, :edit, :update, :destroy]
   # before_action :is_vendor_admin?, only: [:new, :create, :all_vendor_users]
   alias_method :current_user, :current_vendor
-  before_action :set_vendor, only: [:show, :edit, :update, :destroy]
+  before_action :set_vendor, only: [:show, :edit, :update, :destroy, :logged_in_as_vendor]
 
   def index
     @all_vendor_users = Vendor.where(parent_vendor_id: current_vendor.id)
@@ -70,6 +70,25 @@ class VendorsController < ApplicationController
       format.js
     end
     authorize Vendor
+  end
+
+  def logged_in_as_vendor
+    session[:relogin_id] = current_vendor.id if session[:relogin_id].blank?
+    sign_out current_vendor
+    sign_in @vendor, event: :authentication
+    flash[:success] = "Logged in as user #{current_vendor.first_name}
+                       #{current_vendor.last_name}."
+    redirect_to @vendor
+  end
+
+  def back_login_by_admin
+    id = session[:relogin_id]
+    vendor = Vendor.find(id)
+    sign_out current_vendor
+    sign_in vendor, event: :authentication
+    flash[:success] = 'Logged in successfull!'
+    session.delete(:relogin_id)
+    redirect_to vendors_path
   end
 
   private
