@@ -2,7 +2,10 @@
   <td><%= role.name %></td>
   <td><%= role.created_at.strftime('%H:%M | %d %b %Y') %></td>
   <td>
-    <%= link_to "Show", role_path(role) %> /
-    <%= link_to "Delete", role_path(role), method: :delete, data: {confirm: "You sure?"}, remote: true %>
+    <%= link_to "Show", role_path(role) %>
+    <% unless role.created_by_admin %>
+			 /
+			<%= link_to "Delete", role_path(role), method: :delete, data: {confirm: "You sure?"}, remote: true %>
+	<% end %>
   </td>
 </tr>
