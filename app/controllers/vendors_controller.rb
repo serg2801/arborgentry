@@ -30,6 +30,7 @@ class VendorsController < ApplicationController
       @vendor.add_role role.name
     end
     if @vendor.save
+      VendorMailer.email_vandor_pass( @vendor, password_string ).deliver
       flash[:success] = 'Vendor added successfully.'
       redirect_to @vendor
     else
