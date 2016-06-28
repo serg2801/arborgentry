@@ -17,6 +17,7 @@ class Role < ActiveRecord::Base
   validates :name, presence: true
   # validates :permissions, presence: true
 
+  belongs_to :vendor_creator, class_name: 'Vendor', foreign_key: :vendor_id
 
   def has_permission?(key)
     mas_key = []
@@ -33,4 +34,14 @@ class Role < ActiveRecord::Base
     end
   end
 
+  def self.created_by_admin_and_current(current_vendor)
+    roles = []
+    all.map do |r|
+      unless r.vendor_creator.blank?
+        roles << r if r.vendor_id == current_vendor.id
+        roles << r if r.vendor_creator.has_role? :admin
+      end
+    end
+    roles
+  end
 end

@@ -30,4 +30,8 @@ class ApplicationController < ActionController::Base
     flash[:danger] = 'Access denied.'
     redirect_to (request.referrer || authenticated_root_path)
   end
+
+  def set_roles
+    @roles = Role.created_by_admin_and_current(current_vendor).uniq
+  end
 end

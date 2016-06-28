@@ -3,7 +3,7 @@ class VendorsController < ApplicationController
   # before_action :is_vendor_admin?, only: [:new, :create, :all_vendor_users]
   alias_method :current_user, :current_vendor
   before_action :set_vendor, only: [:show, :edit, :update, :destroy, :logged_in_as_vendor]
-
+  before_action :set_roles, only: [ :new_vendor, :edit ]
   def index
     @all_vendor_users = Vendor.where(parent_vendor_id: current_vendor.id)
     authorize Vendor

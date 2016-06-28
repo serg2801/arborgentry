@@ -1,10 +1,9 @@
 class RolesController < ApplicationController
 
   before_action :set_role, only: [ :show, :destroy ]
+  before_action :set_roles, only: [ :index ]
 
   def index
-    admin_roles = Role.where(created_by_admin: true) || []
-    @roles = (Role.where(vendor_id: current_vendor.id) + admin_roles).uniq
   end
 
   def show
@@ -17,7 +16,6 @@ class RolesController < ApplicationController
   def create
     @role = Role.new(name: params[:role]['name'], vendor_id: current_vendor.id)
     @permissions = params[:role][:permission_ids]
-    @role.update_attribute(:created_by_admin, true) if current_vendor.admin
     unless @permissions.blank?
       @permissions.each do |permission|
         @permission = Permission.find(permission)
@@ -37,7 +35,7 @@ class RolesController < ApplicationController
     if @role.vendor_id == current_vendor.id
       @role.add_default_role
       @role.destroy
-      @roles = Role.where(vendor_id: current_vendor.id)
+      set_roles
       flash[:success] = 'Role deleted successfully.'
       respond_to do |format|
         format.html
@@ -49,11 +47,10 @@ class RolesController < ApplicationController
     end
   end
 
-
+  private
   #Before filters
 
-  def set_role
-    @role = Role.find(params[:id])
-  end
-
+    def set_role
+      @role = Role.find(params[:id])
+    end
 end

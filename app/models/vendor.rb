@@ -75,8 +75,8 @@ class Vendor < ActiveRecord::Base
 
   def update_role(role_id)
     unless self.roles.blank?
-      role = self.roles.first.name
-      self.remove_role role
+      current_role_id = self.roles.first.id
+      self.roles.delete(current_role_id)
     end
     new_role = Role.find(role_id)
     self.add_role new_role.name
