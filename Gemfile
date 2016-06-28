@@ -38,3 +38,4 @@ gem "pundit"
 
 
 gem 'pry'
+gem 'pry-nav'
