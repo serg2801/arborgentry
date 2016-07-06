@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  # This line mounts Spree's routes at the root of your application.
+  # This means, any requests to URLs such as /products, will go to Spree::ProductsController.
+  # If you would like to change where this engine is mounted, simply change the :at option to something different.
+  #
+  # We ask that you don't use the :as option here, as Spree relies on it being the default of "spree"
+  mount Spree::Core::Engine, at: '/spree'
+  # root to: "spree/admin/orders#index"
+  get 'products_spree', :to => 'spree/products#index'
+  get 'orders', :to => 'spree/orders#index'
   devise_for :customers
   namespace :admin do
     resources :inquiries, :only => [:index, :destroy, :show]
@@ -8,6 +17,15 @@ Rails.application.routes.draw do
     resources :option_images
     resources :collections
   end
+
+  # Spree::Core::Engine.routes.prepend do
+  #   # root to: "spree/admin/orders#index"
+  #   # get '/about', :to => 'about#index', :as => :about
+  #   # get 'orders' => 'spree/admin/orders#index'
+  #   root :to =>'home#index'
+  # end
+
+  # get '/orders' => 'spree/admin/orders#index'
 
   # root 'home#index'
   # get 'home/login'

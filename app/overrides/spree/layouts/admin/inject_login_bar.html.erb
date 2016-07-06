@@ -1,0 +1,6 @@
+<!-- replace_contents "[data-hook='admin_login_navigation_bar']" -->
+
+<ul id="login-nav" class="inline-menu">
+  <li><%= link_to('Edit', main_app.edit_user_registration_path) %></li>
+  <li><%= link_to('Logout', main_app.destroy_user_session_path, :method => :delete) %></li>
+</ul>

@@ -8875,7 +8875,7 @@ $.extend(AgendaView.prototype, {
 
 
 	// Builds the HTML skeleton for the view.
-	// The day-grid and time-grid components will render inside containers defined by this HTML.
+	// The day-grid and time-grid global will render inside containers defined by this HTML.
 	renderHtml: function() {
 		return '' +
 			'<table>' +

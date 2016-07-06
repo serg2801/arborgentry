@@ -50,3 +50,7 @@ Permission.create(name: 'Permissions Email', description: 'Permissions Email', k
 Role.create(name: 'admin')
 Role.create(name: 'vendor_admin')
 Role.create(name: 'vendor_default')
+
+
+Spree::Core::Engine.load_seed if defined?(Spree::Core)
+Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
