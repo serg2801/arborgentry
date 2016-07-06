@@ -24,6 +24,16 @@ class Vendor < ActiveRecord::Base
 
   acts_as_reader
 
+  has_and_belongs_to_many :spree_roles
+
+  def has_spree_role?(role)
+    mas_role = []
+    self.spree_roles.all.each do |object|
+      mas_role << object.name
+    end
+    mas_role.include? role
+  end
+
   # enum role: [ :admin, :vendor_admin, :vendor_user1, :vendor_user2, :vendor_user3 ]
 
   # def password_required?

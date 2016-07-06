@@ -16,7 +16,8 @@
 //= require jquery_ujs
 //= require jquery.remotipart
 //= require dropzone
-//= require bootstrap
+// require bootstrap
+//= require bootstrap-sprockets
 //= require modernizr.custom
 //= require jRespond.min
 //= require jquery.slimscroll

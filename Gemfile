@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.5'
 
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.6'
 gem 'sqlite3', group: :development
 gem 'rails_12factor', group: :production
 gem "pg", group: :production
@@ -36,6 +36,7 @@ gem "carrierwave"
 gem "rolify"
 gem "pundit"
 
+gem 'spree_backend', github: 'spree/spree'
 
 gem 'pry'
 gem 'pry-nav'

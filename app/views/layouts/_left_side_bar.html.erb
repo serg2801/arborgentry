@@ -57,7 +57,7 @@
                 </a>
                 <ul class="sub">
                   <li>
-                    <%= link_to('Vendor Accounts', vendors_path)%></li>
+                    <%= link_to('Vendor Accounts', vendors_path) %></li>
                 </ul>
               </li>
           <% end %>
@@ -69,10 +69,72 @@
                 </a>
                 <ul class="sub">
                   <li>
-                    <%= link_to('Roles', roles_path)%></li>
+                    <%= link_to('Roles', roles_path) %></li>
                 </ul>
               </li>
           <% end %>
+          <% if current_vendor.has_spree_role?('admin') %>
+              <li>
+                <a href="#">
+                  <i class="icon icon-shopping-cart"></i>
+                  <span class="txt">Orders</span>
+                </a>
+                <ul class="sub">
+                  <%= link_to('Orders', spree.admin_orders_path) %>
+                  <%#= tab *Spree::BackendConfiguration::ORDER_TABS, icon: 'shopping-cart' %>
+                </ul>
+              </li>
+          <% end %>
+          <li>
+            <% if can?(:admin, Spree::ReturnAuthorization) || can?(:admin, Spree::CustomerReturn) %>
+                <a href="#"><i class="l-basic-webpage-txt"></i> <span class="txt">Returns</span></a>
+                <ul class="sub">
+                  <%= tab :return_authorizations, url: spree.admin_return_authorizations_path, match_path: '/return_authorizations' if can?(:admin, Spree::ReturnAuthorization) %>
+                  <%= tab :customer_returns, url: spree.admin_customer_returns_path, match_path: '/customer_returns' if can?(:admin, Spree::CustomerReturn) %>
+                  <%#= main_menu_tree Spree.t(:returns), icon: "transfer", sub_menu: "returns", url: "#sidebar-returns" %>
+                </ul>
+            <% end %>
+          </li>
+          <li>
+            <% if can? :admin, Spree::Product %>
+                <a href="#"><i class="l-basic-webpage-txt"></i> <span class="txt">Products</span></a>
+                <ul class="sub">
+                  <%= tab :products %>
+                  <%= tab :option_types, :match_path => '/option_types' %>
+                  <%= tab :properties %>
+                  <%= tab :prototypes %>
+                  <%= tab :taxonomies %>
+                  <%= tab :taxons %>
+                  <%#= main_menu_tree Spree.t(:products), icon: "th-large", sub_menu: "product", url: "#sidebar-product" %>
+                </ul>
+            <% end %>
+          </li>
+          <li>
+            <% if can? :admin, Spree::Admin::ReportsController %>
+                <a href="#"><i class="icon icon-file"></i> <span class="txt">Reports</span></a>
+                <ul class="sub">
+                  <%= tab *Spree::BackendConfiguration::REPORT_TABS, icon: 'file' %>
+                </ul>
+            <% end %>
+          </li>
+          <li>
+            <% if can? :admin, Spree::Promotion %>
+                <a href="#"><i class="icon icon-gift"></i> <span class="txt">Promotions</span></a>
+                <ul class="sub">
+                  <%= tab :promotions %>
+                  <%= tab :promotion_categories %>
+                  <%#= main_menu_tree Spree.t(:promotions), icon: "gift", sub_menu: "promotion", url: "#sidebar-promotions" %>
+                </ul>
+            <% end %>
+          </li>
+          <li>
+            <% if Spree.user_class && can?(:admin, Spree.user_class) %>
+                <a href="#"><i class="icon icon-user"></i> <span class="txt">Users</span></a>
+                <ul class="sub">
+                  <%= tab *Spree::BackendConfiguration::USER_TABS, url: spree.admin_users_path, icon: 'user' %>
+                </ul>
+            <% end %>
+          </li>
           <li>
             <a href="#"><i class="l-ecommerce-graph1"></i> <span class="txt">Charts</span></a>
             <ul class="sub">

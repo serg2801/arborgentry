@@ -55,7 +55,7 @@ if (less === undefined) {
 //      or dynamic references, the parser can effectively 'skip' it,
 //      treating it as a literal.
 //      An example would be '1px solid #000' - which evaluates to itself,
-//      we don't need to know what the individual components are.
+//      we don't need to know what the individual global are.
 //      The drawback, of course is that you don't get the benefits of
 //      syntax-checking on the CSS. This gives us a 50% speed-up in the parser,
 //      and a smaller speed-up in the code-gen.

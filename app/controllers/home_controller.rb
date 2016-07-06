@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  alias_method :current_user, :current_vendor
   layout :resolve_layout
   before_filter :authenticate_vendor! , :except => [:welcome, :thank_you]
   def index

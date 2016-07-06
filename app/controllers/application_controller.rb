@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  include CanCan::ControllerAdditions
   rescue_from Pundit::NotAuthorizedError, with: :vendor_not_authorized
   layout :layout_by_resource
   protect_from_forgery with: :exception
