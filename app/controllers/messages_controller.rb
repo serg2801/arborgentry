@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
 
   before_action :get_config_email
   before_action :count_messages, only: [:inbox, :trash, :read_emails, :write_emails, :new, :show_message_read, :show_message_write, :starred, :important]
+  alias_method :current_user, :current_vendor
 
   def new
     @message = Message.new

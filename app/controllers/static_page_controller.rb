@@ -1,5 +1,5 @@
 class StaticPageController < ApplicationController
-
+  alias_method :current_user, :current_vendor
   #Charts
   def other_charts
   end

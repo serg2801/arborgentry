@@ -1,4 +1,5 @@
 class RolesController < ApplicationController
+  alias_method :current_user, :current_vendor
 
   before_action :set_role, only: [ :show, :destroy ]
   before_action :set_roles, only: [ :index ]
