@@ -75,14 +75,10 @@
           <% end %>
           <% if current_vendor.has_spree_role?('admin') %>
               <li>
-                <a href="#">
-                  <i class="icon icon-shopping-cart"></i>
-                  <span class="txt">Orders</span>
-                </a>
-                <ul class="sub">
-                  <%= link_to('Orders', spree.admin_orders_path) %>
-                  <%#= tab *Spree::BackendConfiguration::ORDER_TABS, icon: 'shopping-cart' %>
-                </ul>
+                <%= link_to spree.admin_orders_path do %>
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    <span class="txt">Orders</span>
+                <% end %>
               </li>
           <% end %>
           <li>
@@ -111,7 +107,7 @@
           </li>
           <li>
             <% if can? :admin, Spree::Admin::ReportsController %>
-                <a href="#"><i class="icon icon-file"></i> <span class="txt">Reports</span></a>
+                <a href="#"><i class="l-basic-webpage-txt"></i> <span class="txt">Reports</span></a>
                 <ul class="sub">
                   <%= tab *Spree::BackendConfiguration::REPORT_TABS, icon: 'file' %>
                 </ul>
@@ -119,7 +115,7 @@
           </li>
           <li>
             <% if can? :admin, Spree::Promotion %>
-                <a href="#"><i class="icon icon-gift"></i> <span class="txt">Promotions</span></a>
+                <a href="#"><i class="l-basic-webpage-txt"></i> <span class="txt">Promotions</span></a>
                 <ul class="sub">
                   <%= tab :promotions %>
                   <%= tab :promotion_categories %>
@@ -129,9 +125,37 @@
           </li>
           <li>
             <% if Spree.user_class && can?(:admin, Spree.user_class) %>
-                <a href="#"><i class="icon icon-user"></i> <span class="txt">Users</span></a>
+                <%= link_to spree.admin_users_path do %>
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    <span class="txt">Users</span>
+                <% end %>
+            <% end %>
+          </li>
+          <li>
+            <% if current_vendor.has_spree_role?('admin') %>
+                <a href="#"><i class="fa fa-wrench" aria-hidden="true"></i> <span class="txt">Configuration</span></a>
                 <ul class="sub">
-                  <%= tab *Spree::BackendConfiguration::USER_TABS, url: spree.admin_users_path, icon: 'user' %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:general_settings), spree.edit_admin_general_settings_path) if can? :manage, Spree::Config %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:tax_categories), spree.admin_tax_categories_path) if can? :manage, Spree::TaxCategory %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:tax_rates), spree.admin_tax_rates_path) if can? :manage, Spree::TaxRate %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:zones), spree.admin_zones_path) if can? :manage, Spree::Zone %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:countries), spree.admin_countries_path) if can? :manage, Spree::Country %>
+
+                  <% if country = Spree::Country.find_by_id(Spree::Config[:default_country_id]) || Spree::Country.first %>
+                      <%= configurations_sidebar_menu_item(Spree.t(:states), spree.admin_country_states_path(country)) if can? :manage, Spree::Country %>
+                  <% end %>
+
+                  <%= configurations_sidebar_menu_item(Spree.t(:payment_methods), spree.admin_payment_methods_path) if can? :manage, Spree::PaymentMethod %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:shipping_methods), spree.admin_shipping_methods_path) if can? :manage, Spree::ShippingMethod %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:shipping_categories), spree.admin_shipping_categories_path) if can? :manage, Spree::ShippingCategory %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:stock_transfers), spree.admin_stock_transfers_path) if can? :manage, Spree::StockTransfer %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:stock_locations), spree.admin_stock_locations_path) if can? :manage, Spree::StockLocation %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:store_credit_categories), spree.admin_store_credit_categories_path) if can? :manage, Spree::StoreCreditCategory %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:analytics_trackers), spree.admin_trackers_path) if can? :manage, Spree::Tracker %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:refund_reasons), spree.admin_refund_reasons_path) if can? :manage, Spree::RefundReason %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:reimbursement_types), spree.admin_reimbursement_types_path) if can? :manage, Spree::ReimbursementType %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:return_authorization_reasons), spree.admin_return_authorization_reasons_path) if can? :manage, Spree::ReturnAuthorizationReason %>
+                  <%= configurations_sidebar_menu_item(Spree.t(:roles), spree.admin_roles_path) if can? :manage, Spree::Role %>
                 </ul>
             <% end %>
           </li>

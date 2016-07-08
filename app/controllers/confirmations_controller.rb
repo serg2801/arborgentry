@@ -1,4 +1,6 @@
 class ConfirmationsController < Devise::ConfirmationsController
+  alias_method :current_user, :current_vendor
+
   def show
     @original_token = params[:confirmation_token]
     digested_token = Devise.token_generator.digest(self, :confirmation_token,params[:confirmation_token])

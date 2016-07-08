@@ -2,6 +2,7 @@ require 'net/pop'
 require 'net/imap'
 
 class ConfigEmailsController < ApplicationController
+  alias_method :current_user, :current_vendor
 
   alias_method :current_user, :current_vendor
 

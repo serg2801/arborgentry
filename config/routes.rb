@@ -5,10 +5,8 @@ Rails.application.routes.draw do
   # If you would like to change where this engine is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Spree relies on it being the default of "spree"
-  mount Spree::Core::Engine, at: '/spree'
+  mount Spree::Core::Engine, at: '/admin_dashboard'
   # root to: "spree/admin/orders#index"
-  get 'products_spree', :to => 'spree/products#index'
-  get 'orders', :to => 'spree/orders#index'
   devise_for :customers
   namespace :admin do
     resources :inquiries, :only => [:index, :destroy, :show]
