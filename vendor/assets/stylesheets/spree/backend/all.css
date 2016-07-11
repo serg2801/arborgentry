@@ -8,3 +8,7 @@
  *= require_self
  *= require_tree .
 */
+
+.select2-container .select2-choice .select2-arrow b {
+    background-position: -6px 3px;
+}
