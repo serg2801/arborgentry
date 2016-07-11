@@ -52,7 +52,7 @@
           <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
               <li>
                 <a href="#">
-                  <i class="l-software-layout-header-3columns"></i>
+                  <i class="fa fa-user" aria-hidden="true"></i>
                   <span class="txt">User Accounts</span>
                 </a>
                 <ul class="sub">
@@ -123,14 +123,14 @@
                 </ul>
             <% end %>
           </li>
-          <li>
-            <% if Spree.user_class && can?(:admin, Spree.user_class) %>
-                <%= link_to spree.admin_users_path do %>
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <span class="txt">Users</span>
-                <% end %>
-            <% end %>
-          </li>
+          <!--<li>-->
+            <!--<%# if Spree.user_class && can?(:admin, Spree.user_class) %>-->
+                <!--<%#= link_to spree.admin_users_path do %>-->
+                    <!--<i class="fa fa-user" aria-hidden="true"></i>-->
+                    <!--<span class="txt">Users</span>-->
+                <!--<%# end %>-->
+            <!--<%# end %>-->
+          <!--</li>-->
           <li>
             <% if current_vendor.has_spree_role?('admin') %>
                 <a href="#"><i class="fa fa-wrench" aria-hidden="true"></i> <span class="txt">Configuration</span></a>
@@ -155,7 +155,7 @@
                   <%= configurations_sidebar_menu_item(Spree.t(:refund_reasons), spree.admin_refund_reasons_path) if can? :manage, Spree::RefundReason %>
                   <%= configurations_sidebar_menu_item(Spree.t(:reimbursement_types), spree.admin_reimbursement_types_path) if can? :manage, Spree::ReimbursementType %>
                   <%= configurations_sidebar_menu_item(Spree.t(:return_authorization_reasons), spree.admin_return_authorization_reasons_path) if can? :manage, Spree::ReturnAuthorizationReason %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:roles), spree.admin_roles_path) if can? :manage, Spree::Role %>
+                  <%#= configurations_sidebar_menu_item(Spree.t(:roles), spree.admin_roles_path) if can? :manage, Spree::Role %>
                 </ul>
             <% end %>
           </li>

@@ -1,26 +1,39 @@
-<!--<meta charset="utf-8">-->
-<!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="IE=9"/><![endif]-->
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<meta name="application-name" content=""/>
 
-<!--<%#= csrf_meta_tags %>-->
+<%= csrf_meta_tags %>
 
-<!--<title>-->
-  <!--<%# if content_for? :title %>-->
-    <!--<%#= yield :title %>-->
-  <!--<%# else %>-->
-    <!--<%#= "Spree #{Spree.t('administration')}: " %>-->
-    <!--<%#= Spree.t(controller.controller_name, default: controller.controller_name.titleize) %>-->
-  <!--<%# end %>-->
-<!--</title>-->
+<title>
+  <% if content_for? :title %>
+    <%= yield :title %>
+  <% else %>
+    <%= "Spree #{Spree.t('administration')}: " %>
+    <%= Spree.t(controller.controller_name, default: controller.controller_name.titleize) %>
+  <% end %>
+</title>
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<%= stylesheet_link_tag 'application', media: 'all' %>
 
 <%= stylesheet_link_tag 'spree/backend/all', media: :all %>
 
-<%#= javascript_include_tag 'spree/backend/all' %>
-<%#= render "spree/admin/shared/translations" %>
+<%= javascript_include_tag 'spree/backend/all' %>
+<%= render "spree/admin/shared/translations" %>
 
-<%#= javascript_tag do %>
-  <%#== "var AUTH_TOKEN = #{form_authenticity_token.inspect};" %>
-  <%#== "Spree.api_key = '#{try_spree_current_user.spree_api_key}';" if try_spree_current_user %>
-<%# end %>
+<%= javascript_tag do %>
+  <%== "var AUTH_TOKEN = #{form_authenticity_token.inspect};" %>
+  <%== "Spree.api_key = '#{try_spree_current_user.spree_api_key}';" if try_spree_current_user %>
+<% end %>
 
-<%#= yield :head %>
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+
+<%= yield :head %>
