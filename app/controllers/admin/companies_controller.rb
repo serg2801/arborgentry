@@ -1,5 +1,6 @@
 class Admin::CompaniesController < ApplicationController
   before_action :is_admin?
+  alias_method :current_user, :current_vendor
 
 	def index
   	@companies = Company.all

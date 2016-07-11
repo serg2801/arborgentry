@@ -1,6 +1,7 @@
 class Admin::ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   respond_to :js, only: [:edit,:new,:show,:create,:destroy,:update]
+  alias_method :current_user, :current_vendor
   respond_to :html
 
   def index

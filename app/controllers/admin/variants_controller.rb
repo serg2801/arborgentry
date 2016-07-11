@@ -1,5 +1,6 @@
 class Admin::VariantsController < ApplicationController
 	before_action :set_variants
+	alias_method :current_user, :current_vendor
 	def index
 		
 	end

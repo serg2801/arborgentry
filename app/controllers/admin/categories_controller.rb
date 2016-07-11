@@ -1,5 +1,6 @@
 class Admin::CategoriesController < ApplicationController
-	before_action :set_categories 
+	before_action :set_categories
+	alias_method :current_user, :current_vendor
 	def index
 		
 	end
