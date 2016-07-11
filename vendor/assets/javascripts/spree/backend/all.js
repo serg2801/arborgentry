@@ -6,6 +6,29 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jRespond.min
+//= require jquery.slimscroll
+//= require jquery.slimscroll.horizontal.min
+//= require jquery.quicksearch
+//= require sparklines/jquery.sparkline
+//= require fastclick
+//= require date
+//= require datatables/jquery.dataTables
+//= require datatables/dataTables.tableTools
+//= require datatables/dataTables.bootstrap
+//= require datatables/dataTables.responsive
+//= require progressbars/progressbar
+//= require plugins/waypoint/waypoints
+//= require plugins/weather/skyicons
+//= require plugins/notify/jquery.gritter
+//= require plugins/misc/vectormaps/jquery-jvectormap-1.2.2.min
+//= require plugins/misc/vectormaps/maps/jquery-jvectormap-world-mill-en
+//= require plugins/misc/countTo/jquery.countTo
+//= require jquery.dynamic
+//= require main
+//= require tables-data
+//= require dashboard
+
 //= require spree/backend
 
 //= require_tree .

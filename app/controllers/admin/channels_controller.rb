@@ -1,5 +1,6 @@
 class Admin::ChannelsController < ApplicationController
-	before_action :set_channels 
+	before_action :set_channels
+	alias_method :current_user, :current_vendor
 	def index
 		
 	end

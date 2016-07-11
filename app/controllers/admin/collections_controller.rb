@@ -2,6 +2,7 @@ class Admin::CollectionsController < ApplicationController
 	before_action :set_collection, only: [:show, :edit, :update, :destroy]
 	respond_to :html
 	respond_to :js, only: :show
+  alias_method :current_user, :current_vendor
 	
 	def index
 		@collections = Collection.all
