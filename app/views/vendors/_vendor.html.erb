@@ -4,6 +4,7 @@
         <%= vendor.email %>
     <% end %>
   </td>
+  <td><%= account_name(vendor.account_id) %></td>
   <% if current_vendor.has_role? :vendor_admin %>
       <td><%= vendor.roles.map { |pole| pole.name } %></td>
   <% end %>

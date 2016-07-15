@@ -49,6 +49,14 @@
                 <span class="txt">Dashboard</span>
             <% end %>
           </li>
+          <% if current_vendor.admin? %>
+              <li>
+                <%= link_to accounts_path do %>
+                    <i class="l-basic-webpage-txt"></i>
+                    <span class="txt">Accounts</span>
+                <% end %>
+              </li>
+          <% end %>
           <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
               <li>
                 <a href="#">
@@ -57,19 +65,11 @@
                 </a>
                 <ul class="sub">
                   <li>
-                    <%= link_to('Vendor Accounts', main_app.vendors_path) %></li>
-                </ul>
-              </li>
-          <% end %>
-          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
-              <li>
-                <a href="#">
-                  <i class="l-software-layout-header-3columns"></i>
-                  <span class="txt">User Roles</span>
-                </a>
-                <ul class="sub">
+                    <%= link_to('Vendor Accounts', main_app.vendors_path) %>
+                  </li>
                   <li>
-                    <%= link_to('Roles', main_app.roles_path) %></li>
+                    <%= link_to('Roles', main_app.roles_path) %>
+                  </li>
                 </ul>
               </li>
           <% end %>

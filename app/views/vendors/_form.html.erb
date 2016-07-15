@@ -12,6 +12,16 @@
             </div>
           </div>
       <% end %>
+      <% if current_vendor.admin? %>
+          <div class="form-group">
+            <div class="col-xs-4">
+              Account
+            </div>
+            <div class="col-xs-8">
+              <%= select_tag 'account_id', options_for_select(Account.all.collect { |u| [u.name, u.id] }), {:class => 'form-control requires'} %>
+            </div>
+          </div>
+      <% end %>
       <div class="form-group">
         <div class="col-xs-4">
           Vendor Name

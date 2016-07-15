@@ -22,7 +22,7 @@ class VendorsController < ApplicationController
     # password_string = (0...20).map { o[rand(o.length)] }.join
     password_string = 'password'
     if current_vendor.has_role? :admin
-      @vendor = Vendor.new(vendor_params.merge(parent_vendor_id: current_vendor.id, password: password_string, password_confirmation: password_string))
+      @vendor = Vendor.new(vendor_params.merge(parent_vendor_id: current_vendor.id, password: password_string, password_confirmation: password_string, account_id: params[:account_id].to_i))
       @vendor.add_role :vendor_admin
       @vendor.spree_roles << Spree::Role.find_or_create_by(name: "admin")
     elsif current_vendor.has_role? :vendor_admin
@@ -51,7 +51,7 @@ class VendorsController < ApplicationController
   end
 
   def update
-    if @vendor.update_attributes(vendor_params)
+    if @vendor.update_attributes(vendor_params.merge(account_id: params[:account_id].to_i))
       @vendor.update_role(params[:role_id]) if current_vendor.has_role? :vendor_admin
       @vendors = Vendor.where(parent_vendor_id: current_vendor.id)
       flash[:success] = 'Vendor updated successfully.'

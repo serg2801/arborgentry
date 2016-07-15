@@ -1,0 +1,2 @@
+module TradeFormsHelper
+end
