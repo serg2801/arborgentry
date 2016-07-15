@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715140413) do
+ActiveRecord::Schema.define(version: 20160715145806) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -1284,6 +1284,35 @@ ActiveRecord::Schema.define(version: 20160715140413) do
 
   add_index "spree_zones", ["default_tax"], name: "index_spree_zones_on_default_tax"
   add_index "spree_zones", ["kind"], name: "index_spree_zones_on_kind"
+
+  create_table "trade_forms", force: :cascade do |t|
+    t.string   "business_name"
+    t.string   "greeting"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "address"
+    t.string   "suite"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "country"
+    t.string   "web_site_url"
+    t.string   "certificate"
+    t.text     "information"
+    t.string   "image"
+    t.text     "about_our_company"
+    t.text     "tax_exempt"
+    t.boolean  "dropship_e_commerce",    default: false
+    t.boolean  "stocking_dealer",        default: false
+    t.boolean  "non_stocking_dealer",    default: false
+    t.text     "describe_your_business"
+    t.string   "contract_details"
+    t.boolean  "agree"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
 
   create_table "variants", force: :cascade do |t|
     t.string   "sku",           limit: 255

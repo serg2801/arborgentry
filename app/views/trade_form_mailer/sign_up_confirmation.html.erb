@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+<p>Business Name/D.B.A: <%= @trade_form.business_name %></p>
+
+<p>Greeting: <%= @trade_form.greeting %></p>
+
+<p>First Name: <%= @trade_form.first_name %></p>
+
+<p>Last Name: <%= @trade_form.last_name %></p>
+
+<p>Email: <%= @trade_form.email %></p>
+
+<p>Phone Number: <%= @trade_form.phone_number %></p>
+
+<p>Address: <%= @trade_form.address %></p>
+
+<p>Unit/Suite/etc.: <%= @vendor.suite %></p>
+
+<p>City: <%= @trade_form.city %></p>
+
+<p>Zip Code: <%= @trade_form.zipcode %></p>
+
+<p>State: <%= @trade_form.state %></p>
+
+<p>Country: <%= @trade_form.country %></p>
+
+<p>Web site url: <%= @trade_form.web_site_url %></p>
+
+<p>Where did you learn about our company? <%= @trade_form.about_our_company %></p>
+
+<p>Tax exempt? <%= @trade_form.tax_exempt %></p>
+
+<p>Check the options that describe your business: <%= @trade_form.describe_your_business %></p>
+<% if @trade_form.dropship_e_commerce %>
+    <p>Dropship/e-Commerce: <%= @trade_form.dropship_e_commerce %></p>
+<% end %>
+<% if @trade_form.stocking_dealer %>
+    <p>Stocking Dealer: <%= @trade_form.stocking_dealer %></p>
+<% end %>
+<% if @trade_form.non_stocking_dealer %>
+    <p>Non-Stocking Dealer: <%= @trade_form.non_stocking_dealer %></p>
+<% end %>
+<% unless @trade_form.contract_details.blank? %>
+    <p>Contract Details: <%= @trade_form.contract_details %></p>
+<% end %>
+<p>Information: <%= @trade_form.information %></p>
+
+<p>Consented: true </p>
+
+Thank you!!!
+</body>
+</html>

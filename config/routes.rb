@@ -30,9 +30,9 @@ Rails.application.routes.draw do
   # get 'home/registration'
   get 'home/welcome'
   get 'thank_you' => 'home#thank_you'
-  devise_for :vendors, :controllers => {:confirmations => 'confirmations',  registrations: "registrations"}
+  devise_for :vendors, :controllers => {:confirmations => 'confirmations',  registrations: 'registrations'}
   devise_scope :vendor do
-    patch "/confirm" => "confirmations#confirm"
+    patch '/confirm' => 'confirmations#confirm'
     authenticated :vendor do
       root :to =>'home#index', as: :authenticated_root
     end
@@ -78,6 +78,29 @@ Rails.application.routes.draw do
   get 'show_message_read',  to: 'messages#show_message_read'
   get 'show_message_write', to: 'messages#show_message_write'
   post 'message_reply_to',  to: 'messages#message_reply_to'
+
+
+  #Vendors form
+  # resources :vendor_forms, only: [ :create ]
+  resources :trade_forms
+  # resources :boards
+
+  get 'trade-signup',       to: 'trade_forms#new'
+  # get 'vendor-signup',      to: "trades#new"
+  # get 'vendor-onboarding',  to: "boards#new"
+
+  # get 'trade_success',         to: 'static_pages#trade'
+  # get 'vendor_success',        to: 'static_pages#vendor'
+  # get 'board_success',         to: 'static_pages#board'
+  # get 'board_success_update',  to: 'static_pages#board_update'
+  # get 'trade_success_update',  to: 'static_pages#trade_update'
+  # get 'about',                 to: 'static_pages#about'
+  # get 'product_categories',    to: 'static_pages#product_categories'
+  # get 'upload_vendor_agreement_success',  to: 'static_pages#upload_vendor_agreement_success'
+
+  # get 'persons/profile', as: 'user_root'
+  # get 'upload-vendor-agreement-new',  to: 'persons#upload_vendor_agreement_new'
+  # post 'upload-vendor-agreement-new', to: 'persons#upload_vendor_agreement_create'
 
   #Charts
   get 'flot_charts',     to: 'static_page#flot_charts'
