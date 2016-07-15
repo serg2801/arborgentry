@@ -43,7 +43,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :vendors, only: [:destroy, :edit, :update, :show, :index ]
+  resources :vendors,  only: [:destroy, :edit, :update, :show, :index ]
+  resources :accounts, only: [:index, :new, :create ]
 
   get  'new_vendor',                            to: 'vendors#new_vendor'
   post 'new_vendor',                            to: 'vendors#create_vendor'

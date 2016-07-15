@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704115241) do
+ActiveRecord::Schema.define(version: 20160715140413) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "vendor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -1351,6 +1358,7 @@ ActiveRecord::Schema.define(version: 20160704115241) do
     t.string   "spree_api_key",             limit: 48
     t.integer  "ship_address_id"
     t.integer  "bill_address_id"
+    t.integer  "account_id"
   end
 
   add_index "vendors", ["confirmation_token"], name: "index_vendors_on_confirmation_token", unique: true

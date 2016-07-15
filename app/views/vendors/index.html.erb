@@ -42,6 +42,9 @@
                 <thead>
                 <tr>
                   <th>Email</th>
+                  <% if current_vendor.admin? %>
+                      <th>Account</th>
+                  <% end %>
                   <% if current_vendor.has_role? :vendor_admin %>
                       <th>Role</th>
                   <% end %>
