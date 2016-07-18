@@ -43,25 +43,25 @@ Rails.application.routes.draw do
       # root 'devise/sessions#new', as: :unauthenticated_root
 
       #Vendors form
-      constraints DomainConstraint.new('vendors.arborgentry.com') do
+      constraints DomainConstraint.new('vendors.com') do
 
         root :to => 'static_page#form_home'
 
-        # resources :vendor_forms, only: [ :create ]
+        resources :vendor_forms, only: [ :create ]
         resources :trade_forms
         # resources :boards
 
         get 'trade-signup',       to: 'trade_forms#new'
-        # get 'vendor-signup',      to: 'vendor_forms#new'
+        get 'vendor-signup',      to: 'vendor_forms#new'
         # get 'vendor-onboarding',  to: 'boards#new'
 
-        # get 'trade_success',         to: 'static_pages#trade'
-        # get 'vendor_success',        to: 'static_pages#vendor'
-        # get 'board_success',         to: 'static_pages#board'
-        # get 'board_success_update',  to: 'static_pages#board_update'
-        # get 'trade_success_update',  to: 'static_pages#trade_update'
-        # get 'about',                 to: 'static_pages#about'
-        # get 'product_categories',    to: 'static_pages#product_categories'
+        get 'trade_success',         to: 'static_page#trade'
+        get 'vendor_success',        to: 'static_page#vendor'
+        # get 'board_success',         to: 'static_page#board'
+        # get 'board_success_update',  to: 'static_page#board_update'
+        # get 'trade_success_update',  to: 'static_page#trade_update'
+        get 'about',                 to: 'static_page#about'
+        get 'product_categories',    to: 'static_page#product_categories'
         # get 'upload_vendor_agreement_success',  to: 'static_pages#upload_vendor_agreement_success'
 
         # get 'persons/profile', as: 'user_root'

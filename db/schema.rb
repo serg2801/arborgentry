@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715145806) do
+ActiveRecord::Schema.define(version: 20160718135017) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -1348,6 +1348,30 @@ ActiveRecord::Schema.define(version: 20160715145806) do
     t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "vendor_form", force: :cascade do |t|
+    t.string   "business_name"
+    t.string   "greeting"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "address"
+    t.string   "suite"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "country"
+    t.string   "web_site_url_my"
+    t.string   "web_site"
+    t.text     "information"
+    t.string   "image"
+    t.integer  "user_id"
+    t.boolean  "grant_access",    default: false
+    t.boolean  "agree"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "vendors", force: :cascade do |t|

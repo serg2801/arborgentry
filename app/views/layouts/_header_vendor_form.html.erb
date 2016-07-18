@@ -18,13 +18,11 @@
 <div class="row">
   <div class="col-md-4 col-md-offset-4 ta-HeaderLogo">
     <% if vendor_signed_in? %>
-        <%#= link_to user_root_path do %>
-        <%= link_to '#' do %>
+        <%= link_to vendor_root_path do %>
             <img style="width: 277px; height: 88px;" id="logoImg" src="https://tandemarbor.azureedge.net/navigationimages/logo-stopped.png" data-status="still" alt=""/>
         <% end %>
     <% else %>
-        <%#= link_to root_path do %>
-        <%= link_to '#' do %>
+        <%= link_to root_path do %>
             <img style="width: 277px; height: 88px;" id="logoImg" src="https://tandemarbor.azureedge.net/navigationimages/logo-stopped.png" data-status="still" alt=""/>
         <% end %>
     <% end %>
@@ -33,11 +31,9 @@
 <div class="row ta-PrimaryNavigation">
   <div class="col-md-6 col-sm-12">
     <ul class="ta-PrimaryNavigationLinks" style="float: left;">
-      <li><%#= link_to "About", about_path %></li>
-      <li><%= link_to "About", '#' %></li>
+      <li><%= link_to 'About', about_path %></li>
       <% if vendor_signed_in? %>
-          <li><%= link_to "Product Categories", '#' %></li>
-          <li><%#= link_to "Product Categories", product_categories_path %></li>
+          <li><%= link_to 'Product Categories', product_categories_path %></li>
       <% end %>
     </ul>
   </div>
@@ -45,14 +41,12 @@
     <ul class="ta-PrimaryNavigationLinks" style="float: right;">
       <li>
         <% if vendor_signed_in? %>
-            <%#= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
-            <%= link_to 'Sign out', '#' %>
+            <%= link_to 'Sign out', destroy_vendor_session_path, :method => :delete %>
         <% else %>
-            <%= link_to 'Log in', '#' %>
-            <%#= link_to 'Log in', new_user_session_path %>
+            <%= link_to 'Log in', new_vendor_session_path %>
         <% end %>
       </li>
-      <li><%= link_to "Vendor Application", trade_signup_path %></li>
+      <li><%= link_to 'Vendor Application', vendor_signup_path %></li>
     </ul>
   </div>
 </div>

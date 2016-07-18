@@ -38,5 +38,7 @@ gem "pundit"
 
 gem 'spree_backend', github: 'spree/spree'
 
+gem "cocoon"
+
 gem 'pry'
 gem 'pry-nav'
