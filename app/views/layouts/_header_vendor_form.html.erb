@@ -1,0 +1,58 @@
+<div class="row ta-CustomerNav">
+  <div class="col-md-6 col-sm-12 ta-CustomerNavLeft">
+    <ul class="ta-CustomerMenu">
+      <li><a href="http://tandemarbor.com/pages/customer-service">Customer Service</a></li>
+      <li><a href="http://tandemarbor.com/pages/about-us">About</a></li>
+      <li><a href="https://www.tandemarbor.com">Return to TandemArbor.com</a></li>
+    </ul>
+  </div>
+  <div class="col-md-6 col-sm-12 ta-CustomerNavRight">
+    <ul class="ta-CustomerMenu">
+      <li><a href="http://tandemarbor.com/pages/customer-service">Avant Blog</a></li>
+      <li><a href="http://tandemarbor.com/pages/very-personal-decorator">Very Personal Decorator</a></li>
+      <li><a href="http://tandemarbor.com/pages/factory">Factory</a></li>
+      <li><a href="http://tandemarbor.com/pages/curate">Curate</a></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 ta-HeaderLogo">
+    <% if vendor_signed_in? %>
+        <%#= link_to user_root_path do %>
+        <%= link_to '#' do %>
+            <img style="width: 277px; height: 88px;" id="logoImg" src="https://tandemarbor.azureedge.net/navigationimages/logo-stopped.png" data-status="still" alt=""/>
+        <% end %>
+    <% else %>
+        <%#= link_to root_path do %>
+        <%= link_to '#' do %>
+            <img style="width: 277px; height: 88px;" id="logoImg" src="https://tandemarbor.azureedge.net/navigationimages/logo-stopped.png" data-status="still" alt=""/>
+        <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="row ta-PrimaryNavigation">
+  <div class="col-md-6 col-sm-12">
+    <ul class="ta-PrimaryNavigationLinks" style="float: left;">
+      <li><%#= link_to "About", about_path %></li>
+      <li><%= link_to "About", '#' %></li>
+      <% if vendor_signed_in? %>
+          <li><%= link_to "Product Categories", '#' %></li>
+          <li><%#= link_to "Product Categories", product_categories_path %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <ul class="ta-PrimaryNavigationLinks" style="float: right;">
+      <li>
+        <% if vendor_signed_in? %>
+            <%#= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+            <%= link_to 'Sign out', '#' %>
+        <% else %>
+            <%= link_to 'Log in', '#' %>
+            <%#= link_to 'Log in', new_user_session_path %>
+        <% end %>
+      </li>
+      <li><%= link_to "Vendor Application", trade_signup_path %></li>
+    </ul>
+  </div>
+</div>

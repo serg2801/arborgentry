@@ -1,0 +1,271 @@
+/* Tandem Arbor Portal CSS
+|  
+|   Branding colors:
+|       Black: #212721
+|       Purple (hover and lines): #b3b1c4
+*/
+
+body {
+    background: #fff;
+    font-family: "Open Sans", "Century Gothic", sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #b3b1c4;
+    text-decoration: underline;
+}
+.row {
+    margin: 0;
+}
+
+/* Customer Navigation Bar */
+
+.ta-CustomerNav {
+    border-bottom: 1px solid #b3b1c4;
+    padding: 0px;
+    margin-top: 10px;
+}
+
+.ta-CustomerNavLeft, .ta-CustomerNavRight {
+    padding: 0px;
+    margin-bottom: 8px;
+}
+
+.ta-CustomerNavLeft ul {
+    float: left;
+}
+
+.ta-CustomerNavRight ul {
+    float: right;
+}
+.ta-CustomerNavLeft ul {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+
+.ta-CustomerMenu {
+    margin: 0px;
+    padding: 0px;
+}
+
+.ta-CustomerMenu li {
+    display: inline;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 10px;
+    border-right: 1px solid #b3b1c4;
+    padding-right: 10px;
+}
+
+.ta-CustomerMenu li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.ta-CustomerMenu li a:hover {
+    color: #b3b1c4;
+    text-decoration: underline;
+}
+
+.ta-CustomerNavRight .ta-CustomerMenu li:last-child {
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+.ta-CustomerMenu li:last-child {
+    border-right: 0px;
+}
+
+.ta-HeaderLogo {
+    text-align: center;
+}
+
+.ta-HeaderLogo a img {
+    position: relative;
+    top: -26px;
+}
+.ta-Footer img {
+    width: 190px;
+}
+
+/* Primary Navigation Bar */
+
+.ta-PrimaryNavigation {
+    background-color: #212721;
+}
+
+.ta-PrimaryNavigationLinks {
+    margin: 10px 0px;
+    padding: 0px;
+    list-style:  none;
+}
+
+.ta-PrimaryNavigationLinks li {
+    display: inline;
+    color: #FFF;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-right: 20px;
+}
+
+.ta-PrimaryNavigationLinks li:last-child {
+    margin-right: 0px;
+}
+
+.ta-PrimaryNavigationLinks li a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.ta-PrimaryNavigationLinks li a:hover {
+    text-decoration: underline;    
+}
+
+/* General Page Features */
+
+.ta-BlockPageHeader {
+    border-top: 1px solid #212721;
+    margin-top: 30px;
+}
+
+.ta-BlockPageHeaderTitle {
+    background-color: #212727;
+    font-family: "Playfair Display", "Times New Roman", serif;
+    text-align: center;
+    padding: 3px 0px;
+    font-size: 20px;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.ta-BlockPageHeaderDetails {
+    font-size: 14px;
+    line-height: 150%;
+    text-align: justify;
+    margin-bottom: 16px;
+}
+
+.ta-BlockPageHeaderDetails br {
+    line-height: 200%;
+}
+
+/* Footer Section */
+
+.ta-Footer {
+    border-top: 1px solid #b3b1c4;
+    border-bottom: 1px solid #b3b1c4;
+    padding: 16px 0px;
+}
+
+.ta-FooterListColumn h1 {
+    font-size: 14px;
+    color: #212721;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-bottom: 10px;
+    margin: 0px;
+}
+
+.ta-FooterListColumn ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.ta-FooterListColumn ul li {
+    font-size: 12px;
+    padding-bottom: 4px;
+}
+
+.ta-FooterListColumn ul li a {
+    color: #212721;
+    text-decoration: none;
+}
+
+.ta-FooterListColumn ul li a:hover {
+    color: #b3b1c4;
+    text-decoration: underline;
+}
+
+.ta-SubFooter {
+    border-bottom: 1px solid #b3b1c4;
+    padding: 8px 0px;
+}
+
+.ta-SubFooter ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    float: right;
+}
+
+.ta-SubFooter ul li {
+    display: inline;
+    font-size: 12px;
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+
+.ta-SubFooter ul li a {
+    color: #212721;
+    text-decoration: none;
+}
+
+.ta-SubFooter ul li a:hover {
+    color: #b3b1c4;
+    text-decoration: underline;
+}
+
+.ta-SubFooter ul li:last-child {
+    margin-right: 0px;
+}
+
+/* Form Formatting Features */
+
+.ta-FormHeaderPadding {
+    margin-top: 16px;
+}
+
+/* Bootstrap Overrides */
+
+.btn-primary {
+    background-color: #b3b1c4;
+    border-color: #54565a;
+    color: #54565a;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #d9d7df;
+    color: #54565a;
+    font-weight: bold;
+}
+
+.btn .btn-link a {
+    color: #212721;
+}
+
+.btn .btn-link a:hover {
+    color: #b3b1c4;
+}
+
+.text-center {
+    font-family: 'Playfair Display';
+}
+.bold-title {
+    background-color: #212721;
+    color: #FFF;
+}
+.b-t-md {
+    border-top: 1px solid #212721;
+}
+.ta-Footer img {
+ position: relative;
+    right: 10px;
+}

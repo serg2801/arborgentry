@@ -1,8 +1,8 @@
 class TradeFormsController < ApplicationController
-  # skip_before_filter :authenticate_vendor!
+  skip_before_filter :authenticate_vendor!
   alias_method :current_user, :current_vendor
 
-  # layout 'home'
+  layout 'vendor_form'
   def new
     @trade_forms = TradeForm.new
   end
