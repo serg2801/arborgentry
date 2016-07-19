@@ -1,0 +1,92 @@
+<div class="nested-fields">
+  <div class="panel-heading">
+    <h4 class="panel-title">Ship From Information</h4>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :ship_from_information_street, 'Street:', :class => 'col-lg-2 col-md-3 control-label' %>
+    </div>
+    <div class="col-lg-10 col-md-9 field">
+      <%= f.text_field :ship_from_information_street, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :ship_from_information_unit, 'Unit, Suite, Floor:', :class => 'col-lg-2 col-md-3 control-label' %>
+    </div>
+    <div class="col-lg-10 col-md-9 field">
+      <%= f.text_field :ship_from_information_unit, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :ship_from_information_city, 'City:', :class => 'col-lg-2 col-md-3 control-label' %>
+    </div>
+    <div class="col-lg-10 col-md-9 field">
+      <%= f.text_field :ship_from_information_city, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :ship_from_information_state, 'State:', :class => 'col-lg-2 col-md-3 control-label' %>
+    </div>
+    <div class="col-lg-10 col-md-9 field">
+      <%= f.text_field :ship_from_information_state, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :ship_from_information_zip, 'Zip/Postal Code:', :class => 'col-lg-2 col-md-3 control-label' %>
+    </div>
+    <div class="col-lg-10 col-md-9 field">
+      <%= f.text_field :ship_from_information_zip, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :ship_from_information_country, 'Country:', :class => 'col-lg-2 col-md-3 control-label' %>
+    </div>
+    <div class="col-lg-10 col-md-9 field">
+      <%= f.text_field :ship_from_information_country, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="panel-heading">
+    <h4 class="panel-title">Transportation Contact</h4>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :transportation_contact_name, 'Name:', :class => 'col-lg-2 col-md-3 control-label' %>
+    <div class="col-lg-4 col-md-9">
+      <%= f.text_field :transportation_contact_name, :class => 'form-control' %>
+    </div>
+    <%= f.label :transportation_contact_phone, 'Phone:', :class => 'col-lg-2 col-md-3 control-label' %>
+    <div class="col-lg-4 col-md-9">
+      <%= f.text_field :transportation_contact_phone, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :transportation_contact_email, 'Email:', :class => 'col-lg-2 col-md-3 control-label' %>
+    <div class="col-lg-4 col-md-9">
+      <%= f.email_field :transportation_contact_email, :class => 'form-control' %>
+    </div>
+    <%= f.label :transportation_contact_fax, 'Fax:', :class => 'col-lg-2 col-md-3 control-label' %>
+    <div class="col-lg-4 col-md-9">
+      <%= f.text_field :transportation_contact_fax, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="col-lg-2 col-md-3 control-label"></div>
+  </div>
+  <div class="ship_information col-lg-10 col-md-9 field">
+    <%= link_to_remove_association 'Remove', f, class: 'btn btn-danger remove_ship_information_js' %>
+  </div>
+  <div class="border_form_ship"></div>
+</div>

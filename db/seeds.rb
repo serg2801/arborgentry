@@ -8,27 +8,27 @@
 
 # Company Type 
 
-Company.create(title: "Sales Representative/Wholesaler")
-Company.create(title: "Antique Dealer")
+Company.create(title: 'Sales Representative/Wholesaler')
+Company.create(title: 'Antique Dealer')
 Company.create(title: "Manufacturer")
-Company.create(title: "Designer")
-Company.create(title: "Vintage Dealer")
-Company.create(title: "Not Applicable")
-Company.create(title: "Hand-crafted / Artisinal")
+Company.create(title: 'Designer')
+Company.create(title: 'Vintage Dealer')
+Company.create(title: 'Not Applicable')
+Company.create(title: 'Hand-crafted / Artisinal')
 
 
 # Category
-Category.create(title: "Furniture")
-Category.create(title: "Bath")
-Category.create(title: "Outdoor")
-Category.create(title: "Kitchen")
-Category.create(title: "Lighting")
-Category.create(title: "Art")
-Category.create(title: "Tabletop")
-Category.create(title: "Rugs")
-Category.create(title: "Decorative Taxtiles")
-Category.create(title: "BED")
-Category.create(title: "Decorative Accessories")
+Category.create(title: 'Furniture')
+Category.create(title: 'Bath')
+Category.create(title: 'Outdoor')
+Category.create(title: 'Kitchen')
+Category.create(title: 'Lighting')
+Category.create(title: 'Art')
+Category.create(title: 'Tabletop')
+Category.create(title: 'Rugs')
+Category.create(title: 'Decorative Taxtiles')
+Category.create(title: 'BED')
+Category.create(title: 'Decorative Accessories')
 
 # Channel 
 Channel.create(title: 'Direct to consumer')
@@ -50,6 +50,7 @@ Permission.create(name: 'Permissions Email', description: 'Permissions Email', k
 Role.create(name: 'admin')
 Role.create(name: 'vendor_admin')
 Role.create(name: 'vendor_default')
+
 
 
 Spree::Core::Engine.load_seed if defined?(Spree::Core)

@@ -1,0 +1,143 @@
+.form_container {
+  #contact_order_js {
+    display: none;
+  }
+  #contact_inventory_js {
+    display: none;
+  }
+  #contact_return_js {
+    display: none;
+  }
+  #contact_information_js {
+    display: none;
+  }
+  #contact_service_js {
+    display: none;
+  }
+  #contact_other_js {
+    display: none;
+  }
+  .form_costs_fees_other_js {
+    display: none;
+  }
+  .purchase_orders_block_js {
+    display: none;
+  }
+  .form-group {
+    .form_radio_button {
+      font-weight: normal;
+      margin-right: 20px;
+    }
+    #form_other_js {
+      display: none;
+    }
+    .radio_button_group {
+      width: 25%;
+      padding: 5px;
+    }
+    .radio_button_group_inventory {
+      width: 25%;
+      padding-top: 12px;
+    }
+    .form_other_group_inventory {
+      padding-top: 13px;
+    }
+    .radio_button_group_ml {
+      margin-left: 10px;
+    }
+    .radio_button_group_shipping {
+      padding: 5px;
+      width: 50%;
+    }
+    .radio_button_group_method {
+      padding: 5px;
+      width: 30%;
+    }
+    #form_other_inventory_js {
+      display: none;
+    }
+    #form_method_other_js {
+      display: none;
+    }
+    #form_frequency_other_js {
+      display: none;
+    }
+    .form_costs_fees_other_js {
+      display: none;
+    }
+    .remove_mt {
+      margin-top: 10px;
+    }
+    .another_location {
+      padding: 0;
+    }
+    .select_m_t {
+      margin-top: 10px;
+    }
+    .add_brand_name {
+      height: 30px;
+      position: relative;
+
+      #add_brand_name {
+        position: absolute;
+        left: 200px;
+        top: 5px;
+      }
+    }
+    .add_another_product_type {
+      height: 30px;
+      position: relative;
+
+      #add_another_product_type {
+        position: absolute;
+        left: 200px;
+        top: 5px;
+      }
+    }
+    .add_another_carrier {
+      height: 30px;
+      position: relative;
+
+      #add_another_carrier {
+        position: absolute;
+        left: 200px;
+        top: 5px;
+      }
+    }
+    .add_another_location {
+      height: 30px;
+      position: relative;
+
+      #add_another_location {
+        position: absolute;
+        left: 185px;
+        top: 5px;
+      }
+    }
+    .border_form_ship {
+      margin-left: -15px;
+      margin-right: -15px;
+      border-bottom: 1px solid #e3e3e3;
+      padding: 30px;
+    }
+    .radio_button_group_p_top {
+      padding-top: 10px;
+    }
+    .form_label_other {
+      margin-right: 0;
+    }
+    .form_other {
+      padding-top: 8px;
+    }
+  }
+  .remove_contact_p0 {
+    padding: 0;
+  }
+  .form-horizontal .form_m0 {
+    margin: 0;
+  }
+  .ship_information {
+    margin: 5px 0;
+    padding-left: 0;
+  }
+}

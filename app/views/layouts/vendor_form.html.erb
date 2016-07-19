@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trade Application – Tandem Arbor/Arbor Gentry</title>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display"/>
+  <%= stylesheet_link_tag 'vendor_form', media: 'all' %>
+  <%= javascript_include_tag 'vendor_form', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+  <%= render 'layouts/header_vendor_form' %>
+  <% flash.each do |key, value| %>
+      <% if key == "notice" %>
+      <% elsif value == "Invalid Email or password." %>
+          <div class="text-center <%= flash_class(key) %>">
+            <p>Sorry, but the username/password combination you entered is incorrect. Please try again.</p>
+          </div>
+      <% else %>
+          <div class="text-center <%= flash_class(key) %>">
+            <p><%= value %></p>
+          </div>
+      <% end %>
+  <% end %>
+  <%= yield %>
+  <%= render 'layouts/footer_vendor_form' %>
+</div>
+</body>
+</html>
