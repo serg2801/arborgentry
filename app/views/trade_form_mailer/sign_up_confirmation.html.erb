@@ -18,7 +18,7 @@
 
 <p>Address: <%= @trade_form.address %></p>
 
-<p>Unit/Suite/etc.: <%= @vendor.suite %></p>
+<p>Unit/Suite/etc.: <%= @trade_form.suite %></p>
 
 <p>City: <%= @trade_form.city %></p>
 
@@ -49,8 +49,7 @@
 <% end %>
 <p>Information: <%= @trade_form.information %></p>
 
-<p>Consented: true </p>
+<p>Consented: <%= @trade_form.agree %></p>
 
-Thank you!!!
 </body>
 </html>

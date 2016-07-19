@@ -1,0 +1,14 @@
+<div class="form-group nested-fields">
+  <div class="field">
+    <%= f.label :name, 'Shipping Carrier:', :class => 'col-lg-2 col-md-3 control-label' %>
+  </div>
+  <div class="col-lg-10 col-md-9 field">
+    <%= f.text_field :name, :class => 'form-control' %>
+  </div>
+  <div class="field">
+    <div class="col-lg-2 col-md-3 control-label"></div>
+  </div>
+  <div class="another_carrier col-lg-10 col-md-9 field remove_mt">
+    <%= link_to_remove_association 'Remove', f, class: 'btn btn-danger remove_another_carrier_js' %>
+  </div>
+</div>

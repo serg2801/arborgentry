@@ -2,21 +2,21 @@ class StaticPageController < ApplicationController
   alias_method :current_user, :current_vendor
   skip_before_filter :authenticate_vendor!
 
-  layout "vendor_form", only: [:form_home, :form_home, :trade_update, :about, :product_categories]
+  layout "vendor_form", only: [:form_home, :trade_update, :about, :product_categories, :vendor, :trade, :on_boarding]
 
   #vendor_form
-  def form_home
-  end
-
   def form_home
   end
 
   def vendor
   end
 
-  # def board
-  # end
-  #
+  def trade
+  end
+
+  def on_boarding
+  end
+
   # def board_update
   # end
 

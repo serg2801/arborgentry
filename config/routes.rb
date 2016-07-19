@@ -48,17 +48,18 @@ Rails.application.routes.draw do
         root :to => 'static_page#form_home'
 
         resources :vendor_forms, only: [ :create ]
-        resources :trade_forms
-        # resources :boards
+        # resources :trade_forms, only: [ :create ]
+        resources :vendor_onboarding_forms, only: [ :create ]
 
-        get 'trade-signup',       to: 'trade_forms#new'
+        get  'trade-signup',       to: 'trade_forms#new'
+        post 'trade-signup',       to: 'trade_forms#create'
         get 'vendor-signup',      to: 'vendor_forms#new'
-        # get 'vendor-onboarding',  to: 'boards#new'
+        get 'vendor-onboarding',  to: 'vendor_onboarding_forms#new'
 
         get 'trade_success',         to: 'static_page#trade'
         get 'vendor_success',        to: 'static_page#vendor'
-        # get 'board_success',         to: 'static_page#board'
-        # get 'board_success_update',  to: 'static_page#board_update'
+        get 'vendor_onboarding_success',         to: 'static_page#on_boarding'
+        # get 'vendor_onboarding_success_update',  to: 'static_page#on_boarding_update'
         # get 'trade_success_update',  to: 'static_page#trade_update'
         get 'about',                 to: 'static_page#about'
         get 'product_categories',    to: 'static_page#product_categories'

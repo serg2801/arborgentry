@@ -1,4 +1,5 @@
-$(document).on("page:change", function () {
+//$(document).on("page:change", function () {
+$(document).ready(function(){
 
     $("#add_brand_name").trigger("click");
     $(".nested-fields .brand_name").find(".remove_brand_js").hide();

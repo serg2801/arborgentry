@@ -8,16 +8,16 @@
       </div>
     </div>
   </div>
-  <%= form_for @trade_forms do |f| %>
+  <%= form_for @trade_form, url: {controller: 'trade_forms', action: 'create'} do |f| %>
       <div class="row">
-        <% if @trade_forms.errors.any? %>
+        <% if @trade_form.errors.any? %>
             <div id="error_explanation">
               <h2>
-                <%= pluralize(@trade_forms.errors.count, 'error') %> prohibited
+                <%= pluralize(@trade_form.errors.count, 'error') %> prohibited
                 this project from being saved:
               </h2>
               <ul class="<%= flash_class(:warning) %>">
-                <% @trade_forms.errors.full_messages.each do |msg| %>
+                <% @trade_form.errors.full_messages.each do |msg| %>
                     <li><%= msg %></li>
                 <% end %>
               </ul>
@@ -166,6 +166,7 @@
 
                 <div class="form-group sub_options_js">
                   <label class="col-lg-2 col-md-3 control-label">Retailer Details:</label>
+
                   <div class="col-lg-10 col-md-9">
                     <div class="checkbox-custom checkbox-inline">
                       <%= f.check_box :dropship_e_commerce, id: 'dropship_e_commerce' %>
@@ -226,30 +227,32 @@
 
               </div>
               <div class="panel-body">
-                <form role="form" class="form-horizontal group-border stripped" novalidate="novalidate">
-                  <div class="form-group">
-                    <label class="col-xs-12 control-label">By submitting this form, you agree to the following: </label>
+                <div class="form-group">
+                  <label class="col-xs-12 control-label">By submitting this form, you agree to the following: </label>
 
-                    <div class="col-xs-12 pt0 pb0">
-                      <ul>
-                        <li>The terms of the Arbor Gentry, LLC Non-Disclosure Agreement (NDA):
-                          <a href='/nda.pdf' target="_blank" class="btn btn-agreement">NON-DISCLOSURE
-                            AGREEMENT</a></li>
-                        <li>If you intend to purchase merchandise for resale, and wish to waive sales tax on your
-                          qualifying orders, please be advised that we will do so only upon request, and that tax
-                          documentation is subject to review, validation and approval at the sole discretion of
-                          Arbor Gentry and in accordance with state, local and federal guidelines.
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col-xs-12 agree_checkbox">
-                      <div class="checkbox-custom">
-                        <input type="checkbox" value="option" id="agree checkbox_agree" name="agree">
-                        <label class="checkbox_label" for="checkbox_agree">I agree to the terms, conditions, and agreements outlined above.</label>
+                  <div class="col-xs-12 pt0 pb0">
+                    <ul>
+                      <li>The terms of the Arbor Gentry, LLC Non-Disclosure Agreement (NDA):
+                        <a href='/nda.pdf' target="_blank" class="btn btn-agreement">NON-DISCLOSURE
+                          AGREEMENT</a></li>
+                      <li>If you intend to purchase merchandise for resale, and wish to waive sales tax on your
+                        qualifying orders, please be advised that we will do so only upon request, and that tax
+                        documentation is subject to review, validation and approval at the sole discretion of
+                        Arbor Gentry and in accordance with state, local and federal guidelines.
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-xs-12 agree_checkbox">
+                    <div class="checkbox-custom">
+                      <div class="checkbox-inline">
+                        <%= f.check_box :agree, id: 'agree checkbox_agree' %>
+                        <label class="checkbox_label" for="checkbox_agree">
+                          I agree to the terms, conditions, and agreements outlined above.
+                        </label>
                       </div>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>

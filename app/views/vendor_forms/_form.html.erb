@@ -109,17 +109,17 @@
                 </div>
               </div>
 
-              <!--<div class="form-group company_check_box">-->
-                <!--<label class="col-xs-12 control-label">Check the options that describe your business: </label>-->
-                <!--<%# Option.order(:title).each do |option_type| %>-->
-                    <!--<div class="col-lg-3 col-md-6">-->
-                      <!--<div class="checkbox-custom">-->
-                        <!--<%#= check_box_tag 'trade[option_ids][]', option_type.id, nil, :id => "ot_#{option_type.id}", name_option: 'checkbox_option[]' %>-->
-                        <!--<label class="checkbox_label" for="ot_<%#= option_type.id %>"><%#= option_type.title.upcase %></label>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                <!--<%# end %>-->
-              <!--</div>-->
+              <div class="form-group company_check_box">
+                <label class="col-xs-12 control-label">Check the options that describe your business: </label>
+                <% VendorFormOption.order(:title).each do |option_type| %>
+                    <div class="col-lg-3 col-md-6">
+                      <div class="checkbox-custom">
+                        <%= check_box_tag 'trade[option_ids][]', option_type.id, nil, :id => "ot_#{option_type.id}", name_option: 'checkbox_option[]' %>
+                        <label class="checkbox_label" for="ot_<%= option_type.id %>"><%= option_type.title.upcase %></label>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
 
 
               <div class="form-group">
@@ -127,29 +127,29 @@
                 <%= f.file_field :image, class: 'btn-file input_uploader' %>
               </div>
 
-              <!--<div class="form-group company_check_box">-->
-                <!--<label class="col-xs-12 control-label">What categories would you like to see on Tandem Arbor: </label>-->
-                <!--<%# Category.order(:title).each do |category_type| %>-->
-                    <!--<div class="col-lg-3 col-md-6">-->
-                      <!--<div class="checkbox-custom">-->
-                        <!--<%#= check_box_tag 'trade[category_ids][]', category_type.id, nil, :id => "ct_#{category_type.id}", name_category: 'checkbox_category[]' %>-->
-                        <!--<label class="checkbox_label" for="ct_<%#= category_type.id %>"><%#= category_type.title.upcase %></label>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                <!--<%# end %>-->
-              <!--</div>-->
+              <div class="form-group company_check_box">
+                <label class="col-xs-12 control-label">What categories would you like to see on Tandem Arbor: </label>
+                <% VendorFormCategory.order(:title).each do |category_type| %>
+                    <div class="col-lg-3 col-md-6">
+                      <div class="checkbox-custom">
+                        <%= check_box_tag 'trade[category_ids][]', category_type.id, nil, :id => "ct_#{category_type.id}", name_category: 'checkbox_category[]' %>
+                        <label class="checkbox_label" for="ct_<%= category_type.id %>"><%= category_type.title.upcase %></label>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
 
-              <!--<div class="form-group company_check_box">-->
-                <!--<label class="col-xs-12 control-label">What channel(s) do you currently sell through: </label>-->
-                <!--<%# Channel.order(:title).each do |channel_type| %>-->
-                    <!--<div class="col-lg-3 col-md-6">-->
-                      <!--<div class="checkbox-custom">-->
-                        <!--<%#= check_box_tag 'trade[channel_ids][]', channel_type.id, nil, :id => "cht_#{channel_type.id}", name_channel: 'checkbox_channel[]' %>-->
-                        <!--<label class="checkbox_label" for="cht_<%#= channel_type.id %>"><%#= channel_type.title.upcase %></label>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                <!--<%# end %>-->
-              <!--</div>-->
+              <div class="form-group company_check_box">
+                <label class="col-xs-12 control-label">What channel(s) do you currently sell through: </label>
+                <% VendorFormChannel.order(:title).each do |channel_type| %>
+                    <div class="col-lg-3 col-md-6">
+                      <div class="checkbox-custom">
+                        <%= check_box_tag 'trade[channel_ids][]', channel_type.id, nil, :id => "cht_#{channel_type.id}", name_channel: 'checkbox_channel[]' %>
+                        <label class="checkbox_label" for="cht_<%= channel_type.id %>"><%= channel_type.title.upcase %></label>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
 
               <div class="form-group">
                 <%= f.label :web_site, 'Website URL(s):', :class => 'col-xs-12 control-label website_urls_label' %>
@@ -195,7 +195,6 @@
 
             </div>
             <div class="panel-body">
-              <form role="form" class="form-horizontal group-border stripped" id="validate" novalidate="novalidate">
                 <div class="form-group">
                   <label class="col-xs-12 control-label">By submitting this form, you agree to the following: </label>
 
@@ -213,12 +212,15 @@
                   </div>
                   <div class="col-xs-12 agree_checkbox">
                     <div class="checkbox-custom">
-                      <input type="checkbox" value="option" id="agree checkbox_agree" name="agree">
-                      <label class="checkbox_label" for="agree">I agree to the terms, conditions, and agreements outlined above.</label>
+                      <div class="checkbox-inline">
+                        <%= f.check_box :agree, id: 'agree checkbox_agree' %>
+                        <label class="checkbox_label" for="checkbox_agree">
+                          I agree to the terms, conditions, and agreements outlined above.
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </form>
             </div>
           </div>
         </div>
