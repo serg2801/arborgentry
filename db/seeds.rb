@@ -36,6 +36,34 @@ Channel.create(title: 'Show room')
 Channel.create(title: 'Brick and Mortar retail store')
 Channel.create(title: '3rd party ecommerce site')
 
+
+# OptionForm
+OptionForm.create(title: 'Sales Rep. or Wholesale')
+OptionForm.create(title: 'Antique Dealer')
+OptionForm.create(title: 'Vintage Dealer')
+OptionForm.create(title: 'Manufacturer')
+OptionForm.create(title: 'Hand-crafted/Artisinal')
+OptionForm.create(title: 'Interior Designer')
+OptionForm.create(title: 'Other/Not Applicable')
+
+# CategoryForm
+CategoryForm.create(title: 'Seating')
+CategoryForm.create(title: 'Kitchen')
+CategoryForm.create(title: 'Lighting')
+CategoryForm.create(title: 'Rugs')
+CategoryForm.create(title: 'Decor')
+CategoryForm.create(title: 'Outdoor')
+CategoryForm.create(title: 'Soft Goods')
+CategoryForm.create(title: 'Case Goods')
+
+# ChannelForm
+ChannelForm.create(title: 'Direct to Consumer')
+ChannelForm.create(title: 'Brick and Mortar Store')
+ChannelForm.create(title: 'Showroom')
+ChannelForm.create(title: 'Flash Sales Website(s)')
+ChannelForm.create(title: '3rd Party e-Commerce Site(s)')
+ChannelForm.create(title: 'Other')
+
 # Vendor
 Vendor.create(email: 'admin@tandemarbor.com', :password => "password", :admin => true)
 Vendor.create(email: 'vendor@tandemarbor.com', :password => "password")

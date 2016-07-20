@@ -3,14 +3,21 @@ class TradeFormsController < ApplicationController
   skip_before_filter :authenticate_vendor!
   alias_method :current_user, :current_vendor
 
-  layout 'vendor_form'
+  layout 'vendor_form', only: [ :new, :create ]
+
+  def index
+    @trade_forms = TradeForm.all
+  end
+
+  def show
+    @trade_form = TradeForm.find(params[:id])
+  end
 
   def new
     @trade_form = TradeForm.new
   end
 
   def create
-    binding.pry
     @trade_form = TradeForm.new(trade_forms_params)
     if @trade_form.save
       TradeFormMailer.sign_up_confirmation(@trade_form).deliver

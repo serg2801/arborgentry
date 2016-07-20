@@ -51,6 +51,19 @@
           </li>
           <% if current_vendor.admin? %>
               <li>
+                <a href="#">
+                  <i class="l-basic-webpage-txt"></i>
+                  <span class="txt">Vendor Forms</span>
+                </a>
+                <ul class="sub">
+                  <li><%= link_to( 'Vendor', vendor_forms_path ) %></li>
+                  <li><%= link_to( 'Trade', trade_forms_path ) %></li>
+                  <li><%= link_to( 'Vendor OnBoarding', vendor_onboarding_forms_path ) %></li>
+                </ul>
+              </li>
+          <% end %>
+          <% if current_vendor.admin? %>
+              <li>
                 <%= link_to accounts_path do %>
                     <i class="l-basic-webpage-txt"></i>
                     <span class="txt">Accounts</span>
@@ -76,7 +89,7 @@
           <% if current_vendor.has_spree_role?('admin') %>
               <li>
                 <%= link_to spree.admin_orders_path do %>
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    <i class="l-basic-webpage-txt"></i>
                     <span class="txt">Orders</span>
                 <% end %>
               </li>

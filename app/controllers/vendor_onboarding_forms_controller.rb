@@ -1,8 +1,17 @@
 class VendorOnboardingFormsController < ApplicationController
+
   skip_before_filter :authenticate_vendor!
   alias_method :current_user, :current_vendor
 
-  layout 'vendor_form'
+  layout 'vendor_form', only: [ :new, :create ]
+
+  def index
+    @on_boardings = VendorOnboardingForm.all
+  end
+
+  def show
+    @on_boarding = VendorOnboardingForm.find(params[:id])
+  end
 
   # def show
   #   @on_boarding = VendorOnboardingForm.find(params[:id])

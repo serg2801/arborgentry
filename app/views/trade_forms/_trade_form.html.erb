@@ -1,0 +1,9 @@
+<tr>
+  <td><%= trade_form.business_name %></td>
+  <td><%= trade_form.first_name %></td>
+  <td><%= trade_form.last_name %></td>
+  <td><%= trade_form.email %></td>
+  <td><%= trade_form.phone_number %></td>
+  <td><%= trade_form.created_at.strftime('%H:%M | %d %b %Y') %></td>
+  <td><%= link_to 'Show', trade_form_path(trade_form), class: 'btn btn-info btn-right btn-xs' %></td>
+</tr>
