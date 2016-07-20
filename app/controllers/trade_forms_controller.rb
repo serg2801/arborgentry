@@ -10,7 +10,6 @@ class TradeFormsController < ApplicationController
   end
 
   def create
-    binding.pry
     @trade_form = TradeForm.new(trade_forms_params)
     if @trade_form.save
       TradeFormMailer.sign_up_confirmation(@trade_form).deliver

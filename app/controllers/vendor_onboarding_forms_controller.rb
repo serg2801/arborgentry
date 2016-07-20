@@ -1,4 +1,5 @@
 class VendorOnboardingFormsController < ApplicationController
+
   skip_before_filter :authenticate_vendor!
   alias_method :current_user, :current_vendor
 

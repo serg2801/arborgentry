@@ -47,8 +47,8 @@ class VendorFormsController < ApplicationController
       end
 
       if @vendor_form.save
-        # TradeMailer.signup_confirmation(@vendor_form).deliver
-        # TradeMailer.send_confirmation(@vendor_form).deliver
+        VendorFormMailer.sing_up_confirmation(@vendor_form).deliver
+        VendorFormMailer.send_confirmation(@vendor_form).deliver
         redirect_to vendor_success_path
       else
         render 'new'

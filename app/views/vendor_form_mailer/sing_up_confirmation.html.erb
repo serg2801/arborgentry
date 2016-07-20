@@ -1,0 +1,36 @@
+<p>Business Name/D.B.A: <%= @vendor_form.business_name %></p>
+<p>Greeting: <%= @vendor_form.greeting %></p>
+<p>First Name: <%= @vendor_form.first_name %></p>
+<p>Last Name: <%= @vendor_form.last_name %></p>
+<p>Email: <%= @vendor_form.email %></p>
+<p>Phone Number: <%= @vendor_form.phone_number %></p>
+<p>Address: <%= @vendor_form.address %></p>
+<p>Unit/Suite/etc.: <%= @vendor_form.suite %></p>
+<p>City: <%= @vendor_form.city %></p>
+<p>State: <%= @vendor_form.state %></p>
+<p>Zip Code: <%= @vendor_form.zipcode %></p>
+<p>Country: <%= @vendor_form.country %></p>
+<p>Web site url: <%= @vendor_form.web_site_url_my %></p>
+<div>
+  <p>Check the options that describe your business:</p>
+  <% @vendor_form.options.each do |option| %>
+      <p>--- <%= option.title %></p>
+  <% end %>
+</div>
+<div>
+  <p>What categories would you like to see on Tandem Arbor:</p>
+  <% @vendor_form.categories.each do |category| %>
+      <p>--- <%= category.title %></p>
+  <% end %>
+</div>
+<div>
+  <p>What channel(s) do you currently sell through:</p>
+  <% @vendor_form.channels.each do |channel| %>
+      <p>--- <%= channel.title %></p>
+  <% end %>
+</div>
+<p>Website URL(s): <%= @vendor_form.web_site %></p>
+<p>Information: <%= @vendor_form.information %></p>
+<p>Consented: true </p>
+
+Thank you!!!
