@@ -13,19 +13,19 @@
 <p>Web site url: <%= @vendor_form.web_site_url_my %></p>
 <div>
   <p>Check the options that describe your business:</p>
-  <% @vendor_form.options.each do |option| %>
+  <% @vendor_form.option_forms.each do |option| %>
       <p>--- <%= option.title %></p>
   <% end %>
 </div>
 <div>
   <p>What categories would you like to see on Tandem Arbor:</p>
-  <% @vendor_form.categories.each do |category| %>
+  <% @vendor_form.category_forms.each do |category| %>
       <p>--- <%= category.title %></p>
   <% end %>
 </div>
 <div>
   <p>What channel(s) do you currently sell through:</p>
-  <% @vendor_form.channels.each do |channel| %>
+  <% @vendor_form.channel_forms.each do |channel| %>
       <p>--- <%= channel.title %></p>
   <% end %>
 </div>

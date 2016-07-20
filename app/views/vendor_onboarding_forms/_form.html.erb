@@ -1,9 +1,9 @@
-<%= form_for @on_boarding do |f| %>
+<%= form_for @on_boarding, url: {controller: 'vendor_onboarding_forms', action: 'create'} do |f| %>
     <div class="row">
       <% if @on_boarding.errors.any? %>
           <div id="error_explanation">
             <h2>
-              <%= pluralize(@on_boarding.errors.count, "error") %> prohibited
+              <%= pluralize(@on_boarding.errors.count, 'error') %> prohibited
               this project from being saved:
             </h2>
             <ul class="<%= flash_class(:warning) %>">

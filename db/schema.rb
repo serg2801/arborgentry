@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719095648) do
+ActiveRecord::Schema.define(version: 20160720100908) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 20160719095648) do
     t.string   "title",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "category_forms", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "channel_forms", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "channels", force: :cascade do |t|
@@ -173,6 +185,12 @@ ActiveRecord::Schema.define(version: 20160719095648) do
   end
 
   add_index "onboarding_transportations", ["vendor_onboarding_form_id"], name: "index_onboarding_transportations_on_vendor_onboarding_form_id"
+
+  create_table "option_forms", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "option_images", force: :cascade do |t|
     t.datetime "created_at"
@@ -1393,6 +1411,27 @@ ActiveRecord::Schema.define(version: 20160719095648) do
     t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "vendor_form_category_forms", force: :cascade do |t|
+    t.integer  "vendor_form_id"
+    t.integer  "category_form_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "vendor_form_channel_forms", force: :cascade do |t|
+    t.integer  "vendor_form_id"
+    t.integer  "channel_form_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "vendor_form_option_forms", force: :cascade do |t|
+    t.integer  "vendor_form_id"
+    t.integer  "option_form_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "vendor_forms", force: :cascade do |t|
