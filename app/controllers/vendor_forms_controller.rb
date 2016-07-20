@@ -3,9 +3,17 @@ class VendorFormsController < ApplicationController
   skip_before_filter :authenticate_vendor!
   alias_method :current_user, :current_vendor
 
-  layout 'vendor_form'
+  layout 'vendor_form', only: [ :new, :create ]
 
   before_action :get_vendor_form_options, only: [:create]
+
+  def index
+    @vendor_forms = VendorForm.all
+  end
+
+  def show
+    @vendor_form = VendorForm.find(params[:id])
+  end
 
   # def edit
   # @user = User.find(current_user.id)

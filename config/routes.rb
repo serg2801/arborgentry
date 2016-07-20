@@ -47,10 +47,6 @@ Rails.application.routes.draw do
 
         root :to => 'static_page#form_home'
 
-        # resources :vendor_forms, only: [ :create ]
-        # resources :trade_forms, only: [ :create ]
-        # resources :vendor_onboarding_forms, only: [ :create ]
-
         get  'trade-signup',       to: 'trade_forms#new'
         post 'trade-signup',       to: 'trade_forms#create'
         get  'vendor-signup',      to: 'vendor_forms#new'
@@ -76,6 +72,10 @@ Rails.application.routes.draw do
       root :to =>'home#welcome', as: :unauthenticated_root
     end
   end
+
+  resources :vendor_forms, only: [ :index, :show ]
+  resources :trade_forms, only: [ :index, :show ]
+  resources :vendor_onboarding_forms, only: [ :index, :show ]
 
   resources :vendors,  only: [:destroy, :edit, :update, :show, :index ]
   resources :accounts, only: [:index, :new, :create ]

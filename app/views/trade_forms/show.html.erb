@@ -1,0 +1,74 @@
+<div id="page-header" class="clearfix">
+  <div class="page-header">
+    <h2>Trade Form</h2>
+    <span class="txt">List of your emails</span>
+  </div>
+  <div class="header-stats">
+    <div class="spark clearfix">
+      <div class="spark-info"><span class="number">2345</span>Visitors</div>
+      <div id="spark-visitors" class="sparkline"></div>
+    </div>
+    <div class="spark clearfix">
+      <div class="spark-info"><span class="number">17345</span>Views</div>
+      <div id="spark-templateviews" class="sparkline"></div>
+    </div>
+    <div class="spark clearfix">
+      <div class="spark-info"><span class="number">3700$</span>Sales</div>
+      <div id="spark-sales" class="sparkline"></div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default toggle panelMove panelClose panelRefresh">
+  <!-- Start .panel -->
+  <div class="panel-heading">
+    <h4 class="panel-title">Business Name/D.B.A: <%= @trade_form.business_name %></h4>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item">Greeting: <%= @trade_form.greeting %> </li>
+      <li class="list-group-item">First Name: <%= @trade_form.first_name %> </li>
+      <li class="list-group-item">Last Name: <%= @trade_form.last_name %> </li>
+      <li class="list-group-item">Email: <%= @trade_form.email %> </li>
+      <li class="list-group-item">Phone Number: <%= @trade_form.phone_number %> </li>
+      <li class="list-group-item">Address: <%= @trade_form.address %> </li>
+      <li class="list-group-item">Unit/Suite/etc.: <%= @trade_form.suite %> </li>
+      <li class="list-group-item">City: <%= @trade_form.city %> </li>
+      <li class="list-group-item">State: <%= @trade_form.state %> </li>
+      <li class="list-group-item">ZIP Code: <%= @trade_form.zipcode %> </li>
+      <li class="list-group-item">Country: <%= @trade_form.country %> </li>
+      <li class="list-group-item">Website: <%= @trade_form.web_site_url %> </li>
+      <li class="list-group-item">Interior Design Certificate Number: <%= @trade_form.certificate %> </li>
+      <li class="list-group-item">Where did you learn about our company? <%= @trade_form.about_our_company %> </li>
+      <li class="list-group-item">Tax exempt? <%= @trade_form.tax_exempt %> </li>
+      <li class="list-group-item">
+        Check the options that describe your business:
+        <%= @trade_form.describe_your_business %>
+      </li>
+      <% if @trade_form.dropship_e_commerce %>
+          <li class="list-group-item">Dropship/e-Commerce: <%= @trade_form.dropship_e_commerce %> </li>
+      <% end %>
+      <% if @trade_form.stocking_dealer %>
+          <li class="list-group-item">Stocking Dealer: <%= @trade_form.stocking_dealer %> </li>
+      <% end %>
+      <% if @trade_form.non_stocking_dealer %>
+          <li class="list-group-item">Non-Stocking Dealer: <%= @trade_form.non_stocking_dealer %> </li>
+      <% end %>
+      <li class="list-group-item">
+        <% unless @trade_form.contract_details.blank? %>
+            Contract Details: <%= @trade_form.contract_details %>
+        <% end %>
+      </li>
+
+      <li class="list-group-item">Information: <%= @trade_form.information %> </li>
+      <% unless @trade_form.image_url.nil? %>
+          <li class="list-group-item">
+            Attachment:
+            <%= image_tag @trade_form.image.url %>
+            <%= link_to('Download', "#{@trade_form.image}", :download => "#{@trade_form.id}_vendor") %>
+          </li>
+      <% end %>
+      <li class="list-group-item">Consented: true </li>
+    </ul>
+  </div>
+</div>

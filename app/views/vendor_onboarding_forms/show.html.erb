@@ -1,0 +1,35 @@
+<div id="page-header" class="clearfix">
+  <div class="page-header">
+    <h2>Vendor Onboarding Form</h2>
+    <span class="txt">List of your emails</span>
+  </div>
+  <div class="header-stats">
+    <div class="spark clearfix">
+      <div class="spark-info"><span class="number">2345</span>Visitors</div>
+      <div id="spark-visitors" class="sparkline"></div>
+    </div>
+    <div class="spark clearfix">
+      <div class="spark-info"><span class="number">17345</span>Views</div>
+      <div id="spark-templateviews" class="sparkline"></div>
+    </div>
+    <div class="spark clearfix">
+      <div class="spark-info"><span class="number">3700$</span>Sales</div>
+      <div id="spark-sales" class="sparkline"></div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default toggle panelMove panelClose panelRefresh">
+  <!-- Start .panel -->
+  <div class="panel-heading">
+    <h4 class="panel-title">Legal Business Name: <%= @on_boarding.legal_business_name %></h4>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item">Company Name/D.B.A: <%= @on_boarding.company_name %> </li>
+      <li class="list-group-item">Vendor Location: <%= @on_boarding.vendor_based_in %> </li>
+
+      <li class="list-group-item">Consented: true </li>
+    </ul>
+  </div>
+</div>

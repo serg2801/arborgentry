@@ -1,0 +1,9 @@
+<tr>
+  <td><%= vendor_onboarding_form.legal_business_name %></td>
+  <td><%= vendor_onboarding_form.company_name %></td>
+  <td><%= vendor_onboarding_form.vendor_based_in %></td>
+  <td><%= vendor_onboarding_form.primary_business_email %></td>
+  <td><%= vendor_onboarding_form.primary_business_phone %></td>
+  <td><%= vendor_onboarding_form.created_at.strftime('%H:%M | %d %b %Y') %></td>
+  <td><%= link_to 'Show', vendor_onboarding_form_path(vendor_onboarding_form), class: 'btn btn-info btn-right btn-xs' %></td>
+</tr>

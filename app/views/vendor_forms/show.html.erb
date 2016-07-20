@@ -1,0 +1,72 @@
+<div id="page-header" class="clearfix">
+  <div class="page-header">
+    <h2>Vendor Form</h2>
+    <span class="txt">List of your emails</span>
+  </div>
+  <div class="header-stats">
+    <div class="spark clearfix">
+      <div class="spark-info"><span class="number">2345</span>Visitors</div>
+      <div id="spark-visitors" class="sparkline"></div>
+    </div>
+    <div class="spark clearfix">
+      <div class="spark-info"><span class="number">17345</span>Views</div>
+      <div id="spark-templateviews" class="sparkline"></div>
+    </div>
+    <div class="spark clearfix">
+      <div class="spark-info"><span class="number">3700$</span>Sales</div>
+      <div id="spark-sales" class="sparkline"></div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default toggle panelMove panelClose panelRefresh">
+  <!-- Start .panel -->
+  <div class="panel-heading">
+    <h4 class="panel-title">Business Name/D.B.A: <%= @vendor_form.business_name %></h4>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item">Greeting: <%= @vendor_form.greeting %> </li>
+      <li class="list-group-item">First Name: <%= @vendor_form.first_name %> </li>
+      <li class="list-group-item">Last Name: <%= @vendor_form.last_name %> </li>
+      <li class="list-group-item">Email: <%= @vendor_form.email %> </li>
+      <li class="list-group-item">Phone Number: <%= @vendor_form.phone_number %> </li>
+      <li class="list-group-item">Address: <%= @vendor_form.address %> </li>
+      <li class="list-group-item">Unit/Suite/etc.: <%= @vendor_form.suite %> </li>
+      <li class="list-group-item">City: <%= @vendor_form.city %> </li>
+      <li class="list-group-item">State: <%= @vendor_form.state %> </li>
+      <li class="list-group-item">ZIP Code: <%= @vendor_form.zipcode %> </li>
+      <li class="list-group-item">Country: <%= @vendor_form.country %> </li>
+      <li class="list-group-item">Website: <%= @vendor_form.web_site_url_my %> </li>
+
+      <li class="list-group-item">
+        Check the options that describe your business:
+        <% @vendor_form.option_forms.each do |option| %>
+            <%= option.title %>;
+        <% end %>
+      </li>
+      <li class="list-group-item">
+        What categories would you like to see on Tandem Arbor:
+        <% @vendor_form.category_forms.each do |category| %>
+            <%= category.title %>;
+        <% end %>
+      </li>
+      <li class="list-group-item">
+        What channel(s) do you currently sell through:
+        <% @vendor_form.channel_forms.each do |channel| %>
+            <%= channel.title %>;
+        <% end %>
+      </li>
+      <li class="list-group-item">Website URL(s): <%= @vendor_form.web_site %> </li>
+      <li class="list-group-item">Information: <%= @vendor_form.information %> </li>
+      <% unless @vendor_form.image_url.nil? %>
+          <li class="list-group-item">
+            Attachment:
+            <%= image_tag @vendor_form.image.url %>
+            <%= link_to('Download', "#{@vendor_form.image}", :download => "#{@vendor_form.id}_vendor") %>
+          </li>
+      <% end %>
+      <li class="list-group-item">Consented: true </li>
+    </ul>
+  </div>
+</div>

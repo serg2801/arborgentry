@@ -1,0 +1,9 @@
+<tr>
+  <td><%= vendor_form.business_name %></td>
+  <td><%= vendor_form.first_name %></td>
+  <td><%= vendor_form.last_name %></td>
+  <td><%= vendor_form.email %></td>
+  <td><%= vendor_form.phone_number %></td>
+  <td><%= vendor_form.created_at.strftime('%H:%M | %d %b %Y') %></td>
+  <td><%= link_to 'Show', vendor_form_path(vendor_form), class: 'btn btn-info btn-right btn-xs' %></td>
+</tr>
