@@ -22,14 +22,249 @@
 <div class="panel panel-default toggle panelMove panelClose panelRefresh">
   <!-- Start .panel -->
   <div class="panel-heading">
-    <h4 class="panel-title">Legal Business Name: <%= @on_boarding.legal_business_name %></h4>
+    <h4 class="panel-title">BUSINESS INFORMATION</h4>
   </div>
   <div class="panel-body">
     <ul class="list-group">
+      <li class="list-group-item">Legal Business Name: <%= @on_boarding.legal_business_name %> </li>
       <li class="list-group-item">Company Name/D.B.A: <%= @on_boarding.company_name %> </li>
-      <li class="list-group-item">Vendor Location: <%= @on_boarding.vendor_based_in %> </li>
 
-      <li class="list-group-item">Consented: true </li>
+      <li class="list-group-item">
+        Brand Name(s):
+        <% @on_boarding.onboarding_brands.each do |brand| %>
+            <%= brand.name %>;
+        <% end %>
+      </li>
+
+      <li class="list-group-item">Vendor Location: <%= @on_boarding.vendor_based_in %> </li>
+      <% unless @on_boarding.vendor_based_in_other.blank? %>
+          <li class="list-group-item">Other: <%= @on_boarding.vendor_based_in_other %> </li>
+      <% end %>
+      <h3>Vendor Main Address</h3>
+      <li class="list-group-item">Street: <%= @on_boarding.main_address_street %> </li>
+      <li class="list-group-item">Unit, Suite, Floor: <%= @on_boarding.main_address_unit %> </li>
+      <li class="list-group-item">City: <%= @on_boarding.main_address_city %> </li>
+      <li class="list-group-item">State: <%= @on_boarding.main_address_state %> </li>
+      <li class="list-group-item">Zip/Postal Code: <%= @on_boarding.main_address_zip %> </li>
+      <li class="list-group-item">Country: <%= @on_boarding.main_address_country %> </li>
+
+      <h3>Vendor Contacts</h3>
+
+      <h5>Primary Business Representative</h5>
+
+      <li class="list-group-item">Name: <%= @on_boarding.primary_business_name %> </li>
+      <li class="list-group-item">Phone: <%= @on_boarding.primary_business_phone %> </li>
+      <li class="list-group-item">Email: <%= @on_boarding.primary_business_email %> </li>
+      <li class="list-group-item">Fax: <%= @on_boarding.primary_business_fax %> </li>
+
+      <h5>Finance Representative</h5>
+
+      <li class="list-group-item">Name: <%= @on_boarding.finance_name %> </li>
+      <li class="list-group-item">Phone: <%= @on_boarding.finance_phone %> </li>
+      <li class="list-group-item">Email: <%= @on_boarding.finance_email %> </li>
+      <li class="list-group-item">Fax: <%= @on_boarding.finance_fax %> </li>
+
+      <% unless @on_boarding.purchase_orders_email.blank? %>
+
+          <h5>Purchase Orders and Order Fulfillment Representative</h5>
+
+          <li class="list-group-item">Name: <%= @on_boarding.purchase_orders_name %> </li>
+          <li class="list-group-item">Phone: <%= @on_boarding.purchase_orders_phone %> </li>
+          <li class="list-group-item">Email: <%= @on_boarding.purchase_orders_email %> </li>
+          <li class="list-group-item">Fax: <%= @on_boarding.purchase_orders_fax %> </li>
+      <% end %>
+
+      <% unless @on_boarding.inventory_email.blank? %>
+
+          <h5>Inventory Representative</h5>
+
+          <li class="list-group-item">Name: <%= @on_boarding.inventory_name %> </li>
+          <li class="list-group-item">Phone: <%= @on_boarding.inventory_phone %> </li>
+          <li class="list-group-item">Email: <%= @on_boarding.inventory_email %> </li>
+          <li class="list-group-item">Fax: <%= @on_boarding.inventory_fax %> </li>
+      <% end %>
+
+      <% unless @on_boarding.returns_email.blank? %>
+
+          <h5>Returns Representative</h5>
+
+          <li class="list-group-item">Name: <%= @on_boarding.returns_name %> </li>
+          <li class="list-group-item">Phone: <%= @on_boarding.returns_phone %> </li>
+          <li class="list-group-item">Email: <%= @on_boarding.returns_email %> </li>
+          <li class="list-group-item">Fax: <%= @on_boarding.returns_fax %> </li>
+      <% end %>
+
+      <% unless @on_boarding.product_information_email.blank? %>
+
+          <h5>Product Information Representative</h5>
+
+          <li class="list-group-item">Name: <%= @on_boarding.product_information_name %> </li>
+          <li class="list-group-item">Phone: <%= @on_boarding.product_information_phone %> </li>
+          <li class="list-group-item">Email: <%= @on_boarding.product_information_email %> </li>
+          <li class="list-group-item">Fax: <%= @on_boarding.product_information_fax %> </li>
+      <% end %>
+
+      <% unless @on_boarding.customer_service_email.blank? %>
+
+          <h5>Customer Service Representative</h5>
+
+          <li class="list-group-item">Name: <%= @on_boarding.customer_service_name %> </li>
+          <li class="list-group-item">Phone: <%= @on_boarding.customer_service_phone %> </li>
+          <li class="list-group-item">Email: <%= @on_boarding.customer_service_email %> </li>
+          <li class="list-group-item">Fax: <%= @on_boarding.customer_service_fax %> </li>
+      <% end %>
+
+      <% unless @on_boarding.contact_other_email.blank? %>
+
+          <h5>Other</h5>
+
+          <li class="list-group-item">Title: <%= @on_boarding.contact_other_title %> </li>
+          <li class="list-group-item">Name: <%= @on_boarding.contact_other_name %> </li>
+          <li class="list-group-item">Phone: <%= @on_boarding.contact_other_phone %> </li>
+          <li class="list-group-item">Email: <%= @on_boarding.contact_other_email %> </li>
+          <li class="list-group-item">Fax: <%= @on_boarding.contact_other_fax %> </li>
+      <% end %>
+
+      <h3>Inventory Integration</h3>
+
+      <li class="list-group-item">Inventory Integration Method: <%= @on_boarding.inventory_integration_method %> </li>
+
+      <% unless @on_boarding.inventory_integration_method_other.blank? %>
+          <li class="list-group-item">
+            Other:
+            <%= @on_boarding.inventory_integration_method_other %>
+          </li>
+      <% end %>
+
+      <h5>Integrations Contact</h5>
+
+      <li class="list-group-item">Name: <%= @on_boarding.integrations_contact_name %> </li>
+      <li class="list-group-item">Phone: <%= @on_boarding.integrations_contact_phone %> </li>
+      <li class="list-group-item">Email: <%= @on_boarding.integrations_contact_email %> </li>
+      <li class="list-group-item">Fax: <%= @on_boarding.integrations_contact_fax %> </li>
+
+      <h3>Transportation and Shipment</h3>
+
+      <% @on_boarding.onboarding_transportation.each do |t| %>
+          <h5>Ship From Information:</h5>
+
+          <li class="list-group-item">Street: <%= t.ship_from_information_street %></li>
+          <li class="list-group-item">Unit,Suite,Floor: <%= t.ship_from_information_unit %></li>
+          <li class="list-group-item">City: <%= t.ship_from_information_city %></li>
+          <li class="list-group-item">State: <%= t.ship_from_information_state %></li>
+          <li class="list-group-item">Zip/Postal Code: <%= t.ship_from_information_zip %></li>
+          <li class="list-group-item">Country: <%= t.ship_from_information_country %></li>
+
+          <h5>Transportation Contact</h5>
+
+          <li class="list-group-item">Name: <%= t.transportation_contact_name %></li>
+          <li class="list-group-item">Phone: <%= t.transportation_contact_phone %></li>
+          <li class="list-group-item">Email: <%= t.transportation_contact_email %></li>
+          <li class="list-group-item">Fax: <%= t.transportation_contact_fax %></li>
+      <% end %>
+
+      <h3>Returns Information</h3>
+
+      <h5>Returns Contact:</h5>
+
+      <li class="list-group-item">Name: <%= @on_boarding.returns_contact_name %> </li>
+      <li class="list-group-item">Phone: <%= @on_boarding.returns_contact_phone %> </li>
+      <li class="list-group-item">Email: <%= @on_boarding.returns_contact_email %> </li>
+      <li class="list-group-item">Fax: <%= @on_boarding.returns_contact_fax %> </li>
+
+      <h5>Returns Address:</h5>
+
+      <li class="list-group-item">Street: <%= @on_boarding.returns_address_street %></li>
+      <li class="list-group-item">Unit, Suite, Floor: <%= @on_boarding.returns_address_unit %></li>
+      <li class="list-group-item">City: <%= @on_boarding.returns_address_city %></li>
+      <li class="list-group-item">State: <%= @on_boarding.returns_address_state %></li>
+      <li class="list-group-item">Zip/Postal Code: <%= @on_boarding.returns_address_zip %></li>
+      <li class="list-group-item">Country: <%= @on_boarding.returns_address_country %></li>
+
+      <h3>Drop Shipping</h3>
+
+      <li class="list-group-item">Preferred shipping method: <%= @on_boarding.preferred_shipping_method %></li>
+
+      <li class="list-group-item">
+        What are your preferred carriers?
+        <% @on_boarding.onboarding_carriers.each do |c| %>
+            <%= c.name %>;
+        <% end %>
+      </li>
+
+      <li class="list-group-item">What is your protocol for freight
+        shipments? <%= @on_boarding.protocol_for_freight_shipments %></li>
+
+      <h3>Warehousing</h3>
+
+      <li class="list-group-item">Do you have ship alone items? <%= @on_boarding.ship_alone_items %></li>
+
+      <li class="list-group-item">
+        Product Type(s):
+        <% @on_boarding.onboarding_product_types.each do |p| %>
+            <%= p.name %>;
+        <% end %>
+      </li>
+
+      <li class="list-group-item">What are your average inventory
+        levels? <%= @on_boarding.average_inventory_levels %></li>
+
+      <h5>What is your typical shipping lead time?</h5>
+      <li class="list-group-item">
+        <%= @on_boarding.typical_shipping_lead_time_count %>
+        <%= @on_boarding.typical_shipping_lead_time_day %>
+      </li>
+
+      <h5>What are your average inventory replenishment timelines?</h5>
+      <li class="list-group-item">
+        <%= @on_boarding.average_inventory_replenishment_time_count %>
+        <%= @on_boarding.average_inventory_replenishment_time_day %>
+      </li>
+      <% unless @on_boarding.average_inventory_replenishment_time_other.blank? %>
+          <p>Other: <%= @on_boarding.average_inventory_replenishment_time_other %></p>
+      <% end %>
+
+      <h3>Product Details</h3>
+
+      <h5>How and when do you provide inventory updates (including discounted and new items)?</h5>
+
+      <li class="list-group-item">Method: <%= @on_boarding.method %></li>
+      <% unless @on_boarding.method_other.blank? %>
+          <li class="list-group-item">Other: <%= @on_boarding.method_other %></li>
+      <% end %>
+
+      <li class="list-group-item">Frequency: <%= @on_boarding.frequency %></li>
+      <% unless @on_boarding.frequency_other.blank? %>
+          <li class="list-group-item">Other: <%= @on_boarding.frequency_other %></li>
+      <% end %>
+
+      <li class="list-group-item">Are there any costs/fees in addition to
+        COGs? <%= @on_boarding.costs_fees_radio %></li>
+      <% unless @on_boarding.if_so_costs_fees.blank? %>
+          <li class="list-group-item">If so, how are these costs billed? <%= @on_boarding.if_so_costs_fees %></li>
+      <% end %>
+
+      <li class="list-group-item">Are there any special
+        requirements:<%= @on_boarding.requirements_for_purchase_orders %></li>
+      <% unless @on_boarding.if_yes_requirements_for_purchase_orders.blank? %>
+          <li class="list-group-item">If yes, please explain the
+            requirements:  <%= @on_boarding.if_yes_requirements_for_purchase_orders %></li>
+      <% end %>
+
+      <% unless @on_boarding.imap_pricing.blank? %>
+          <li class="list-group-item">
+            Please explain your discount/promotional rules in regards to IMAP pricing:
+            <%= @on_boarding.imap_pricing %>
+          </li>
+      <% end %>
+
+      <li class="list-group-item">
+        What, if any, are your merchandising stipulations and strategy recommendations for your product?
+        <%= @on_boarding.merchandising %>
+      </li>
+
+      <h3>CONSENT</h3>
+      <li class="list-group-item">Consented: true</li>
     </ul>
   </div>
 </div>
