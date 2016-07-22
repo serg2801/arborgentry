@@ -7,26 +7,33 @@ class ConfigEmailPolicy
   end
 
   def show?
-    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or @current_vendor.roles.first.has_permission?(:email_all_action)
+    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or check(:email_all_action)
   end
 
   def new?
-    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or @current_vendor.roles.first.has_permission?(:email_all_action)
+    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or check(:email_all_action)
   end
 
   def create?
-    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or @current_vendor.roles.first.has_permission?(:email_all_action)
+    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or check(:email_all_action)
   end
 
   def edit?
-    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or @current_vendor.roles.first.has_permission?(:email_all_action)
+    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or check(:email_all_action)
   end
 
   def update?
-    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or @current_vendor.roles.first.has_permission?(:email_all_action)
+    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or check(:email_all_action)
   end
 
   def test_connection?
-    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or @current_vendor.roles.first.has_permission?(:email_all_action)
+    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or check(:email_all_action)
+  end
+
+
+  private
+
+  def check(permission)
+    @current_vendor.roles.map { |r| r.has_permission?(permission) }.include? true
   end
 end

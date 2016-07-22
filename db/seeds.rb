@@ -10,7 +10,7 @@
 
 Company.create(title: 'Sales Representative/Wholesaler')
 Company.create(title: 'Antique Dealer')
-Company.create(title: "Manufacturer")
+Company.create(title: 'Manufacturer')
 Company.create(title: 'Designer')
 Company.create(title: 'Vintage Dealer')
 Company.create(title: 'Not Applicable')
@@ -65,14 +65,20 @@ ChannelForm.create(title: '3rd Party e-Commerce Site(s)')
 ChannelForm.create(title: 'Other')
 
 # Vendor
-Vendor.create(email: 'admin@tandemarbor.com', :password => "password", :admin => true)
-Vendor.create(email: 'vendor@tandemarbor.com', :password => "password")
-Vendor.create(email: 'vendor_admin@tandemarbor.com', :password => "password")
-Vendor.create(email: 'vendor_admin2@tandemarbor.com', :password => "password")
+Vendor.create(email: 'admin@tandemarbor.com', :password => 'password', :admin => true)
+Vendor.create(email: 'vendor@tandemarbor.com', :password => 'password')
+Vendor.create(email: 'vendor_admin@tandemarbor.com', :password => 'password')
+Vendor.create(email: 'vendor_admin2@tandemarbor.com', :password => 'password')
 
 # Permission
-Permission.create(name: 'Permissions Vendors Index', description: 'Vendors Index', key: 'vendors_index')
-Permission.create(name: 'Permissions Email', description: 'Permissions Email', key: 'email_all_action')
+Permission.create(name: 'Permissions Show all Vendors',     description: 'Show all Vendors',     key: 'show_all_vendors')
+Permission.create(name: 'Permissions Create Vendors',       description: 'Create Vendors',       key: 'create_vendors')
+Permission.create(name: 'Permissions Destroy Vendors',      description: 'Destroy Vendors',      key: 'destroy_vendors')
+Permission.create(name: 'Permissions All action  Vendors',  description: 'All actions Vendors',  key: 'all_action_vendors')
+
+Permission.create(name: 'Permissions All action Email', description: 'Email', key: 'all_action_email')
+
+Permission.create(name: 'Permissions All action Spree',  description:  'Spree', key: 'all_action_spree')
 
 # Role
 Role.create(name: 'admin')

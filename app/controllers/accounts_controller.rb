@@ -4,13 +4,16 @@ class AccountsController < ApplicationController
 
   def index
     @accounts = Account.where(vendor_id: current_vendor.id)
+    authorize Account
   end
 
   def new
     @account = Account.new
+    authorize Account
   end
 
   def create
+    authorize Account
     @account = Account.new(accounts_params.merge(vendor_id: current_vendor.id))
     if @account.save
       flash[:info] = 'Account has been add!.'

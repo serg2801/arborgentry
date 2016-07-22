@@ -56,18 +56,10 @@
                   <span class="txt">Vendor Forms</span>
                 </a>
                 <ul class="sub">
-                  <li><%= link_to( 'Vendor', vendor_forms_path ) %></li>
-                  <li><%= link_to( 'Trade', trade_forms_path ) %></li>
-                  <li><%= link_to( 'Vendor OnBoarding', vendor_onboarding_forms_path ) %></li>
+                  <li><%= link_to( 'Vendor', main_app.vendor_forms_path ) %></li>
+                  <li><%= link_to( 'Trade', main_app.trade_forms_path ) %></li>
+                  <li><%= link_to( 'Vendor OnBoarding', main_app.vendor_onboarding_forms_path ) %></li>
                 </ul>
-              </li>
-          <% end %>
-          <% if current_vendor.admin? %>
-              <li>
-                <%= link_to accounts_path do %>
-                    <i class="l-basic-webpage-txt"></i>
-                    <span class="txt">Accounts</span>
-                <% end %>
               </li>
           <% end %>
           <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
@@ -83,6 +75,11 @@
                   <li>
                     <%= link_to('Roles', main_app.roles_path) %>
                   </li>
+                  <% if current_vendor.admin? %>
+                      <li>
+                        <%= link_to('Accounts', main_app.accounts_path) %>
+                      </li>
+                  <% end %>
                 </ul>
               </li>
           <% end %>

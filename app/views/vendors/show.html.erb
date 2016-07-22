@@ -28,7 +28,8 @@
         <!-- Start #email-app-wrapper -->
         <p>
           <strong>Role:</strong>
-          <%= @vendor.roles.first.name %>
+          <%#= @vendor.roles.first.name %>
+          <%= @vendor.roles.map { |r| r.name } %>
         </p>
         <p>
           <strong>Vendor Name:</strong>

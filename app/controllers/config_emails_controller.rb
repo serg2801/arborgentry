@@ -4,8 +4,6 @@ require 'net/imap'
 class ConfigEmailsController < ApplicationController
   alias_method :current_user, :current_vendor
 
-  alias_method :current_user, :current_vendor
-
   before_action :get_config_email, only: [:edit, :update, :show]
   before_action :get_config
 
