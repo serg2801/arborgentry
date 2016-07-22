@@ -8,11 +8,11 @@
       <td><%= account_name(vendor.account_id) %></td>
   <% end %>
   <% if current_vendor.has_role? :vendor_admin %>
-      <td><%= vendor.roles.map { |pole| pole.name } %></td>
+      <td><%= vendor.roles.map { |role| role.name } %></td>
   <% end %>
-  <td><%= link_to "Log In", logged_in_as_other_vendor_path(vendor) %></td>
+  <td><%= link_to 'Log In', logged_in_as_other_vendor_path(vendor) %></td>
   <td>
-    <%= link_to "Edit", edit_vendor_path(vendor), remote: true %> /
-    <%= link_to "Delete", vendor_path(vendor), method: :delete, data: {confirm: "You sure?"}, remote: true %>
+    <%= link_to 'Edit', edit_vendor_path(vendor), remote: true %> /
+    <%= link_to 'Delete', vendor_path(vendor), method: :delete, data: {confirm: 'You sure?'}, remote: true %>
   </td>
 </tr>

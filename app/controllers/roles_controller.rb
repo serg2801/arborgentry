@@ -5,16 +5,20 @@ class RolesController < ApplicationController
   before_action :set_roles, only: [ :index ]
 
   def index
+    authorize Role
   end
 
   def show
+    authorize Role
   end
 
   def new
     @role = Role.new
+    authorize Role
   end
 
   def create
+    authorize Role
     @role = Role.new(name: params[:role]['name'], vendor_id: current_vendor.id)
     @permissions = params[:role][:permission_ids]
     unless @permissions.blank?
@@ -33,6 +37,7 @@ class RolesController < ApplicationController
   end
 
   def destroy
+    authorize Role
     if @role.vendor_id == current_vendor.id
       @role.add_default_role
       @role.destroy

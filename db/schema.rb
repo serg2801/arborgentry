@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160720100908) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "title",      limit: 255
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,50 +39,50 @@ ActiveRecord::Schema.define(version: 20160720100908) do
   end
 
   create_table "channels", force: :cascade do |t|
-    t.string   "title",      limit: 255
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "collections", force: :cascade do |t|
-    t.string   "title",       limit: 255
+    t.string   "title"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string   "title",      limit: 255
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "config_emails", force: :cascade do |t|
-    t.string   "server_email",       limit: 255
-    t.string   "username",           limit: 255
-    t.string   "password_encrypted", limit: 255
+    t.string   "server_email"
+    t.string   "username"
+    t.string   "password_encrypted"
     t.integer  "vendor_id"
-    t.boolean  "status",                         default: true
+    t.boolean  "status",             default: true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "port",               limit: 255
-    t.string   "smtp_server",        limit: 255
-    t.string   "server_name",        limit: 255
+    t.string   "port"
+    t.string   "smtp_server"
+    t.string   "server_name"
   end
 
   add_index "config_emails", ["vendor_id"], name: "index_config_emails_on_vendor_id"
 
   create_table "customers", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -106,18 +106,18 @@ ActiveRecord::Schema.define(version: 20160720100908) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "inquiries", force: :cascade do |t|
-    t.string   "topic",      limit: 255
-    t.string   "first_name", limit: 255
-    t.string   "last_name",  limit: 255
+    t.string   "topic"
+    t.string   "first_name"
+    t.string   "last_name"
     t.text     "message"
-    t.string   "email",      limit: 255
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "message_attachments", force: :cascade do |t|
     t.integer  "message_id"
-    t.string   "file",       limit: 255
+    t.string   "file"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -125,18 +125,18 @@ ActiveRecord::Schema.define(version: 20160720100908) do
   create_table "messages", force: :cascade do |t|
     t.text     "subject"
     t.text     "body"
-    t.string   "to",              limit: 255
-    t.string   "from",            limit: 255
+    t.string   "to"
+    t.string   "from"
     t.integer  "status"
-    t.datetime "date",                                        null: false
+    t.datetime "date",                            null: false
     t.integer  "config_email_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "file",            limit: 255
-    t.string   "message_id",      limit: 255
-    t.boolean  "trash",                       default: false
-    t.boolean  "starred",                     default: false
-    t.boolean  "important",                   default: false
+    t.string   "file"
+    t.string   "message_id"
+    t.boolean  "trash",           default: false
+    t.boolean  "starred",         default: false
+    t.boolean  "important",       default: false
   end
 
   add_index "messages", ["config_email_id"], name: "index_messages_on_config_email_id"
@@ -195,8 +195,8 @@ ActiveRecord::Schema.define(version: 20160720100908) do
   create_table "option_images", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_file_name",    limit: 255
-    t.string   "image_content_type", limit: 255
+    t.string   "image_file_name"
+    t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "option_value_id"
@@ -205,7 +205,7 @@ ActiveRecord::Schema.define(version: 20160720100908) do
   add_index "option_images", ["option_value_id"], name: "index_option_images_on_option_value_id"
 
   create_table "option_types", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "variant_id"
@@ -214,7 +214,7 @@ ActiveRecord::Schema.define(version: 20160720100908) do
   add_index "option_types", ["variant_id"], name: "index_option_types_on_variant_id"
 
   create_table "option_values", force: :cascade do |t|
-    t.string   "name",           limit: 255
+    t.string   "name"
     t.integer  "option_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -223,9 +223,9 @@ ActiveRecord::Schema.define(version: 20160720100908) do
   add_index "option_values", ["option_type_id"], name: "index_option_values_on_option_type_id"
 
   create_table "permissions", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.string   "key",         limit: 255
+    t.string   "name"
+    t.string   "description"
+    t.string   "key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -241,21 +241,21 @@ ActiveRecord::Schema.define(version: 20160720100908) do
   add_index "product_collections", ["product_id"], name: "index_product_collections_on_product_id"
 
   create_table "product_types", force: :cascade do |t|
-    t.string   "name",               limit: 255
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_file_name",    limit: 255
-    t.string   "image_content_type", limit: 255
+    t.string   "image_file_name"
+    t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",             limit: 255
+    t.string   "name"
     t.text     "description"
-    t.string   "slug",             limit: 255
+    t.string   "slug"
     t.text     "meta_description"
-    t.string   "meta_keywords",    limit: 255
+    t.string   "meta_keywords"
     t.datetime "publish_date"
     t.integer  "vendor_id"
     t.datetime "created_at"
@@ -266,9 +266,9 @@ ActiveRecord::Schema.define(version: 20160720100908) do
 
   create_table "read_marks", force: :cascade do |t|
     t.integer  "readable_id"
-    t.string   "readable_type", limit: 255, null: false
+    t.string   "readable_type", null: false
     t.integer  "reader_id"
-    t.string   "reader_type",   limit: 255, null: false
+    t.string   "reader_type",   null: false
     t.datetime "timestamp"
   end
 
@@ -282,9 +282,9 @@ ActiveRecord::Schema.define(version: 20160720100908) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string   "name",          limit: 255
+    t.string   "name"
     t.integer  "resource_id"
-    t.string   "resource_type", limit: 255
+    t.string   "resource_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "vendor_id"
@@ -1378,13 +1378,13 @@ ActiveRecord::Schema.define(version: 20160720100908) do
   end
 
   create_table "variants", force: :cascade do |t|
-    t.string   "sku",           limit: 255
-    t.string   "barcode",       limit: 255
+    t.string   "sku"
+    t.string   "barcode"
     t.float    "weight"
-    t.string   "weight_unit",   limit: 255
+    t.string   "weight_unit"
     t.float    "price"
     t.float    "compare_price"
-    t.boolean  "is_master",                 default: false
+    t.boolean  "is_master",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "product_id"
@@ -1457,15 +1457,6 @@ ActiveRecord::Schema.define(version: 20160720100908) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
-
-  create_table "vendor_onboarding_brands", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "vendor_onboarding_form_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  add_index "vendor_onboarding_brands", ["vendor_onboarding_form_id"], name: "index_vendor_onboarding_brands_on_vendor_onboarding_form_id"
 
   create_table "vendor_onboarding_forms", force: :cascade do |t|
     t.string   "legal_business_name"
@@ -1557,36 +1548,36 @@ ActiveRecord::Schema.define(version: 20160720100908) do
   end
 
   create_table "vendors", force: :cascade do |t|
-    t.string   "email",                     limit: 255, default: "",    null: false
-    t.string   "encrypted_password",        limit: 255, default: "",    null: false
-    t.string   "reset_password_token",      limit: 255
+    t.string   "email",                                default: "",    null: false
+    t.string   "encrypted_password",                   default: "",    null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         default: 0,     null: false
+    t.integer  "sign_in_count",                        default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",        limit: 255
-    t.string   "last_sign_in_ip",           limit: 255
-    t.boolean  "admin",                                 default: false
-    t.string   "vendor_name",               limit: 255
-    t.string   "first_name",                limit: 255
-    t.string   "last_name",                 limit: 255
-    t.string   "phone_number",              limit: 255
-    t.string   "country",                   limit: 255
-    t.string   "state",                     limit: 255
-    t.string   "city",                      limit: 255
-    t.string   "zipcode",                   limit: 255
-    t.string   "web_site_url",              limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.boolean  "admin",                                default: false
+    t.string   "vendor_name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.string   "country"
+    t.string   "state"
+    t.string   "city"
+    t.string   "zipcode"
+    t.string   "web_site_url"
     t.text     "additional_information"
-    t.boolean  "terms_and_condition",                   default: false
+    t.boolean  "terms_and_condition",                  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "confirmation_token",        limit: 255
+    t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "business_address",          limit: 255
-    t.string   "sample_photo_file_name",    limit: 255
-    t.string   "sample_photo_content_type", limit: 255
+    t.string   "business_address"
+    t.string   "sample_photo_file_name"
+    t.string   "sample_photo_content_type"
     t.integer  "sample_photo_file_size"
     t.datetime "sample_photo_updated_at"
     t.integer  "parent_vendor_id"

@@ -1,4 +1,4 @@
-class VendorPolicy
+class AccountPolicy
   attr_reader :current_vendor, :modal
 
   def initialize(current_vendor, modal)
@@ -7,30 +7,15 @@ class VendorPolicy
   end
 
   def index?
-    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin
-    # @current_vendor.roles.first.has_permission?(:vendors_index)
+    @current_vendor.has_role? :admin or @current_vendor.admin?
   end
 
-  def show?
+  def new?
+    @current_vendor.has_role? :admin or @current_vendor.admin?
   end
 
-  def new_vendor?
-    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin
+  def create?
+    @current_vendor.has_role? :admin or @current_vendor.admin?
   end
 
-  def create_vendor?
-    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin
-  end
-
-  def edit?
-    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin
-  end
-
-  # def update?
-  #   @current_vendor.admin? # || @current_vendor.admin?
-  # end
-
-  def destroy?
-    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin
-  end
 end

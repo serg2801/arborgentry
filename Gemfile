@@ -42,3 +42,4 @@ gem "cocoon"
 
 gem 'pry'
 gem 'pry-nav'
+gem 'yaml_db'

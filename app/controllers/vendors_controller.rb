@@ -10,6 +10,7 @@ class VendorsController < ApplicationController
   end
 
   def show
+    authorize Vendor
   end
 
   def new_vendor
@@ -51,6 +52,7 @@ class VendorsController < ApplicationController
   end
 
   def update
+    authorize Vendor
     if @vendor.update_attributes(vendor_params.merge(account_id: params[:account_id].to_i))
       @vendor.update_role(params[:role_id]) if current_vendor.has_role? :vendor_admin
       @vendors = Vendor.where(parent_vendor_id: current_vendor.id)
