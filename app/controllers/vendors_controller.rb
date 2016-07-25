@@ -25,12 +25,13 @@ class VendorsController < ApplicationController
     if current_vendor.has_role? :admin
       @vendor = Vendor.new(vendor_params.merge(parent_vendor_id: current_vendor.id, password: password_string, password_confirmation: password_string, account_id: params[:account_id].to_i))
       @vendor.add_role :vendor_admin
-      @vendor.spree_roles << Spree::Role.find_or_create_by(name: "admin")
+      @vendor.spree_roles << Spree::Role.find_or_create_by(name: 'admin')
     elsif current_vendor.has_role? :vendor_admin
       role = Role.find(params[:role_id])
       @vendor = Vendor.new(vendor_params.merge(parent_vendor_id: current_vendor.id, password: password_string, password_confirmation: password_string))
+      @vendor.spree_roles << Spree::Role.find_or_create_by(name: 'admin')
       @vendor.add_role role.name
-      @vendor.spree_roles << Spree::Role.find_or_create_by(name: "admin")
+      @vendor.spree_roles << Spree::Role.find_or_create_by(name: 'admin')
     end
     if @vendor.save
       VendorMailer.email_vandor_pass( @vendor, password_string ).deliver

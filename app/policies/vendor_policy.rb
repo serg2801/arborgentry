@@ -26,9 +26,9 @@ class VendorPolicy
     @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or check(:all_action_vendors)
   end
 
-  # def update?
-  #   @current_vendor.admin? # || @current_vendor.admin?
-  # end
+  def update?
+    @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or check(:all_action_vendors)
+  end
 
   def destroy?
     @current_vendor.has_role? :vendor_admin or @current_vendor.has_role? :admin or check(:destroy_vendors) or check(:all_action_vendors)
