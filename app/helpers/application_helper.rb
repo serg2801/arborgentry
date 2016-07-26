@@ -35,7 +35,7 @@ module ApplicationHelper
 	def link_to_reloggin
 		unless session[:relogin_id].blank?
       content_tag :li do
-      	link_to "Back login by admin", back_login_by_admin_path, class: 'btn-info btn'
+      	link_to "Back login by admin", main_app.back_login_by_admin_path, class: 'btn-info btn'
       end
     end
 	end

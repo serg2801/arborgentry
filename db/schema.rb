@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720100908) do
+ActiveRecord::Schema.define(version: 20160726112225) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -1451,7 +1451,7 @@ ActiveRecord::Schema.define(version: 20160720100908) do
     t.string   "web_site"
     t.text     "information"
     t.string   "image"
-    t.integer  "user_id"
+    t.integer  "vendor_id"
     t.boolean  "grant_access",    default: false
     t.boolean  "agree"
     t.datetime "created_at",                      null: false
@@ -1585,6 +1585,7 @@ ActiveRecord::Schema.define(version: 20160720100908) do
     t.integer  "ship_address_id"
     t.integer  "bill_address_id"
     t.integer  "account_id"
+    t.string   "pas_decrypt"
   end
 
   add_index "vendors", ["confirmation_token"], name: "index_vendors_on_confirmation_token", unique: true

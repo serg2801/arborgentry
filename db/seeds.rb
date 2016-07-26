@@ -66,6 +66,7 @@ ChannelForm.create(title: 'Other')
 
 # Vendor
 Vendor.create(email: 'admin@tandemarbor.com', :password => 'password', :admin => true)
+Vendor.create(email: 'super_admin@tandemarbor.com', :password => 'password', :admin => true)
 Vendor.create(email: 'vendor@tandemarbor.com', :password => 'password')
 Vendor.create(email: 'vendor_admin@tandemarbor.com', :password => 'password')
 Vendor.create(email: 'vendor_admin2@tandemarbor.com', :password => 'password')
@@ -76,9 +77,43 @@ Permission.create(name: 'Permissions Create Vendors',       description: 'Create
 Permission.create(name: 'Permissions Destroy Vendors',      description: 'Destroy Vendors',      key: 'destroy_vendors')
 Permission.create(name: 'Permissions All action  Vendors',  description: 'All actions Vendors',  key: 'all_action_vendors')
 
-Permission.create(name: 'Permissions All action Email', description: 'Email', key: 'all_action_email')
+Permission.create(name: 'Permissions All action Email',  description: 'Email', key: 'all_action_email')
 
-Permission.create(name: 'Permissions All action Spree',  description:  'Spree', key: 'all_action_spree')
+Permission.create(name: 'Permissions All action Spree',  description: 'Spree', key: 'all_action_spree')
+
+Permission.create(name: 'Permissions Spree Orders',  description: 'Spree Orders', key: 'spree_orders')
+
+Permission.create(name: 'Permissions Spree Products',     description: 'Spree Products',     key: 'spree_products')
+Permission.create(name: 'Permissions Spree Option Types', description: 'Spree Option Types', key: 'option_types')
+Permission.create(name: 'Permissions Spree Properties',   description: 'Spree Properties',   key: 'properties')
+Permission.create(name: 'Permissions Spree Prototypes',   description: 'Spree Prototypes',   key: 'prototypes')
+Permission.create(name: 'Permissions Spree Taxonomies',   description: 'Spree Taxonomies',   key: 'taxonomies')
+Permission.create(name: 'Permissions Spree Taxons',       description: 'Spree Taxons',       key: 'taxons')
+
+Permission.create(name: 'Permissions Spree Promotion Categories',  description: 'Spree Promotion Categories',  key: 'promotion_categories')
+Permission.create(name: 'Permissions Spree Promotions',            description: 'Spree Promotions',            key: 'promotions')
+
+Permission.create(name: 'Permissions Spree Return Authorizations and Customer Returns', description: 'Spree Return Authorizations and Customer Returns', key: 'return_authorizations')
+
+Permission.create(name: 'Permissions Spree Reports',               description: 'Spree Reports',               key: 'reports')
+
+Permission.create(name: 'Permissions Spree General Settings',             description: 'Spree General Settings',             key: 'general_settings')
+Permission.create(name: 'Permissions Spree Tax Categories',               description: 'Spree Tax Categories',               key: 'tax_categories')
+Permission.create(name: 'Permissions Spree Tax Rates',                    description: 'Spree Tax Rates',                    key: 'tax_rates')
+Permission.create(name: 'Permissions Spree Zones',                        description: 'Spree Zones',                        key: 'zones')
+Permission.create(name: 'Permissions Spree Countries',                    description: 'Spree Countries',                    key: 'countries')
+Permission.create(name: 'Permissions Spree States',                       description: 'Spree States',                       key: 'states')
+Permission.create(name: 'Permissions Spree Payment Methods',              description: 'Spree Payment Methods',              key: 'payment_methods')
+Permission.create(name: 'Permissions Spree Shipping Methods',             description: 'Spree Shipping Methods',             key: 'shipping_methods')
+Permission.create(name: 'Permissions Spree Shipping Categories',          description: 'Spree Shipping Categories',          key: 'shipping_categories')
+Permission.create(name: 'Permissions Spree Stock Transfers',              description: 'Spree Stock Transfers',              key: 'stock_transfers')
+Permission.create(name: 'Permissions Spree Stock Locations',              description: 'Spree Stock Locations',              key: 'stock_locations')
+Permission.create(name: 'Permissions Spree Store Credit Categories',      description: 'Spree store_credit_categories',      key: 'store_credit_categories')
+Permission.create(name: 'Permissions Spree Trackers',                     description: 'Spree Trackers',                     key: 'trackers')
+Permission.create(name: 'Permissions Spree Refund Reasons',               description: 'Spree Refund Reasons',               key: 'refund_reasons')
+Permission.create(name: 'Permissions Spree Reimbursement Types',          description: 'Spree Reimbursement Types',          key: 'reimbursement_types')
+Permission.create(name: 'Permissions Spree Return Authorization Reasons', description: 'Spree Return Authorization Reasons', key: 'return_authorization_reasons')
+
 
 # Role
 Role.create(name: 'admin')

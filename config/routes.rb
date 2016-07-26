@@ -1,5 +1,3 @@
-require 'domain_constraint'
-
 Rails.application.routes.draw do
 
   # This line mounts Spree's routes at the root of your application.
@@ -36,6 +34,34 @@ Rails.application.routes.draw do
   devise_scope :vendor do
     patch '/confirm' => 'confirmations#confirm'
     authenticated :vendor do
+
+      #Vendors form
+      constraints DomainConstraint.new('vendors.com') do
+
+        root :to => 'vendors#profile', as: 'vendor_root'
+
+        resources :vendor_forms, only: [ :edit, :update ]
+
+        get  'trade-signup',       to: 'trade_forms#new'
+        post 'trade-signup',       to: 'trade_forms#create'
+        get  'vendor-signup',      to: 'vendor_forms#new'
+        post 'vendor-signup',      to: 'vendor_forms#create'
+        get  'vendor-onboarding',  to: 'vendor_onboarding_forms#new'
+        post 'vendor-onboarding',  to: 'vendor_onboarding_forms#create'
+
+        get 'trade_success',             to: 'static_page#trade'
+        get 'vendor_success',            to: 'static_page#vendor'
+        get 'vendor_onboarding_success', to: 'static_page#on_boarding'
+
+        get 'upload-vendor-agreement-new',  to: 'vendors#upload_vendor_agreement_new'
+        post 'upload-vendor-agreement-new', to: 'vendors#upload_vendor_agreement_create'
+
+        # get 'upload_vendor_agreement_success',  to: 'static_pages#upload_vendor_agreement_success'
+        # get 'vendor_onboarding_success_update',  to: 'static_page#on_boarding_update'
+        get 'vendor_form_success_update',  to: 'static_page#vendor_form_update'
+
+      end
+
       root :to =>'home#index', as: :authenticated_root
     end
 
@@ -54,18 +80,11 @@ Rails.application.routes.draw do
         get  'vendor-onboarding',  to: 'vendor_onboarding_forms#new'
         post 'vendor-onboarding',  to: 'vendor_onboarding_forms#create'
 
-        get 'trade_success',         to: 'static_page#trade'
-        get 'vendor_success',        to: 'static_page#vendor'
-        get 'vendor_onboarding_success',         to: 'static_page#on_boarding'
-        # get 'vendor_onboarding_success_update',  to: 'static_page#on_boarding_update'
-        # get 'trade_success_update',  to: 'static_page#trade_update'
+        get 'trade_success',             to: 'static_page#trade'
+        get 'vendor_success',            to: 'static_page#vendor'
+        get 'vendor_onboarding_success', to: 'static_page#on_boarding'
         get 'about',                 to: 'static_page#about'
         get 'product_categories',    to: 'static_page#product_categories'
-        # get 'upload_vendor_agreement_success',  to: 'static_pages#upload_vendor_agreement_success'
-
-        # get 'persons/profile', as: 'user_root'
-        # get 'upload-vendor-agreement-new',  to: 'persons#upload_vendor_agreement_new'
-        # post 'upload-vendor-agreement-new', to: 'persons#upload_vendor_agreement_create'
 
       end
 
@@ -79,6 +98,8 @@ Rails.application.routes.draw do
 
   resources :vendors,  only: [:destroy, :edit, :update, :show, :index ]
   resources :accounts, only: [:index, :new, :create ]
+
+  get 'grant-access/:id',  to: 'vendor_forms#grant_access', as: 'grant_access'
 
   get  'new_vendor',                            to: 'vendors#new_vendor'
   post 'new_vendor',                            to: 'vendors#create_vendor'

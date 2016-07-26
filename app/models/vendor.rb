@@ -18,6 +18,8 @@ class Vendor < ActiveRecord::Base
   has_many :config_emails
   has_many :accounts
 
+  has_one :vendor_form
+
   has_attached_file :sample_photo, styles: {thumb: "100x100#", small: "300x300#", medium: "500x500#", large: "800x800#"}
   validates_attachment_content_type :sample_photo, content_type: ['image/jpeg', 'image/png', 'application/pdf']
 
