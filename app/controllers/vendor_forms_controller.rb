@@ -3,9 +3,9 @@ class VendorFormsController < ApplicationController
   skip_before_filter :authenticate_vendor!
   alias_method :current_user, :current_vendor
 
-  layout 'vendor_form', only: [ :new, :create ]
+  layout 'vendor_form', only: [:new, :create]
 
-  before_action :get_vendor_form_options, only: [:create]
+  before_action :get_vendor_form_options, only: [:create, :update]
 
   def index
     @vendor_forms = VendorForm.all
@@ -15,10 +15,10 @@ class VendorFormsController < ApplicationController
     @vendor_form = VendorForm.find(params[:id])
   end
 
-  # def edit
-  # @user = User.find(current_user.id)
-  # @trade = @user.trade
-  # end
+  def edit
+    @vendor = Vendor.find(current_vendor.id)
+    @vendor_form = @vendor.vendor_form
+  end
 
   def new
     @vendor_form = VendorForm.new
@@ -38,58 +38,58 @@ class VendorFormsController < ApplicationController
     end
   end
 
-  # def update
-  #   @user = User.find(current_user.id)
-  #   @vendor_form = @user.trade
-  #   @categories = params[:vendor_form][:category_ids]
-  #   @channels = params[:vendor_form][:channel_ids]
-  #   @options = params[:vendor_form][:option_ids]
-  #
-  #   if @categories.nil?
-  #     flash[:warning] = "Please, indicate the options that describe your business!"
-  #     render 'new'
-  #   elsif @channels.nil?
-  #     flash[:warning] = "Please, indicate what categories would you like to see on Tandem Arbor!"
-  #     render 'new'
-  #   elsif @options.nil?
-  #     flash[:warning] = "Please, indicate What channel(s) do you currently sell through!"
-  #     render 'new'
-  #   else
-  #     @trade.categories.each do |category|
-  #       @trade_category = TradeCategory.find_by(category_id: category.id, trade_id: @trade.id)
-  #       @trade_category.destroy
-  #     end
-  #     @categories.each do |category|
-  #       @category = Category.find(category)
-  #       @trade.categories << @category
-  #     end
-  #
-  #     @trade.channels.each do |channel|
-  #       @trade_channel = TradeChannel.find_by(channel_id: channel.id, trade_id: @trade.id)
-  #       @trade_channel.destroy
-  #     end
-  #     @channels.each do |channel|
-  #       @channel = Channel.find(channel)
-  #       @trade.channels << @channel
-  #     end
-  #
-  #     @trade.options.each do |option|
-  #       @trade_option = TradeOption.find_by(option_id: option.id, trade_id: @trade.id)
-  #       @trade_option.destroy
-  #     end
-  #     @options.each do |option|
-  #       @option = Option.find(option)
-  #       @trade.options << @option
-  #     end
-  #
-  #     if @vendor_form.update_attributes(vendor_form_params)
-  #       # TradeMailer.update_trade(@vendor_form).deliver
-  #       redirect_to trade_success_update_path
-  #     else
-  #       render :edit
-  #     end
-  #   end
-  # end
+  def grant_access
+    @vendor_form = VendorForm.find(params[:id])
+    # password_string = VendorForm.generate_password
+    password_string = 'password'
+    @vendor = Vendor.new({email: @vendor_form.email, password: password_string, password_confirmation: password_string, pas_decrypt: VendorForm.encryption(password_string)})
+    if @vendor.save
+      @vendor_form = VendorForm.find(params[:id])
+      @vendor_form.update_attributes(grant_access: true, vendor_id: @vendor.id)
+      VendorFormMailer.create_vendor(@vendor_form, @vendor).deliver
+    end
+    redirect_to vendor_forms_path
+  end
+
+  def update
+    @vendor = Vendor.find(current_vendor.id)
+    @vendor_form = @vendor.vendor_form
+    if vendor_form_options
+      @trade.categories.each do |category|
+        @trade_category = TradeCategory.find_by(category_id: category.id, trade_id: @trade.id)
+        @trade_category.destroy
+      end
+      @categories.each do |category|
+        @category = Category.find(category)
+        @trade.categories << @category
+      end
+
+      @trade.channels.each do |channel|
+        @trade_channel = TradeChannel.find_by(channel_id: channel.id, trade_id: @trade.id)
+        @trade_channel.destroy
+      end
+      @channels.each do |channel|
+        @channel = Channel.find(channel)
+        @trade.channels << @channel
+      end
+
+      @trade.options.each do |option|
+        @trade_option = TradeOption.find_by(option_id: option.id, trade_id: @trade.id)
+        @trade_option.destroy
+      end
+      @options.each do |option|
+        @option = Option.find(option)
+        @trade.options << @option
+      end
+
+      if @vendor_form.update_attributes(vendor_form_params)
+        # TradeMailer.update_trade(@vendor_form).deliver
+        redirect_to trade_success_update_path
+      else
+        render :edit
+      end
+    end
+  end
 
   private
 

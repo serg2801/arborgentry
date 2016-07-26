@@ -1,5 +1,3 @@
-require 'domain_constraint'
-
 Rails.application.routes.draw do
 
   # This line mounts Spree's routes at the root of your application.
@@ -36,6 +34,14 @@ Rails.application.routes.draw do
   devise_scope :vendor do
     patch '/confirm' => 'confirmations#confirm'
     authenticated :vendor do
+
+      #Vendors form
+      constraints DomainConstraint.new('vendors.com') do
+
+        root :to => 'persons#profile', as: 'vendor_root'
+
+      end
+
       root :to =>'home#index', as: :authenticated_root
     end
 
@@ -79,6 +85,8 @@ Rails.application.routes.draw do
 
   resources :vendors,  only: [:destroy, :edit, :update, :show, :index ]
   resources :accounts, only: [:index, :new, :create ]
+
+  get 'grant-access/:id',  to: 'vendor_forms#grant_access', as: 'grant_access'
 
   get  'new_vendor',                            to: 'vendors#new_vendor'
   post 'new_vendor',                            to: 'vendors#create_vendor'

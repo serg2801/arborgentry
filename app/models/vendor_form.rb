@@ -17,4 +17,23 @@ class VendorForm < ActiveRecord::Base
 
   mount_uploader :image, FileUploader
 
+
+  def self.generate_password
+    o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+    password_string = (0...20).map { o[rand(o.length)] }.join
+  end
+
+  def self.encryption(password)
+    begin
+      cipher = OpenSSL::Cipher.new('AES-128-ECB')
+      cipher.encrypt()
+      cipher.key = ENV["key_encrypt_decrypt"]
+      crypt = cipher.update(password) + cipher.final()
+      crypt_string = (Base64.encode64(crypt))
+      return crypt_string
+    rescue Exception => exc
+      puts ("Message for the encryption log file for message #{password} = #{exc.message}")
+    end
+  end
+
 end

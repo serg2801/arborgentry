@@ -14,4 +14,37 @@ class VendorFormMailer < ApplicationMailer
          subject:  'Vendor Form Submission'
   end
 
+  def create_vendor(vendor_form, user)
+    @vendor_form = vendor_form
+    @user = user
+    @user_pas = decryption(user.pas_decrypt)
+    mail to: @user.email,
+         subject:  '[LOGIN] Tandem Arbor Vendors'
+  end
+
+  # def update_trade(vendor_form)
+  #   @vendor_form = vendor_form
+  #   @trade_options = Trade.find(trade.id).options
+  #   @trade_categories = Trade.find(trade.id).categories
+  #   @trade_channels = Trade.find(trade.id).channels
+  #   attachments["#{@trade.image}"] = File.read("#{Rails.root}/public/#{@trade.image}") unless @trade.image_url.nil?
+  #   mail to: "trade@tandemarbor.com",
+  #        # reply_to: "vendors@tandemarbor.com",
+  #        subject:  "Update Vendor Onboarding Form" + "#{@trade.business_name}"
+  # end
+
+  private
+
+  def decryption(password)
+    cipher = OpenSSL::Cipher.new('AES-128-ECB')
+    cipher.decrypt()
+    cipher.key = ENV["key_encrypt_decrypt"]
+    tempkey = Base64.decode64(password)
+    crypt = cipher.update(tempkey)
+    crypt << cipher.final()
+    return crypt
+  rescue Exception => exc
+    puts ("Message for the decryption log file for message #{password} = #{exc.message}")
+  end
+
 end

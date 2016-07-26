@@ -68,6 +68,7 @@ class VendorsController < ApplicationController
   end
 
   def destroy
+    authorize Vendor
     @vendor.destroy
     @vendors = Vendor.where(parent_vendor_id: current_vendor.id)
     flash[:success] = 'Vendor deleted successfully.'
@@ -75,7 +76,6 @@ class VendorsController < ApplicationController
       format.html
       format.js
     end
-    authorize Vendor
   end
 
   def logged_in_as_vendor
@@ -113,6 +113,7 @@ class VendorsController < ApplicationController
       redirect_to(new_vendor_session_path)
     end
   end
+
   def is_vendor_admin?
     current_vendor.vendor_admin?
   end
