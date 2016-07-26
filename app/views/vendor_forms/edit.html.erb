@@ -1,7 +1,7 @@
 <script>
-    $(document).on("page:change", function () {
+    $(document).ready(function () {
         var mas_title_categories = [
-            <% @trade.categories.each do |category| %>
+            <% @vendor_form.category_forms.each do |category| %>
             '<%= category.title %>',
             <% end %>
         ];
@@ -11,7 +11,7 @@
         });
 
         var mas_title_channels = [
-            <% @trade.channels.each do |channel| %>
+            <% @vendor_form.channel_forms.each do |channel| %>
             '<%= channel.title %>',
             <% end %>
         ];
@@ -21,7 +21,7 @@
         });
 
         var mas_title_options = [
-            <% @trade.options.each do |option| %>
+            <% @vendor_form.option_forms.each do |option| %>
             '<%= option.title %>',
             <% end %>
         ];
@@ -43,5 +43,7 @@
       </div>
     </div>
   </div>
-  <%= render "form" %>
+  <%= form_for @vendor_form, url: {controller: 'vendor_forms', action: 'update'} do |f| %>
+      <%= render 'form', :f => f %>
+  <% end %>
 </div>

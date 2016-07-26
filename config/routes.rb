@@ -38,7 +38,27 @@ Rails.application.routes.draw do
       #Vendors form
       constraints DomainConstraint.new('vendors.com') do
 
-        root :to => 'persons#profile', as: 'vendor_root'
+        root :to => 'vendors#profile', as: 'vendor_root'
+
+        resources :vendor_forms, only: [ :edit, :update ]
+
+        get  'trade-signup',       to: 'trade_forms#new'
+        post 'trade-signup',       to: 'trade_forms#create'
+        get  'vendor-signup',      to: 'vendor_forms#new'
+        post 'vendor-signup',      to: 'vendor_forms#create'
+        get  'vendor-onboarding',  to: 'vendor_onboarding_forms#new'
+        post 'vendor-onboarding',  to: 'vendor_onboarding_forms#create'
+
+        get 'trade_success',             to: 'static_page#trade'
+        get 'vendor_success',            to: 'static_page#vendor'
+        get 'vendor_onboarding_success', to: 'static_page#on_boarding'
+
+        get 'upload-vendor-agreement-new',  to: 'vendors#upload_vendor_agreement_new'
+        post 'upload-vendor-agreement-new', to: 'vendors#upload_vendor_agreement_create'
+
+        # get 'upload_vendor_agreement_success',  to: 'static_pages#upload_vendor_agreement_success'
+        # get 'vendor_onboarding_success_update',  to: 'static_page#on_boarding_update'
+        get 'vendor_form_success_update',  to: 'static_page#vendor_form_update'
 
       end
 
@@ -60,18 +80,11 @@ Rails.application.routes.draw do
         get  'vendor-onboarding',  to: 'vendor_onboarding_forms#new'
         post 'vendor-onboarding',  to: 'vendor_onboarding_forms#create'
 
-        get 'trade_success',         to: 'static_page#trade'
-        get 'vendor_success',        to: 'static_page#vendor'
-        get 'vendor_onboarding_success',         to: 'static_page#on_boarding'
-        # get 'vendor_onboarding_success_update',  to: 'static_page#on_boarding_update'
-        # get 'trade_success_update',  to: 'static_page#trade_update'
+        get 'trade_success',             to: 'static_page#trade'
+        get 'vendor_success',            to: 'static_page#vendor'
+        get 'vendor_onboarding_success', to: 'static_page#on_boarding'
         get 'about',                 to: 'static_page#about'
         get 'product_categories',    to: 'static_page#product_categories'
-        # get 'upload_vendor_agreement_success',  to: 'static_pages#upload_vendor_agreement_success'
-
-        # get 'persons/profile', as: 'user_root'
-        # get 'upload-vendor-agreement-new',  to: 'persons#upload_vendor_agreement_new'
-        # post 'upload-vendor-agreement-new', to: 'persons#upload_vendor_agreement_create'
 
       end
 

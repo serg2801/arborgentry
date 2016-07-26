@@ -22,16 +22,15 @@ class VendorFormMailer < ApplicationMailer
          subject:  '[LOGIN] Tandem Arbor Vendors'
   end
 
-  # def update_trade(vendor_form)
-  #   @vendor_form = vendor_form
-  #   @trade_options = Trade.find(trade.id).options
-  #   @trade_categories = Trade.find(trade.id).categories
-  #   @trade_channels = Trade.find(trade.id).channels
-  #   attachments["#{@trade.image}"] = File.read("#{Rails.root}/public/#{@trade.image}") unless @trade.image_url.nil?
-  #   mail to: "trade@tandemarbor.com",
-  #        # reply_to: "vendors@tandemarbor.com",
-  #        subject:  "Update Vendor Onboarding Form" + "#{@trade.business_name}"
-  # end
+  def update_vendor_form(vendor_form)
+    @vendor_form = vendor_form
+    @vendor_form_options = VendorForm.find(@vendor_form.id).option_forms
+    @vendor_form_categories = VendorForm.find(@vendor_form.id).category_forms
+    @vendor_form_channels = VendorForm.find(@vendor_form.id).channel_forms
+    attachments["#{@vendor_form.image}"] = File.read("#{Rails.root}/public/#{@vendor_form.image}") unless @vendor_form.image_url.nil?
+    mail to: 'trade@tandemarbor.com',
+         subject:  'Update Vendor Form' + "#{@vendor_form.business_name}"
+  end
 
   private
 

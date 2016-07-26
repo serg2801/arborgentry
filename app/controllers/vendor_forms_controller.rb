@@ -55,36 +55,36 @@ class VendorFormsController < ApplicationController
     @vendor = Vendor.find(current_vendor.id)
     @vendor_form = @vendor.vendor_form
     if vendor_form_options
-      @trade.categories.each do |category|
-        @trade_category = TradeCategory.find_by(category_id: category.id, trade_id: @trade.id)
-        @trade_category.destroy
+      @vendor_form.category_forms.each do |category|
+        @vendor_form_category = VendorFormCategoryForm.find_by(category_form_id: category.id, vendor_form_id: @vendor_form.id)
+        @vendor_form_category.destroy
       end
       @categories.each do |category|
-        @category = Category.find(category)
-        @trade.categories << @category
+        @category = CategoryForm.find(category)
+        @vendor_form.category_forms << @category
       end
 
-      @trade.channels.each do |channel|
-        @trade_channel = TradeChannel.find_by(channel_id: channel.id, trade_id: @trade.id)
-        @trade_channel.destroy
+      @vendor_form.channel_forms.each do |channel|
+        @vendor_form_channel = VendorFormChannelForm.find_by(channel_form_id: channel.id, vendor_form_id: @vendor_form.id)
+        @vendor_form_channel.destroy
       end
       @channels.each do |channel|
-        @channel = Channel.find(channel)
-        @trade.channels << @channel
+        @channel = ChannelForm.find(channel)
+        @vendor_form.channel_forms << @channel
       end
 
-      @trade.options.each do |option|
-        @trade_option = TradeOption.find_by(option_id: option.id, trade_id: @trade.id)
-        @trade_option.destroy
+      @vendor_form.option_forms.each do |option|
+        @vendor_form_option = VendorFormOptionForm.find_by(option_form_id: option.id, vendor_form_id: @vendor_form.id)
+        @vendor_form_option.destroy
       end
       @options.each do |option|
-        @option = Option.find(option)
-        @trade.options << @option
+        @option = OptionForm.find(option)
+        @vendor_form.option_forms << @option
       end
 
       if @vendor_form.update_attributes(vendor_form_params)
-        # TradeMailer.update_trade(@vendor_form).deliver
-        redirect_to trade_success_update_path
+        VendorFormMailer.update_vendor_form(@vendor_form).deliver
+        redirect_to vendor_form_success_update_path
       else
         render :edit
       end

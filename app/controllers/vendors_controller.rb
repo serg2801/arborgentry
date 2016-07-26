@@ -97,6 +97,13 @@ class VendorsController < ApplicationController
     redirect_to vendors_path
   end
 
+  def profile
+    @vendor = Vendor.find(current_vendor.id)
+    # @board_user = @user.board
+    @vendor_form = @vendor.vendor_form
+    # @information_trades = @user.trade.information_trades
+  end
+
   private
 
   def vendor_params

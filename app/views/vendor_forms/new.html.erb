@@ -8,5 +8,7 @@
       </div>
     </div>
   </div>
-  <%= render 'form' %>
+  <%= form_for @vendor_form, url: {controller: 'vendor_forms', action: 'create'} do |f| %>
+    <%= render 'form', :f => f %>
+  <% end %>
 </div>

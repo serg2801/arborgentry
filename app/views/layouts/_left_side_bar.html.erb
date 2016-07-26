@@ -43,12 +43,14 @@
       <!-- .side-nav -->
       <div class="side-nav">
         <ul class="nav">
-          <li>
-            <%= link_to main_app.authenticated_root_path do %>
-                <i class="l-basic-laptop"></i>
-                <span class="txt">Dashboard</span>
-            <% end %>
-          </li>
+          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+              <li>
+                <%= link_to main_app.authenticated_root_path do %>
+                    <i class="l-basic-laptop"></i>
+                    <span class="txt">Dashboard</span>
+                <% end %>
+              </li>
+          <% end %>
           <% if current_vendor.admin? %>
               <li>
                 <a href="#">
@@ -169,107 +171,123 @@
                 </ul>
             <% end %>
           </li>
-          <li>
-            <a href="#"><i class="l-ecommerce-graph1"></i> <span class="txt">Charts</span></a>
-            <ul class="sub">
-              <li><%= link_to('Flot charts', main_app.flot_charts_path) %></li>
-              <li><%= link_to('Morris charts', main_app.morris_charts_path) %></li>
-              <li><%= link_to('Chartjs', main_app.chart_js_path) %></li>
-              <li><%= link_to('Other charts', main_app.other_charts_path) %></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#"><i class="l-basic-webpage-txt"></i><span class="txt">Forms</span></a>
-            <ul class="sub">
-              <li><%= link_to('Basic forms', main_app.basic_forms_path) %></li>
-              <li><%= link_to('Advanced forms', main_app.advanced_forms_path) %></li>
-              <li><%= link_to('Form layouts', main_app.form_layouts_path) %></li>
-              <li><%= link_to('Form wizard', main_app.form_wizard_path) %></li>
-              <li><%= link_to('Form validation', main_app.form_validation_path) %></li>
-              <li><%= link_to('Code Editor', main_app.code_editor_path) %></li>
-              <!--<li><%#= link_to("Inquiries", admin_inquiries_path) %></li>-->
-            </ul>
-          </li>
-          <li>
-            <a href="#"><i class="l-software-layout-header-3columns"></i><span class="txt">Tables</span></a>
-            <ul class="sub">
-              <li><%= link_to('Basic tables', main_app.basic_tables_path) %></li>
-              <li><%= link_to('Data tables', main_app.data_tables_path) %></li>
-              <li><%= link_to('Editable tables', main_app.editable_tables_path) %></li>
-              <li><%= link_to('Ajax tables', main_app.ajax_tables_path) %></li>
-              <li><%= link_to('Pricing tables', main_app.pricing_tables_path) %></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#"><i class="l-software-layers2"></i><span class="txt">UI Elements</span></a>
-            <ul class="sub">
-              <li><%= link_to('Icons', main_app.icons_path) %></li>
-              <li><%= link_to('Typography', main_app.typography_path) %></li>
-              <li><%= link_to('Tabs', main_app.tabs_path) %></li>
-              <li><%= link_to('Accordions', main_app.accordions_path) %></li>
-              <li><%= link_to('Buttons', main_app.buttons_path) %></li>
-              <li><%= link_to('Notifications', main_app.notifications_path) %></li>
-              <li><%= link_to('Modals', main_app.modals_path) %></li>
-              <li><%= link_to('Sliders', main_app.sliders_path) %></li>
-              <li><%= link_to('Progressbars', main_app.progressbar_path) %></li>
-              <li><%= link_to('Lists', main_app.lists_path) %></li>
-              <li><%= link_to('Grid', main_app.grid_path) %></li>
-              <li><%= link_to('Other', main_app.other_path) %></li>
-            </ul>
-          </li>
-          <li>
-            <%= link_to main_app.portlets_path do %>
-                <i class="l-software-layout-header"></i>
-                <span class="txt">Portlets</span>
-                <span class="label">22</span>
-            <% end %>
-          </li>
-          <li>
-            <a href="#"><i class="l-basic-mail"></i> <span class="txt">Email</span></a>
-            <ul class="sub">
-              <% if @config_emails.nil? %>
-                  <li><%= link_to 'Connect to email', main_app.new_config_email_path, class: 'txt' %></li>
-                  <li><%= link_to 'Inbox', main_app.inbox_path, class: 'txt' %></li>
-                  <li><%= link_to 'Read email', main_app.read_emails_path, class: 'txt' %></li>
-                  <li><%= link_to 'Write email', main_app.write_emails_path, class: 'txt' %></li>
-              <% else %>
-                  <li><%= link_to 'Show Config Email', main_app.config_email_path(@config_emails), class: 'txt' %></li>
-                  <li><%= link_to 'Inbox', main_app.inbox_path, class: 'txt' %></li>
-                  <li><%= link_to 'Read email', main_app.read_emails_path, class: 'txt' %></li>
-                  <li><%= link_to 'Write email', main_app.write_emails_path, class: 'txt' %></li>
-              <% end %>
-            </ul>
-          </li>
-          <li>
-            <a href="#"><i class="l-basic-geolocalize-01"></i><span class="txt">Maps</span></a>
-            <ul class="sub">
-              <li><%= link_to('Google maps', main_app.google_maps_path) %></li>
-              <li><%= link_to('Vector maps', main_app.vector_maps_path) %></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#"><i class="l-basic-webpage"></i><span class="txt">Pages</span></a>
-            <ul class="sub">
-              <li><%= link_to('Login', main_app.login_path) %></li>
-              <li><%= link_to('Lock screen', main_app.lock_screen_path) %></li>
-              <li><%= link_to('Register', main_app.register_path) %></li>
-              <li><%= link_to('Lost password', main_app.lost_password_path) %></li>
-              <li><%= link_to('User profile', main_app.user_profile_path) %></li>
-              <li><%= link_to('Calendar', main_app.calendar_path) %></li>
-              <li><%= link_to('Timeline', main_app.time_line_path) %></li>
-              <li><%= link_to('Gallery', main_app.gallery_path) %></li>
-              <li><%= link_to('Invoice', main_app.invoice_path) %></li>
-              <li><%= link_to('Blank page', main_app.blank_page_path) %></li>
+          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
               <li>
-                <a href="#"><span class="txt">Error pages</span></a>
+                <a href="#"><i class="l-ecommerce-graph1"></i> <span class="txt">Charts</span></a>
                 <ul class="sub">
-                  <li><a href="403.html"><span class="txt">403</span></a></li>
-                  <li><a href="404.htm"><span class="txt">404</span></a></li>
-                  <li><a href="500.htm"><span class="txt">500</span></a></li>
+                  <li><%= link_to('Flot charts', main_app.flot_charts_path) %></li>
+                  <li><%= link_to('Morris charts', main_app.morris_charts_path) %></li>
+                  <li><%= link_to('Chartjs', main_app.chart_js_path) %></li>
+                  <li><%= link_to('Other charts', main_app.other_charts_path) %></li>
                 </ul>
               </li>
-            </ul>
-          </li>
+          <% end %>
+          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+              <li>
+                <a href="#"><i class="l-basic-webpage-txt"></i><span class="txt">Forms</span></a>
+                <ul class="sub">
+                  <li><%= link_to('Basic forms', main_app.basic_forms_path) %></li>
+                  <li><%= link_to('Advanced forms', main_app.advanced_forms_path) %></li>
+                  <li><%= link_to('Form layouts', main_app.form_layouts_path) %></li>
+                  <li><%= link_to('Form wizard', main_app.form_wizard_path) %></li>
+                  <li><%= link_to('Form validation', main_app.form_validation_path) %></li>
+                  <li><%= link_to('Code Editor', main_app.code_editor_path) %></li>
+                  <!--<li><%#= link_to("Inquiries", admin_inquiries_path) %></li>-->
+                </ul>
+              </li>
+          <% end %>
+          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+              <li>
+                <a href="#"><i class="l-software-layout-header-3columns"></i><span class="txt">Tables</span></a>
+                <ul class="sub">
+                  <li><%= link_to('Basic tables', main_app.basic_tables_path) %></li>
+                  <li><%= link_to('Data tables', main_app.data_tables_path) %></li>
+                  <li><%= link_to('Editable tables', main_app.editable_tables_path) %></li>
+                  <li><%= link_to('Ajax tables', main_app.ajax_tables_path) %></li>
+                  <li><%= link_to('Pricing tables', main_app.pricing_tables_path) %></li>
+                </ul>
+              </li>
+          <% end %>
+          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+              <li>
+                <a href="#"><i class="l-software-layers2"></i><span class="txt">UI Elements</span></a>
+                <ul class="sub">
+                  <li><%= link_to('Icons', main_app.icons_path) %></li>
+                  <li><%= link_to('Typography', main_app.typography_path) %></li>
+                  <li><%= link_to('Tabs', main_app.tabs_path) %></li>
+                  <li><%= link_to('Accordions', main_app.accordions_path) %></li>
+                  <li><%= link_to('Buttons', main_app.buttons_path) %></li>
+                  <li><%= link_to('Notifications', main_app.notifications_path) %></li>
+                  <li><%= link_to('Modals', main_app.modals_path) %></li>
+                  <li><%= link_to('Sliders', main_app.sliders_path) %></li>
+                  <li><%= link_to('Progressbars', main_app.progressbar_path) %></li>
+                  <li><%= link_to('Lists', main_app.lists_path) %></li>
+                  <li><%= link_to('Grid', main_app.grid_path) %></li>
+                  <li><%= link_to('Other', main_app.other_path) %></li>
+                </ul>
+              </li>
+          <% end %>
+          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+              <li>
+                <%= link_to main_app.portlets_path do %>
+                    <i class="l-software-layout-header"></i>
+                    <span class="txt">Portlets</span>
+                    <span class="label">22</span>
+                <% end %>
+              </li>
+          <% end %>
+          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+              <li>
+                <a href="#"><i class="l-basic-mail"></i> <span class="txt">Email</span></a>
+                <ul class="sub">
+                  <% if @config_emails.nil? %>
+                      <li><%= link_to 'Connect to email', main_app.new_config_email_path, class: 'txt' %></li>
+                      <li><%= link_to 'Inbox', main_app.inbox_path, class: 'txt' %></li>
+                      <li><%= link_to 'Read email', main_app.read_emails_path, class: 'txt' %></li>
+                      <li><%= link_to 'Write email', main_app.write_emails_path, class: 'txt' %></li>
+                  <% else %>
+                      <li><%= link_to 'Show Config Email', main_app.config_email_path(@config_emails), class: 'txt' %></li>
+                      <li><%= link_to 'Inbox', main_app.inbox_path, class: 'txt' %></li>
+                      <li><%= link_to 'Read email', main_app.read_emails_path, class: 'txt' %></li>
+                      <li><%= link_to 'Write email', main_app.write_emails_path, class: 'txt' %></li>
+                  <% end %>
+                </ul>
+              </li>
+          <% end %>
+          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+              <li>
+                <a href="#"><i class="l-basic-geolocalize-01"></i><span class="txt">Maps</span></a>
+                <ul class="sub">
+                  <li><%= link_to('Google maps', main_app.google_maps_path) %></li>
+                  <li><%= link_to('Vector maps', main_app.vector_maps_path) %></li>
+                </ul>
+              </li>
+          <% end %>
+          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+              <li>
+                <a href="#"><i class="l-basic-webpage"></i><span class="txt">Pages</span></a>
+                <ul class="sub">
+                  <li><%= link_to('Login', main_app.login_path) %></li>
+                  <li><%= link_to('Lock screen', main_app.lock_screen_path) %></li>
+                  <li><%= link_to('Register', main_app.register_path) %></li>
+                  <li><%= link_to('Lost password', main_app.lost_password_path) %></li>
+                  <li><%= link_to('User profile', main_app.user_profile_path) %></li>
+                  <li><%= link_to('Calendar', main_app.calendar_path) %></li>
+                  <li><%= link_to('Timeline', main_app.time_line_path) %></li>
+                  <li><%= link_to('Gallery', main_app.gallery_path) %></li>
+                  <li><%= link_to('Invoice', main_app.invoice_path) %></li>
+                  <li><%= link_to('Blank page', main_app.blank_page_path) %></li>
+                  <li>
+                    <a href="#"><span class="txt">Error pages</span></a>
+                    <ul class="sub">
+                      <li><a href="403.html"><span class="txt">403</span></a></li>
+                      <li><a href="404.htm"><span class="txt">404</span></a></li>
+                      <li><a href="500.htm"><span class="txt">500</span></a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+          <% end %>
         </ul>
       </div>
       <!-- / side-nav -->

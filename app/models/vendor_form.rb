@@ -9,6 +9,8 @@ class VendorForm < ActiveRecord::Base
   has_many :option_forms, :through =>  :vendor_form_option_forms
   has_many :vendor_form_option_forms, dependent: :destroy
 
+  belongs_to :vendor, :dependent => :destroy
+
   # has_many :information_trades, :dependent => :destroy
 
   validates :business_name, :greeting, :first_name, :last_name, :email, :phone_number, :address,

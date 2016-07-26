@@ -29,10 +29,12 @@
 
 <div id="wrapper">
   <!-- .page-sidebar -->
-  <%= render "layouts/left_side_bar" %>
+  <%= render 'layouts/left_side_bar' %>
   <!-- / page-sidebar -->
   <!-- Start #right-sidebar -->
-  <%= render "layouts/right_side_bar" %>
+  <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+      <%= render 'layouts/right_side_bar' %>
+  <% end %>
   <div id="error-msg">
     <% if flash.present? %>
         <%= render 'layouts/messages' %>
