@@ -104,6 +104,23 @@ class VendorsController < ApplicationController
     # @information_trades = @user.trade.information_trades
   end
 
+  def upload_vendor_agreement_new
+    @vendor_form_agreement = VendorFormAgreement.new
+  end
+
+  def upload_vendor_agreement_create
+    @vendor = Vendor.find(current_vendor.id)
+    @vendor_form = VendorForm.where(vendor_id: @vendor.id)
+    if params[:vendor_form_agreement].nil?
+      @vendor_form_agreement = VendorFormAgreement.new
+      flash[:warning] = 'Please, upload a PDF!'
+      render 'upload_vendor_agreement_new'
+    else
+      @vendor_form_agreement = VendorFormAgreement.create(vendor_agreement: params[:vendor_form_agreement]['vendor_agreement'].tempfile, vendor_form_id: @vendor_form.first.id)
+      redirect_to upload_vendor_agreement_success_path
+    end
+  end
+
   private
 
   def vendor_params

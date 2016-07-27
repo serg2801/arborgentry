@@ -66,6 +66,15 @@
             <%= link_to('Download', "#{@vendor_form.image}", :download => "#{@vendor_form.id}_vendor") %>
           </li>
       <% end %>
+      <% unless @vendor_form.vendor_form_agreements.nil? %>
+          <li class="list-group-item">
+            <% @vendor_form.vendor_form_agreements.each do |at| %>
+                Vendor Agreement:
+                <%= link_to('Show Vendor Agreement', "#{at.vendor_agreement}") %>
+                <%= link_to('Download', "#{at.vendor_agreement}", :download => "#{@vendor_form.business_name}_Vendor Agreement") %>
+            <% end %>
+          </li>
+      <% end %>
       <li class="list-group-item">Consented: true </li>
     </ul>
   </div>

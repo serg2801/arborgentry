@@ -56,7 +56,7 @@ Rails.application.routes.draw do
         get 'upload-vendor-agreement-new',  to: 'vendors#upload_vendor_agreement_new'
         post 'upload-vendor-agreement-new', to: 'vendors#upload_vendor_agreement_create'
 
-        # get 'upload_vendor_agreement_success',  to: 'static_pages#upload_vendor_agreement_success'
+        get 'upload_vendor_agreement_success',  to: 'static_page#upload_vendor_agreement_success'
         # get 'vendor_onboarding_success_update',  to: 'static_page#on_boarding_update'
         get 'vendor_form_success_update',  to: 'static_page#vendor_form_update'
 

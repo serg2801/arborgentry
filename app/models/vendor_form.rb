@@ -11,7 +11,7 @@ class VendorForm < ActiveRecord::Base
 
   belongs_to :vendor, :dependent => :destroy
 
-  # has_many :information_trades, :dependent => :destroy
+  has_many :vendor_form_agreements, :dependent => :destroy
 
   validates :business_name, :greeting, :first_name, :last_name, :email, :phone_number, :address,
             :city, :state, :zipcode, :country, :web_site_url_my, presence:  true

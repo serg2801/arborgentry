@@ -17,8 +17,8 @@ class StaticPageController < ApplicationController
   def on_boarding
   end
 
-  # def board_update
-  # end
+  def upload_vendor_agreement_success
+  end
 
   def vendor_form_update
   end
