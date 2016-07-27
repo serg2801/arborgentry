@@ -4,7 +4,7 @@ class VendorOnboardingForm < ActiveRecord::Base
   has_many :onboarding_carriers
   has_many :onboarding_product_types
 
-  # belongs_to :user, :dependent => :destroy
+  belongs_to :vendor, :dependent => :destroy
 
   mount_uploader :w_9_form, FileUploader
   mount_uploader :certificate, FileUploader

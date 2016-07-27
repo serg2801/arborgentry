@@ -38,27 +38,14 @@ Rails.application.routes.draw do
       #Vendors form
       constraints DomainConstraint.new('vendors.com') do
 
-        root :to => 'vendors#profile', as: 'vendor_root'
-
-        resources :vendor_forms, only: [ :edit, :update ]
+        # root :to => 'vendors#profile', as: 'vendor_root'
 
         get  'trade-signup',       to: 'trade_forms#new'
         post 'trade-signup',       to: 'trade_forms#create'
         get  'vendor-signup',      to: 'vendor_forms#new'
         post 'vendor-signup',      to: 'vendor_forms#create'
-        get  'vendor-onboarding',  to: 'vendor_onboarding_forms#new'
-        post 'vendor-onboarding',  to: 'vendor_onboarding_forms#create'
-
-        get 'trade_success',             to: 'static_page#trade'
-        get 'vendor_success',            to: 'static_page#vendor'
-        get 'vendor_onboarding_success', to: 'static_page#on_boarding'
-
-        get 'upload-vendor-agreement-new',  to: 'vendors#upload_vendor_agreement_new'
-        post 'upload-vendor-agreement-new', to: 'vendors#upload_vendor_agreement_create'
-
-        get 'upload_vendor_agreement_success',  to: 'static_page#upload_vendor_agreement_success'
-        # get 'vendor_onboarding_success_update',  to: 'static_page#on_boarding_update'
-        get 'vendor_form_success_update',  to: 'static_page#vendor_form_update'
+        get 'trade_success',       to: 'static_page#trade'
+        get 'vendor_success',      to: 'static_page#vendor'
 
       end
 
@@ -77,12 +64,10 @@ Rails.application.routes.draw do
         post 'trade-signup',       to: 'trade_forms#create'
         get  'vendor-signup',      to: 'vendor_forms#new'
         post 'vendor-signup',      to: 'vendor_forms#create'
-        get  'vendor-onboarding',  to: 'vendor_onboarding_forms#new'
-        post 'vendor-onboarding',  to: 'vendor_onboarding_forms#create'
 
         get 'trade_success',             to: 'static_page#trade'
         get 'vendor_success',            to: 'static_page#vendor'
-        get 'vendor_onboarding_success', to: 'static_page#on_boarding'
+
         get 'about',                 to: 'static_page#about'
         get 'product_categories',    to: 'static_page#product_categories'
 
@@ -91,10 +76,22 @@ Rails.application.routes.draw do
       root :to =>'home#welcome', as: :unauthenticated_root
     end
   end
-
-  resources :vendor_forms, only: [ :index, :show ]
+  resources :vendor_forms, only: [ :index, :show, :edit, :update ]
+  resources :vendor_onboarding_forms, only: [ :index, :show, :edit, :update ]
   resources :trade_forms, only: [ :index, :show ]
-  resources :vendor_onboarding_forms, only: [ :index, :show ]
+
+  get 'vendor_form_success_update',      to: 'static_page#vendor_form_update'
+
+  get 'upload-vendor-agreement-new',     to: 'vendors#upload_vendor_agreement_new'
+  post 'upload-vendor-agreement-new',    to: 'vendors#upload_vendor_agreement_create'
+  get 'upload_vendor_agreement_success', to: 'static_page#upload_vendor_agreement_success'
+
+  get  'vendor-onboarding',  to: 'vendor_onboarding_forms#new'
+  post 'vendor-onboarding',  to: 'vendor_onboarding_forms#create'
+
+  get 'vendor_onboarding_success', to: 'static_page#on_boarding'
+  get 'vendor_onboarding_success_update',  to: 'static_page#on_boarding_update'
+
 
   resources :vendors,  only: [:destroy, :edit, :update, :show, :index ]
   resources :accounts, only: [:index, :new, :create ]

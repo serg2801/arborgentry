@@ -51,6 +51,18 @@
                 <% end %>
               </li>
           <% end %>
+          <% if current_vendor.has_role? :vendor_admin %>
+              <li>
+                <a href="#">
+                  <i class="l-basic-webpage-txt"></i>
+                  <span class="txt">Edit Vendor Forms</span>
+                </a>
+                <ul class="sub">
+                  <li><%= link_to( 'Edit Vendor Form', main_app.edit_vendor_form_path(current_vendor.vendor_form) ) %></li>
+                  <li><%= link_to( 'Edit Onboarding', main_app.edit_vendor_onboarding_form_path(current_vendor.vendor_onboarding_form) ) %></li>
+                </ul>
+              </li>
+          <% end %>
           <% if current_vendor.admin? %>
               <li>
                 <a href="#">

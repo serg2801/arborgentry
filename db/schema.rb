@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727073326) do
+ActiveRecord::Schema.define(version: 20160727104105) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -1538,7 +1538,7 @@ ActiveRecord::Schema.define(version: 20160727073326) do
     t.string   "if_yes_requirements_for_purchase_orders"
     t.text     "imap_pricing"
     t.text     "merchandising"
-    t.integer  "user_id"
+    t.integer  "vendor_id"
     t.boolean  "grants_access",                              default: false
     t.string   "costs_fees_radio"
     t.text     "w_9_form"

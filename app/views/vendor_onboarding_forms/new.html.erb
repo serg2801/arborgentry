@@ -1,4 +1,4 @@
-<div class="row">
+<div class="container">
   <div class="row">
     <div class="col-xs-12 m-t-lg m-b-lg form_container">
       <div class="b-t-md">
@@ -8,5 +8,7 @@
       </div>
     </div>
   </div>
-  <%= render 'form' %>
+  <%= form_for @on_boarding, url: {controller: 'vendor_onboarding_forms', action: 'create'} do |f| %>
+      <%= render 'form', :f => f %>
+  <% end %>
 </div>

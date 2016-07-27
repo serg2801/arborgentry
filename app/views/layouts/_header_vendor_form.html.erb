@@ -39,13 +39,13 @@
   </div>
   <div class="col-md-6 col-sm-12">
     <ul class="ta-PrimaryNavigationLinks" style="float: right;">
-      <li>
-        <% if vendor_signed_in? %>
-            <%= link_to 'Sign out', destroy_vendor_session_path, :method => :delete %>
-        <% else %>
-            <%= link_to 'Log in', new_vendor_session_path %>
-        <% end %>
-      </li>
+      <!--<li>-->
+        <%# if vendor_signed_in? %>
+            <%#= link_to 'Sign out', destroy_vendor_session_path, :method => :delete %>
+        <%# else %>
+            <%#= link_to 'Log in', new_vendor_session_path %>
+        <%# end %>
+      <!--</li>-->
       <li><%= link_to 'Vendor Application', vendor_signup_path %></li>
     </ul>
   </div>

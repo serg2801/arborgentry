@@ -140,4 +140,14 @@
     margin: 5px 0;
     padding-left: 0;
   }
+  .dropdown_open_2 {
+    .dropdown-menu {
+      width: 380px;
+      position: relative;
+    }
+    .dropdown-menu {
+      margin-left: 0 !important;
+      float: none;
+    }
+  }
 }

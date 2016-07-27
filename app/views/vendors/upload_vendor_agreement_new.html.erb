@@ -1,25 +1,27 @@
-<div class="upload_vendor_agreement_form">
-  <%= form_for @vendor_form_agreement, :url => url_for(:controller => 'vendors', :action => 'upload_vendor_agreement_new' ) do |f| %>
-      <div class="col-lg-12 form_container">
-        <!-- col-lg-12 start here -->
-        <div class="panel panel-default toggle panelMove panelClose panelRefresh log_in_panel">
-          <!-- Start .panel -->
-          <div class="panel-heading">
-            <h4 class="panel-title">Upload Your Signed Vendor Agreement (.pdf)</h4>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :vendor_agreement, 'File:', :class => 'col-lg-2 col-md-3 control-label' %>
-            <div class="col-lg-10 col-md-9">
-              <%= f.file_field :vendor_agreement, :class => 'form-control' %>
+<div class="container">
+  <div class="upload_vendor_agreement_form">
+    <%= form_for @vendor_form_agreement, :url => url_for(:controller => 'vendors', :action => 'upload_vendor_agreement_new' ) do |f| %>
+        <div class="col-lg-12 form_container">
+          <!-- col-lg-12 start here -->
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh log_in_panel">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+              <h4 class="panel-title">Upload Your Signed Vendor Agreement (.pdf)</h4>
             </div>
-          </div>
 
-          <div class="form-group upload_save">
-            <%= f.submit 'Save', class: 'btn' %>
-          </div>
+            <div class="form-group">
+              <%= f.label :vendor_agreement, 'File:', :class => 'col-lg-2 col-md-3 control-label' %>
+              <div class="col-lg-10 col-md-9">
+                <%= f.file_field :vendor_agreement, :class => 'form-control' %>
+              </div>
+            </div>
 
+            <div class="form-group upload_save">
+              <%= f.submit 'Save', class: 'btn' %>
+            </div>
+
+          </div>
         </div>
-      </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

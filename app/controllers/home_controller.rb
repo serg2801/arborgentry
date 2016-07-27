@@ -4,6 +4,9 @@ class HomeController < ApplicationController
   before_filter :authenticate_vendor! , :except => [:welcome, :thank_you]
   def index
     @config_emails = current_vendor.config_emails.first
+    @vendor = Vendor.find(current_vendor.id)
+    @vendor_form = @vendor.vendor_form
+    @on_boarding = @vendor.vendor_onboarding_form
   end
 
   def login
