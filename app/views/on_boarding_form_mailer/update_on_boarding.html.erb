@@ -1,0 +1,232 @@
+<h3>Vendor Onboarding Form</h3>
+<p>Legal Business Name: <%= @on_boarding.legal_business_name %></p>
+<p>Company Name/D.B.A: <%= @on_boarding.company_name %></p>
+<div>
+  <p>Brand Name(s):</p>
+  <% @on_boarding.onboarding_brands.each do |brand| %>
+      <p>--- <%= brand.name %></p>
+  <% end %>
+</div>
+<p>Vendor Location: <%= @on_boarding.vendor_based_in %></p>
+<% unless @on_boarding.vendor_based_in_other.blank? %>
+    <p> Other: <%= @on_boarding.vendor_based_in_other %></p>
+<% end %>
+
+<h3>Vendor Main Address</h3>
+
+<p>Street: <%= @on_boarding.main_address_street %></p>
+<p>Unit, Suite, Floor: <%= @on_boarding.main_address_unit %></p>
+<p>City: <%= @on_boarding.main_address_city %></p>
+<p>State: <%= @on_boarding.main_address_state %></p>
+<p>Zip/Postal Code: <%= @on_boarding.main_address_zip %></p>
+<p>Country: <%= @on_boarding.main_address_country %></p>
+
+<h3>Vendor Contacts</h3>
+
+<h5>Primary Business Representative</h5>
+
+<p>Name: <%= @on_boarding.primary_business_name %></p>
+<p>Phone: <%= @on_boarding.primary_business_phone %></p>
+<p>Email: <%= @on_boarding.primary_business_email %></p>
+<p>Fax: <%= @on_boarding.primary_business_fax %></p>
+
+<h5>Finance Representative</h5>
+
+<p>Name: <%= @on_boarding.finance_name %></p>
+<p>Phone:<%= @on_boarding.finance_phone %></p>
+<p>Email: <%= @on_boarding.finance_email %></p>
+<p>Fax: <%= @on_boarding.finance_fax %></p>
+
+<% unless @on_boarding.purchase_orders_email.blank? %>
+    <h5>Purchase Orders and Order Fulfillment Representative</h5>
+
+    <p>Name: <%= @on_boarding.purchase_orders_name %></p>
+    <p>Phone: <%= @on_boarding.purchase_orders_phone %></p>
+    <p>Email: <%= @on_boarding.purchase_orders_email %></p>
+    <p>Fax: <%= @on_boarding.purchase_orders_fax %></p>
+<% end %>
+
+<% unless @on_boarding.inventory_email.blank? %>
+    <h5>Inventory Representative</h5>
+
+    <p>Name:<%= @on_boarding.inventory_name %></p>
+    <p>Phone:<%= @on_boarding.inventory_phone %></p>
+    <p>Email:<%= @on_boarding.inventory_email %></p>
+    <p>Fax:<%= @on_boarding.inventory_fax %></p>
+<% end %>
+
+<% unless @on_boarding.returns_email.blank? %>
+    <h5>Returns Representative</h5>
+
+    <p>Name:<%= @on_boarding.returns_name %></p>
+    <p>Phone:<%= @on_boarding.returns_phone %></p>
+    <p>Email:<%= @on_boarding.returns_email %></p>
+    <p>Fax:<%= @on_boarding.returns_fax %></p>
+<% end %>
+
+<% unless @on_boarding.product_information_email.blank? %>
+    <h5>Product Information Representative</h5>
+
+    <p>Name:<%= @on_boarding.product_information_name %></p>
+    <p>Pxone: <%= @on_boarding.product_information_phone %></p>
+    <p>Email: <%= @on_boarding.product_information_email %></p>
+    <p>Fax:<%= @on_boarding.product_information_fax %></p>
+<% end %>
+
+<% unless @on_boarding.customer_service_email.blank? %>
+    <h5>Customer Service Representative</h5>
+
+    <p>Name: <%= @on_boarding.customer_service_name %></p>
+    <p>Phone:<%= @on_boarding.customer_service_phone %></p>
+    <p>Email:<%= @on_boarding.customer_service_email %></p>
+    <p>Fax:<%= @on_boarding.customer_service_fax %></p>
+<% end %>
+
+<% unless @on_boarding.contact_other_email.blank? %>
+    <h5>Other</h5>
+
+    <p>Title: <%= @on_boarding.contact_other_title %></p>
+    <p>Name: <%= @on_boarding.contact_other_name %></p>
+    <p>Phone:<%= @on_boarding.contact_other_phone %></p>
+    <p>Email:<%= @on_boarding.contact_other_email %></p>
+    <p>Fax:<%= @on_boarding.contact_other_fax %></p>
+<% end %>
+
+<h3>Inventory Integration</h3>
+<p>Inventory Integration Method: <%= @on_boarding.inventory_integration_method %></p>
+<% unless @on_boarding.inventory_integration_method_other.blank? %>
+    <p> Other: <%= @on_boarding.inventory_integration_method_other %></p>
+<% end %>
+
+
+<h5>Integrations Contact</h5>
+
+<p>Name:<%= @on_boarding.integrations_contact_name %></p>
+<p>Phone:<%= @on_boarding.integrations_contact_phone %></p>
+<p>Email:<%= @on_boarding.integrations_contact_email %></p>
+<p>Fax:<%= @on_boarding.integrations_contact_fax %></p>
+
+
+<h3>Transportation and Shipment</h3>
+
+<div>
+  <% @on_boarding.onboarding_transportation.each do |t| %>
+      <h5>Ship From Information:</h5>
+
+      <p>Street: <%= t.ship_from_information_street %></p>
+
+      <p>Unit, Suite, Floor: <%= t.ship_from_information_unit %></p>
+
+      <p>City: <%= t.ship_from_information_city %></p>
+
+      <p>State: <%= t.ship_from_information_state %></p>
+
+      <p>Zip/Postal Code: <%= t.ship_from_information_zip %></p>
+
+      <p>Country: <%= t.ship_from_information_country %></p>
+
+      <h5>Transportation Contact</h5>
+
+      <p>Name: <%= t.transportation_contact_name %></p>
+
+      <p>Phone: <%= t.transportation_contact_phone %></p>
+
+      <p>Email: <%= t.transportation_contact_email %></p>
+
+      <p>Fax: <%= t.transportation_contact_fax %></p>
+  <% end %>
+</div>
+
+<h3>Returns Information</h3>
+
+<h5>Returns Contact:</h5>
+
+<p>Name: <%= @on_boarding.returns_contact_name %></p>
+<p>Phone:<%= @on_boarding.returns_contact_phone %></p>
+<p>Email: <%= @on_boarding.returns_contact_email %></p>
+<p>Fax: <%= @on_boarding.returns_contact_fax %></p>
+
+<h5>Returns Address:</h5>
+
+<p>Street: <%= @on_boarding.returns_address_street %></p>
+<p>Unit, Suite, Floor: <%= @on_boarding.returns_address_unit %></p>
+<p>City: <%= @on_boarding.returns_address_city %></p>
+<p>State: <%= @on_boarding.returns_address_state %></p>
+<p>Zip/Postal Code: <%= @on_boarding.returns_address_zip %></p>
+<p>Country: <%= @on_boarding.returns_address_country %></p>
+
+<h3>Drop Shipping</h3>
+
+<p>Preferred shipping method: <%= @on_boarding.preferred_shipping_method %></p>
+
+<div>
+  <h5>What are your preferred carriers?</h5>
+  <% @on_boarding.onboarding_carriers.each do |v| %>
+      <p>- <%= v.name %></p>
+  <% end %>
+</div>
+
+<p>What is your protocol for freight shipments? <%= @on_boarding.protocol_for_freight_shipments %></p>
+
+<h3>Warehousing</h3>
+
+<p>Do you have ship alone items? <%= @on_boarding.ship_alone_items %></p>
+
+<div>
+  <h5>Product Type(s):</h5>
+  <% @on_boarding.onboarding_product_types.each do |p| %>
+      <p> <%= p.name %></p>
+  <% end %>
+</div>
+
+<p>What are your average inventory levels? <%= @on_boarding.average_inventory_levels %></p>
+<div>
+  <p>What is your typical shipping lead time?</p>
+  <%= @on_boarding.typical_shipping_lead_time_count %>
+  <%= @on_boarding.typical_shipping_lead_time_day %>
+</div>
+
+<div>
+  <p>What are your average inventory replenishment timelines?</p>
+  <%= @on_boarding.average_inventory_replenishment_time_count %>
+  <%= @on_boarding.average_inventory_replenishment_time_day %>
+  <% unless @on_boarding.average_inventory_replenishment_time_other.blank? %>
+      <p>Other: <%= @on_boarding.average_inventory_replenishment_time_other %></p>
+  <% end %>
+</div>
+
+<h3>Product Details</h3>
+
+<h5>How and when do you provide inventory updates (including discounted and new items)?</h5>
+
+<div>
+  <p>Method: <%= @on_boarding.method %></p>
+  <% unless @on_boarding.method_other.blank? %>
+      <p>Other: <%= @on_boarding.method_other %></p>
+  <% end %>
+</div>
+
+<div>
+  <p>Frequency: <%= @on_boarding.frequency %></p>
+  <% unless @on_boarding.frequency_other.blank? %>
+      <p>Other: <%= @on_boarding.frequency_other %></p>
+  <% end %>
+</div>
+<p>Are there any costs/fees in addition to COGs? <%= @on_boarding.costs_fees_radio %></p>
+<% unless @on_boarding.if_so_costs_fees.blank? %>
+    <p>If so, how are these costs billed? <%= @on_boarding.if_so_costs_fees %></p>
+<% end %>
+
+<p>Are there any special requirements:<%= @on_boarding.requirements_for_purchase_orders %></p>
+<% unless @on_boarding.if_yes_requirements_for_purchase_orders.blank? %>
+    <p>If yes, please explain the requirements:  <%= @on_boarding.if_yes_requirements_for_purchase_orders %></p>
+<% end %>
+
+<% unless @on_boarding.imap_pricing.blank? %>
+    <p>Please explain your discount/promotional rules in regards to IMAP pricing:<%= @on_boarding.imap_pricing %></p>
+<% end %>
+
+<p>What, if any, are your merchandising stipulations and strategy recommendations for your
+  product?<%= @on_boarding.merchandising %></p>
+
+<p>Consented: true </p>

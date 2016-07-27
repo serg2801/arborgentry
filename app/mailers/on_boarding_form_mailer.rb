@@ -15,4 +15,12 @@ class OnBoardingFormMailer < ApplicationMailer
          subject:  'Vendor Onboarding Form'
   end
 
+  def update_on_boarding(on_boarding)
+    @on_boarding = on_boarding
+    attachments["#{@on_boarding.w_9_form}"] = File.read("#{Rails.root}/public/#{@on_boarding.w_9_form}") unless @on_boarding.w_9_form_url.nil?
+    attachments["#{@on_boarding.certificate}"] = File.read("#{Rails.root}/public/#{@on_boarding.certificate}") unless @on_boarding.certificate_url.nil?
+    mail to: 'trade@tandemarbor.com',
+         subject:  'Update Vendor Onboarding Form' + "#{@on_boarding.legal_business_name}"
+  end
+
 end

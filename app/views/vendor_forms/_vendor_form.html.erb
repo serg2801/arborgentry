@@ -9,6 +9,11 @@
   <% else %>
       <td><%= link_to 'Create Vendor', grant_access_path(vendor_form) %></td>
   <% end %>
+  <% if vendor_form.vendor_form_agreements.blank? %>
+      <td>Vendor Agreement not uploaded.</td>
+  <% else %>
+      <td>Vendor Agreement uploaded.</td>
+  <% end %>
   <td><%= vendor_form.created_at.strftime('%H:%M | %d %b %Y') %></td>
   <td><%= link_to 'Show', vendor_form_path(vendor_form), class: 'btn btn-info btn-right btn-xs' %></td>
 </tr>

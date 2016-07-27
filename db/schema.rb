@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726112225) do
+ActiveRecord::Schema.define(version: 20160727104105) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -1413,6 +1413,13 @@ ActiveRecord::Schema.define(version: 20160726112225) do
     t.datetime "updated_at"
   end
 
+  create_table "vendor_form_agreements", force: :cascade do |t|
+    t.text     "vendor_agreement"
+    t.integer  "vendor_form_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "vendor_form_category_forms", force: :cascade do |t|
     t.integer  "vendor_form_id"
     t.integer  "category_form_id"
@@ -1531,7 +1538,7 @@ ActiveRecord::Schema.define(version: 20160726112225) do
     t.string   "if_yes_requirements_for_purchase_orders"
     t.text     "imap_pricing"
     t.text     "merchandising"
-    t.integer  "user_id"
+    t.integer  "vendor_id"
     t.boolean  "grants_access",                              default: false
     t.string   "costs_fees_radio"
     t.text     "w_9_form"

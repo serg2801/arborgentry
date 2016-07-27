@@ -57,7 +57,8 @@
 //= require summernote
 //= require messages
 //= require jquery-filestyle
-
+//= require cocoon
+//= require vendor_form/vendor_onboarding_forms
 
 // Charts
 //= require jquery.easy-pie-chart

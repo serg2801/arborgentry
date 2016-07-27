@@ -3,8 +3,6 @@ class VendorOnboardingFormsController < ApplicationController
   skip_before_filter :authenticate_vendor!
   alias_method :current_user, :current_vendor
 
-  layout 'vendor_form', only: [ :new, :create ]
-
   def index
     @on_boardings = VendorOnboardingForm.all
   end
@@ -13,22 +11,21 @@ class VendorOnboardingFormsController < ApplicationController
     @on_boarding = VendorOnboardingForm.find(params[:id])
   end
 
-  # def show
-  #   @on_boarding = VendorOnboardingForm.find(params[:id])
-  # end
-
-  # def edit
-  #   # @user = User.find(current_user.id)
-  #   # @board = @user.board
-  # end
+  def edit
+    @vendor = Vendor.find(current_vendor.id)
+    @on_boarding = @vendor.vendor_onboarding_form
+  end
 
   def new
     @on_boarding = VendorOnboardingForm.new
   end
 
   def create
-    @on_boarding = VendorOnboardingForm.new(on_boarding_params)
+    @vendor = Vendor.find(current_vendor.id)
+    @on_boarding = VendorOnboardingForm.new(on_boarding_params.merge(vendor_id: @vendor.id))
     if @on_boarding.save
+      @vendor.add_role :vendor_admin
+      @vendor.spree_roles << Spree::Role.find_or_create_by(name: 'admin')
       OnBoardingFormMailer.sing_up_confirmation(@on_boarding).deliver
       OnBoardingFormMailer.send_confirmation(@on_boarding).deliver
       redirect_to vendor_onboarding_success_path
@@ -37,16 +34,16 @@ class VendorOnboardingFormsController < ApplicationController
     end
   end
 
-  # def update
-  #   @user = User.find(current_user.id)
-  #   # @on_boarding = @user.board
-  #   if @on_boarding.update_attributes(on_boarding_params)
-  #     # BoardMailer.update_board(@on_boarding).deliver
-  #     redirect_to vendor_onboarding_success_update_path
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    @vendor = Vendor.find(current_vendor.id)
+    @on_boarding = @vendor.vendor_onboarding_form
+    if @on_boarding.update_attributes(on_boarding_params)
+      OnBoardingFormMailer.update_on_boarding(@on_boarding).deliver
+      redirect_to vendor_onboarding_success_update_path
+    else
+      render :edit
+    end
+  end
 
   private
 
