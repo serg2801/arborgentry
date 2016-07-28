@@ -6,10 +6,12 @@ class TradeFormsController < ApplicationController
   layout 'vendor_form', only: [ :new, :create ]
 
   def index
+    authorize TradeForm
     @trade_forms = TradeForm.all
   end
 
   def show
+    authorize TradeForm
     @trade_form = TradeForm.find(params[:id])
   end
 
