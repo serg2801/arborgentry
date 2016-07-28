@@ -3,6 +3,9 @@ class HomeController < ApplicationController
   layout :resolve_layout
   before_filter :authenticate_vendor! , :except => [:welcome, :thank_you]
   def index
+    latitude = request.location.data['latitude']
+    longitude = request.location.data['longitude']
+    forecast = ForecastIO.forecast(latitude, longitude)
     @config_emails = current_vendor.config_emails.first
     @vendor = Vendor.find(current_vendor.id)
     @vendor_form = @vendor.vendor_form

@@ -43,3 +43,6 @@ gem "cocoon"
 gem 'pry'
 gem 'pry-nav'
 gem 'yaml_db'
+
+gem 'geocoder'
+gem 'forecast_io'
