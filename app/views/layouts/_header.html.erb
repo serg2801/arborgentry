@@ -1,9 +1,9 @@
 <div id="header" class="page-navbar">
   <!-- .navbar-brand -->
-  <a href="index.html" class="navbar-brand hidden-xs hidden-sm">
+  <%= link_to main_app.root_path, class: 'navbar-brand hidden-xs hidden-sm' do %>
       <img src="/assets/sidebar_logo.png" class="log" alt="Dynamic logo">
       <img src="/assets/logosm.png" class="logo-sm hidden-lg hidden-md" alt="Dynamic logo">
-  </a>
+  <% end %>
     <!-- / navbar-brand -->
     <!-- .no-collapse -->
   <div id="navbar-no-collapse" class="navbar-no-collapse">

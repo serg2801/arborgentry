@@ -4,23 +4,28 @@ class VendorOnboardingFormsController < ApplicationController
   alias_method :current_user, :current_vendor
 
   def index
+    authorize VendorOnboardingForm
     @on_boardings = VendorOnboardingForm.all
   end
 
   def show
     @on_boarding = VendorOnboardingForm.find(params[:id])
+    authorize @on_boarding
   end
 
   def edit
+    authorize VendorOnboardingForm.find(params[:id])
     @vendor = Vendor.find(current_vendor.id)
     @on_boarding = @vendor.vendor_onboarding_form
   end
 
   def new
+    authorize VendorOnboardingForm
     @on_boarding = VendorOnboardingForm.new
   end
 
   def create
+    authorize VendorOnboardingForm
     @vendor = Vendor.find(current_vendor.id)
     @on_boarding = VendorOnboardingForm.new(on_boarding_params.merge(vendor_id: @vendor.id))
     if @on_boarding.save
@@ -35,6 +40,7 @@ class VendorOnboardingFormsController < ApplicationController
   end
 
   def update
+    authorize VendorOnboardingForm.find(params[:id])
     @vendor = Vendor.find(current_vendor.id)
     @on_boarding = @vendor.vendor_onboarding_form
     if @on_boarding.update_attributes(on_boarding_params)

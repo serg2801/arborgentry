@@ -8,14 +8,17 @@ class VendorFormsController < ApplicationController
   before_action :get_vendor_form_options, only: [:create, :update]
 
   def index
+    authorize VendorForm
     @vendor_forms = VendorForm.all
   end
 
   def show
     @vendor_form = VendorForm.find(params[:id])
+    authorize @vendor_form
   end
 
   def edit
+    authorize VendorForm.find(params[:id])
     @vendor = Vendor.find(current_vendor.id)
     @vendor_form = @vendor.vendor_form
   end
@@ -39,6 +42,7 @@ class VendorFormsController < ApplicationController
   end
 
   def grant_access
+    authorize VendorForm
     @vendor_form = VendorForm.find(params[:id])
     # password_string = VendorForm.generate_password
     password_string = 'password'
@@ -52,6 +56,7 @@ class VendorFormsController < ApplicationController
   end
 
   def update
+    authorize VendorForm.find(params[:id])
     @vendor = Vendor.find(current_vendor.id)
     @vendor_form = @vendor.vendor_form
     if vendor_form_options
