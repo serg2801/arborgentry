@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   # get 'home/registration'
   get 'home/welcome'
   get 'thank_you' => 'home#thank_you'
+  get 'weather' => 'home#weather_params', as: 'weather'
   devise_for :vendors, :controllers => {:confirmations => 'confirmations',  registrations: 'registrations'}
   devise_scope :vendor do
     patch '/confirm' => 'confirmations#confirm'

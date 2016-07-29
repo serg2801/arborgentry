@@ -3106,7 +3106,7 @@ fieldset[disabled] .pricing-table.yellow .pricing-bottom .price .btn.active {
   background-image: url(weather/snow.png);
 }
 .weather.rain {
-  background-image: url(weather/rain.png);
+  background-image: url(weather/rain.jpg);
 }
 .weather.clear {
   background-image: url(weather/clear.png);
@@ -3116,6 +3116,12 @@ fieldset[disabled] .pricing-table.yellow .pricing-bottom .price .btn.active {
 }
 .weather.sunny {
   background-image: url(weather/sunny.png);
+}
+.weather.fog {
+    background-image: url(weather/fog.jpg);
+}
+.weather.clear-night {
+    background-image: url(weather/clear-night.jpg);
 }
 /* -----------------------------------------
    Recent comments

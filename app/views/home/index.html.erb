@@ -347,15 +347,15 @@
             <!-- col-lg-6 start here -->
             <div class="col-lg-6 col-sm-6 p0">
               <!-- col-lg-6 start here -->
-              <div class="panel tile panelRefresh">
+              <div class="panel tile">
                 <!-- Start .panel -->
                 <div class="panel-heading">
                   <h4 class="panel-title"></h4>
                 </div>
                 <div class="panel-body p0">
-                  <div class="weather snow">
-                    <div class="degree color-red">-5&deg;</div>
-                    <div class="location pb15"><i class="l-basic-geolocalize-01"></i> Varna</div>
+                  <div class="weather" id="weather_bg">
+                    <div class="degree color-red"><%= @forecast.currently.temperature.to_i %>&deg;</div>
+                    <div class="location pb15"><i class="l-basic-geolocalize-01"></i> <%= @city %></div>
                     <div class="icon">
                       <canvas id="weather-now" width="96" height="96"></canvas>
                     </div>
@@ -376,11 +376,11 @@
                   <div class="row weather no-padding">
                     <!-- Start .row -->
                     <div class="col-md-5 col-sm-5 text-center red-bg">
-                      <canvas class="mt15" id="weather-monday" width="64" height="64"></canvas>
-                      <h5 class="uppercase strong color-white">Monday</h5>
+                      <canvas class="mt15" id="weather-next" width="64" height="64"></canvas>
+                      <h5 class="uppercase strong color-white"><%= @second_weekday %></h5>
                     </div>
                     <div class="col-md-7 col-sm-7 text-center">
-                      <div class="degree color-red">-2&deg;</div>
+                      <div class="degree color-red"><%= @second_day.temperatureMax.to_i %>&deg;</div>
                       <p class="text-muted uppercase s12">forecast</p>
                     </div>
                   </div>
@@ -397,11 +397,11 @@
                   <div class="row weather no-padding">
                     <!-- Start .row -->
                     <div class="col-md-5 col-sm-5 text-center blue-bg">
-                      <canvas class="mt15" id="weather-tuesday" width="64" height="64"></canvas>
-                      <h5 class="uppercase strong color-white">Tuesday</h5>
+                      <canvas class="mt15" id="weather-next_2" width="64" height="64"></canvas>
+                      <h5 class="uppercase strong color-white"><%= @third_weekday %></h5>
                     </div>
                     <div class="col-md-7 col-sm-7 text-center">
-                      <div class="degree color-blue">0&deg;</div>
+                      <div class="degree color-blue"><%= @third_day.temperatureMax.to_i %>&deg;</div>
                       <p class="text-muted uppercase s12">forecast</p>
                     </div>
                   </div>
