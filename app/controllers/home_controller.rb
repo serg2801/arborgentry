@@ -42,7 +42,7 @@ class HomeController < ApplicationController
   end
 
   def initialize_forecast
-    @city = request.location.city
+    @city = request.location.data['city']
     # @city = 'Kharkiv'
     # latitude = '49.9935'
     # longitude = '36.2304'

@@ -306,7 +306,7 @@ $(document).ready(function () {
             block.addClass('rain');
 
         } else if (bg == 'clear-day') {
-            block.addClass('clever');
+            block.addClass('clear');
 
         } else if (bg == 'cloudy') {
             block.addClass('cloudy');
@@ -315,7 +315,7 @@ $(document).ready(function () {
             block.addClass('rain');
 
         } else if (bg == 'partly-cloudy-day') {
-            block.addClass('clear-day');
+            block.addClass('clear');
 
         } else if (bg == 'clear-night') {
             block.addClass('clear-night');
