@@ -42,11 +42,11 @@ class HomeController < ApplicationController
   end
 
   def initialize_forecast
-    @city = request.location.data['city']
+    @city = Geocoder.search(request.location.ip).first.city
     # @city = 'Kharkiv'
-    # latitude = '49.9935'
-    # longitude = '36.2304'
-    @forecast = ForecastIO.forecast(request.location.data['latitude'], request.location.data['longitude'], params: { units: 'si' } )
+    latitude = Geocoder.search(request.location.ip).first.latitude
+    longitude = Geocoder.search(request.location.ip).first.longitude
+    @forecast = ForecastIO.forecast( latitude, longitude, params: { units: 'si' } )
     # @forecast = ForecastIO.forecast(latitude, longitude, params: { units: 'si' } )
     @@forecast = @forecast
     @second_day = @forecast.daily.data[2]
