@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     authenticated :vendor do
 
       #Vendors form
-      constraints DomainConstraint.new('vendors.com') do
+      constraints DomainConstraint.new('vendors.arborgentrytest.com') do
 
         # root :to => 'vendors#profile', as: 'vendor_root'
 
@@ -57,7 +57,7 @@ Rails.application.routes.draw do
       # root 'devise/sessions#new', as: :unauthenticated_root
 
       #Vendors form
-      constraints DomainConstraint.new('vendors.com') do
+      constraints DomainConstraint.new('vendors.arborgentrytest.com') do
 
         root :to => 'static_page#form_home'
 
