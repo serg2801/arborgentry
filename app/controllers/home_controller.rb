@@ -42,7 +42,6 @@ class HomeController < ApplicationController
   end
 
   def initialize_forecast
-    binding.pry
     @city = request.location.data['city']
     # @city = 'Kharkiv'
     latitude = Geocoder.search(request.location.ip).first.latitude
