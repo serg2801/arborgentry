@@ -261,7 +261,7 @@ $(document).ready(function () {
     }, 10000);
 
     //Weather ajax
-     function weather_install() {
+    // function weather_install() {
          $.ajax({
              type: 'GET',
              dataType: 'JSON',
@@ -271,7 +271,7 @@ $(document).ready(function () {
                  weather_bg(data.first_day_icon)
              }
          });
-     };
+     //};
 
 
     function weather_panel(first_day_icon, second_day_icon, third_day_icon) {

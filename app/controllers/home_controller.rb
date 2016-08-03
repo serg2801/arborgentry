@@ -48,6 +48,7 @@ class HomeController < ApplicationController
       latitude = Geocoder.search(request.location.ip).first.latitude
       longitude = Geocoder.search(request.location.ip).first.longitude
       @forecast = ForecastIO.forecast( latitude, longitude, params: { units: 'si' } )
+      # @forecast = ForecastIO.forecast( '50.0263','36.2174', params: { units: 'si' } )
       @@forecast = @forecast
       @second_day = @forecast.daily.data[2]
       @@second_day = @second_day

@@ -1,12 +1,14 @@
 module Spree
   module Admin
     class OrdersController < Spree::Admin::BaseController
+      alias_method :current_user, :current_vendor
       before_action :initialize_order_events
       before_action :load_order, only: [:edit, :update, :cancel, :resume, :approve, :resend, :open_adjustments, :close_adjustments, :cart]
 
       respond_to :html
 
       def index
+        authorize Spree::Order
         params[:q] ||= {}
         params[:q][:completed_at_not_null] ||= '1' if Spree::Config[:show_only_complete_orders_by_default]
         @show_only_completed = params[:q][:completed_at_not_null] == '1'

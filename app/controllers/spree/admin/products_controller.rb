@@ -1,6 +1,7 @@
 module Spree
   module Admin
     class ProductsController < ResourceController
+      alias_method :current_user, :current_vendor
       helper 'spree/products'
 
       before_action :load_data, except: :index
@@ -14,6 +15,7 @@ module Spree
       end
 
       def index
+        authorize Spree::Product
         session[:return_to] = request.url
         respond_with(@collection)
       end

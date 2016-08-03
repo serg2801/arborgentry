@@ -1,6 +1,11 @@
 module Spree
   module Admin
     class BaseController < Spree::BaseController
+
+      include Pundit
+      rescue_from Pundit::NotAuthorizedError, with: :vendor_not_authorized
+      protect_from_forgery with: :exception
+
       helper 'spree/admin/navigation'
       layout '/spree/layouts/admin'
 
