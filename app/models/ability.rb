@@ -33,24 +33,24 @@ class Ability
     if user.respond_to?(:has_spree_role?) && user.has_spree_role?('admin')
       can :manage, :all
     else
-      # can :display, Country
-      can :display, OptionType
-      can :display, OptionValue
-      # can :create, Order
-      # can [:read, :update], Order do |order, token|
-      #   order.user == user || order.guest_token && token == order.guest_token
-      # end
-      # can :display, CreditCard, user_id: user.id
-      can :display, Product
-      # can :display, ProductProperty
-      # can :display, Property
+      can :display, Spree::Country
+      can :display, Spree::OptionType
+      can :display, Spree::OptionValue
+      can :create, Spree::Order
+      can [:read, :update], Spree::Order do |order, token|
+        order.user == user || order.guest_token && token == order.guest_token
+      end
+      can :display, Spree::CreditCard, user_id: user.id
+      can :display, Spree::Product
+      can :display, Spree::ProductProperty
+      can :display, Spree::Property
       can :create, Spree.user_class
       can [:read, :update, :destroy], Spree.user_class, id: user.id
-      # can :display, State
-      # can :display, Taxon
-      # can :display, Taxonomy
-      can :display, Variant
-      # can :display, Zone
+      can :display, Spree::State
+      can :display, Spree::Taxon
+      can :display, Spree::Taxonomy
+      can :display, Spree::Variant
+      can :display, Spree::Zone
     end
 
     # Include any abilities registered by extensions, etc.
@@ -60,6 +60,6 @@ class Ability
     end
 
     # Protect admin role
-    cannot [:update, :destroy], Role, name: ['admin']
+    # cannot [:update, :destroy], Role, name: ['admin']
   end
 end

@@ -28,35 +28,37 @@ class HomeController < ApplicationController
   end
 
   private
+
   def resolve_layout
     case action_name
-    when "index"
-      "application"
-    when "welcome"
-      "home"
-    when "thank_you"
-      "home"
+    when 'index'
+      'application'
+    when 'welcome'
+      'home'
+    when 'thank_you'
+      'home'
     else
-      "registration"
+      'registration'
     end
   end
 
   def initialize_forecast
-    @city = request.location.data['city']
-    # @city = 'Kharkiv'
-    latitude = Geocoder.search(request.location.ip).first.latitude
-    longitude = Geocoder.search(request.location.ip).first.longitude
-    @forecast = ForecastIO.forecast( latitude, longitude, params: { units: 'si' } )
-    # @forecast = ForecastIO.forecast(latitude, longitude, params: { units: 'si' } )
-    @@forecast = @forecast
-    @second_day = @forecast.daily.data[2]
-    @@second_day = @second_day
-    second_weekday = DateTime.strptime("#{@second_day.time}",'%s')
-    @second_weekday = second_weekday.strftime('%A')
-
-    @third_day = @forecast.daily.data[3]
-    @@third_day = @third_day
-    third_weekday = DateTime.strptime("#{@third_day.time}",'%s')
-    @third_weekday = third_weekday.strftime('%A')
+    begin
+      @city = request.location.data['city']
+      latitude = Geocoder.search(request.location.ip).first.latitude
+      longitude = Geocoder.search(request.location.ip).first.longitude
+      @forecast = ForecastIO.forecast( latitude, longitude, params: { units: 'si' } )
+      @@forecast = @forecast
+      @second_day = @forecast.daily.data[2]
+      @@second_day = @second_day
+      second_weekday = DateTime.strptime("#{@second_day.time}",'%s')
+      @second_weekday = second_weekday.strftime('%A')
+      @third_day = @forecast.daily.data[3]
+      @@third_day = @third_day
+      third_weekday = DateTime.strptime("#{@third_day.time}",'%s')
+      @third_weekday = third_weekday.strftime('%A')
+    rescue Exception => e
+      puts ("#{e.message}")
+    end
   end
 end

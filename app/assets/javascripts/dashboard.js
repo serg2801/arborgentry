@@ -261,15 +261,18 @@ $(document).ready(function () {
     }, 10000);
 
     //Weather ajax
-    $.ajax({
-        type: 'GET',
-        dataType: 'JSON',
-        url: '/weather',
-        success: function (data) {
-            weather_panel(data.first_day_icon, data.second_day_icon, data.third_day_icon);
-            weather_bg(data.first_day_icon)
-        }
-    });
+     function weather_install() {
+         $.ajax({
+             type: 'GET',
+             dataType: 'JSON',
+             url: '/weather',
+             success: function (data) {
+                 weather_panel(data.first_day_icon, data.second_day_icon, data.third_day_icon);
+                 weather_bg(data.first_day_icon)
+             }
+         });
+     };
+
 
     function weather_panel(first_day_icon, second_day_icon, third_day_icon) {
         //------------- Weather panel -------------//
