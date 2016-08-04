@@ -1,4 +1,4 @@
-class Spree::ProductPolicy
+class Spree::ProductPolicy < ApplicationPolicy
   attr_reader :current_vendor, :modal
 
   def initialize(current_vendor, modal)
@@ -7,15 +7,19 @@ class Spree::ProductPolicy
   end
 
   def index?
-    # @current_vendor.has_role? :admin or @current_vendor.admin?
+    @current_vendor.has_role? :admin or check(:spree_product_index) or check(:spree_product_all_action)
   end
 
-  def new?
-    # @current_vendor.has_role? :admin or @current_vendor.admin?
+  def update?
+    @current_vendor.has_role? :admin or check(:spree_product_update) or check(:spree_product_all_action)
   end
 
-  def create?
-    # @current_vendor.has_role? :admin or @current_vendor.admin?
+  def destroy?
+    @current_vendor.has_role? :admin or check(:spree_product_destroy) or check(:spree_product_all_action)
+  end
+
+  def clone?
+    @current_vendor.has_role? :admin or check(:spree_product_clone) or check(:spree_product_all_action)
   end
 
 end

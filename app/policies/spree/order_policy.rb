@@ -1,4 +1,4 @@
-class Spree::OrderPolicy
+class Spree::OrderPolicy < ApplicationPolicy
   attr_reader :current_vendor, :modal
 
   def initialize(current_vendor, modal)
@@ -7,15 +7,7 @@ class Spree::OrderPolicy
   end
 
   def index?
-    # @current_vendor.has_role? :admin or @current_vendor.admin?
-  end
-
-  def new?
-    # @current_vendor.has_role? :admin or @current_vendor.admin?
-  end
-
-  def create?
-    # @current_vendor.has_role? :admin or @current_vendor.admin?
+    @current_vendor.has_role? :admin or check(:spree_order_index) or check(:spree_order_all_action)
   end
 
 end

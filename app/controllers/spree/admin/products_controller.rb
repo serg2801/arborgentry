@@ -21,6 +21,7 @@ module Spree
       end
 
       def update
+        authorize Spree::Product
         if params[:product][:taxon_ids].present?
           params[:product][:taxon_ids] = params[:product][:taxon_ids].split(',')
         end
@@ -45,6 +46,7 @@ module Spree
       end
 
       def destroy
+        authorize Spree::Product
         @product = Product.friendly.find(params[:id])
 
         begin
@@ -65,6 +67,7 @@ module Spree
       end
 
       def clone
+        authorize Spree::Product
         @new = @product.duplicate
 
         if @new.save
