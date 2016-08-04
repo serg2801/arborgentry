@@ -119,6 +119,17 @@ class VendorsController < ApplicationController
     end
   end
 
+  def convert_temperature
+    @vendor = Vendor.find(current_vendor.id)
+    if @vendor.celsius?
+      @vendor.fahrenheit!
+      render status: 200, :json => {temperature: 'fahrenheit' }
+    else
+      @vendor.celsius!
+      render status: 200, :json => {temperature: 'celsius'}
+    end
+  end
+
   private
 
   def vendor_params

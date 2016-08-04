@@ -1,9 +1,9 @@
-class VendorFormPolicy
+class VendorFormPolicy < ApplicationPolicy
   attr_reader :current_vendor, :modal
 
   def initialize(current_vendor, modal)
     @current_vendor = current_vendor
-    @vendor_form = modal
+    @modal = modal
   end
 
   def index?
@@ -29,7 +29,7 @@ class VendorFormPolicy
   private
 
   def check_vendor_form
-    @vendor_form.vendor_id == @current_vendor.id
+    @modal.vendor_id == @current_vendor.id
   end
 
 end

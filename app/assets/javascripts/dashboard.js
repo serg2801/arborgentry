@@ -235,7 +235,8 @@ $(document).ready(function () {
             {latLng: [35.689487, 139.691706], name: 'Tokio'},
             {latLng: [55.755826, 37.617300], name: 'Moskva'},
             {latLng: [43.214050, 27.914733], name: 'Varna'},
-            {latLng: [30.044420, 31.235712], name: 'Cairo'}
+            {latLng: [30.044420, 31.235712], name: 'Cairo'},
+            {latLng: [50.0263,   36.2174], name: 'Kharkiv'}
         ]
     });
 
@@ -261,6 +262,7 @@ $(document).ready(function () {
     }, 10000);
 
     //Weather ajax
+    // function weather_install() {
     $.ajax({
         type: 'GET',
         dataType: 'JSON',
@@ -270,6 +272,8 @@ $(document).ready(function () {
             weather_bg(data.first_day_icon)
         }
     });
+    //};
+
 
     function weather_panel(first_day_icon, second_day_icon, third_day_icon) {
         //------------- Weather panel -------------//
@@ -334,5 +338,35 @@ $(document).ready(function () {
         }
 
     }
+
+    $(document).on('click', "#btn_f_c", function () {
+        var btn = $("#btn_f_c")
+
+        $.ajax({
+            type: 'GET',
+            dataType: 'JSON',
+            url: '/convert_temperature',
+            success: function (data) {
+
+                if (data.temperature == 'celsius') {
+                    $(".f_today").hide();
+                    $(".f_second_day").hide();
+                    $(".f_third_day").hide();
+                    $(".c_today").toggle();
+                    $(".c_second_day").toggle();
+                    $(".c_third_day").toggle();
+                } else {
+                    $(".c_today").hide();
+                    $(".c_second_day").hide();
+                    $(".c_third_day").hide();
+                    $(".f_today").toggle();
+                    $(".f_second_day").toggle();
+                    $(".f_third_day").toggle();
+                }
+
+            }
+        });
+    });
+
 
 });

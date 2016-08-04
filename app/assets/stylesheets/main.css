@@ -3095,6 +3095,22 @@ fieldset[disabled] .pricing-table.yellow .pricing-bottom .price .btn.active {
   font-size: 64px;
   background-color: rgba(255, 255, 255, 0.7);
 }
+.weather .weather_next_day {
+    font-size: 39px;
+    padding: 0px 0 15px 0;
+}
+.weather .btn-group-xs {
+    overflow: hidden;
+}
+.weather .btn_f_c {
+    float: right;
+}
+.weather .f_second_day {
+    font-size: 26px;
+}
+.weather .f_third_day {
+    font-size: 26px;
+}
 .weather .location {
   font-size: 24px;
   background-color: rgba(255, 255, 255, 0.7);

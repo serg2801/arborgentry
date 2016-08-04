@@ -4,6 +4,8 @@ class HomeController < ApplicationController
   before_filter :authenticate_vendor! , :except => [:welcome, :thank_you]
   before_filter :initialize_forecast, only: [ :index ]
 
+  @@forecast = nil, @@second_day = nil, @@third_day = nil
+
   def index
     @config_emails = current_vendor.config_emails.first
     @vendor = Vendor.find(current_vendor.id)
@@ -28,35 +30,47 @@ class HomeController < ApplicationController
   end
 
   private
+
   def resolve_layout
     case action_name
-    when "index"
-      "application"
-    when "welcome"
-      "home"
-    when "thank_you"
-      "home"
+    when 'index'
+      'application'
+    when 'welcome'
+      'home'
+    when 'thank_you'
+      'home'
     else
-      "registration"
+      'registration'
     end
   end
 
   def initialize_forecast
-    @city = request.location.data['city']
-    # @city = 'Kharkiv'
-    latitude = Geocoder.search(request.location.ip).first.latitude
-    longitude = Geocoder.search(request.location.ip).first.longitude
-    @forecast = ForecastIO.forecast( latitude, longitude, params: { units: 'si' } )
-    # @forecast = ForecastIO.forecast(latitude, longitude, params: { units: 'si' } )
-    @@forecast = @forecast
-    @second_day = @forecast.daily.data[2]
-    @@second_day = @second_day
-    second_weekday = DateTime.strptime("#{@second_day.time}",'%s')
-    @second_weekday = second_weekday.strftime('%A')
+    begin
+      @city = request.location.data['city']
+      latitude = Geocoder.search(request.location.ip).first.latitude
+      longitude = Geocoder.search(request.location.ip).first.longitude
+      @forecast = ForecastIO.forecast( latitude, longitude, params: { units: 'si' } )
+      # @forecast = ForecastIO.forecast( '50.0263','36.2174', params: { units: 'si' } )
+      @@forecast = @forecast
+      @second_day = @forecast.daily.data[2]
+      @@second_day = @second_day
+      second_weekday = DateTime.strptime("#{@second_day.time}",'%s')
+      @second_weekday = second_weekday.strftime('%A')
+      @third_day = @forecast.daily.data[3]
+      @@third_day = @third_day
+      third_weekday = DateTime.strptime("#{@third_day.time}",'%s')
+      @third_weekday = third_weekday.strftime('%A')
+      convert_to_fahrenheit(@forecast, @second_day, @third_day)
+    rescue Exception => e
+      puts ("#{e.message}")
+    end
+  end
 
-    @third_day = @forecast.daily.data[3]
-    @@third_day = @third_day
-    third_weekday = DateTime.strptime("#{@third_day.time}",'%s')
-    @third_weekday = third_weekday.strftime('%A')
+  def convert_to_fahrenheit(today, second_day, third_day)
+    @f_today = (9/5.0 * today.currently.temperature + 32).round(1)
+    @f_second_day_min = (9/5.0 * second_day.temperatureMin + 32).round(1)
+    @f_second_day_max = (9/5.0 * second_day.temperatureMax + 32).round(1)
+    @f_third_day_min = (9/5.0 * third_day.temperatureMin + 32).round(1)
+    @f_third_day_max = (9/5.0 * third_day.temperatureMax + 32).round(1)
   end
 end

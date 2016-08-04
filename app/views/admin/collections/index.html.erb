@@ -1,46 +1,32 @@
-<!-- .page-content -->
-<div class="page-content sidebar-page right-sidebar-page clearfix">
-  <!-- .page-content-wrapper -->
-  <div class="page-content-wrapper">
-    <div class="page-content-inner">
-      <!-- Start .page-content-inner -->
-      <!-- Start .row -->
-      <div class="row">
-        <div class="col-lg-12">
-          <!-- col-lg-12 start here -->
-          <div class="panel panel-default toggle panelMove panelClose panelRefresh">
-            <!-- Start .panel -->
-            <div class="panel-heading">
-              <h4 class="panel-title">Collection List</h4>
-            </div>
-            <div class="panel-body">
-              <table id="responsive-datatables" class="table table-bordered table-striped table-hover dt-responsive non-responsive" cellspacing="0" width="100%">
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th colspan="3">Action</th>
-                  </tr>
-                </thead>
-                <tbody id="collection-list">
-                  <%= render @collections %>
-                </tbody>
-              </table>
-              <br>
-              <%= link_to 'New collection', new_admin_collection_path %>
-            </div>
-          </div>
-          <!-- End .panel -->
-        </div>
-        <!-- col-lg-12 end here -->
+<div class="row">
+  <div class="col-lg-12">
+    <!-- col-lg-12 start here -->
+    <div class="panel panel-default toggle panelMove panelClose panelRefresh">
+      <!-- Start .panel -->
+      <div class="panel-heading">
+        <h4 class="panel-title">Collection List</h4>
       </div>
-      <!-- End .row -->
+      <div class="panel-body">
+        <table id="responsive-datatables" class="table table-bordered table-striped table-hover dt-responsive non-responsive" cellspacing="0" width="100%">
+          <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th colspan="3">Action</th>
+          </tr>
+          </thead>
+          <tbody id="collection-list">
+          <%= render @collections %>
+          </tbody>
+        </table>
+        <br>
+        <%= link_to 'New collection', new_admin_collection_path %>
+      </div>
     </div>
-    <!-- End .page-content-inner -->
+    <!-- End .panel -->
   </div>
-  <!-- / page-content-wrapper -->
+  <!-- col-lg-12 end here -->
 </div>
-    <!-- / page-content -->
 <!-- Back to top -->
 <div id="back-to-top"><a href="#">Back to Top</a>
 </div>
