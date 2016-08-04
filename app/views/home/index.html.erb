@@ -361,7 +361,13 @@
                 </div>
                 <div class="panel-body p0">
                   <div class="weather" id="weather_bg">
-                    <div class="degree color-red"><%= @forecast.currently.temperature.to_i %>&deg;</div>
+                    <% if current_vendor.celsius? %>
+                        <div class="degree color-red c_today"><%= @forecast.currently.temperature.to_i %>&deg;</div>
+                        <div class="degree color-red f_today" style="display:none;"><%= @f_today %>&deg;</div>
+                    <% else %>
+                        <div class="degree color-red f_today"><%= @f_today %>&deg;</div>
+                        <div class="degree color-red c_today" style="display:none;"><%= @forecast.currently.temperature.to_i %>&deg;</div>
+                    <% end %>
                     <div class="location pb15"><i class="l-basic-geolocalize-01"></i> <%= @city %></div>
                     <div class="icon">
                       <canvas id="weather-now" width="96" height="96"></canvas>
@@ -387,7 +393,16 @@
                       <h5 class="uppercase strong color-white"><%= @second_weekday %></h5>
                     </div>
                     <div class="col-md-7 col-sm-7 text-center">
-                      <div class="degree color-red"><%= @second_day.temperatureMax.to_i %>&deg;</div>
+                      <div class="btn-group-xs">
+                        <button class="btn btn-info btn_f_c celsius" id="btn_f_c">&deg;F/C&deg;</button>
+                      </div>
+                      <% if current_vendor.celsius? %>
+                          <div class="degree color-red weather_next_day c_second_day"><%= @second_day.temperatureMin.to_i %>&deg;-<%= @second_day.temperatureMax.to_i %>&deg;</div>
+                          <div class="degree color-red weather_next_day f_second_day" style="display:none;"><%= @f_second_day_min %>&deg;-<%= @f_second_day_max %>&deg;</div>
+                      <% else %>
+                          <div class="degree color-red weather_next_day f_second_day"><%= @f_second_day_min %>&deg;-<%= @f_second_day_max %>&deg;</div>
+                          <div class="degree color-red weather_next_day c_second_day" style="display:none;"><%= @second_day.temperatureMin.to_i %>&deg;-<%= @second_day.temperatureMax.to_i %>&deg;</div>
+                      <% end %>
                       <p class="text-muted uppercase s12">forecast</p>
                     </div>
                   </div>
@@ -408,7 +423,13 @@
                       <h5 class="uppercase strong color-white"><%= @third_weekday %></h5>
                     </div>
                     <div class="col-md-7 col-sm-7 text-center">
-                      <div class="degree color-blue"><%= @third_day.temperatureMax.to_i %>&deg;</div>
+                      <% if current_vendor.celsius? %>
+                          <div class="degree color-blue weather_next_day c_third_day"><%= @third_day.temperatureMin.to_i %>&deg;-<%= @third_day.temperatureMax.to_i %>&deg;</div>
+                          <div class="degree color-blue weather_next_day f_third_day" style="display:none;"><%= @f_third_day_min %>&deg;-<%= @f_third_day_max %>&deg;</div>
+                      <% else %>
+                          <div class="degree color-blue weather_next_day f_third_day"><%= @f_third_day_min %>&deg;-<%= @f_third_day_max %>&deg;</div>
+                          <div class="degree color-blue weather_next_day c_third_day" style="display:none;"><%= @third_day.temperatureMin.to_i %>&deg;-<%= @third_day.temperatureMax.to_i %>&deg;</div>
+                      <% end %>
                       <p class="text-muted uppercase s12">forecast</p>
                     </div>
                   </div>

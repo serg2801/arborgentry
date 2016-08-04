@@ -4,6 +4,8 @@ class HomeController < ApplicationController
   before_filter :authenticate_vendor! , :except => [:welcome, :thank_you]
   before_filter :initialize_forecast, only: [ :index ]
 
+  @@forecast = nil, @@second_day = nil, @@third_day = nil
+
   def index
     @config_emails = current_vendor.config_emails.first
     @vendor = Vendor.find(current_vendor.id)
@@ -58,8 +60,17 @@ class HomeController < ApplicationController
       @@third_day = @third_day
       third_weekday = DateTime.strptime("#{@third_day.time}",'%s')
       @third_weekday = third_weekday.strftime('%A')
+      convert_to_fahrenheit(@forecast, @second_day, @third_day)
     rescue Exception => e
       puts ("#{e.message}")
     end
+  end
+
+  def convert_to_fahrenheit(today, second_day, third_day)
+    @f_today = (9/5.0 * today.currently.temperature + 32).round(1)
+    @f_second_day_min = (9/5.0 * second_day.temperatureMin + 32).round(1)
+    @f_second_day_max = (9/5.0 * second_day.temperatureMax + 32).round(1)
+    @f_third_day_min = (9/5.0 * third_day.temperatureMin + 32).round(1)
+    @f_third_day_max = (9/5.0 * third_day.temperatureMax + 32).round(1)
   end
 end

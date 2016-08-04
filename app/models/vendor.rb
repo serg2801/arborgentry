@@ -30,6 +30,8 @@ class Vendor < ActiveRecord::Base
 
   has_and_belongs_to_many :spree_roles
 
+  enum temperature: [ :celsius, :fahrenheit ]
+
   def has_spree_role?(role)
     mas_role = []
     self.spree_roles.all.each do |object|
