@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804140726) do
+ActiveRecord::Schema.define(version: 20160805081502) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -113,6 +113,21 @@ ActiveRecord::Schema.define(version: 20160804140726) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "ip"
+    t.string   "country_name"
+    t.string   "country_code"
+    t.string   "region_code"
+    t.string   "region_name"
+    t.string   "city"
+    t.string   "zipcode"
+    t.string   "time_zone"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "message_attachments", force: :cascade do |t|
@@ -1606,5 +1621,16 @@ ActiveRecord::Schema.define(version: 20160804140726) do
   end
 
   add_index "vendors_roles", ["vendor_id", "role_id"], name: "index_vendors_roles_on_vendor_id_and_role_id"
+
+  create_table "visit_cities", force: :cascade do |t|
+    t.string   "country_name"
+    t.string   "city"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.integer  "count_visit",  default: 0
+    t.integer  "radius",       default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
 end

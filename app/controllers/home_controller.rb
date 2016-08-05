@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   before_filter :authenticate_vendor! , :except => [:welcome, :thank_you]
   before_filter :initialize_forecast, only: [ :index ]
 
-  @@forecast = nil, @@second_day = nil, @@third_day = nil
+  @@forecast = @@second_day = @@third_day = 'clear-day'
 
   def index
     @config_emails = current_vendor.config_emails.first
@@ -15,6 +15,13 @@ class HomeController < ApplicationController
 
   def weather_params
     render status: 200, :json => {first_day_icon: @@forecast.currently.icon, second_day_icon: @@second_day.icon, third_day_icon: @@third_day.icon}
+  end
+
+  def map_city_visits
+    @city = []
+    @visit_city = VisitCity.all
+    @visit_city.map { |city| @city << { latLng: [city.latitude, city.longitude], name: city.city, style: {fill: 'red', r: city.radius} } }
+    render status: 200, :json => {mas_city: @city}
   end
 
   def login

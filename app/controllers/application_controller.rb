@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   protect_from_forgery with: :exception
   # before_filter :access_spree
+  before_filter :location_ip, except: [:weather_params, :map_city_visits]
   before_filter :authenticate_vendor!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -35,6 +36,31 @@ class ApplicationController < ActionController::Base
 
   def set_roles
     @roles = Role.created_by_admin_and_current(current_vendor).uniq
+  end
+
+  def location_ip
+    begin
+      geo_params = Geocoder.search(request.location.ip)
+      location = geo_params.first.data
+      Location.create(ip: location['ip'], country_name: location['country_name'], country_code: location['country_code'],
+                      region_code: location['region_code'], zipcode: location['zipcode'], region_name: location['region_name'],
+                      time_zone: location['time_zone'], latitude: location['latitude'], longitude: location['longitude'],
+                      city: location['city'])
+      city_visits(location)
+    rescue Exception => e
+      puts ("#{e.message}")
+    end
+  end
+
+  def city_visits(location)
+    city = VisitCity.where(city: location['city'], country_name: location['country_name'])
+    if city == []
+      VisitCity.create(country_name: location['country_name'], latitude: location['latitude'], longitude: location['longitude'],
+                       city: location['city'], count_visit: 1)
+    else
+      city.first.update_attributes(count_visit: (city.first.count_visit + 1))
+    end
+
   end
 
   # def access_spree
