@@ -1,326 +1,329 @@
-<div class="page-content sidebar-page right-sidebar-page clearfix">
-  <!-- .page-content-wrapper -->
-  <div class="page-content-wrapper">
-    <div class="page-content-inner">
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
-          <!-- col-lg-4 start here -->
-          <div class="panel panel-default plain">
-              <!-- Start .panel -->
-              <div class="panel-heading">
-                  <h4 class="panel-title bb">Profile details</h4>
-              </div>
-              <div class="panel-body">
-                  <div class="row profile">
-                      <!-- Start .row -->
-                      <div class="col-md-4">
-                          <div class="profile-avatar">
-                              <%= image_tag current_vendor.sample_photo.url(:thumb) %> 
-                              <p class="mt10">
-                                  Online
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <!-- col-lg-4 start here -->
+    <div class="panel panel-default plain">
+      <!-- Start .panel -->
+      <div class="panel-heading">
+        <h4 class="panel-title bb">Profile details</h4>
+      </div>
+      <div class="panel-body">
+        <div class="row profile">
+          <!-- Start .row -->
+          <div class="col-md-4">
+            <div class="profile-avatar">
+              <img src="/assets/avatars/128.jpg" alt="Avatar">
+              <p class="mt10">
+                Online
                                   <span class="device">
                   <i class="fa fa-mobile s16"></i>
               </span>
-                              </p>
-                          </div>
-                      </div>
-                      <div class="col-md-8">
-                          <div class="profile-name">
-                              <h3><%= current_vendor.first_name %></h3>
-                              <p class="job-title mb0"><i class="fa fa-building"></i> SEO in Neocom Solutions</p>
-                              <p class="balance">
-                                  Balance: <span>146$</span>
-                              </p>
-                              <a href="#" class="btn btn-primary btn-large mr10"> <i class="fa fa-envelope"></i> Send email</a>
-                              <a href="#" class="btn btn-default btn-alt btn-large"> Send PM</a>
-                          </div>
-                      </div>
-                      <div class="col-md-12">
-                          <div class="contact-info bt">
-                              <div class="row">
-                                  <!-- Start .row -->
-                                  <div class="col-md-4">
-                                      <dl class="mt20">
-                                          <dt class="text-muted">Phone</dt>
-                                          <dd><%= current_vendor.phone_number %></dd>
-                                          <dt class="text-muted">Mobile</dt>
-                                          <dd>(368)-234-112</dd>
-                                          <dt class="text-muted">Fax</dt>
-                                          <dd>(362)-666-347</dd>
-                                      </dl>
-                                  </div>
-                                  <div class="col-md-8">
-                                      <dl class="mt20">
-                                          <dt class="text-muted">Email</dt>
-                                          <dd><%= current_vendor.email %></dd>
-                                          <dt class="text-muted">Skype</dt>
-                                          <dd>jonatahn_smith</dd>
-                                      </dl>
-                                  </div>
-                              </div>
-                              <!-- End .row -->
-                          </div>
-                      </div>
-                      <div class="col-md-12">
-                          <div class="profile-info bt">
-                              <h5 class="text-muted">Profile info</h5>
-                              <p><%= current_vendor.additional_information %></p>
-                          </div>
-                          <div class="profile-tags">
-                              <h5 class="text-muted">Tags</h5>
-                              <form role="form" class="form-horizontal mb15">
-                                  <input type="text" value="CEO, Worker" data-role="tagsinput">
-                              </form>
-                          </div>
-                          <div class="social bt">
-                              <h5 class="text-muted">Social</h5>
-                              <dl class="dl-horizontal mb0">
-                                  <dt>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="profile-name">
+              <h3><%= current_vendor.first_name %></h3>
+
+              <p class="job-title mb0"><i class="fa fa-building"></i> SEO in Neocom Solutions</p>
+
+              <p class="balance">
+                Balance: <span>146$</span>
+              </p>
+              <a href="#" class="btn btn-primary btn-large mr10"> <i class="fa fa-envelope"></i> Send email</a>
+              <a href="#" class="btn btn-default btn-alt btn-large"> Send PM</a>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="contact-info bt">
+              <div class="row">
+                <!-- Start .row -->
+                <div class="col-md-4">
+                  <dl class="mt20">
+                    <dt class="text-muted">Phone</dt>
+                    <dd><%= current_vendor.phone_number %></dd>
+                    <dt class="text-muted">Mobile</dt>
+                    <dd>(368)-234-112</dd>
+                    <dt class="text-muted">Fax</dt>
+                    <dd>(362)-666-347</dd>
+                  </dl>
+                </div>
+                <div class="col-md-8">
+                  <dl class="mt20">
+                    <dt class="text-muted">Email</dt>
+                    <dd><%= current_vendor.email %></dd>
+                    <dt class="text-muted">Skype</dt>
+                    <dd>jonatahn_smith</dd>
+                  </dl>
+                </div>
+              </div>
+              <!-- End .row -->
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="profile-info bt">
+              <h5 class="text-muted">Profile info</h5>
+
+              <p><%= current_vendor.additional_information %></p>
+            </div>
+            <div class="profile-tags">
+              <h5 class="text-muted">Tags</h5>
+
+              <form role="form" class="form-horizontal mb15">
+                <input type="text" value="CEO, Worker" data-role="tagsinput">
+              </form>
+            </div>
+            <div class="social bt">
+              <h5 class="text-muted">Social</h5>
+              <dl class="dl-horizontal mb0">
+                <dt>
                                       <span class="text-muted">
                       <i class="fa fa-facebook-square"></i>
                       Facebook:
                   </span>
-                                  </dt>
-                                  <dd><a href="#">facebook.com/1231</a>
-                                  </dd>
-                                  <dt>
+                </dt>
+                <dd><a href="#">facebook.com/1231</a>
+                </dd>
+                <dt>
                                       <span class="text-muted">
                       <i class="fa fa-twitter"></i>
                       Twitter:
                   </span>
-                                  </dt>
-                                  <dd><a href="#">twitter.com/profile/3234.html</a>
-                                  </dd>
-                                  <dt>
+                </dt>
+                <dd><a href="#">twitter.com/profile/3234.html</a>
+                </dd>
+                <dt>
                                       <span class="text-muted">
                       <i class="fa fa-google-plus"></i>
                       Google+:
                   </span>
-                                  </dt>
-                                  <dd><a href="#">plus.google.com/jonathansmith</a>
-                                  </dd>
-                                  <dt>
+                </dt>
+                <dd><a href="#">plus.google.com/jonathansmith</a>
+                </dd>
+                <dt>
                                       <span class="text-muted">
                       <i class="fa fa-linkedin"></i>
                       LinkedIn:
                   </span>
-                                  </dt>
-                                  <dd><a href="#">linkd.in/123123</a>
-                                  </dd>
-                                  <dt>
+                </dt>
+                <dd><a href="#">linkd.in/123123</a>
+                </dd>
+                <dt>
                                       <span class="text-muted">
                       <i class="fa fa-pinterest"></i>
                       Pinterest:
                   </span>
-                                  </dt>
-                                  <dd><a href="#">pinterst.com/profile/3234.html</a>
-                                  </dd>
-                              </dl>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- End .row -->
-              </div>
+                </dt>
+                <dd><a href="#">pinterst.com/profile/3234.html</a>
+                </dd>
+              </dl>
+            </div>
           </div>
-          <!-- End .panel -->
-          <div class="panel panel-default plain">
-              <!-- Start .panel -->
-              <div class="panel-heading">
-                  <h4 class="panel-title">User stats</h4>
-              </div>
-              <div class="panel-body">
-                  <ul class="progressbars-stats list-unstyled">
-                      <li>
-                          <div class="progressbar-icon"><i class="glyphicon glyphicon-user"></i> 
-                          </div>
-                          <span class="progressbar-text">Profile complete</span>
-                          <div class="progress animated-bar flat mt0">
-                              <div class="progress-bar" role="progressbar" data-transitiongoal="40"></div>
-                          </div>
-                      </li>
-                      <li>
-                          <div class="progressbar-icon"><i class="glyphicon glyphicon-comment"></i> 
-                          </div>
-                          <span class="progressbar-text">Answer to messages</span>
-                          <div class="progress animated-bar flat mt0">
-                              <div class="progress-bar progress-bar-primary" role="progressbar" data-transitiongoal="83"></div>
-                          </div>
-                      </li>
-                      <li>
-                          <div class="progressbar-icon"><i class="glyphicon glyphicon-hdd"></i> 
-                          </div>
-                          <span class="progressbar-text">Space taken</span>
-                          <div class="progress animated-bar flat mt0">
-                              <div class="progress-bar progress-bar-danger" role="progressbar" data-transitiongoal="98"></div>
-                          </div>
-                      </li>
-                      <li>
-                          <div class="progressbar-icon"><i class="fa fa-pie-chart"></i> 
-                          </div>
-                          <span class="progressbar-text">Overall</span>
-                          <div class="progress animated-bar flat mt0">
-                              <div class="progress-bar progress-bar-success" role="progressbar" data-transitiongoal="62"></div>
-                          </div>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-                                <!-- End .panel -->
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-          <div class="tabs mb20">
-            <ul id="profileTab" class="nav nav-tabs">
-              <li><a href="#overview" data-toggle="tab">Overview</a>
-              </li>
-              <li class="">
-                  <a href="#edit-profile" data-toggle="tab">Edit</a>
-              </li>
-            </ul>
-            <div id="myTabContent" class="tab-content">
-              <div class="tab-pane fade active in" id="overview">
-                  <h5>Activity feed</h5>
-                  <ul class="timeline timeline-icons">
-                      <li>
-                          <p>
-                              <a href="#">Jonathan Smith</a> attached new <a href="#">file</a>
-                              <span class="timeline-icon"><i class="fa fa-file-text-o"></i></span>
-                              <span class="timeline-date">Dec 10, 22:00</span>
-                          </p>
-                      </li>
-                      <li>
-                          <p>
-                              <a href="#">Jonathan Smith</a> make <a href="#">3 comments</a>
-                              <span class="timeline-icon"><i class="fa fa-comment"></i></span>
-                              <span class="timeline-date">Dec 8, 13:35</span>
-                          </p>
-                      </li>
-                      <li>
-                          <p>
-                              <a href="#">Jonathan Smith</a> deposit 300$
-                              <span class="timeline-icon"><i class="fa fa-money color-green"></i></span>
-                              <span class="timeline-date">Dec 6, 10:17</span>
-                          </p>
-                      </li>
-                      <li>
-                          <p>
-                              <a href="#">Jonathan Smith</a> purchase <a href="#">3 items</a>
-                              <span class="timeline-icon"><i class="fa fa-shopping-cart color-red"></i></span>
-                              <span class="timeline-date">Dec 5, 04:36</span>
-                          </p>
-                      </li>
-                      <li>
-                          <p>
-                              <a href="#">1 support </a> request is received from <a href="#">Jonathan Smith</a>
-                              <span class="timeline-icon"><i class="fa fa-life-ring color-gray-light"></i></span>
-                              <span class="timeline-date">Dec 4, 18:40</span>
-                          </p>
-                      </li>
-                      <li>
-                          <p>
-                              <a href="#">12 settings </a> are changed from <a href="#">Jonathan Smith</a>
-                              <span class="timeline-icon"><i class="glyphicon glyphicon-cog"></i></span>
-                              <span class="timeline-date">Dec 3, 23:17</span>
-                          </p>
-                      </li>
-                      <li>
-                          <p>
-                              <a href="#">Jonathan Smith</a> change your photo
-                              <span class="timeline-icon"><i class="l-basic-photo"></i></span>
-                              <span class="timeline-date">Dec 2, 05:17</span>
-                          </p>
-                      </li>
-                  </ul>
-                  <a href="#" class="btn btn-default timeline-load-more-btn"><i class="fa fa-refresh"></i> Load more </a>
+        <!-- End .row -->
+      </div>
+    </div>
+    <!-- End .panel -->
+    <div class="panel panel-default plain">
+      <!-- Start .panel -->
+      <div class="panel-heading">
+        <h4 class="panel-title">User stats</h4>
+      </div>
+      <div class="panel-body">
+        <ul class="progressbars-stats list-unstyled">
+          <li>
+            <div class="progressbar-icon"><i class="glyphicon glyphicon-user"></i>
+            </div>
+            <span class="progressbar-text">Profile complete</span>
+
+            <div class="progress animated-bar flat mt0">
+              <div class="progress-bar" role="progressbar" data-transitiongoal="40"></div>
+            </div>
+          </li>
+          <li>
+            <div class="progressbar-icon"><i class="glyphicon glyphicon-comment"></i>
+            </div>
+            <span class="progressbar-text">Answer to messages</span>
+
+            <div class="progress animated-bar flat mt0">
+              <div class="progress-bar progress-bar-primary" role="progressbar" data-transitiongoal="83"></div>
+            </div>
+          </li>
+          <li>
+            <div class="progressbar-icon"><i class="glyphicon glyphicon-hdd"></i>
+            </div>
+            <span class="progressbar-text">Space taken</span>
+
+            <div class="progress animated-bar flat mt0">
+              <div class="progress-bar progress-bar-danger" role="progressbar" data-transitiongoal="98"></div>
+            </div>
+          </li>
+          <li>
+            <div class="progressbar-icon"><i class="fa fa-pie-chart"></i>
+            </div>
+            <span class="progressbar-text">Overall</span>
+
+            <div class="progress animated-bar flat mt0">
+              <div class="progress-bar progress-bar-success" role="progressbar" data-transitiongoal="62"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- End .panel -->
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <div class="tabs mb20">
+      <ul id="profileTab" class="nav nav-tabs">
+        <li><a href="#overview" data-toggle="tab">Overview</a>
+        </li>
+        <li class="">
+          <a href="#edit-profile" data-toggle="tab">Edit</a>
+        </li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="overview">
+          <h5>Activity feed</h5>
+          <ul class="timeline timeline-icons">
+            <li>
+              <p>
+                <a href="#">Jonathan Smith</a> attached new <a href="#">file</a>
+                <span class="timeline-icon"><i class="fa fa-file-text-o"></i></span>
+                <span class="timeline-date">Dec 10, 22:00</span>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#">Jonathan Smith</a> make <a href="#">3 comments</a>
+                <span class="timeline-icon"><i class="fa fa-comment"></i></span>
+                <span class="timeline-date">Dec 8, 13:35</span>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#">Jonathan Smith</a> deposit 300$
+                <span class="timeline-icon"><i class="fa fa-money color-green"></i></span>
+                <span class="timeline-date">Dec 6, 10:17</span>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#">Jonathan Smith</a> purchase <a href="#">3 items</a>
+                <span class="timeline-icon"><i class="fa fa-shopping-cart color-red"></i></span>
+                <span class="timeline-date">Dec 5, 04:36</span>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#">1 support </a> request is received from <a href="#">Jonathan Smith</a>
+                <span class="timeline-icon"><i class="fa fa-life-ring color-gray-light"></i></span>
+                <span class="timeline-date">Dec 4, 18:40</span>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#">12 settings </a> are changed from <a href="#">Jonathan Smith</a>
+                <span class="timeline-icon"><i class="glyphicon glyphicon-cog"></i></span>
+                <span class="timeline-date">Dec 3, 23:17</span>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#">Jonathan Smith</a> change your photo
+                <span class="timeline-icon"><i class="l-basic-photo"></i></span>
+                <span class="timeline-date">Dec 2, 05:17</span>
+              </p>
+            </li>
+          </ul>
+          <a href="#" class="btn btn-default timeline-load-more-btn"><i class="fa fa-refresh"></i> Load more </a>
+        </div>
+        <div class="tab-pane fade pb0" id="edit-profile">
+          <h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, class: "form-horizontal group-border stripped"}) do |f| %>
+              <%= devise_error_messages! %>
+
+              <div class="form-group">
+                <img src="/assets/avatars/128.jpg" alt="Avatar">
+                <%#= image_tag current_vendor.sample_photo.url(:thumb) %>
               </div>
-              <div class="tab-pane fade pb0" id="edit-profile">
-                <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal group-border stripped" }) do |f| %>
-                  <%= devise_error_messages! %>
+              <div class="form-group">
+                <%= f.label :profile_pic %><br/>
+                <%= f.file_field :sample_photo, class: 'form-control' %>
+              </div>
 
-                  <div class="form-group">
-                    <%= image_tag current_vendor.sample_photo.url(:thumb)  %> 
-                  </div>
+              <div class="form-group">
+                <%= f.label :email %><br/>
+                <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :profile_pic %><br />
-                    <%= f.file_field :sample_photo, class: 'form-control' %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :first_name %><br/>
+                <%= f.text_field :first_name, class: 'form-control' %>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :email %><br />
-                    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :last_name %><br/>
+                <%= f.text_field :last_name, class: 'form-control' %>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :first_name %><br />
-                    <%= f.text_field :first_name, class: 'form-control' %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :vendor_name %><br/>
+                <%= f.text_field :vendor_name, class: 'form-control' %>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :last_name %><br />
-                    <%= f.text_field :last_name, class: 'form-control' %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :phone_number %><br/>
+                <%= f.text_field :phone_number, class: 'form-control' %>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :vendor_name %><br />
-                    <%= f.text_field :vendor_name, class: 'form-control' %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :zipcode %><br/>
+                <%= f.text_field :zipcode, class: 'form-control' %>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :phone_number %><br />
-                    <%= f.text_field :phone_number, class: 'form-control' %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :business_address %><br/>
+                <%= f.text_area :business_address, class: 'form-control' %>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :zipcode %><br />
-                    <%= f.text_field :zipcode, class: 'form-control' %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :info_for_you %><br/>
+                <%= f.text_area :additional_information, class: 'form-control' %>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :business_address %><br />
-                    <%= f.text_area :business_address, class: 'form-control' %>
-                  </div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
 
-                  <div class="form-group">
-                    <%= f.label :info_for_you %><br />
-                    <%= f.text_area :additional_information, class: 'form-control' %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
+                <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+              </div>
 
-                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-                  <% end %>
+              <div class="form-group">
+                <%= f.label :password_confirmation %><br/>
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-                    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
+                <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :password_confirmation %><br />
-                    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
-                  </div>
+              <div class="form-group">
+                <%= f.submit "Make Change", class: 'btn btn-primary' %>
+              </div>
+          <% end %>
 
-                  <div class="form-group">
-                    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-                    <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
-                  </div>
-
-                  <div class="form-group">
-                    <%= f.submit "Make Change", class: 'btn btn-primary' %>
-                  </div>
-                <% end %>
-
-               <!--  <h3>Cancel my account</h3>
+          <!--  <h3>Cancel my account</h3>
 
                 <p>Unhappy? <%#= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
                 <%#= link_to "Back", :back %> -->
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+

@@ -16,7 +16,7 @@
 </head>
 <body class="<%= params[:controller] != "registrations" ? 'login-page' : 'signup-page'%>">
   <div class="container <%= params[:controller] != "registrations" ? 'login-container' : '' %>">
-  <%= yield%>  
+  <%= yield %>
   </div>
   <div class="container">
     <div class="footer">
