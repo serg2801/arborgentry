@@ -39,16 +39,18 @@ class ApplicationController < ActionController::Base
   end
 
   def location_ip
-    begin
-      geo_params = Geocoder.search(request.location.ip)
-      location = geo_params.first.data
-      Location.create(ip: location['ip'], country_name: location['country_name'], country_code: location['country_code'],
-                      region_code: location['region_code'], zipcode: location['zipcode'], region_name: location['region_name'],
-                      time_zone: location['time_zone'], latitude: location['latitude'], longitude: location['longitude'],
-                      city: location['city'])
-      city_visits(location)
-    rescue Exception => e
-      puts ("#{e.message}")
+    unless current_vendor
+      begin
+        geo_params = Geocoder.search(request.location.ip)
+        location = geo_params.first.data
+        Location.create(ip: location['ip'], country_name: location['country_name'], country_code: location['country_code'],
+                        region_code: location['region_code'], zipcode: location['zipcode'], region_name: location['region_name'],
+                        time_zone: location['time_zone'], latitude: location['latitude'], longitude: location['longitude'],
+                        city: location['city'])
+        city_visits(location)
+      rescue Exception => e
+        puts ("#{e.message}")
+      end
     end
   end
 
