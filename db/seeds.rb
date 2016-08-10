@@ -1,132 +1,118 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-# Company Type 
-
-Company.create(title: 'Sales Representative/Wholesaler')
-Company.create(title: 'Antique Dealer')
-Company.create(title: 'Manufacturer')
-Company.create(title: 'Designer')
-Company.create(title: 'Vintage Dealer')
-Company.create(title: 'Not Applicable')
-Company.create(title: 'Hand-crafted / Artisinal')
-
+# Company Type
+[ 'Sales Representative/Wholesaler',
+	'Antique Dealer', 'Manufacturer',
+	'Designer',
+	'Vintage Dealer',
+	'Not Applicable',
+	'Hand-crafted / Artisinal'
+].map do |type|
+	Company.create( title: type )
+end
 
 # Category
-Category.create(title: 'Furniture')
-Category.create(title: 'Bath')
-Category.create(title: 'Outdoor')
-Category.create(title: 'Kitchen')
-Category.create(title: 'Lighting')
-Category.create(title: 'Art')
-Category.create(title: 'Tabletop')
-Category.create(title: 'Rugs')
-Category.create(title: 'Decorative Taxtiles')
-Category.create(title: 'BED')
-Category.create(title: 'Decorative Accessories')
+[
+	'Furniture',
+	'Bath',
+	'Outdoor',
+	'Kitchen',
+	'Lighting',
+	'Art',
+	'Tabletop',
+	'Rugs',
+	'Decorative Taxtiles',
+	'BED',
+	'Decorative Accessories'
+].map do |category|
+	Category.create(title: category)
+end
 
-# Channel 
-Channel.create(title: 'Direct to consumer')
-Channel.create(title: 'Show room')
-Channel.create(title: 'Brick and Mortar retail store')
-Channel.create(title: '3rd party ecommerce site')
-
+# Channel
+[
+	'Direct to consumer',
+	'Show room',
+	'Brick and Mortar retail store',
+	'3rd party ecommerce site'
+].map do |channel|
+	Channel.create(title: channel)
+end
 
 # OptionForm
-OptionForm.create(title: 'Sales Rep. or Wholesale')
-OptionForm.create(title: 'Antique Dealer')
-OptionForm.create(title: 'Vintage Dealer')
-OptionForm.create(title: 'Manufacturer')
-OptionForm.create(title: 'Hand-crafted/Artisinal')
-OptionForm.create(title: 'Interior Designer')
-OptionForm.create(title: 'Other/Not Applicable')
+[
+	'Sales Rep. or Wholesale',
+	'Antique Dealer',
+	'Vintage Dealer',
+	'Manufacturer',
+	'Hand-crafted/Artisinal',
+	'Interior Designer',
+	'Other/Not Applicable'
+].map do |option_form|
+	OptionForm.create(title: option_form)
+end
 
 # CategoryForm
-CategoryForm.create(title: 'Seating')
-CategoryForm.create(title: 'Kitchen')
-CategoryForm.create(title: 'Lighting')
-CategoryForm.create(title: 'Rugs')
-CategoryForm.create(title: 'Decor')
-CategoryForm.create(title: 'Outdoor')
-CategoryForm.create(title: 'Soft Goods')
-CategoryForm.create(title: 'Case Goods')
+[
+	'Seating',
+	'Kitchen',
+	'Lighting',
+	'Rugs',
+	'Decor',
+	'Outdoor',
+	'Soft Goods',
+	'Case Goods'
+].map do |category_form|
+	CategoryForm.create(title: category_form)
+end
 
 # ChannelForm
-ChannelForm.create(title: 'Direct to Consumer')
-ChannelForm.create(title: 'Brick and Mortar Store')
-ChannelForm.create(title: 'Showroom')
-ChannelForm.create(title: 'Flash Sales Website(s)')
-ChannelForm.create(title: '3rd Party e-Commerce Site(s)')
-ChannelForm.create(title: 'Other')
+[
+	'Direct to Consumer',
+	'Brick and Mortar Store',
+	'Showroom',
+	'Flash Sales Website(s)',
+	'3rd Party e-Commerce Site(s)',
+	'Other'
+].map do |channel_form|
+	ChannelForm.create(title: channel_form)
+end
 
 # Vendor
-Vendor.create(email: 'admin@tandemarbor.com', :password => 'password', :admin => true)
-Vendor.create(email: 'super_admin@tandemarbor.com', :password => 'password', :admin => true)
-Vendor.create(email: 'vendor@tandemarbor.com', :password => 'password')
-Vendor.create(email: 'vendor_admin@tandemarbor.com', :password => 'password')
-Vendor.create(email: 'vendor_admin2@tandemarbor.com', :password => 'password')
+[
+  ['admin@tandemarbor.com', 'password', true],
+  ['super_admin@tandemarbor.com', 'password', true],
+  ['vendor@tandemarbor.com', 'password', false],
+  ['vendor_admin@tandemarbor.com', 'password', false]
+].map do |e, p, a|
+	Vendor.create(email: e, :password => p, :admin => a)
+end
+
+# Roles for vendors
+[1,2].map do |id|
+	Vendor.find(id).spree_roles << Spree::Role.find_or_create_by(name: "admin")
+	Vendor.find(id).add_role :admin
+end
 
 # Permission
-Permission.create(name: 'Permissions Show all Vendors',     description: 'Show all Vendors',     key: 'show_all_vendors')
-Permission.create(name: 'Permissions Create Vendors',       description: 'Create Vendors',       key: 'create_vendors')
-Permission.create(name: 'Permissions Destroy Vendors',      description: 'Destroy Vendors',      key: 'destroy_vendors')
-Permission.create(name: 'Permissions All action  Vendors',  description: 'All actions Vendors',  key: 'all_action_vendors')
-
-Permission.create(name: 'Permissions All action Email',  description: 'Email', key: 'all_action_email')
-
-Permission.create(name: 'Permissions All actions Spree Orders', description: 'All actions Spree Orders', key: 'spree_order_all_action')
-Permission.create(name: 'Permissions Index Spree Orders',       description: 'Index Spree Orders',       key: 'spree_order_index')
-
-Permission.create(name: 'Permissions All actions Spree Products', description: 'All actions Spree Products', key: 'spree_product_all_action')
-Permission.create(name: 'Permissions Index Products',             description: 'Index Products',             key: 'spree_product_index')
-Permission.create(name: 'Permissions Update Spree Products',      description: 'Update Spree Products',      key: 'spree_product_update')
-Permission.create(name: 'Permissions Destroy Spree Products',     description: 'Destroy Spree Products',     key: 'spree_product_destroy')
-Permission.create(name: 'Permissions Clone Spree Products',       description: 'Clone Spree Products',       key: 'spree_product_clone')
-
-# Permission.create(name: 'Permissions All action Spree',  description: 'Spree', key: 'all_action_spree')
-#
-# Permission.create(name: 'Permissions Spree Option Types', description: 'Spree Option Types', key: 'option_types')
-# Permission.create(name: 'Permissions Spree Properties',   description: 'Spree Properties',   key: 'properties')
-# Permission.create(name: 'Permissions Spree Prototypes',   description: 'Spree Prototypes',   key: 'prototypes')
-# Permission.create(name: 'Permissions Spree Taxonomies',   description: 'Spree Taxonomies',   key: 'taxonomies')
-# Permission.create(name: 'Permissions Spree Taxons',       description: 'Spree Taxons',       key: 'taxons')
-#
-# Permission.create(name: 'Permissions Spree Promotion Categories',  description: 'Spree Promotion Categories',  key: 'promotion_categories')
-# Permission.create(name: 'Permissions Spree Promotions',            description: 'Spree Promotions',            key: 'promotions')
-#
-# Permission.create(name: 'Permissions Spree Return Authorizations and Customer Returns', description: 'Spree Return Authorizations and Customer Returns', key: 'return_authorizations')
-#
-# Permission.create(name: 'Permissions Spree Reports',               description: 'Spree Reports',               key: 'reports')
-#
-# Permission.create(name: 'Permissions Spree General Settings',             description: 'Spree General Settings',             key: 'general_settings')
-# Permission.create(name: 'Permissions Spree Tax Categories',               description: 'Spree Tax Categories',               key: 'tax_categories')
-# Permission.create(name: 'Permissions Spree Tax Rates',                    description: 'Spree Tax Rates',                    key: 'tax_rates')
-# Permission.create(name: 'Permissions Spree Zones',                        description: 'Spree Zones',                        key: 'zones')
-# Permission.create(name: 'Permissions Spree Countries',                    description: 'Spree Countries',                    key: 'countries')
-# Permission.create(name: 'Permissions Spree States',                       description: 'Spree States',                       key: 'states')
-# Permission.create(name: 'Permissions Spree Payment Methods',              description: 'Spree Payment Methods',              key: 'payment_methods')
-# Permission.create(name: 'Permissions Spree Shipping Methods',             description: 'Spree Shipping Methods',             key: 'shipping_methods')
-# Permission.create(name: 'Permissions Spree Shipping Categories',          description: 'Spree Shipping Categories',          key: 'shipping_categories')
-# Permission.create(name: 'Permissions Spree Stock Transfers',              description: 'Spree Stock Transfers',              key: 'stock_transfers')
-# Permission.create(name: 'Permissions Spree Stock Locations',              description: 'Spree Stock Locations',              key: 'stock_locations')
-# Permission.create(name: 'Permissions Spree Store Credit Categories',      description: 'Spree store_credit_categories',      key: 'store_credit_categories')
-# Permission.create(name: 'Permissions Spree Trackers',                     description: 'Spree Trackers',                     key: 'trackers')
-# Permission.create(name: 'Permissions Spree Refund Reasons',               description: 'Spree Refund Reasons',               key: 'refund_reasons')
-# Permission.create(name: 'Permissions Spree Reimbursement Types',          description: 'Spree Reimbursement Types',          key: 'reimbursement_types')
-# Permission.create(name: 'Permissions Spree Return Authorization Reasons', description: 'Spree Return Authorization Reasons', key: 'return_authorization_reasons')
-
+[
+	['Permissions Show all Vendors',         		'Show all Vendors',						'show_all_vendors'],
+	['Permissions Create Vendors',           		'Create Vendors', 						'create_vendors'],
+  ['Permissions Destroy Vendors',          		'Destroy Vendors', 						'destroy_vendors'],
+  ['Permissions All action  Vendors',      		'All actions Vendors', 				'all_action_vendors'],
+  ['Permissions All action Email',         		'Email', 											'all_action_email'],
+	['Permissions All actions Spree Orders', 		'All actions Spree Orders', 	'spree_order_all_action'],
+	['Permissions Index Spree Orders',       		'Index Spree Orders', 				'spree_order_index'],
+	['Permissions All actions Spree Products',  'All actions Spree Products', 'spree_product_all_action'],
+	['Permissions Index Products', 							'Index Products', 						'spree_product_index'],
+  ['Permissions Update Spree Products', 			'Update Spree Products', 			'spree_product_update'],
+	['Permissions Destroy Spree Products', 			'Destroy Spree Products',		  'spree_product_destroy'],
+	['Permissions Clone Spree Products', 				'Clone Spree Products',				'spree_product_clone']
+].map do |n, d, k|
+	Permission.create(name: n, description: d, key: k)
+end
 
 # Role
-Role.create(name: 'admin')
-Role.create(name: 'vendor_admin')
-Role.create(name: 'vendor_default')
-
-
+['admin', 'vendor_admin', 'vendor_default'].map do |role|
+	Role.create(name: role)
+end
 
 Spree::Core::Engine.load_seed if defined?(Spree::Core)
 Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
