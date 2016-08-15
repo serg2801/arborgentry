@@ -36,275 +36,279 @@
         </div>
       </div>
       <!--  .sidebar-panel -->
-      <div class="sidebar-panel">
-        <h5 class="sidebar-panel-title">Navigation</h5>
-      </div>
-      <!-- / .sidebar-panel -->
-      <!-- .side-nav -->
-      <div class="side-nav">
-        <ul class="nav">
-          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
-              <li>
-                <%= link_to main_app.authenticated_root_path do %>
-                    <i class="l-basic-laptop"></i>
-                    <span class="txt">Dashboard</span>
-                <% end %>
-              </li>
-          <% end %>
-          <% if current_vendor.has_role? :vendor_admin %>
-              <li>
-                <a href="#">
-                  <i class="l-basic-webpage-txt"></i>
-                  <span class="txt">Edit Vendor Forms</span>
-                </a>
-                <ul class="sub">
-                  <% if current_vendor.vendor_form %>
-                      <li><%= link_to( 'Edit Vendor Form', main_app.edit_vendor_form_path(current_vendor.vendor_form) ) %></li>
+      <div class='qqq'>
+        <div class="sidebar-panel">
+          <h5 class="sidebar-panel-title">Navigation</h5>
+        </div>
+        <!-- / .sidebar-panel -->
+        <!-- .side-nav -->
+        <div class="side-nav">
+          <ul class="nav b-sidebar">
+            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+                <li>
+                  <%= link_to main_app.authenticated_root_path do %>
+                      <i class="l-basic-laptop"></i>
+                      <span class="txt">Dashboard</span>
                   <% end %>
-                  <% if current_vendor.vendor_onboarding_form %>
-                      <li><%= link_to( 'Edit Onboarding', main_app.edit_vendor_onboarding_form_path(current_vendor.vendor_onboarding_form) ) %></li>
-                  <% end %>
-                </ul>
-              </li>
-          <% end %>
-          <% if current_vendor.admin? %>
-              <li>
-                <a href="#">
-                  <i class="l-basic-webpage-txt"></i>
-                  <span class="txt">Vendor Forms</span>
-                </a>
-                <ul class="sub">
-                  <li><%= link_to( 'Vendor', main_app.vendor_forms_path ) %></li>
-                  <li><%= link_to( 'Trade', main_app.trade_forms_path ) %></li>
-                  <li><%= link_to( 'Vendor OnBoarding', main_app.vendor_onboarding_forms_path ) %></li>
-                </ul>
-              </li>
-          <% end %>
-          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
-              <li>
-                <a href="#">
-                  <i class="fa fa-user" aria-hidden="true"></i>
-                  <span class="txt">User Accounts</span>
-                </a>
-                <ul class="sub">
-                  <li>
-                    <%= link_to('Vendor Accounts', main_app.vendors_path) %>
-                  </li>
-                  <li>
-                    <%= link_to('Roles', main_app.roles_path) %>
-                  </li>
-                  <% if current_vendor.admin? %>
-                      <li>
-                        <%= link_to('Accounts', main_app.accounts_path) %>
-                      </li>
-                  <% end %>
-                </ul>
-              </li>
-          <% end %>
-          <% if current_vendor.has_spree_role?('admin') %>
-              <li>
-                <%= link_to spree.admin_orders_path do %>
+                </li>
+            <% end %>
+            <% if current_vendor.has_role? :vendor_admin %>
+                <li>
+                  <a href="#">
                     <i class="l-basic-webpage-txt"></i>
-                    <span class="txt">Orders</span>
-                <% end %>
-              </li>
-          <% end %>
-          <li>
-            <% if can?(:admin, Spree::ReturnAuthorization) || can?(:admin, Spree::CustomerReturn) %>
-                <a href="#"><i class="l-basic-webpage-txt"></i> <span class="txt">Returns</span></a>
-                <ul class="sub">
-                  <%= tab :return_authorizations, url: spree.admin_return_authorizations_path, match_path: '/return_authorizations' if can?(:admin, Spree::ReturnAuthorization) %>
-                  <%= tab :customer_returns, url: spree.admin_customer_returns_path, match_path: '/customer_returns' if can?(:admin, Spree::CustomerReturn) %>
-                  <%#= main_menu_tree Spree.t(:returns), icon: "transfer", sub_menu: "returns", url: "#sidebar-returns" %>
-                </ul>
+                    <span class="txt">Edit Vendor Forms</span>
+                  </a>
+                  <ul class="sub">
+                    <% if current_vendor.vendor_form %>
+                        <li><%= link_to( 'Edit Vendor Form', main_app.edit_vendor_form_path(current_vendor.vendor_form) ) %></li>
+                    <% end %>
+                    <% if current_vendor.vendor_onboarding_form %>
+                        <li><%= link_to( 'Edit Onboarding', main_app.edit_vendor_onboarding_form_path(current_vendor.vendor_onboarding_form) ) %></li>
+                    <% end %>
+                  </ul>
+                </li>
             <% end %>
-          </li>
-          <li>
-            <% if can? :admin, Spree::Product %>
-                <a href="#"><i class="l-basic-webpage-txt"></i> <span class="txt">Products</span></a>
-                <ul class="sub">
-                  <%= tab :products %>
-                  <%= tab :option_types, :match_path => '/option_types' %>
-                  <%= tab :properties %>
-                  <%= tab :prototypes %>
-                  <%= tab :taxonomies %>
-                  <%= tab :taxons %>
-                  <%#= main_menu_tree Spree.t(:products), icon: "th-large", sub_menu: "product", url: "#sidebar-product" %>
-                </ul>
+            <% if current_vendor.admin? %>
+                <li>
+                  <a href="#">
+                    <i class="l-basic-webpage-txt"></i>
+                    <span class="txt">Vendor Forms</span>
+                  </a>
+                  <ul class="sub">
+                    <li><%= link_to( 'Vendor', main_app.vendor_forms_path ) %></li>
+                    <li><%= link_to( 'Trade', main_app.trade_forms_path ) %></li>
+                    <li><%= link_to( 'Vendor OnBoarding', main_app.vendor_onboarding_forms_path ) %></li>
+                  </ul>
+                </li>
             <% end %>
-          </li>
-          <li>
-            <% if can? :admin, Spree::Admin::ReportsController %>
-                <a href="#"><i class="l-basic-webpage-txt"></i> <span class="txt">Reports</span></a>
-                <ul class="sub">
-                  <%= tab *Spree::BackendConfiguration::REPORT_TABS, icon: 'file' %>
-                </ul>
+            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span class="txt">User Accounts</span>
+                  </a>
+                  <ul class="sub">
+                    <li>
+                      <%= link_to('Vendor Accounts', main_app.vendors_path) %>
+                    </li>
+                    <li>
+                      <%= link_to('Roles', main_app.roles_path) %>
+                    </li>
+                    <% if current_vendor.admin? %>
+                        <li>
+                          <%= link_to('Accounts', main_app.accounts_path) %>
+                        </li>
+                    <% end %>
+                  </ul>
+                </li>
             <% end %>
-          </li>
-          <li>
-            <% if can? :admin, Spree::Promotion %>
-                <a href="#"><i class="l-basic-webpage-txt"></i> <span class="txt">Promotions</span></a>
-                <ul class="sub">
-                  <%= tab :promotions %>
-                  <%= tab :promotion_categories %>
-                  <%#= main_menu_tree Spree.t(:promotions), icon: "gift", sub_menu: "promotion", url: "#sidebar-promotions" %>
-                </ul>
-            <% end %>
-          </li>
-          <!--<li>-->
-            <!--<%# if Spree.user_class && can?(:admin, Spree.user_class) %>-->
-                <!--<%#= link_to spree.admin_users_path do %>-->
-                    <!--<i class="fa fa-user" aria-hidden="true"></i>-->
-                    <!--<span class="txt">Users</span>-->
-                <!--<%# end %>-->
-            <!--<%# end %>-->
-          <!--</li>-->
-          <li>
             <% if current_vendor.has_spree_role?('admin') %>
-                <a href="#"><i class="fa fa-wrench" aria-hidden="true"></i> <span class="txt">Configuration</span></a>
-                <ul class="sub">
-                  <%= configurations_sidebar_menu_item(Spree.t(:general_settings), spree.edit_admin_general_settings_path) if can? :manage, Spree::Config %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:tax_categories), spree.admin_tax_categories_path) if can? :manage, Spree::TaxCategory %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:tax_rates), spree.admin_tax_rates_path) if can? :manage, Spree::TaxRate %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:zones), spree.admin_zones_path) if can? :manage, Spree::Zone %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:countries), spree.admin_countries_path) if can? :manage, Spree::Country %>
-
-                  <% if country = Spree::Country.find_by_id(Spree::Config[:default_country_id]) || Spree::Country.first %>
-                      <%= configurations_sidebar_menu_item(Spree.t(:states), spree.admin_country_states_path(country)) if can? :manage, Spree::Country %>
+                <li>
+                  <%= link_to spree.admin_orders_path do %>
+                      <i class="l-basic-webpage-txt"></i>
+                      <span class="txt">Orders</span>
                   <% end %>
-
-                  <%= configurations_sidebar_menu_item(Spree.t(:payment_methods), spree.admin_payment_methods_path) if can? :manage, Spree::PaymentMethod %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:shipping_methods), spree.admin_shipping_methods_path) if can? :manage, Spree::ShippingMethod %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:shipping_categories), spree.admin_shipping_categories_path) if can? :manage, Spree::ShippingCategory %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:stock_transfers), spree.admin_stock_transfers_path) if can? :manage, Spree::StockTransfer %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:stock_locations), spree.admin_stock_locations_path) if can? :manage, Spree::StockLocation %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:store_credit_categories), spree.admin_store_credit_categories_path) if can? :manage, Spree::StoreCreditCategory %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:analytics_trackers), spree.admin_trackers_path) if can? :manage, Spree::Tracker %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:refund_reasons), spree.admin_refund_reasons_path) if can? :manage, Spree::RefundReason %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:reimbursement_types), spree.admin_reimbursement_types_path) if can? :manage, Spree::ReimbursementType %>
-                  <%= configurations_sidebar_menu_item(Spree.t(:return_authorization_reasons), spree.admin_return_authorization_reasons_path) if can? :manage, Spree::ReturnAuthorizationReason %>
-                  <%#= configurations_sidebar_menu_item(Spree.t(:roles), spree.admin_roles_path) if can? :manage, Spree::Role %>
-                </ul>
+                </li>
             <% end %>
-          </li>
-          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
-              <li>
-                <a href="#"><i class="l-ecommerce-graph1"></i> <span class="txt">Charts</span></a>
-                <ul class="sub">
-                  <li><%= link_to('Flot charts', main_app.flot_charts_path) %></li>
-                  <li><%= link_to('Morris charts', main_app.morris_charts_path) %></li>
-                  <li><%= link_to('Chartjs', main_app.chart_js_path) %></li>
-                  <li><%= link_to('Other charts', main_app.other_charts_path) %></li>
-                </ul>
-              </li>
-          <% end %>
-          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
-              <li>
-                <a href="#"><i class="l-basic-webpage-txt"></i><span class="txt">Forms</span></a>
-                <ul class="sub">
-                  <li><%= link_to('Basic forms', main_app.basic_forms_path) %></li>
-                  <li><%= link_to('Advanced forms', main_app.advanced_forms_path) %></li>
-                  <li><%= link_to('Form layouts', main_app.form_layouts_path) %></li>
-                  <li><%= link_to('Form wizard', main_app.form_wizard_path) %></li>
-                  <li><%= link_to('Form validation', main_app.form_validation_path) %></li>
-                  <li><%= link_to('Code Editor', main_app.code_editor_path) %></li>
-                  <!--<li><%#= link_to("Inquiries", admin_inquiries_path) %></li>-->
-                </ul>
-              </li>
-          <% end %>
-          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
-              <li>
-                <a href="#"><i class="l-software-layout-header-3columns"></i><span class="txt">Tables</span></a>
-                <ul class="sub">
-                  <li><%= link_to('Basic tables', main_app.basic_tables_path) %></li>
-                  <li><%= link_to('Data tables', main_app.data_tables_path) %></li>
-                  <li><%= link_to('Editable tables', main_app.editable_tables_path) %></li>
-                  <li><%= link_to('Ajax tables', main_app.ajax_tables_path) %></li>
-                  <li><%= link_to('Pricing tables', main_app.pricing_tables_path) %></li>
-                </ul>
-              </li>
-          <% end %>
-          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
-              <li>
-                <a href="#"><i class="l-software-layers2"></i><span class="txt">UI Elements</span></a>
-                <ul class="sub">
-                  <li><%= link_to('Icons', main_app.icons_path) %></li>
-                  <li><%= link_to('Typography', main_app.typography_path) %></li>
-                  <li><%= link_to('Tabs', main_app.tabs_path) %></li>
-                  <li><%= link_to('Accordions', main_app.accordions_path) %></li>
-                  <li><%= link_to('Buttons', main_app.buttons_path) %></li>
-                  <li><%= link_to('Notifications', main_app.notifications_path) %></li>
-                  <li><%= link_to('Modals', main_app.modals_path) %></li>
-                  <li><%= link_to('Sliders', main_app.sliders_path) %></li>
-                  <li><%= link_to('Progressbars', main_app.progressbar_path) %></li>
-                  <li><%= link_to('Lists', main_app.lists_path) %></li>
-                  <li><%= link_to('Grid', main_app.grid_path) %></li>
-                  <li><%= link_to('Other', main_app.other_path) %></li>
-                </ul>
-              </li>
-          <% end %>
-          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
-              <li>
-                <%= link_to main_app.portlets_path do %>
-                    <i class="l-software-layout-header"></i>
-                    <span class="txt">Portlets</span>
-                    <span class="label">22</span>
-                <% end %>
-              </li>
-          <% end %>
-          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
-              <li>
-                <a href="#"><i class="l-basic-mail"></i> <span class="txt">Email</span></a>
-                <ul class="sub">
-                  <% if @config_emails.nil? %>
-                      <li><%= link_to 'Connect to email', main_app.new_config_email_path, class: 'txt' %></li>
-                      <li><%= link_to 'Inbox', main_app.inbox_path, class: 'txt' %></li>
-                      <li><%= link_to 'Read email', main_app.read_emails_path, class: 'txt' %></li>
-                      <li><%= link_to 'Write email', main_app.write_emails_path, class: 'txt' %></li>
-                  <% else %>
-                      <li><%= link_to 'Show Config Email', main_app.config_email_path(@config_emails), class: 'txt' %></li>
-                      <li><%= link_to 'Inbox', main_app.inbox_path, class: 'txt' %></li>
-                      <li><%= link_to 'Read email', main_app.read_emails_path, class: 'txt' %></li>
-                      <li><%= link_to 'Write email', main_app.write_emails_path, class: 'txt' %></li>
+            <li>
+              <% if can?(:admin, Spree::ReturnAuthorization) || can?(:admin, Spree::CustomerReturn) %>
+                  <a href="#"><i class="l-basic-webpage-txt"></i> <span class="txt">Returns</span></a>
+                  <ul class="sub">
+                    <%= tab :return_authorizations, url: spree.admin_return_authorizations_path, match_path: '/return_authorizations' if can?(:admin, Spree::ReturnAuthorization) %>
+                    <%= tab :customer_returns, url: spree.admin_customer_returns_path, match_path: '/customer_returns' if can?(:admin, Spree::CustomerReturn) %>
+                    <%#= main_menu_tree Spree.t(:returns), icon: "transfer", sub_menu: "returns", url: "#sidebar-returns" %>
+                  </ul>
+              <% end %>
+            </li>
+            <li>
+              <% if can? :admin, Spree::Product %>
+                  <a href="#"><i class="l-basic-webpage-txt"></i> <span class="txt">Products</span></a>
+                  <ul class="sub">
+                    <%= tab :products %>
+                    <%= tab :option_types, :match_path => '/option_types' %>
+                    <%= tab :properties %>
+                    <%= tab :prototypes %>
+                    <%= tab :taxonomies %>
+                    <%= tab :taxons %>
+                    <%#= main_menu_tree Spree.t(:products), icon: "th-large", sub_menu: "product", url: "#sidebar-product" %>
+                  </ul>
+              <% end %>
+            </li>
+            <li>
+              <% if can? :admin, Spree::Admin::ReportsController %>
+                  <a href="#"><i class="l-basic-webpage-txt"></i> <span class="txt">Reports</span></a>
+                  <ul class="sub">
+                    <%= tab *Spree::BackendConfiguration::REPORT_TABS, icon: 'file' %>
+                  </ul>
+              <% end %>
+            </li>
+            <li>
+              <% if can? :admin, Spree::Promotion %>
+                  <a href="#"><i class="l-basic-webpage-txt"></i> <span class="txt">Promotions</span></a>
+                  <ul class="sub">
+                    <%= tab :promotions %>
+                    <%= tab :promotion_categories %>
+                    <%#= main_menu_tree Spree.t(:promotions), icon: "gift", sub_menu: "promotion", url: "#sidebar-promotions" %>
+                  </ul>
+              <% end %>
+            </li>
+            <!--<li>-->
+              <!--<%# if Spree.user_class && can?(:admin, Spree.user_class) %>-->
+                  <!--<%#= link_to spree.admin_users_path do %>-->
+                      <!--<i class="fa fa-user" aria-hidden="true"></i>-->
+                      <!--<span class="txt">Users</span>-->
+                  <!--<%# end %>-->
+              <!--<%# end %>-->
+            <!--</li>-->
+            <li>
+              <% if current_vendor.has_spree_role?('admin') %>
+                  <a href="#"><i class="fa fa-wrench" aria-hidden="true"></i> <span class="txt">Configuration</span></a>
+                  <ul class="sub">
+                    <%= configurations_sidebar_menu_item(Spree.t(:general_settings), spree.edit_admin_general_settings_path) if can? :manage, Spree::Config %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:tax_categories), spree.admin_tax_categories_path) if can? :manage, Spree::TaxCategory %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:tax_rates), spree.admin_tax_rates_path) if can? :manage, Spree::TaxRate %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:zones), spree.admin_zones_path) if can? :manage, Spree::Zone %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:countries), spree.admin_countries_path) if can? :manage, Spree::Country %>
+
+                    <% if country = Spree::Country.find_by_id(Spree::Config[:default_country_id]) || Spree::Country.first %>
+                        <%= configurations_sidebar_menu_item(Spree.t(:states), spree.admin_country_states_path(country)) if can? :manage, Spree::Country %>
+                    <% end %>
+
+                    <%= configurations_sidebar_menu_item(Spree.t(:payment_methods), spree.admin_payment_methods_path) if can? :manage, Spree::PaymentMethod %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:shipping_methods), spree.admin_shipping_methods_path) if can? :manage, Spree::ShippingMethod %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:shipping_categories), spree.admin_shipping_categories_path) if can? :manage, Spree::ShippingCategory %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:stock_transfers), spree.admin_stock_transfers_path) if can? :manage, Spree::StockTransfer %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:stock_locations), spree.admin_stock_locations_path) if can? :manage, Spree::StockLocation %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:store_credit_categories), spree.admin_store_credit_categories_path) if can? :manage, Spree::StoreCreditCategory %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:analytics_trackers), spree.admin_trackers_path) if can? :manage, Spree::Tracker %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:refund_reasons), spree.admin_refund_reasons_path) if can? :manage, Spree::RefundReason %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:reimbursement_types), spree.admin_reimbursement_types_path) if can? :manage, Spree::ReimbursementType %>
+                    <%= configurations_sidebar_menu_item(Spree.t(:return_authorization_reasons), spree.admin_return_authorization_reasons_path) if can? :manage, Spree::ReturnAuthorizationReason %>
+                    <%#= configurations_sidebar_menu_item(Spree.t(:roles), spree.admin_roles_path) if can? :manage, Spree::Role %>
+                  </ul>
+              <% end %>
+            </li>
+            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+                <li>
+                  <a href="#"><i class="l-ecommerce-graph1"></i> <span class="txt">Charts</span></a>
+                  <ul class="sub">
+                    <li><%= link_to('Flot charts', main_app.flot_charts_path) %></li>
+                    <li><%= link_to('Morris charts', main_app.morris_charts_path) %></li>
+                    <li><%= link_to('Chartjs', main_app.chart_js_path) %></li>
+                    <li><%= link_to('Other charts', main_app.other_charts_path) %></li>
+                  </ul>
+                </li>
+            <% end %>
+            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+                <li>
+                  <a href="#"><i class="l-basic-webpage-txt"></i><span class="txt">Forms</span></a>
+                  <ul class="sub">
+                    <li><%= link_to('Basic forms', main_app.basic_forms_path) %></li>
+                    <li><%= link_to('Advanced forms', main_app.advanced_forms_path) %></li>
+                    <li><%= link_to('Form layouts', main_app.form_layouts_path) %></li>
+                    <li><%= link_to('Form wizard', main_app.form_wizard_path) %></li>
+                    <li><%= link_to('Form validation', main_app.form_validation_path) %></li>
+                    <li><%= link_to('Code Editor', main_app.code_editor_path) %></li>
+                    <!--<li><%#= link_to("Inquiries", admin_inquiries_path) %></li>-->
+                  </ul>
+                </li>
+            <% end %>
+            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+                <li>
+                  <a href="#"><i class="l-software-layout-header-3columns"></i><span class="txt">Tables</span></a>
+                  <ul class="sub">
+                    <li><%= link_to('Basic tables', main_app.basic_tables_path) %></li>
+                    <li><%= link_to('Data tables', main_app.data_tables_path) %></li>
+                    <li><%= link_to('Editable tables', main_app.editable_tables_path) %></li>
+                    <li><%= link_to('Ajax tables', main_app.ajax_tables_path) %></li>
+                    <li><%= link_to('Pricing tables', main_app.pricing_tables_path) %></li>
+                  </ul>
+                </li>
+            <% end %>
+            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+                <li>
+                  <a href="#"><i class="l-software-layers2"></i><span class="txt">UI Elements</span></a>
+                  <ul class="sub">
+                    <li><%= link_to('Icons', main_app.icons_path) %></li>
+                    <li><%= link_to('Typography', main_app.typography_path) %></li>
+                    <li><%= link_to('Tabs', main_app.tabs_path) %></li>
+                    <li><%= link_to('Accordions', main_app.accordions_path) %></li>
+                    <li><%= link_to('Buttons', main_app.buttons_path) %></li>
+                    <li><%= link_to('Notifications', main_app.notifications_path) %></li>
+                    <li><%= link_to('Modals', main_app.modals_path) %></li>
+                    <li><%= link_to('Sliders', main_app.sliders_path) %></li>
+                    <li><%= link_to('Progressbars', main_app.progressbar_path) %></li>
+                    <li><%= link_to('Lists', main_app.lists_path) %></li>
+                    <li><%= link_to('Grid', main_app.grid_path) %></li>
+                    <li><%= link_to('Other', main_app.other_path) %></li>
+                  </ul>
+                </li>
+            <% end %>
+            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+                <li>
+                  <%= link_to main_app.portlets_path do %>
+                      <i class="l-software-layout-header"></i>
+                      <span class="txt">Portlets</span>
+                      <span class="label">22</span>
                   <% end %>
-                </ul>
-              </li>
-          <% end %>
-          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
-              <li>
-                <a href="#"><i class="l-basic-geolocalize-01"></i><span class="txt">Maps</span></a>
-                <ul class="sub">
-                  <li><%= link_to('Google maps', main_app.google_maps_path) %></li>
-                  <li><%= link_to('Vector maps', main_app.vector_maps_path) %></li>
-                </ul>
-              </li>
-          <% end %>
-          <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
-              <li>
-                <a href="#"><i class="l-basic-webpage"></i><span class="txt">Pages</span></a>
-                <ul class="sub">
-                  <li><%= link_to('Login', main_app.login_path) %></li>
-                  <li><%= link_to('Lock screen', main_app.lock_screen_path) %></li>
-                  <li><%= link_to('Register', main_app.register_path) %></li>
-                  <li><%= link_to('Lost password', main_app.lost_password_path) %></li>
-                  <li><%= link_to('User profile', main_app.user_profile_path) %></li>
-                  <li><%= link_to('Calendar', main_app.calendar_path) %></li>
-                  <li><%= link_to('Timeline', main_app.time_line_path) %></li>
-                  <li><%= link_to('Gallery', main_app.gallery_path) %></li>
-                  <li><%= link_to('Invoice', main_app.invoice_path) %></li>
-                  <li><%= link_to('Blank page', main_app.blank_page_path) %></li>
-                  <li>
-                    <a href="#"><span class="txt">Error pages</span></a>
-                    <ul class="sub">
-                      <li><a href="403.html"><span class="txt">403</span></a></li>
-                      <li><a href="404.htm"><span class="txt">404</span></a></li>
-                      <li><a href="500.htm"><span class="txt">500</span></a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-          <% end %>
-        </ul>
+                </li>
+            <% end %>
+            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+                <li>
+                  <a href="#"><i class="l-basic-mail"></i> <span class="txt">Email</span></a>
+                  <ul class="sub">
+                    <% if @config_emails.nil? %>
+                        <li><%= link_to 'Connect to email', main_app.new_config_email_path, class: 'txt' %></li>
+                        <li><%= link_to 'Inbox', main_app.inbox_path, class: 'txt' %></li>
+                        <li><%= link_to 'Read email', main_app.read_emails_path, class: 'txt' %></li>
+                        <li><%= link_to 'Write email', main_app.write_emails_path, class: 'txt' %></li>
+                    <% else %>
+                        <li><%= link_to 'Show Config Email', main_app.config_email_path(@config_emails), class: 'txt' %></li>
+                        <li><%= link_to 'Inbox', main_app.inbox_path, class: 'txt' %></li>
+                        <li><%= link_to 'Read email', main_app.read_emails_path, class: 'txt' %></li>
+                        <li><%= link_to 'Write email', main_app.write_emails_path, class: 'txt' %></li>
+                    <% end %>
+                  </ul>
+                </li>
+            <% end %>
+            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+                <li>
+                  <a href="#"><i class="l-basic-geolocalize-01"></i><span class="txt">Maps</span></a>
+                  <ul class="sub">
+                    <li><%= link_to('Google maps', main_app.google_maps_path) %></li>
+                    <li><%= link_to('Vector maps', main_app.vector_maps_path) %></li>
+                  </ul>
+                </li>
+            <% end %>
+            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+                <li>
+                  <a href="#"><i class="l-basic-webpage"></i><span class="txt">Pages</span></a>
+                  <ul class="sub">
+                    <li><%= link_to('Login', main_app.login_path) %></li>
+                    <li><%= link_to('Lock screen', main_app.lock_screen_path) %></li>
+                    <li><%= link_to('Register', main_app.register_path) %></li>
+                    <li><%= link_to('Lost password', main_app.lost_password_path) %></li>
+                    <li><%= link_to('User profile', main_app.user_profile_path) %></li>
+                    <li><%= link_to('Calendar', main_app.calendar_path) %></li>
+                    <li><%= link_to('Timeline', main_app.time_line_path) %></li>
+                    <li><%= link_to('Gallery', main_app.gallery_path) %></li>
+                    <li><%= link_to('Invoice', main_app.invoice_path) %></li>
+                    <li><%= link_to('Blank page', main_app.blank_page_path) %></li>
+                    <li>
+                      <a href="#"><span class="txt">Error pages</span></a>
+                      <ul class="sub">
+                        <li><a href="403.html"><span class="txt">403</span></a></li>
+                        <li><a href="404.htm"><span class="txt">404</span></a></li>
+                        <li><a href="500.htm"><span class="txt">500</span></a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+            <% end %>
+            <div class="secondary hidden_div"></div>
+          </ul>
+
+        </div>
       </div>
       <!-- / side-nav -->
       <!--  .sidebar-panel -->
@@ -336,4 +340,37 @@
     <!-- End .sidebar-scrollarea -->
   </div>
   <!-- End .sidebar-inner -->
+  
 </aside>
+
+<script>
+$(document).ready(function(){
+  $('.nav.b-sidebar li').on('click',function(){
+    var image = $(this).find('i');
+    var a = $(this).find('a')[0];
+    var ul = $(this).find('ul')
+    if ( ul.length > 0){
+      $('.secondary').empty();
+      var title = $(this).children().find('a').first().text();
+      var secondary_div = "<div class='title'>"+ title +"</div>"
+      $('.secondary').append( secondary_div );
+      setTimeout(function (){
+        $('.secondary').show(200);
+      },200);
+      var ul_data = $(this).find('ul').html();
+      // setTimeout(function (){
+        $('.secondary').append(ul_data);
+      // },400);
+    };
+  });
+
+  $('ul.nav li a').on('mouseenter', function(){
+    var style = $('.secondary').attr('style')
+    if (style == "display: block;"){
+      setTimeout(function (){
+        $('.secondary').hide(200);
+      },500);
+    }
+  });
+});
+</script>

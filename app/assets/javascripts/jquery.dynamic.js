@@ -546,47 +546,47 @@
                 }
             }
 
-            navLink.on("click", function(e){
-                var _this = $(this);
-                if(_this.hasClass('notExpand')) {
-                    e.preventDefault();   
-                    //check if menu is collapsed
-                    if (!$('.page-sidebar').hasClass('collapse-sidebar')) {
-                       //check if is 3lv menu
-                        if ($(this).closest('li').closest('ul').hasClass('show')) {
-                            //expand ul and change class to expand
-                            _this.next('ul').slideDown(plugin.settings.sideNav.subOpenSpeed, plugin.settings.sideNav.animationEasing);
-                            _this.next('ul').addClass('show');
-                            _this.addClass('expand').removeClass('notExpand');
-                            navLi.removeClass('highlight-menu');
-                            _this.closest('li.hasSub').addClass('highlight-menu');
-                            _this.find('.sideNav-arrow').removeClass('rotate0').addClass('rotate90'); 
-                        } else {
-                            //close all expanded subs
-                            navexpand = nav.find('li.hasSub .expand');
-                            navexpand.next('ul').removeClass('show');
-                            navexpand.next('ul').slideUp(plugin.settings.sideNav.subCloseSpeed, plugin.settings.sideNav.animationEasing); 
-                            navexpand.addClass('notExpand').removeClass('expand');            
-                            navexpand.find('.sideNav-arrow').removeClass('rotateM180').addClass('rotate0');            
-                            //expand ul and change class to expand
-                            _this.next('ul').slideDown(plugin.settings.sideNav.subOpenSpeed, plugin.settings.sideNav.animationEasing);
-                            _this.next('ul').addClass('show');
-                            _this.addClass('expand').removeClass('notExpand');
-                            navLi.removeClass('highlight-menu');
-                            _this.closest('li.hasSub').addClass('highlight-menu');
-                            _this.find('.sideNav-arrow').removeClass('rotate0').addClass('rotate90'); 
-                        }
-                    }                                    
-                } else if (_this.hasClass('expand')) {
-                    e.preventDefault();
-                    //collapse ul and change class to notExpand
-                    _this.next('ul').removeClass('show');
-                    _this.next('ul').slideUp(plugin.settings.sideNav.subCloseSpeed, plugin.settings.sideNav.animationEasing);
-                    _this.addClass('notExpand').removeClass('expand');
-                    _this.find('.sideNav-arrow').removeClass('rotate90').addClass('rotate0');
-                    navLi.removeClass('highlight-menu');
-                }
-            });
+            // navLink.on("click", function(e){
+            //     var _this = $(this);
+            //     if(_this.hasClass('notExpand')) {
+            //         e.preventDefault();   
+            //         //check if menu is collapsed
+            //         if (!$('.page-sidebar').hasClass('collapse-sidebar')) {
+            //            //check if is 3lv menu
+            //             if ($(this).closest('li').closest('ul').hasClass('show')) {
+            //                 //expand ul and change class to expand
+            //                 _this.next('ul').slideDown(plugin.settings.sideNav.subOpenSpeed, plugin.settings.sideNav.animationEasing);
+            //                 _this.next('ul').addClass('show');
+            //                 _this.addClass('expand').removeClass('notExpand');
+            //                 navLi.removeClass('highlight-menu');
+            //                 _this.closest('li.hasSub').addClass('highlight-menu');
+            //                 _this.find('.sideNav-arrow').removeClass('rotate0').addClass('rotate90'); 
+            //             } else {
+            //                 //close all expanded subs
+            //                 navexpand = nav.find('li.hasSub .expand');
+            //                 navexpand.next('ul').removeClass('show');
+            //                 navexpand.next('ul').slideUp(plugin.settings.sideNav.subCloseSpeed, plugin.settings.sideNav.animationEasing); 
+            //                 navexpand.addClass('notExpand').removeClass('expand');            
+            //                 navexpand.find('.sideNav-arrow').removeClass('rotateM180').addClass('rotate0');            
+            //                 //expand ul and change class to expand
+            //                 _this.next('ul').slideDown(plugin.settings.sideNav.subOpenSpeed, plugin.settings.sideNav.animationEasing);
+            //                 _this.next('ul').addClass('show');
+            //                 _this.addClass('expand').removeClass('notExpand');
+            //                 navLi.removeClass('highlight-menu');
+            //                 _this.closest('li.hasSub').addClass('highlight-menu');
+            //                 _this.find('.sideNav-arrow').removeClass('rotate0').addClass('rotate90'); 
+            //             }
+            //         }                                    
+            //     } else if (_this.hasClass('expand')) {
+            //         e.preventDefault();
+            //         //collapse ul and change class to notExpand
+            //         _this.next('ul').removeClass('show');
+            //         _this.next('ul').slideUp(plugin.settings.sideNav.subCloseSpeed, plugin.settings.sideNav.animationEasing);
+            //         _this.addClass('notExpand').removeClass('expand');
+            //         _this.find('.sideNav-arrow').removeClass('rotate90').addClass('rotate0');
+            //         navLi.removeClass('highlight-menu');
+            //     }
+            // });
         }
 
         plugin.sideBarNavToggle = function () {
