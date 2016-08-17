@@ -18,10 +18,13 @@
       <li>
         <a href="#" class="reset-layout tipB" title="Reset panel position for this page"><i class="fa fa-history"></i></a>
       </li>
+      <li>
+        <%= link_to "Menu", "#", class: "menu" %>
+      </li>
     </ul>
     <!-- / top left nav -->
     <!-- top right nav -->
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right menu_tab">
 
       <% if current_vendor.admin? %>
         <li>
@@ -126,3 +129,19 @@
   </div>
   <!-- / collapse -->
 </div>
+<script>
+  $('.nav.navbar-nav.menu_tab').css('display', 'none');
+  $('.menu').click(function(){
+    $('.nav.navbar-nav.menu_tab').toggle();
+  })
+  function windowSize(){
+    if ($(window).width() <= '768'){
+      $('.menu').css('top','-20px')
+    } else {
+      $('.menu').css('top','0')
+    }
+}
+$(window).load(windowSize);
+$(window).resize(windowSize);
+$(window).on('load resize',windowSize);
+</script>
