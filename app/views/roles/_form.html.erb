@@ -1,28 +1,84 @@
 <%= form_for @role do |f| %>
-    <div class="row">
+    
+    <% controllers_list = [] %>
+    <% controllers_current_name = "" %>
 
+    <div id="page-header" class="clearfix">
+        <div class="page-header">
+          <%= f.submit 'Save', :class => "btn btn-info"%>
+          <span class="txt" style="padding-left: 5px">&nbsp;</span>
+          <%= f.submit 'Cancel', :class => "btn btn-info"%>        
+        </div>        
+    </div>
+
+    <div class="row">
       <div class="form-group">
-        <div class="col-xs-4">
-          Role Name
+        <div>
+          Role Name*:
         </div>
-        <div class="col-xs-8">
+        </br>        
+        <div>
           <%= f.text_field :name, class: 'form-control', placeholder: 'Role Name' %>
         </div>
       </div>
+    </div>  
 
+
+    <div class="row">
+      
       <div class="form-group">
-        <% Permission.all.each do |permission| %>
-            <div class="col-sm-offset-4 col-sm-10">
-              <div class="checkbox-custom">
-                <%= check_box_tag "role[permission_ids][]", permission.id, nil, :id => "cmt_#{permission.id}" %>
-                <label for="cmt_<%= permission.id %>"><%= permission.name.upcase %></label>
-              </div>
-            </div>
-        <% end %>
+      
+         <div>
+          Permissions allowed:
+          &nbsp;
+          <a href=# class="all_cb" onclick="set_permission_group_allowed(this, 1)">Select all</a>
+          &nbsp;/&nbsp;
+          <a href=# class="all_cb" onclick="set_permission_group_allowed(this, 0)">Deselect all</a>
+         </div>
+         </br>
+
+         <div class="panel panel-default toggle panelMove panelClose panelRefresh">          
+              <table class="table table-bordered table-striped table-hover dt-responsive non-responsive" cellspacing="0" width="100%">
+
+                <tbody id="permission-list">
+                
+                <% Permission.all.each do |permission| %>
+                  <%  unless permission.created_at.nil? %>
+                    <%  if permission.updated_at.nil? %>
+                        <% style_def = "display:none;" %> 
+                        <% status_def = true %> 
+                        <% class_def = "" %>
+                    <%  else %> 
+                        <%  if !controllers_list.include?permission.name %>
+                            <% controllers_list.push(permission.name) %>
+                            <% controllers_current_name = permission.name %>
+                            <tr>
+                               <td colspan="2" align="left">
+                                 <span style="font-weight: bold;"><%= permission.name %></span>
+                                 &nbsp;
+                                 <a href=# class="<%= controllers_current_name %>_cb" onclick="set_permission_group_allowed(this, 1)">Select all</a>
+                                 &nbsp;/&nbsp;
+                                 <a href=# class="<%= controllers_current_name %>_cb" onclick="set_permission_group_allowed(this, 0)">Deselect all</a>
+                               </td>
+                            </tr>                            
+                        <%  end %>
+                        <% style_def = "" %> 
+                        <% status_def = false %>
+                        <% class_def = "#{controllers_current_name}_cb_obj" %>
+                    <%  end %>
+                    <tr style="<%= style_def %>">
+                      <td align="center"><%= check_box_tag "#{permission.id}_cb", permission.id, status_def, :id => "cmt_#{permission.id}", :class => class_def %></td>
+                      <td align="left" width="100%"><%= permission.description %></td>
+                    </tr>                  
+                  <%  end %>
+                <%  end %>
+                
+                </tbody>
+              </table>
+         </div>
+      
       </div>
 
     </div>
-    <div class="">
-      <%= f.submit "Save", class: "btn btn-primary" %>
-    </div>
+
 <% end %>

@@ -18,22 +18,27 @@ class RolesController < ApplicationController
   end
 
   def create
-    authorize Role
-    @role = Role.new(name: params[:role]['name'], vendor_id: current_vendor.id)
-    @permissions = params[:role][:permission_ids]
-    unless @permissions.blank?
-      @permissions.each do |permission|
-        @permission = Permission.find(permission)
-        @role.permissions << @permission
+    if params['commit'].to_s == "Save"
+      authorize Role
+      @role = Role.new(name: params[:role]['name'], vendor_id: current_vendor.id)
+      @permissions = params[:role][:permission_ids]
+      unless @permissions.blank?
+        @permissions.each do |permission|
+          @permission = Permission.find(permission)
+          @role.permissions << @permission
+        end
       end
-    end
-    if @role.save
-      flash[:info] = 'Role has been add!.'
-      redirect_to role_path(@role)
+      if @role.save
+        flash[:info] = 'Role has been successfully created!'
+        redirect_to role_path(@role)
+      else
+        flash[:warning] = "Error! Please fill Role NMame field!"
+        render 'new'
+      end
     else
-      flash[:warning] = "Error! Please fill out all forms!"
-      render 'new'
-    end
+      redirect_to roles_path
+    end 
+
   end
 
   def destroy
@@ -42,13 +47,13 @@ class RolesController < ApplicationController
       @role.add_default_role
       @role.destroy
       set_roles
-      flash[:success] = 'Role deleted successfully.'
+      flash[:success] = 'Role has been successfully deleted!'
       respond_to do |format|
         format.html
         format.js
       end
     else
-      flash.now[:warning] = "You have not access!"
+      flash.now[:warning] = "You don't have access to perform current action!"
       redirect_to roles_path
     end
   end
@@ -59,4 +64,9 @@ class RolesController < ApplicationController
     def set_role
       @role = Role.find(params[:id])
     end
+
+    def set_roles
+      @roles = Role.all
+    end
+    
 end

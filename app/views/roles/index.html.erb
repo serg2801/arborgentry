@@ -7,7 +7,6 @@
       <div id="page-header" class="clearfix">
         <div class="page-header">
           <h2>Roles</h2>
-          <span class="txt">Represent big amount of data</span>
         </div>
         <div class="header-stats">
           <div class="spark clearfix">
@@ -31,7 +30,7 @@
           <!-- col-lg-12 start here -->
           <div class="panel panel-default toggle panelMove panelClose panelRefresh">
             <!-- Start .panel -->
-            <div class="panel-heading">
+            <div class="panel-heading" style="padding-bottom: 5px">
               <h4 class="panel-title">Role List</h4>
               <%= link_to 'New Role', new_role_path, class: "btn btn-primary btn-raised btn-sm" %>
             </div>
@@ -41,7 +40,8 @@
                 <tr>
                   <th>Name</th>
                   <th>Created</th>
-                  <th>Show / Delete</th>
+                  <th>Created by</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody id="role-list">

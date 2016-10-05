@@ -1,13 +1,6 @@
-<!-- .page-content -->
-<!--<div class="page-content sidebar-page right-sidebar-page clearfix">-->
-  <!-- .page-content-wrapper -->
-  <!--<div class="page-content-wrapper">-->
-    <!--<div class="page-content-inner">-->
-      <!-- Start .page-content-inner -->
       <div id="page-header" class="clearfix">
         <div class="page-header">
           <h2>New Role</h2>
-          <!--<span class="txt">List of your emails</span>-->
         </div>
         <div class="header-stats">
           <div class="spark clearfix">
@@ -23,16 +16,36 @@
             <div id="spark-sales" class="sparkline"></div>
           </div>
         </div>
-      </div>
+      </div> 
+
       <div class="forms_vendor">
-        <%= render 'form' %>
-        <%= link_to 'Back', roles_path %>
-        <!--End #email-content -->
+        <% if Permission.count == 0 %>
+          There are no permissions available
+        <% else %>
+          <%= render 'form' %>
+        <% end %>  
       </div>
-      <!-- End #email-app-wrapper -->
-    <!--</div>-->
-    <!-- End .page-content-inner -->
-  <!--</div>-->
-  <!-- / page-content-wrapper -->
-<!--</div>-->
-<!-- / page-content -->
+
+<script>
+    
+    function set_permission_group_allowed(obj, status) {
+      var cn = obj.getAttribute('class');
+      if (cn == "all_cb") {
+        var objs = $('input[type=checkbox]');
+        for (i = 0; i < objs.length; i++) {
+           c = objs[i].getAttribute('class');
+           if (typeof(c) !== "undefined" && c && (c.includes("_cb_obj"))) {
+             objs[i].checked = (status > 0 )
+           }
+        }
+      } else {
+        var objs = document.getElementsByClassName(cn + "_obj");      
+        for (i = 0; i < objs.length; i++) {
+            objs[i].checked = (status > 0 );
+        }
+      }         
+    }
+
+
+</script>
+
