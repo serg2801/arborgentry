@@ -14,6 +14,9 @@ def save
 	if params['commit'].to_s == "Save"
 		save_autoPermissions
 		transfer_autoPermissions
+		flash[:success] = 'Your changes have been successfully saved!'
+	else
+	    flash[:info] = 'All changes have been cancelled!'	
 	end
 	redirect_to permissions_path
 end
@@ -23,7 +26,7 @@ private
 	def is_admin?
       if current_vendor
         unless current_vendor.admin?
-          flash[:danger]="You have no rights"
+          flash[:danger]="Access denied"
           redirect_to(authenticated_root_path)
         end
       else
@@ -52,30 +55,43 @@ private
 				  unless is_denied	
 						rnew = Hash.new
 						rnew[:controller] = s
-						rnew[:action] = r[:action].to_s.downcase
-						rnew[:alias] = rnew[:controller] + " # " + rnew[:action]
+						rnew[:action] = r[:action].to_s.downcase						
+						rnew[:alias] = rnew[:controller].gsub('/', '_') + "_" + rnew[:action]
+						rnew[:description] = rnew[:action].capitalize + " " + rnew[:controller]	
+						rnew[:sortflag] = rnew[:controller] + ' # ' + rnew[:action]
 						routes << rnew
+						unless route_controllers.include?(s)
+				  			route_controllers << s
+				 		 end
 				  end	
-				  unless route_controllers.include?(s)
-				  	route_controllers << s
-				  end	
+				  	
 			 end	
 		end
 		route_controllers.each do |c|
 			rnew = Hash.new
 			rnew[:controller] = c
 			rnew[:action] = @all_actions_alias
-			rnew[:alias] = rnew[:controller] + " # " + rnew[:action]
+			rnew[:alias] = "-"
+			rnew[:description] = "-"
+			rnew[:sortflag] = c + ' # ' + @all_actions_alias
+			routes << rnew
+			rnew = Hash.new
+			rnew[:controller] = c
+			rnew[:action] = 'all'
+			rnew[:alias] = c.gsub('/', '_') + "_" + rnew[:action]
+			rnew[:description] = "All_actions " + c
+			rnew[:sortflag] = c + ' # ' + @all_actions_alias + '_2'
 			routes << rnew
 		end	
-		routes.uniq! { |r| r[:alias] }
-		routes.sort_by! { |r| r[:alias] }
+		routes.uniq! { |r| r[:sortflag] }
+		routes.sort_by! { |r| r[:sortflag] }
 		@autopermissions = []
 		routes.each do |r|
 		    p = AutoPermission.new
 			p.controller_name = r[:controller]
-			p.action = r[:action]
 			p.alias = r[:alias]
+			p.description = r[:description]
+			p.action = r[:action]
 			p.status = -1
 			@autopermissions << p
 		end	
@@ -86,9 +102,10 @@ private
     			if (p.controller_name == permission.controller_name) && (p.action == permission.action)
     				permission.id = p.id
     				permission.alias = p.alias
+    				permission.description = p.description
     				found = true
     				status = p.status
-    				unless status < disabled_flag
+    				unless status < disabled_flag - 1
     					status = status - disabled_flag
  						p.update_attributes(status: status)
  					end	
@@ -112,50 +129,55 @@ private
 
 	def transfer_autoPermissions
 
-		def update_perm_attrs(perm, new_alias, new_status)
+		def update_perm_attrs(perm, new_alias, new_description, new_status)
 			case new_status
 			  when 0
-			  	c = nil
-			  	u = Time.now
-			  when 1
-			  	c = Time.now
 			  	u = nil
 			  else
-			  	c = Time.now
 			  	u = Time.now
 			end 
-			if perm.created_at.nil? || c.nil?  
-			   perm.update_attributes(description: new_alias, created_at: c, updated_at: u)
-			else	
-			   perm.update_attributes(description: new_alias, updated_at: u)
-			end   
+			#if perm.created_at.nil? || c.nil?  
+			#   perm.update_attributes(description: new_description, key: new_alias, created_at: c, updated_at: u)
+			#else	
+			perm.update_attributes(description: new_description, key: new_alias, updated_at: u)
+			#end   
 		end
 			
+		permissions_passed = []
 		AutoPermission.all.each do |p|
 			unless (p.status < 0) || (p.action == @all_actions_alias)
-				existing_permissions = Permission.where(name: p.controller_name, key: p.action)
+				n = p.controller_name + " # " + p.action
+				existing_permissions = Permission.where(name: n)
 				unless existing_permissions.nil? || existing_permissions.blank?
 					first_found = false
 					existing_permissions.map do |ep|
 						if first_found 
 							ep.destroy
 						else						
+							permissions_passed.push(ep.id)
 							first_found = true
-							b1 = (ep.description == p.alias)
-							b2 = ((ep.updated_at.nil? && (p.status == 1)) || (!(ep.updated_at.nil?) && (p.status > 1)))
-							b3 = ((ep.created_at.nil? && (p.status == 0)) || (!(ep.created_at.nil?) && (p.status > 0)))
+							b1 = (ep.description == p.description)
+							b3 = (ep.key == p.alias)
+							b2 = ((ep.updated_at.nil? && (p.status == 0)) || (!(ep.updated_at.nil?) && (p.status > 0)))
+							#b4 = ((ep.created_at.nil? && (p.status == 0)) || (!(ep.created_at.nil?) && (p.status > 0)))
 							unless b1 && b2 && b3
-								update_perm_attrs(ep, p.alias, p.status)
+								update_perm_attrs(ep, p.alias, p.description, p.status)
 							end
 						end	
 					end				
 				else
 				  	if p.status > 0	
-					  new_permission = Permission.create(name: p.controller_name, description: "",  key: p.action)	 
-					  update_perm_attrs(new_permission, p.alias, p.status)
+					  new_permission = Permission.create(name: n)	 
+					  update_perm_attrs(new_permission, p.alias, p.description, p.status)
+					  permissions_passed.push(new_permission.id)
 				  	end
-				end	
+				end
 			end
+		end
+		Permission.all.each do |p|
+		  unless permissions_passed.include?(p.id) || p.updated_at.nil?
+    		 p.update_attributes(updated_at: nil)    		
+		  end	
 		end	
 	end	
 
@@ -163,15 +185,15 @@ private
 	   AutoPermission.all.each do |p|
 	   	 param_p_alias = "#{p.id}_pa".to_sym
          p_alias = params[param_p_alias]
-         #p "Alias for #{p.id}:  #{p_alias}"
+         param_p_descr = "#{p.id}_pd".to_sym
+         p_descr = params[param_p_descr]
          param_p_status = "#{p.id}_ps".to_sym
          p_status = params[param_p_status]
-         #p "Value for #{p.id}:  #{p_status}"
          if p_status.nil? || (p_status.to_s == "")
          	p_status = -1
          end	
-         unless p_alias.nil? || p_alias.blank? 
-         	p.update_attributes(alias: p_alias, status: p_status.to_i)
+         unless p_alias.nil? || p_alias.blank? || p_descr.blank?
+         	p.update_attributes(alias: p_alias, description: p_descr, status: p_status.to_i)
          end
 	   end	
 	end	

@@ -1,4 +1,4 @@
-<tr>
+<tr id= "<%= role.id %>_tr">
   <td><%= role.name %></td>
   <td><%= role.created_at.strftime('%H:%M | %d %b %Y') %></td>
 
@@ -14,7 +14,9 @@
     <%= link_to "Show", role_path(role) %>
     <% if current_vendor.admin? || (current_vendor == role.vendor_creator) %>
 			 &nbsp; / &nbsp;
+       <%= link_to "Edit", edit_role_path(role) %>
+       &nbsp; / &nbsp;
 			<%= link_to "Delete", role_path(role), method: :delete, data: {confirm: "Do you want to delete selected role?"}, remote: true %>
-	<% end %>
+	   <% end %>
   </td>
 </tr>

@@ -5,24 +5,11 @@
 
     <div id="page-header" class="clearfix">
         <div class="page-header">
-          <%= f.submit 'Save', :class => "btn btn-info"%>
+          <a type="button" class="btn btn-info" href="<%= edit_role_path(@role.id) %>">Edit</a>
           <span class="txt" style="padding-left: 5px">&nbsp;</span>
-          <%= f.submit 'Cancel', :class => "btn btn-info"%>        
+          <%= f.submit 'Back', :class => "btn btn-info"%>        
         </div>        
     </div>
-
-    <div class="row">
-      <div class="form-group">
-        <div>
-          Role Name*:
-        </div>
-        </br>        
-        <div>
-          <%= f.text_field :name, class: 'form-control', placeholder: 'Role Name' %>
-        </div>
-      </div>
-    </div>  
-
 
     <div class="row">
       
@@ -33,10 +20,6 @@
                 There are no permissions available
             <% else %>
                 Permissions allowed:
-                &nbsp;
-                <a href=# class="all_cb" onclick="set_permission_group_allowed(this, 1)">Select all</a>
-                &nbsp;/&nbsp;
-                <a href=# class="all_cb" onclick="set_permission_group_allowed(this, 0)">Deselect all</a>
             <% end %>
          
          </div>
@@ -51,8 +34,6 @@
                   <%  unless permission.created_at.nil? %>
                     <%  if permission.updated_at.nil? %>
                         <% style_def = "display:none;" %> 
-                        <% status_def = true %> 
-                        <% class_def = "" %>
                     <%  else %> 
                         <%  pos = permission.name.rindex(" # ") %>
                         <%  unless pos.nil? || (pos == 0) %>
@@ -66,19 +47,13 @@
                             <tr>
                                <td colspan="2" align="left">
                                  <span style="font-weight: bold;"><%= n %></span>
-                                 &nbsp;
-                                 <a href=# class="<%= controllers_current_name %>_cb" onclick="set_permission_group_allowed(this, 1)">Select all</a>
-                                 &nbsp;/&nbsp;
-                                 <a href=# class="<%= controllers_current_name %>_cb" onclick="set_permission_group_allowed(this, 0)">Deselect all</a>
                                </td>
                             </tr>                            
                         <%  end %>
                         <% style_def = "" %> 
-                        <% status_def = @role_permissions.include?(permission.id) %>
-                        <% class_def = "#{controllers_current_name}_cb_obj" %>
                     <%  end %>
                     <tr style="<%= style_def %>">
-                      <td align="center"><%= check_box_tag "#{permission.id}_cb", permission.id, status_def, :id => "cmt_#{permission.id}", :class => class_def %></td>
+                      <td style="width:10px">&nbsp;</td>
                       <td align="left" width="100%"><%= permission.description %></td>
                     </tr>                  
                   <%  end %>
