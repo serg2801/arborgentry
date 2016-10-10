@@ -25,7 +25,7 @@ private
 
 	def is_admin?
       if current_vendor
-        unless current_vendor.admin?
+        unless current_vendor.has_role?("admin")
           flash[:danger]="Access denied"
           redirect_to(authenticated_root_path)
         end

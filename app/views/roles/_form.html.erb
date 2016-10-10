@@ -48,39 +48,41 @@
                 <tbody id="permission-list">
                 
                 <% Permission.all.each do |permission| %>
-                  <%  unless permission.created_at.nil? %>
-                    <%  if permission.updated_at.nil? %>
-                        <% style_def = "display:none;" %> 
-                        <% status_def = true %> 
-                        <% class_def = "" %>
-                    <%  else %> 
-                        <%  pos = permission.name.rindex(" # ") %>
-                        <%  unless pos.nil? || (pos == 0) %>
-                          <%  n =  permission.name[0, pos] %>
-                        <%  else %>
-                          <%  n =  permission.name %>
-                        <%  end %>
-                        <%  if !controllers_list.include?n %>
-                            <% controllers_list.push(n) %>
-                            <% controllers_current_name = n %>
-                            <tr>
-                               <td colspan="2" align="left">
-                                 <span style="font-weight: bold;"><%= n %></span>
-                                 &nbsp;
-                                 <a href=# class="<%= controllers_current_name %>_cb" onclick="set_permission_group_allowed(this, 1)">Select all</a>
-                                 &nbsp;/&nbsp;
-                                 <a href=# class="<%= controllers_current_name %>_cb" onclick="set_permission_group_allowed(this, 0)">Deselect all</a>
-                               </td>
-                            </tr>                            
-                        <%  end %>
-                        <% style_def = "" %> 
-                        <% status_def = @role_permissions.include?(permission.id) %>
-                        <% class_def = "#{controllers_current_name}_cb_obj" %>
+                  <%  if @role_available_permissions.include?permission.id %>
+                    <%  unless permission.created_at.nil? %>
+                      <%  if permission.updated_at.nil? %>
+                          <% style_def = "display:none;" %> 
+                          <% status_def = true %> 
+                          <% class_def = "" %>
+                      <%  else %> 
+                          <%  pos = permission.name.rindex(" # ") %>
+                          <%  unless pos.nil? || (pos == 0) %>
+                            <%  n =  permission.name[0, pos] %>
+                          <%  else %>
+                            <%  n =  permission.name %>
+                          <%  end %>
+                          <%  if !controllers_list.include?n %>
+                              <% controllers_list.push(n) %>
+                              <% controllers_current_name = n %>
+                              <tr>
+                                 <td colspan="2" align="left">
+                                   <span style="font-weight: bold;"><%= n %></span>
+                                   &nbsp;
+                                   <a href=# class="<%= controllers_current_name %>_cb" onclick="set_permission_group_allowed(this, 1)">Select all</a>
+                                   &nbsp;/&nbsp;
+                                   <a href=# class="<%= controllers_current_name %>_cb" onclick="set_permission_group_allowed(this, 0)">Deselect all</a>
+                                 </td>
+                              </tr>                            
+                          <%  end %>
+                          <% style_def = "" %> 
+                          <% status_def = @role_permissions.include?(permission.id) %>
+                          <% class_def = "#{controllers_current_name}_cb_obj" %>
+                      <%  end %>
+                      <tr style="<%= style_def %>">
+                        <td align="center"><%= check_box_tag "#{permission.id}_cb", permission.id, status_def, :id => "cmt_#{permission.id}", :class => class_def %></td>
+                        <td align="left" width="100%"><%= permission.description %></td>
+                      </tr>                  
                     <%  end %>
-                    <tr style="<%= style_def %>">
-                      <td align="center"><%= check_box_tag "#{permission.id}_cb", permission.id, status_def, :id => "cmt_#{permission.id}", :class => class_def %></td>
-                      <td align="left" width="100%"><%= permission.description %></td>
-                    </tr>                  
                   <%  end %>
                 <%  end %>
                 

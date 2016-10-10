@@ -5,8 +5,10 @@
 
     <div id="page-header" class="clearfix">
         <div class="page-header">
-          <a type="button" class="btn btn-info" href="<%= edit_role_path(@role.id) %>">Edit</a>
-          <span class="txt" style="padding-left: 5px">&nbsp;</span>
+          <% unless RolesController.new.role_show_only?(@role) %>
+            <a type="button" class="btn btn-info" href="<%= edit_role_path(@role.id) %>">Edit</a>
+            <span class="txt" style="padding-left: 5px">&nbsp;</span>
+          <% end %>
           <%= f.submit 'Back', :class => "btn btn-info"%>        
         </div>        
     </div>
@@ -31,6 +33,7 @@
                 <tbody id="permission-list">
                 
                 <% Permission.all.each do |permission| %>
+                  <% if @role_permissions.include?(permission.id) %>
                   <%  unless permission.created_at.nil? %>
                     <%  if permission.updated_at.nil? %>
                         <% style_def = "display:none;" %> 
@@ -56,6 +59,7 @@
                       <td style="width:10px">&nbsp;</td>
                       <td align="left" width="100%"><%= permission.description %></td>
                     </tr>                  
+                  <%  end %>
                   <%  end %>
                 <%  end %>
                 

@@ -8,6 +8,7 @@
         <div class="page-header">
           <h2>Roles</h2>
         </div>
+        <!--
         <div class="header-stats">
           <div class="spark clearfix">
             <div class="spark-info"><span class="number">2345</span>Visitors</div>
@@ -22,6 +23,7 @@
             <div id="spark-sales" class="sparkline"></div>
           </div>
         </div>
+        -->
       </div>
       <!-- Start .row -->
       <div class="row">
@@ -32,6 +34,10 @@
             <!-- Start .panel -->
             <div class="panel-heading" style="padding: 10px">
               <%= link_to 'New Role', new_role_path, class: "btn btn-primary btn-raised btn-sm" %>
+              <% if @exist_predefined!= "" %>
+              &nbsp; &nbsp;
+              <%= link_to "Create predefined", role_path(0), data: {confirm: "Do you want to create predefined roles?"}%>
+              <% end %>
             </div>
             <div class="panel-body">
               <table id="responsive-datatables" class="table table-bordered table-striped table-hover dt-responsive non-responsive" cellspacing="0" width="100%">

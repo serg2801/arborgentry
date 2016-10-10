@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930065958) do
+ActiveRecord::Schema.define(version: 20161010133527) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(version: 20160930065958) do
 
   create_table "auto_permissions", force: :cascade do |t|
     t.string   "controller_name"
-    t.string   "alias"
     t.string   "action"
+    t.string   "alias"
+    t.string   "description"
     t.integer  "status"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -297,6 +298,14 @@ ActiveRecord::Schema.define(version: 20160930065958) do
   end
 
   add_index "read_marks", ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index"
+
+  create_table "role_groups", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "role_id"
+    t.integer  "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "role_permissions", force: :cascade do |t|
     t.integer  "role_id"

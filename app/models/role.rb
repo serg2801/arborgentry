@@ -13,6 +13,7 @@ class Role < ActiveRecord::Base
 
   has_many :permissions, :through => :role_permissions
   has_many :role_permissions, dependent: :destroy
+  has_many :role_groups, dependent: :destroy
 
   validates :name, presence: true
   # validates :permissions, presence: true

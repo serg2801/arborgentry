@@ -86,7 +86,7 @@ end
 end
 
 # Roles for vendors
-[1,2].map do |id|
+[1, 2].map do |id|
 	Vendor.find(id).spree_roles << Spree::Role.find_or_create_by(name: "admin")
 	Vendor.find(id).add_role :admin
 end
@@ -110,7 +110,7 @@ end
 end
 
 # Role
-['admin', 'vendor_admin', 'vendor_default'].map do |role|
+['vendor_admin', 'vendor_default'].map do |role|
 	Role.create(name: role)
 end
 

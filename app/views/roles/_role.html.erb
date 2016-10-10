@@ -12,7 +12,7 @@
 
   <td>
     <%= link_to "Show", role_path(role) %>
-    <% if current_vendor.admin? || (current_vendor == role.vendor_creator) %>
+    <% unless RolesController.new.role_show_only?(role) %>
 			 &nbsp; / &nbsp;
        <%= link_to "Edit", edit_role_path(role) %>
        &nbsp; / &nbsp;
