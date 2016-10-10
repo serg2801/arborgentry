@@ -1,0 +1,95 @@
+
+      <div id="page-header" class="clearfix">
+        <div class="page-header">
+          <h2>Permissions</h2>
+        </div>
+        <!--
+        <div class="header-stats">
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">2345</span>Visitors</div>
+            <div id="spark-visitors" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">17345</span>Views</div>
+            <div id="spark-templateviews" class="sparkline"></div>
+          </div>
+          <div class="spark clearfix">
+            <div class="spark-info"><span class="number">3700$</span>Sales</div>
+            <div id="spark-sales" class="sparkline"></div>
+          </div>
+        </div>
+        -->
+      </div>
+
+
+
+ <%= form_for @autopermissions, url: {action: 'save'},  html: { method: :post}  do |f| %> 
+
+      <div id="page-header" class="clearfix">
+        <div class="page-header">
+          <%= f.submit 'Save', :class => "btn btn-info"%>
+          <span class="txt" style="padding-left: 5px">&nbsp;</span>
+          <%= f.submit 'Cancel', :class => "btn btn-info"%>
+          <span class="txt" style="padding-left: 20px">
+          <% if @saved_succesfully %>
+          <% msg = "No new permissions found" %>
+          <% else %>
+          <% msg = "Please configure new permissions if necessary and press Save button" %>
+          <% end %>
+          <%= msg %>
+          </span>
+        </div>        
+      </div>
+
+      <div class="row">
+          <div class="panel panel-default toggle panelMove panelClose panelRefresh">          
+              <table class="table table-bordered table-striped table-hover dt-responsive non-responsive" cellspacing="0" width="100%">
+                <thead>
+                <tr>                  
+                  <th>Controller</th>
+                  <th>Action</th>
+                  <th>Alias</th>
+                  <th style="width:100%">Description</th>
+                  <th>Status</th>
+                </tr>
+                </thead>
+                <tbody id="permission-list">
+                <%= render @autopermissions %>
+                </tbody>
+              </table>
+          </div>
+      </div>
+
+
+<% end %> 
+
+<div id="back-to-top">
+  <a href="#">Back to Top</a>
+</div>
+
+<script>
+    
+    function set_permission_group_status(obj) {
+      if (obj.selectedIndex > 0) {
+        var c = "#0000ff" 
+        var objs = document.getElementsByClassName(obj.name + "_group");
+        for (i = 0; i < objs.length; i++) {
+          objs[i].value = obj.value
+          $(objs[i]).css("color", c)
+        }        
+        var objs_group = document.getElementsByClassName(obj.getAttribute('class') + "_all");
+        for (i = 0; i < objs_group.length; i++) {
+          objs_group[i].selectedIndex = 0;
+        }
+        if (objs_group.length > 0) {
+          $(obj).css("color", c)
+        }
+      }
+    }
+
+    function set_alias_status(obj) {
+      $(obj).css("color", "#0000ff")
+    }
+
+</script>
+

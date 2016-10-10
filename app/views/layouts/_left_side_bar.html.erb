@@ -91,6 +91,11 @@
                     <li>
                       <%= link_to('Vendor Accounts', main_app.vendors_path) %>
                     </li>
+                    <% if current_vendor.has_role? :admin %>
+                      <li>
+                        <%= link_to('Permissions', main_app.permissions_path) %>
+                      </li>
+                    <% end %>
                     <li>
                       <%= link_to('Roles', main_app.roles_path) %>
                     </li>

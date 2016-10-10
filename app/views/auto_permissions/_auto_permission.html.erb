@@ -1,0 +1,67 @@
+<% is_common_line_for_controller =  (auto_permission.action == @all_actions_alias) %> 
+<% if is_common_line_for_controller %>
+   <% style_def = "font-weight:bold" %>
+<% else %>
+   <% style_def = "" %>
+<% end %>
+<tr style="<%= style_def %>"> 
+  <td>	 
+  	<% if is_common_line_for_controller %>
+  		<%= auto_permission.controller_name %>  
+  	<% else %>
+        &nbsp;	
+    <% end %>	
+  </td>
+  <% if (auto_permission.status.to_i < 0) && !is_common_line_for_controller %>
+       <% style_def = "color:#ff0000" %>
+  <% else %>
+       <% style_def = "" %>
+  <% end %>  
+  <td style="<%= style_def %>">
+    <%= auto_permission.action %>      
+  </td>
+  <td>    
+  	<% if is_common_line_for_controller %>
+    	 <% t = "hidden" %> 
+    <% else %>
+       <% t = "text" %>	
+    <% end %>
+    <input type="<%= t %>" name="<%= auto_permission.id.to_s %>_pa" value="<%= auto_permission.alias %>" size="30" onchange="set_alias_status(this)">
+  </td>
+  <td>
+    <% if is_common_line_for_controller %>
+       <% t = "hidden" %> 
+    <% else %>
+       <% t = "text" %> 
+    <% end %>
+    <input type="<%= t %>" name="<%= auto_permission.id.to_s %>_pd" value="<%= auto_permission.description %>" style='width:100%' onchange="set_alias_status(this)">
+  </td>
+
+  <td>
+    <% if is_common_line_for_controller || @ap_class_name.nil? %>
+      <% @ap_class_name = "#{auto_permission.id}_ps_group" %>      
+    <% end %>
+    <% if is_common_line_for_controller %>
+      <% class_name = "#{auto_permission.id}_ps_group_all" %>  
+    <% else %>
+      <% class_name = @ap_class_name %> 
+    <% end %>
+    <select class="<%= class_name %>" name="<%= auto_permission.id.to_s %>_ps" onchange="set_permission_group_status(this)"">
+      <% if is_common_line_for_controller && (auto_permission.status.to_i < 0) %>
+	    	<% sel = "selected" %>
+	    <% else %>
+	    	<% sel = "" %>
+	    <% end %>
+    <option <%= sel %> disabled value="-1">-- Select option --</option>
+    <% values = ["Not available", "Configurable"] %>    
+    <% 0.upto(values.length - 1) do |i| %>
+	    <% if  (auto_permission.status.to_i == i) || ((i == 0) && (auto_permission.status.to_i < 0) && !is_common_line_for_controller) %>
+	    	<% sel = "selected" %>
+	    <% else %>
+	    	<% sel = "" %>
+	    <% end %>
+	    <option <%= sel %> value="<%= i.to_s %>"><%= values[i] %></option>
+    <% end %>
+   </select>
+   </td>
+</tr>

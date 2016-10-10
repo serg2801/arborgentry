@@ -1,0 +1,74 @@
+<%= form_for @role do |f| %>
+    
+    <% controllers_list = [] %>
+    <% controllers_current_name = "" %>
+
+    <div id="page-header" class="clearfix">
+        <div class="page-header">
+          <% unless RolesController.new.role_show_only?(@role) %>
+            <a type="button" class="btn btn-info" href="<%= edit_role_path(@role.id) %>">Edit</a>
+            <span class="txt" style="padding-left: 5px">&nbsp;</span>
+          <% end %>
+          <%= f.submit 'Back', :class => "btn btn-info"%>        
+        </div>        
+    </div>
+
+    <div class="row">
+      
+      <div class="form-group">
+      
+         <div>
+            <% if @all_available_permissions == 0 %>
+                There are no permissions available
+            <% else %>
+                Permissions allowed:
+            <% end %>
+         
+         </div>
+         </br>
+
+         <div class="panel panel-default toggle panelMove panelClose panelRefresh">          
+              <table class="table table-bordered table-striped table-hover dt-responsive non-responsive" cellspacing="0" width="100%">
+
+                <tbody id="permission-list">
+                
+                <% Permission.all.each do |permission| %>
+                  <% if @role_permissions.include?(permission.id) %>
+                  <%  unless permission.created_at.nil? %>
+                    <%  if permission.updated_at.nil? %>
+                        <% style_def = "display:none;" %> 
+                    <%  else %> 
+                        <%  pos = permission.name.rindex(" # ") %>
+                        <%  unless pos.nil? || (pos == 0) %>
+                          <%  n =  permission.name[0, pos] %>
+                        <%  else %>
+                          <%  n =  permission.name %>
+                        <%  end %>
+                        <%  if !controllers_list.include?n %>
+                            <% controllers_list.push(n) %>
+                            <% controllers_current_name = n %>
+                            <tr>
+                               <td colspan="2" align="left">
+                                 <span style="font-weight: bold;"><%= n %></span>
+                               </td>
+                            </tr>                            
+                        <%  end %>
+                        <% style_def = "" %> 
+                    <%  end %>
+                    <tr style="<%= style_def %>">
+                      <td style="width:10px">&nbsp;</td>
+                      <td align="left" width="100%"><%= permission.description %></td>
+                    </tr>                  
+                  <%  end %>
+                  <%  end %>
+                <%  end %>
+                
+                </tbody>
+              </table>
+         </div>
+      
+      </div>
+
+    </div>
+
+<% end %>
