@@ -7,7 +7,7 @@
         <div class="page-header">
           <%= f.submit 'Save', :class => "btn btn-info"%>
           <span class="txt" style="padding-left: 5px">&nbsp;</span>
-          <%= f.submit 'Cancel', :class => "btn btn-info"%>        
+          <%= f.submit 'Cancel', :class => "btn btn-info"%>
         </div>        
     </div>
 
@@ -29,16 +29,21 @@
       <div class="form-group">
       
          <div>
-            <% if @all_available_permissions == 0 %>
+            <% if @all_available_permissions_count == 0 %>
                 There are no permissions available
             <% else %>
                 Permissions allowed:
-                &nbsp;
+                &nbsp;&nbsp;
                 <a href=# class="all_cb" onclick="set_permission_group_allowed(this, 1)">Select all</a>
                 &nbsp;/&nbsp;
                 <a href=# class="all_cb" onclick="set_permission_group_allowed(this, 0)">Deselect all</a>
+                <% if @has_admin_access %>
+                &nbsp;/
+                <% end %>
             <% end %>
-         
+            <% if @has_admin_access %>
+              <%= link_to "Configure", permissions_path %>
+            <% end %>
          </div>
          </br>
 

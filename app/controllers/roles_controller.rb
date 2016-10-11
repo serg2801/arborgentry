@@ -1,5 +1,5 @@
 class RolesController < ApplicationController
-  
+
   alias_method :current_user, :current_vendor
 
   before_action :set_role, only: [ :show, :edit, :update, :destroy ]
@@ -67,21 +67,19 @@ class RolesController < ApplicationController
   private
       
      def init_predefined
-        @roles_predefined_owners = {       
-         "admin" =>  ['vendor_admin', 'vendor_default'],
-         "vendor_admin" => ['vendor_default']
-        }
+        @roles_predefined_owners = RolesPredefined::Init.new.get_roles_predefined
         res = -1
         @exist_predefined = ""
-        @roles_predefined_owners.each_with_index do |r, idx|
-          if @exist_predefined == ""
-            if current_vendor.has_role?r[0]
-               @exist_predefined = r[0]
-               res = idx
+        all_keys = @roles_predefined_owners.keys
+        unless all_keys.nil? || all_keys.blank?
+          all_keys.each do |k|
+            if @exist_predefined == ""
+              if current_vendor.has_role?k
+                 @exist_predefined = k.strip 
+              end  
             end  
           end  
-        end  
-        return res
+        end
      end
 
      def set_role_showonly(role)
@@ -96,13 +94,14 @@ class RolesController < ApplicationController
     end 
 
     def set_role
-      if !params[:id].nil? && (params[:id].to_i > 0)
+      @has_admin_access = current_vendor.has_role?("admin") 
+      if !params[:id].nil? && (params[:id].to_i > 0)        
         @role = Role.find(params[:id])
         unless @role.nil? 
           set_role_showonly(@role)
-          @all_available_permissions = 0
+          @all_available_permissions_count = 0
           set_permissions_for_role
-        end      
+        end          
       end
     end
 
@@ -143,22 +142,22 @@ class RolesController < ApplicationController
     end
 
     def set_permissions_for_role
-      @all_available_permissions = Permission.where("updated_at not null").count
+      @all_available_permissions_count = Permission.where("updated_at not null").count
       @role_available_permissions = []
       @role_permissions = []
-      unless @role.nil? || @role.id.nil?
+
+      unless @role.nil?
         if  (@role.name == "admin") || current_vendor.has_role?("admin")
            all_p = Permission.where("updated_at not null")
            unless all_p.nil?
               all_p.map do |p|
-                @role_available_permissions.push(p.id)
-                @role_permissions.push(p.id)
+                @role_available_permissions.push(p.id)                
               end  
            end
         else         
            all_current_roles = Role.where(vendor_id:  current_vendor.id)
            unless all_current_roles.nil? || all_current_roles.blank?
-              all_current_roles.each do |r|
+              all_current_roles.each do |r|  
                  all_p = RolePermission.where(role_id: r.id) 
                  unless all_p.nil?
                     all_p.map do |p|
@@ -170,18 +169,27 @@ class RolesController < ApplicationController
                     end 
                  end 
               end
-           end
-           all_p = RolePermission.where(role_id: @role.id)
-           unless all_p.nil?
-                all_p.map do |p|
-                  unless p.updated_at.nil? 
-                    if @role_available_permissions.include?(p.permission_id)
-                      @role_permissions.push(p.permission_id)
-                    end  
-                  end
-                end  
-           end
-        end  
+           end           
+        end
+        unless @role.id.nil?
+          if @role.name == "admin"
+              @role_available_permissions.each do |p|
+                @role_permissions.push(p)
+              end  
+          else 
+             all_p = RolePermission.where(role_id: @role.id)
+             unless all_p.nil?
+                  all_p.map do |p|
+                    unless p.updated_at.nil? 
+                      if @role_available_permissions.include?(p.permission_id)
+                        @role_permissions.push(p.permission_id)
+                      end  
+                    end
+                  end  
+             end
+          end
+        end
+
       end 
     end
 
@@ -292,35 +300,70 @@ class RolesController < ApplicationController
               RoleGroup.create(group_id: 0, owner_id: owner_role_id, role_id: role_id) 
            end 
         end 
-      end        
+      end 
+      def create_predefined_role_permissions(role_id, controller_name, action_name)
+         p_name = controller_name + " # " + action_name
+         all_permissions = Permission.where("name ='#{p_name}' and updated_at not null")
+         unless all_permissions.nil? 
+            all_permissions.map do |p|
+              if RolePermission.where(role_id: role_id, permission_id: p.id).count == 0
+                  RolePermission.create(role_id: role_id, permission_id: p.id) 
+              end 
+            end  
+         end
+      end       
       res = 0
-      idx = init_predefined      
-      @roles_predefined_owners.each_with_index do |r, i| 
-        if i == idx  
+      init_predefined   
+      new_roles = (@exist_predefined == "")?nil:@roles_predefined_owners[@exist_predefined].to_hash   
+      unless new_roles.nil? || new_roles.blank? 
           owner_id = 0
-          all_roles = Role.where(name: r[0])
+          all_roles = Role.where(name: @exist_predefined)
           unless all_roles.nil? || all_roles.blank? 
-             all_roles.each do |rg|
+             all_roles.each do |r|
                if owner_id == 0
-                  owner_id = rg.id
+                  owner_id = r.id
                end       
              end 
-          end          
-          r[1].each do |new_role_name|
-              all_roles = Role.where(name: new_role_name)
-              unless all_roles.nil? || all_roles.blank?
-                     all_roles.each do |rg|
-                        create_predefined_group(owner_id, rg.id)
-                     end 
-              else  
-                     role = Role.new(name: new_role_name, vendor_id: current_vendor.id) 
-                     if role.save
-                        create_predefined_group(owner_id, role.id)
-                        res += 1
-                     end            
-              end   
-          end   
-        end
+          end 
+          all_keys = new_roles.keys         
+          unless all_keys.nil? || all_keys.blank? 
+            all_keys.each do |new_role_name|
+              unless new_role_name.nil? || (new_role_name.strip == "")
+                all_roles = Role.where(name: new_role_name)
+                role_ids = []
+                unless all_roles.nil? || all_roles.blank?
+                   all_roles.each do |r|
+                      create_predefined_group(owner_id, r.id)
+                      role_ids.push(r.id)
+                   end 
+                else  
+                   role = Role.new(name: new_role_name, vendor_id: current_vendor.id) 
+                   if role.save
+                      create_predefined_group(owner_id, role.id)
+                      role_ids.push(role.id)
+                      res += 1
+                   end            
+                end
+                #write permissions
+                role_ids.each do |r|
+                   controller_names = new_roles[new_role_name].to_hash
+                   unless controller_names.nil? || controller_names.blank? 
+                      all_c_names = controller_names.keys 
+                      unless all_c_names.nil? || all_c_names.blank? 
+                         all_c_names.each do |new_controller_name|
+                           unless new_controller_name.strip == ""
+                              all_actions = controller_names[new_controller_name]
+                              all_actions.each do |a|
+                                create_predefined_role_permissions(r, new_controller_name, a)
+                              end  
+                           end   
+                         end 
+                      end  
+                   end 
+                end
+              end    
+            end 
+          end  
       end 
       return res
     end  

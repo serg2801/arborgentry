@@ -18,12 +18,14 @@
       <div class="form-group">
       
          <div>
-            <% if @all_available_permissions == 0 %>
+            <% if @all_available_permissions_count == 0 %>
                 There are no permissions available
             <% else %>
                 Permissions allowed:
             <% end %>
-         
+            <% if @has_admin_access %>
+              &nbsp;&nbsp;<%= link_to "Configure", permissions_path %>
+            <% end %>         
          </div>
          </br>
 
