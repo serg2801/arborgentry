@@ -46,7 +46,7 @@
     <% else %>
       <% class_name = @ap_class_name %> 
     <% end %>
-    <select class="<%= class_name %>" name="<%= auto_permission.id.to_s %>_ps" onchange="set_permission_group_status(this)"">
+    <select class="<%= class_name %>" name="<%= auto_permission.id.to_s %>_ps" onchange="set_permission_group_status(this)">
       <% if is_common_line_for_controller && (auto_permission.status.to_i < 0) %>
 	    	<% sel = "selected" %>
 	    <% else %>
