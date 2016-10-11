@@ -69,7 +69,7 @@ class RolesController < ApplicationController
 
   
   private
-      
+     
      def init_predefined
         @roles_predefined_owners = RolesPredefined::Init.new.get_roles_predefined
         res = -1
@@ -175,7 +175,7 @@ class RolesController < ApplicationController
               end
            end           
         end
-        unless @role.id.nil?
+        unless @role.id.nil? 
           if @role.name == "admin"
               @role_available_permissions.each do |p|
                 @role_permissions.push(p)
@@ -224,6 +224,7 @@ class RolesController < ApplicationController
         rname = params[:role]['name'].strip    
         if target_role.nil?     
           @role = Role.new(name: rname, vendor_id: current_vendor.id)
+          set_permissions_for_role
         else
           @role = target_role
           old_name = @role.name
@@ -234,8 +235,8 @@ class RolesController < ApplicationController
           unless permission.updated_at.nil? 
               par = params["#{permission.id}_cb"]
               unless par.nil?
-                    #@role.permissions << permission
-                    @role_permissions << permission.id
+               #@role.permissions << permission
+               @role_permissions << permission.id
               end  
           end  
         end 
