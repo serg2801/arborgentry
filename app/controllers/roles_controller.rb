@@ -23,8 +23,12 @@ class RolesController < ApplicationController
   end
 
   def update
-    #authorize Role   
-    do_update
+    #authorize Role  
+    if params['commit'].to_s == "Save" 
+      do_update
+    else
+      redirect_to roles_path
+    end
   end
 
   def new
@@ -142,13 +146,13 @@ class RolesController < ApplicationController
     end
 
     def set_permissions_for_role
-      @all_available_permissions_count = Permission.where("updated_at not null").count
+      @all_available_permissions_count = Permission.where("updated_at is not null").count
       @role_available_permissions = []
       @role_permissions = []
 
       unless @role.nil?
         if  (@role.name == "admin") || current_vendor.has_role?("admin")
-           all_p = Permission.where("updated_at not null")
+           all_p = Permission.where("updated_at is not null")
            unless all_p.nil?
               all_p.map do |p|
                 @role_available_permissions.push(p.id)                
@@ -303,7 +307,7 @@ class RolesController < ApplicationController
       end 
       def create_predefined_role_permissions(role_id, controller_name, action_name)
          p_name = controller_name + " # " + action_name
-         all_permissions = Permission.where("name ='#{p_name}' and updated_at not null")
+         all_permissions = Permission.where("(name ='#{p_name}') and (updated_at is not null)")
          unless all_permissions.nil? 
             all_permissions.map do |p|
               if RolePermission.where(role_id: role_id, permission_id: p.id).count == 0
