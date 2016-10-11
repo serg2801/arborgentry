@@ -14,7 +14,8 @@ class HomeController < ApplicationController
   end
 
   def weather_params
-    render status: 200, :json => {first_day_icon: @@forecast.currently.icon, second_day_icon: @@second_day.icon, third_day_icon: @@third_day.icon}
+    #render status: 200, :json => {first_day_icon: @@forecast.currently.icon, second_day_icon: @@second_day.icon, third_day_icon: @@third_day.icon}
+    render status: 200, :json => {first_day_icon: @@forecast, second_day_icon: @@second_day, third_day_icon: @@third_day}
   end
 
   def map_city_visits
