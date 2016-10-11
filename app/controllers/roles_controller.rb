@@ -36,8 +36,8 @@ class RolesController < ApplicationController
   end
 
   def create
-    authorize Role    
-    do_create(nil) 
+    authorize Role  
+    do_create(nil)
   end
 
   def destroy
