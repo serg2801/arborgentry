@@ -117,8 +117,7 @@ Rails.application.routes.draw do
   resources :config_emails, only: [:new, :create, :edit, :update, :show ]
   
   resources :roles , only: [:new, :create, :index, :destroy, :edit, :update ]
-  get 'roles/:id',  to: 'roles#show'
-  
+  get 'roles/:id',  to: 'roles#show'   #???  
 
   resources :permissions, only: [:index]
   post 'save_permissions',       to: 'permissions#save'
