@@ -7,15 +7,15 @@ class AccountPolicy < ApplicationPolicy
   end
 
   def index?
-    @current_vendor.has_role? :admin or @current_vendor.admin?
+    @current_vendor.has_role? :admin #or @current_vendor.admin?
   end
 
   def new?
-    @current_vendor.has_role? :admin or @current_vendor.admin?
+    @current_vendor.has_role? :admin #or @current_vendor.admin?
   end
 
   def create?
-    @current_vendor.has_role? :admin or @current_vendor.admin?
+    @current_vendor.has_role? :admin #or @current_vendor.admin?
   end
 
 end

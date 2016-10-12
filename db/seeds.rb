@@ -93,16 +93,11 @@ end
 
 # Permission
 [
-	['Permissions Show all Vendors',         		'Show all Vendors',						'show_all_vendors'],
-	['Permissions Create Vendors',           		'Create Vendors', 						'create_vendors'],
-  ['Permissions Destroy Vendors',          		'Destroy Vendors', 						'destroy_vendors'],
-  ['Permissions All action  Vendors',      		'All actions Vendors', 				'all_action_vendors'],
-  ['Permissions All action Email',         		'Email', 											'all_action_email'],
 	['Permissions All actions Spree Orders', 		'All actions Spree Orders', 	'spree_order_all_action'],
 	['Permissions Index Spree Orders',       		'Index Spree Orders', 				'spree_order_index'],
 	['Permissions All actions Spree Products',  'All actions Spree Products', 'spree_product_all_action'],
 	['Permissions Index Products', 							'Index Products', 						'spree_product_index'],
-  ['Permissions Update Spree Products', 			'Update Spree Products', 			'spree_product_update'],
+    ['Permissions Update Spree Products', 			'Update Spree Products', 			'spree_product_update'],
 	['Permissions Destroy Spree Products', 			'Destroy Spree Products',		  'spree_product_destroy'],
 	['Permissions Clone Spree Products', 				'Clone Spree Products',				'spree_product_clone']
 ].map do |n, d, k|
@@ -110,9 +105,9 @@ end
 end
 
 # Role
-['vendor_admin', 'vendor_default'].map do |role|
-	Role.create(name: role)
-end
+#['vendor_admin', 'vendor_default'].map do |role|
+#	Role.create(name: role)
+#end
 
 Spree::Core::Engine.load_seed if defined?(Spree::Core)
 Spree::Auth::Engine.load_seed if defined?(Spree::Auth)

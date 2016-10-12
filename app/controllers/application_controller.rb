@@ -1,15 +1,22 @@
 class ApplicationController < ActionController::Base
+  
   include Pundit
   include CanCan::ControllerAdditions
+  include SecurityHelper
+
   rescue_from Pundit::NotAuthorizedError, with: :vendor_not_authorized
+  
   layout :layout_by_resource
+  
   protect_from_forgery with: :exception
+  
   # before_filter :access_spree
   before_filter :location_ip, except: [:weather_params, :map_city_visits]
   before_filter :authenticate_vendor!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
+  
   def configure_permitted_parameters
     if params[:customer]
       devise_parameter_sanitizer.for(:sign_up) << :email
@@ -30,7 +37,7 @@ class ApplicationController < ActionController::Base
   private
 
   def vendor_not_authorized
-    flash[:danger] = 'Access denied.'
+    flash[:danger] = 'Access denied!'
     redirect_to (request.referrer || authenticated_root_path)
   end
 
@@ -62,7 +69,6 @@ class ApplicationController < ActionController::Base
     else
       city.first.update_attributes(count_visit: (city.first.count_visit + 1))
     end
-
   end
 
   # def access_spree

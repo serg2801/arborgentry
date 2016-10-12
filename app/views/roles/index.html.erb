@@ -36,7 +36,7 @@
               <%= link_to 'New Role', new_role_path, class: "btn btn-primary btn-raised btn-sm" %>
               <% if @exist_predefined != "" %>
               &nbsp; &nbsp;
-              <%= link_to "Create predefined", role_path(0), data: {confirm: "Do you want to create predefined roles?"}%>
+              <%= link_to "Create predefined roles", "create_predefined", data: {confirm: "Do you want to create predefined roles?"}%>
               <% end %>
             </div>
             <div class="panel-body">

@@ -28,11 +28,11 @@
       <div id="page-header" class="clearfix">
         <div class="page-header">
           <%= f.submit 'Save', :class => "btn btn-info"%>
-          <span class="txt" style="padding-left: 5px">&nbsp;</span>
-          <%= f.submit 'Cancel', :class => "btn btn-info"%>
+          &nbsp;&nbsp;
+          <a type="button" class="btn btn-info" href="<%= permissions_path %>">Cancel changes</a>    
           <span class="txt" style="padding-left: 20px">
           <% if @saved_succesfully %>
-          <% msg = "No new permissions found" %>
+          <% msg = "" %>
           <% else %>
           <% msg = "Please configure new permissions if necessary and press Save button" %>
           <% end %>

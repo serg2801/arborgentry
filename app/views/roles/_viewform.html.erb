@@ -9,7 +9,7 @@
             <a type="button" class="btn btn-info" href="<%= edit_role_path(@role.id) %>">Edit</a>
             <span class="txt" style="padding-left: 5px">&nbsp;</span>
           <% end %>
-          <%= f.submit 'Back', :class => "btn btn-info"%>        
+          <a type="button" class="btn btn-info" href="<%= roles_path %>">Role list</a>    
         </div>        
     </div>
 
@@ -18,14 +18,11 @@
       <div class="form-group">
       
          <div>
-            <% if @all_available_permissions_count == 0 %>
-                There are no permissions available
+            <% if @role_permissions.count == 0 %>
+                There are no permissions
             <% else %>
                 Permissions allowed:
             <% end %>
-            <% if @has_admin_access %>
-              &nbsp;&nbsp;<%= link_to "Configure", permissions_path %>
-            <% end %>         
          </div>
          </br>
 
@@ -58,7 +55,7 @@
                         <% style_def = "" %> 
                     <%  end %>
                     <tr style="<%= style_def %>">
-                      <td style="width:10px">&nbsp;</td>
+                      <td style="width:10px">&nbsp;&#124;&#95;</td>
                       <td align="left" width="100%"><%= permission.description %></td>
                     </tr>                  
                   <%  end %>

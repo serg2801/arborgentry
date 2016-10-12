@@ -51,10 +51,12 @@ class ApplicationPolicy
     end
   end
 
+  
+
   private
 
   def check(permission)
-    @current_vendor.roles.map { |r| r.has_permission?(permission) }.include? true
+    current_vendor.has_role? :admin or @current_vendor.roles.map { |r| r.has_permission?(permission) }.include? true
   end
 
 end

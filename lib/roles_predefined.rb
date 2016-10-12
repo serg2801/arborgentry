@@ -5,11 +5,11 @@ class Init
 	    def get_roles_predefined	    		 
 	    	
 			role_vendor_default = {
-			   "roles" => ["index", "show"] 
+			   "roles" => ["index", "show", "create_predefined"] 
 			}
 			
 			role_vendor_admin = {
-				"roles" => ["index", "show", "edit"],
+				"roles" => ["all"],
 				"vendors" => ["all"]
 			}    	
 

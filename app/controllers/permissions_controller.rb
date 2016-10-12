@@ -2,12 +2,12 @@ class PermissionsController < ApplicationController
 
 alias_method :current_user, :current_vendor
 
+before_action :do_authorize
 before_action :set_constants
 before_action :set_permissions, only: [ :index ]
-before_action :is_admin?
 
-def index
-  	#authorize Permission
+def index 
+  # 	
 end
 
 def save
@@ -23,16 +23,9 @@ end
 
 private
 
-	def is_admin?
-      if current_vendor
-        unless current_vendor.has_role?("admin")
-          flash[:danger]="Access denied"
-          redirect_to(authenticated_root_path)
-        end
-      else
-        redirect_to(new_vendor_session_path)
-      end
-    end
+    def do_authorize
+        authorize Permission
+    end 
 
     def set_constants
     	@all_actions_alias = "--- All actions ---"
@@ -58,7 +51,7 @@ private
 						rnew[:action] = r[:action].to_s.downcase						
 						rnew[:alias] = rnew[:controller].gsub('/', '_') + "_" + rnew[:action]
 						rnew[:description] = rnew[:action].capitalize + " " + rnew[:controller]	
-						rnew[:sortflag] = rnew[:controller] + ' # ' + rnew[:action]
+						rnew[:sortflag] = get_permission_name(rnew[:controller], rnew[:action])
 						routes << rnew
 						unless route_controllers.include?(s)
 				  			route_controllers << s
@@ -73,14 +66,14 @@ private
 			rnew[:action] = @all_actions_alias
 			rnew[:alias] = "-"
 			rnew[:description] = "-"
-			rnew[:sortflag] = c + ' # ' + @all_actions_alias
+			rnew[:sortflag] = get_permission_name(c, @all_actions_alias)
 			routes << rnew
 			rnew = Hash.new
 			rnew[:controller] = c
 			rnew[:action] = 'all'
 			rnew[:alias] = c.gsub('/', '_') + "_" + rnew[:action]
 			rnew[:description] = "All_actions " + c
-			rnew[:sortflag] = c + ' # ' + @all_actions_alias + '_2'
+			rnew[:sortflag] = get_permission_name(c, @all_actions_alias + '_2')
 			routes << rnew
 		end	
 		routes.uniq! { |r| r[:sortflag] }
@@ -146,7 +139,7 @@ private
 		permissions_passed = []
 		AutoPermission.all.each do |p|
 			unless (p.status < 0) || (p.action == @all_actions_alias)
-				n = p.controller_name + " # " + p.action
+				n = get_permission_name(p.controller_name, p.action)
 				existing_permissions = Permission.where(name: n)
 				unless existing_permissions.nil? || existing_permissions.blank?
 					first_found = false
