@@ -2,12 +2,12 @@ class HomeController < ApplicationController
   alias_method :current_user, :current_vendor
   layout :resolve_layout
   
-  before_action :do_authorize
+  # before_action :do_authorize
   
   before_filter :authenticate_vendor! , :except => [:welcome, :thank_you]
   before_filter :initialize_forecast, only: [ :index ]
 
-  @@forecast = @@second_day = @@third_day = 'clear-day'
+  @@forecast = @@second_day = @@third_day = ''
 
   def index
     @config_emails = current_vendor.config_emails.first
@@ -17,7 +17,7 @@ class HomeController < ApplicationController
   end
 
   def weather_params
-     if @@forecast.currently.blank?
+     if @@forecast.blank?
        render status: 200, :json => {first_day_icon: @@forecast, second_day_icon: @@second_day, third_day_icon: @@third_day}
      else
        render status: 200, :json => {first_day_icon: @@forecast.currently.icon, second_day_icon: @@second_day.icon, third_day_icon: @@third_day.icon}

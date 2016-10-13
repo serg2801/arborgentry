@@ -32,7 +32,7 @@ class VendorsController < ApplicationController
       @vendor = Vendor.new(vendor_params.merge(parent_vendor_id: current_vendor.id, password: password_string, password_confirmation: password_string))
       @vendor.spree_roles << Spree::Role.find_or_create_by(name: 'admin')
       @vendor.add_role role.name
-      @vendor.spree_roles << Spree::Role.find_or_create_by(name: 'admin')
+      # @vendor.spree_roles << Spree::Role.find_or_create_by(name: 'admin')
     end
     if @vendor.save
       VendorMailer.email_vandor_pass( @vendor, password_string ).deliver
@@ -56,7 +56,7 @@ class VendorsController < ApplicationController
   def update
     #authorize Vendor
     if @vendor.update_attributes(vendor_params.merge(account_id: params[:account_id].to_i))
-      @vendor.update_role(params[:role_id]) if current_vendor.has_role? :vendor_admin
+      @vendor.update_role(params[:role_id]) #if current_vendor.has_role? :vendor_admin
       @vendors = Vendor.where(parent_vendor_id: current_vendor.id)
       flash[:success] = 'Vendor updated successfully.'
       respond_to do |format|

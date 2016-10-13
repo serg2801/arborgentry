@@ -9,16 +9,14 @@
     <%= form_for(@vendor, :remote => true) do |f| %>
         <div class="modal-body">
           <div class="row">
-            <% if current_vendor.has_role? :vendor_admin %>
-                <div class="form-group">
-                  <div class="col-xs-4">
-                    Role
-                  </div>
-                  <div class="col-xs-8">
-                    <%= select_tag 'role_id', options_for_select(@roles.collect { |u| [u.name, u.id] }), {:class => 'form-control requires'} %>
-                  </div>
-                </div>
-            <% end %>
+            <div class="form-group">
+              <div class="col-xs-4">
+                Role
+              </div>
+              <div class="col-xs-8">
+                <%= select_tag 'role_id', options_for_select(@roles.collect { |u| [u.name, u.id] }), {:class => 'form-control requires'} %>
+              </div>
+            </div>
             <% if current_vendor.admin? %>
                 <div class="form-group">
                   <div class="col-xs-4">

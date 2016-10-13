@@ -44,7 +44,7 @@
         <!-- .side-nav -->
         <div class="side-nav">
           <ul class="nav b-sidebar">
-            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+            <% if has_access_controller('home') %>
                 <li>
                   <%= link_to main_app.authenticated_root_path do %>
                       <i class="l-basic-laptop"></i>
@@ -52,7 +52,7 @@
                   <% end %>
                 </li>
             <% end %>
-            <% if current_vendor.has_role? :vendor_admin %>
+            <% if has_access_controller('vendor_forms') %>
                 <li>
                   <a href="#">
                     <i class="l-basic-webpage-txt"></i>
@@ -68,7 +68,7 @@
                   </ul>
                 </li>
             <% end %>
-            <% if current_vendor.admin? %>
+            <% if has_access_controller('vendor_forms') %>
                 <li>
                   <a href="#">
                     <i class="l-basic-webpage-txt"></i>
@@ -81,7 +81,7 @@
                   </ul>
                 </li>
             <% end %>
-            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+            <% if has_access_controller('accounts') %>
                 <li>
                   <a href="#">
                     <i class="fa fa-user" aria-hidden="true"></i>
@@ -99,7 +99,7 @@
                     <li>
                       <%= link_to('Roles', main_app.roles_path) %>
                     </li>
-                    <% if current_vendor.admin? %>
+                    <% if has_access_controller('accounts') %>
                         <li>
                           <%= link_to('Accounts', main_app.accounts_path) %>
                         </li>
@@ -193,7 +193,7 @@
                   </ul>
               <% end %>
             </li>
-            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+            <% if has_access_controller('static_page') %>
                 <li>
                   <a href="#"><i class="l-ecommerce-graph1"></i> <span class="txt">Charts</span></a>
                   <ul class="sub">
@@ -204,7 +204,7 @@
                   </ul>
                 </li>
             <% end %>
-            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+            <% if has_access_controller('static_page') %>
                 <li>
                   <a href="#"><i class="l-basic-webpage-txt"></i><span class="txt">Forms</span></a>
                   <ul class="sub">
@@ -218,7 +218,7 @@
                   </ul>
                 </li>
             <% end %>
-            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+            <% if has_access_controller('static_page') %>
                 <li>
                   <a href="#"><i class="l-software-layout-header-3columns"></i><span class="txt">Tables</span></a>
                   <ul class="sub">
@@ -230,7 +230,7 @@
                   </ul>
                 </li>
             <% end %>
-            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+            <% if has_access_controller('static_page') %>
                 <li>
                   <a href="#"><i class="l-software-layers2"></i><span class="txt">UI Elements</span></a>
                   <ul class="sub">
@@ -249,7 +249,7 @@
                   </ul>
                 </li>
             <% end %>
-            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+            <% if has_access_controller('static_page') %>
                 <li>
                   <%= link_to main_app.portlets_path do %>
                       <i class="l-software-layout-header"></i>
@@ -258,7 +258,7 @@
                   <% end %>
                 </li>
             <% end %>
-            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+            <% if has_access_controller('config_emails') %>
                 <li>
                   <a href="#"><i class="l-basic-mail"></i> <span class="txt">Email</span></a>
                   <ul class="sub">
@@ -276,7 +276,7 @@
                   </ul>
                 </li>
             <% end %>
-            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+            <% if has_access_controller('static_page') %>
                 <li>
                   <a href="#"><i class="l-basic-geolocalize-01"></i><span class="txt">Maps</span></a>
                   <ul class="sub">
@@ -285,7 +285,7 @@
                   </ul>
                 </li>
             <% end %>
-            <% if current_vendor.has_role? :vendor_admin or current_vendor.has_role? :admin %>
+            <% if has_access_controller('static_page') %>
                 <li>
                   <a href="#"><i class="l-basic-webpage"></i><span class="txt">Pages</span></a>
                   <ul class="sub">
