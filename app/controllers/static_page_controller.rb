@@ -1,5 +1,7 @@
 class StaticPageController < ApplicationController
+  
   alias_method :current_user, :current_vendor
+  before_action :do_authorize
   skip_before_filter :authenticate_vendor!
 
   layout 'vendor_form', only: [:form_home, :about, :product_categories, :vendor, :trade ]
@@ -158,4 +160,10 @@ class StaticPageController < ApplicationController
 
   def blank_page
   end
+
+  private 
+
+    def do_authorize
+       check_access        
+    end 
 end

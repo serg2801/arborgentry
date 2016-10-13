@@ -14,4 +14,12 @@ class TradeFormPolicy < ApplicationPolicy
     @current_vendor.has_role? :admin
   end
 
+  def new?
+    @current_vendor.has_role? :admin
+  end
+
+  def create?
+    @current_vendor.has_role? :admin
+  end
+
 end

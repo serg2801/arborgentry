@@ -1,6 +1,8 @@
 class ConfirmationsController < Devise::ConfirmationsController
   alias_method :current_user, :current_vendor
 
+  before_action :do_authorize
+
   def show
     @original_token = params[:confirmation_token]
     digested_token = Devise.token_generator.digest(self, :confirmation_token,params[:confirmation_token])
@@ -23,6 +25,11 @@ class ConfirmationsController < Devise::ConfirmationsController
   end
 
  private
+   
+   def do_authorize
+     check_access        
+   end 
+   
    def permitted_params
      params.require(resource_name).permit(:confirmation_token, :password, :password_confirmation)
    end

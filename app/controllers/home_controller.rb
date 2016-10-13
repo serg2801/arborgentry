@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
   alias_method :current_user, :current_vendor
   layout :resolve_layout
+  
+  before_action :do_authorize
+  
   before_filter :authenticate_vendor! , :except => [:welcome, :thank_you]
   before_filter :initialize_forecast, only: [ :index ]
 
@@ -38,6 +41,11 @@ class HomeController < ApplicationController
   end
 
   private
+
+
+  def do_authorize
+     check_access        
+  end 
 
   def resolve_layout
     case action_name

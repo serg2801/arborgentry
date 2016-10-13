@@ -3,9 +3,11 @@ require 'net/imap'
 
 class MessagesController < ApplicationController
 
+  alias_method :current_user, :current_vendor
+  before_action :do_authorize
   before_action :get_config_email
   before_action :count_messages, only: [:inbox, :trash, :read_emails, :write_emails, :new, :show_message_read, :show_message_write, :starred, :important]
-  alias_method :current_user, :current_vendor
+  
 
   def new
     @message = Message.new
@@ -203,6 +205,11 @@ class MessagesController < ApplicationController
   end
 
   private
+
+
+  def do_authorize
+    check_access        
+  end 
 
   def message_params
     params.require(:message).permit(:to, :from, :body, :subject, :date, :status, :config_email_id, {message_attachments: []})

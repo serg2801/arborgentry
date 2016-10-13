@@ -1,24 +1,25 @@
 class VendorFormsController < ApplicationController
 
-  skip_before_filter :authenticate_vendor!
   alias_method :current_user, :current_vendor
+  before_action :do_authorize
+  skip_before_filter :authenticate_vendor!
 
   layout 'vendor_form', only: [:new, :create]
 
   before_action :get_vendor_form_options, only: [:create, :update]
 
   def index
-    authorize VendorForm
+    #authorize VendorForm
     @vendor_forms = VendorForm.all
   end
 
   def show
     @vendor_form = VendorForm.find(params[:id])
-    authorize @vendor_form
+    #authorize @vendor_form
   end
 
   def edit
-    authorize VendorForm.find(params[:id])
+    #authorize VendorForm.find(params[:id])
     @vendor = Vendor.find(current_vendor.id)
     @vendor_form = @vendor.vendor_form
   end
@@ -28,7 +29,7 @@ class VendorFormsController < ApplicationController
   end
 
   def create
-    @vendor_form = VendorForm.new(vendor_form_params)
+    #@vendor_form = VendorForm.new(vendor_form_params)
     if vendor_form_options
       save_vendor_form_options(@vendor_form)
       if @vendor_form.save
@@ -42,7 +43,7 @@ class VendorFormsController < ApplicationController
   end
 
   def grant_access
-    authorize VendorForm
+    #authorize VendorForm
     @vendor_form = VendorForm.find(params[:id])
     # password_string = VendorForm.generate_password
     password_string = 'password'
@@ -56,7 +57,7 @@ class VendorFormsController < ApplicationController
   end
 
   def update
-    authorize VendorForm.find(params[:id])
+    #authorize VendorForm.find(params[:id])
     @vendor = Vendor.find(current_vendor.id)
     @vendor_form = @vendor.vendor_form
     if vendor_form_options
@@ -97,6 +98,18 @@ class VendorFormsController < ApplicationController
   end
 
   private
+
+  def do_authorize
+     authorize VendorForm
+     check_access 
+     unless current_vendor.has_role?"admin"
+        case params[:action] 
+          when "show", "edit", "update"
+           f = VendorForm.find(params[:id])
+           vendor_not_authorized if (f.nil? || !(f.vendor_id == current_vendor.id)) 
+        end 
+     end
+  end 
 
   def vendor_form_options
     if @categories.nil?

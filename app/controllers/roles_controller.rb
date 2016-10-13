@@ -65,7 +65,7 @@ class RolesController < ApplicationController
   private
 
      def do_authorize
-        authorize Role
+        #authorize Role
         check_access        
      end 
      

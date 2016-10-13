@@ -2,20 +2,21 @@ class VendorsController < ApplicationController
   # before_action :is_admin?, only: [:index, :edit, :update, :destroy]
   # before_action :is_vendor_admin?, only: [:new, :create, :all_vendor_users]
   alias_method :current_user, :current_vendor
+  before_action :do_authorize
   before_action :set_vendor, only: [:show, :edit, :update, :destroy, :logged_in_as_vendor]
   before_action :set_roles, only: [ :new_vendor, :edit ]
   def index
     @all_vendor_users = Vendor.where(parent_vendor_id: current_vendor.id)
-    authorize Vendor
+    #authorize Vendor
   end
 
   def show
-    authorize Vendor
+    #authorize Vendor
   end
 
   def new_vendor
     @vendor = Vendor.new
-    authorize Vendor
+    #authorize Vendor
   end
 
   def create_vendor
@@ -41,7 +42,7 @@ class VendorsController < ApplicationController
       flash[:danger] = 'Error.'
       render 'new_vendor'
     end
-    authorize Vendor
+    #authorize Vendor
   end
 
   def edit
@@ -49,11 +50,11 @@ class VendorsController < ApplicationController
       format.html
       format.js
     end
-    authorize Vendor
+    #authorize Vendor
   end
 
   def update
-    authorize Vendor
+    #authorize Vendor
     if @vendor.update_attributes(vendor_params.merge(account_id: params[:account_id].to_i))
       @vendor.update_role(params[:role_id]) if current_vendor.has_role? :vendor_admin
       @vendors = Vendor.where(parent_vendor_id: current_vendor.id)
@@ -68,7 +69,7 @@ class VendorsController < ApplicationController
   end
 
   def destroy
-    authorize Vendor
+    #authorize Vendor
     @vendor.destroy
     @vendors = Vendor.where(parent_vendor_id: current_vendor.id)
     flash[:success] = 'Vendor deleted successfully.'
@@ -131,6 +132,11 @@ class VendorsController < ApplicationController
   end
 
   private
+  
+  def do_authorize
+        #authorize Vendor
+        check_access        
+  end
 
   def vendor_params
     params.require(:vendor).permit!
