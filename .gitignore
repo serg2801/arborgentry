@@ -22,6 +22,7 @@ public/uploads/
 passenger.3000.pid.lock
 .ruby-gemset
 .ruby-version
+.rbenv-gemsets
 
 ## Directory-based project format:
 .idea/
