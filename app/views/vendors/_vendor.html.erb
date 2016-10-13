@@ -7,7 +7,7 @@
   <% if current_vendor.admin? %>
       <td><%= account_name(vendor.account_id) %></td>
   <% end %>
-  <td><%= vendor.roles.map { |role| role.name } %></td>
+  <td><%= vendor.roles[0].name if vendor.roles[0] %></td>
   <td><%= link_to 'Log In', logged_in_as_other_vendor_path(vendor) %></td>
   <td>
     <%= link_to 'Edit', edit_vendor_path(vendor), remote: true %> /

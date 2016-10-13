@@ -29,13 +29,13 @@ module SecurityHelper
         else
           p = Permission.where("(key = '#{permission_key}') and (updated_at is not null)")
         end
-        permission = (p.blank?)?nil:p[0].key
+        permission = (p.blank?) ? nil : p[0].key
         res = permission.nil? || (@current_vendor.roles.map { |r| r.has_permission?(permission) }.include? true)
         if !res && permission_key.nil?
-           p_name = get_permission_name(contrlr_name, "all")
-           p = Permission.where("name = '#{p_name}' and (updated_at is not null)")
-           permission = (p.nil? || p.blank?)?nil:p[0].key
-           res = !(permission.nil?) && (@current_vendor.roles.map { |r| r.has_permission?(permission) }.include? true)
+          p_name = get_permission_name(contrlr_name, "all")
+          p = Permission.where("name = '#{p_name}' and (updated_at is not null)")
+          permission = (p.nil? || p.blank?) ? nil : p[0].key
+          res = !(permission.nil?) && (@current_vendor.roles.map { |r| r.has_permission?(permission) }.include? true)
         end
       end
     end
@@ -72,31 +72,31 @@ module SecurityHelper
 
   def has_access_controller(controller_name)
     res = false
-    unless current_vendor.blank? 
+    unless current_vendor.blank?
       res = current_vendor.has_role? :admin
       if !res
         if controller_name.nil? || (controller_name.strip == "")
           contrlr_name = params[:controller]
         else
           contrlr_name = controller_name
-        end  
+        end
         actn_name = "any_action"
         p_name = get_permission_name(contrlr_name, actn_name).gsub(actn_name, "")
-        all_p = Permission.where("(name like '%#{p_name}%') and (updated_at is not null)") 
-        unless all_p.blank?          
+        all_p = Permission.where("(name like '%#{p_name}%') and (updated_at is not null)")
+        unless all_p.blank?
           all_p.map do |p|
-            while !res do  
+            if !res
               @current_vendor.roles.map do |r|
-                res = res || (r.has_permission?p.key)
-              end  
+                res = res || (r.has_permission? p.key)
+              end
             end
           end
         else
-          res = true    
-        end 
+          res = true
+        end
       end
     end
-    return res 
+    return res
   end
 
 end

@@ -81,7 +81,7 @@
                   </ul>
                 </li>
             <% end %>
-            <% if has_access_controller('accounts') %>
+            <% if has_access_controller('accounts') || has_access_controller('roles') %>
                 <li>
                   <a href="#">
                     <i class="fa fa-user" aria-hidden="true"></i>
