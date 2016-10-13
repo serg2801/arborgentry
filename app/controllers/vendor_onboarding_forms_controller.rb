@@ -1,31 +1,32 @@
 class VendorOnboardingFormsController < ApplicationController
 
-  skip_before_filter :authenticate_vendor!
   alias_method :current_user, :current_vendor
-
+  before_action :do_authorize
+  skip_before_filter :authenticate_vendor!  
+  
   def index
-    authorize VendorOnboardingForm
+    #authorize VendorOnboardingForm
     @on_boardings = VendorOnboardingForm.all
   end
 
   def show
     @on_boarding = VendorOnboardingForm.find(params[:id])
-    authorize @on_boarding
+    #authorize @on_boarding
   end
 
   def edit
-    authorize VendorOnboardingForm.find(params[:id])
+    #authorize VendorOnboardingForm.find(params[:id])
     @vendor = Vendor.find(current_vendor.id)
     @on_boarding = @vendor.vendor_onboarding_form
   end
 
   def new
-    authorize VendorOnboardingForm
+    #authorize VendorOnboardingForm
     @on_boarding = VendorOnboardingForm.new
   end
 
   def create
-    authorize VendorOnboardingForm
+    #authorize VendorOnboardingForm
     @vendor = Vendor.find(current_vendor.id)
     @on_boarding = VendorOnboardingForm.new(on_boarding_params.merge(vendor_id: @vendor.id))
     if @on_boarding.save
@@ -40,7 +41,7 @@ class VendorOnboardingFormsController < ApplicationController
   end
 
   def update
-    authorize VendorOnboardingForm.find(params[:id])
+    #authorize VendorOnboardingForm.find(params[:id])
     @vendor = Vendor.find(current_vendor.id)
     @on_boarding = @vendor.vendor_onboarding_form
     if @on_boarding.update_attributes(on_boarding_params)
@@ -52,6 +53,20 @@ class VendorOnboardingFormsController < ApplicationController
   end
 
   private
+
+  def do_authorize
+     authorize VendorOnboardingForm
+     check_access 
+     unless current_vendor.has_role?"admin"
+       case params[:action] 
+         when "new", "create"
+           vendor_not_authorized if VendorForm.where(vendor_id: current_vendor.id).nil?         
+         when "show", "edit", "update"
+           f = VendorOnboardingForm.find(params[:id])
+           vendor_not_authorized if (f.nil? || !(f.vendor_id == current_vendor.id))    
+       end        
+     end
+  end
 
   def on_boarding_params
     params.require(:vendor_onboarding_form).permit(:legal_business_name, :company_name, :vendor_based_in, :vendor_based_in_other, :main_address_street, :main_address_unit, :main_address_city, :main_address_state,

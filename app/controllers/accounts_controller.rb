@@ -1,19 +1,18 @@
 class AccountsController < ApplicationController
 
+  
   alias_method :current_user, :current_vendor
+  before_action :do_authorize
 
   def index
     @accounts = Account.where(vendor_id: current_vendor.id)
-    authorize Account
   end
 
   def new
     @account = Account.new
-    authorize Account
   end
 
   def create
-    authorize Account
     @account = Account.new(accounts_params.merge(vendor_id: current_vendor.id))
     if @account.save
       flash[:info] = 'Account has been add!.'
@@ -25,6 +24,11 @@ class AccountsController < ApplicationController
   end
 
   private
+
+  def do_authorize
+        #authorize Account
+        check_access        
+  end
 
   def accounts_params
     params.require(:account).permit(:name, :vendor_id)

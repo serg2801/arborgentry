@@ -4,24 +4,25 @@ require 'net/imap'
 class ConfigEmailsController < ApplicationController
   alias_method :current_user, :current_vendor
 
+  before_action :do_authorize
   before_action :get_config_email, only: [:edit, :update, :show]
   before_action :get_config
 
   def new
     @config_email = ConfigEmail.new
-    authorize ConfigEmail
+    #authorize ConfigEmail
   end
 
   def edit
-    authorize ConfigEmail
+    #authorize ConfigEmail
   end
 
   def show
-    authorize ConfigEmail
+    #authorize ConfigEmail
   end
 
   def create
-    authorize ConfigEmail
+    #authorize ConfigEmail
     config_email = params[:config_email]
     @config_email = ConfigEmail.new(config_email_params.merge(vendor_id: current_vendor.id))
     @config_email.password_encrypted = ConfigEmail.encryption(config_email[:password_encrypted])
@@ -36,7 +37,7 @@ class ConfigEmailsController < ApplicationController
   end
 
   def update
-    authorize ConfigEmail
+    #authorize ConfigEmail
     config_email = params[:config_email]
     @config_email.update(config_email_params.merge(vendor_id: current_vendor.id))
     @config_email.password_encrypted = ConfigEmail.encryption(config_email[:password_encrypted])
@@ -66,7 +67,7 @@ class ConfigEmailsController < ApplicationController
   end
 
   def test_connection
-    authorize ConfigEmail
+    #authorize ConfigEmail
     begin
       config_email = @config_emails
       case (config_email.server_email)
@@ -99,6 +100,11 @@ class ConfigEmailsController < ApplicationController
   end
 
   private
+
+  def do_authorize
+    #authorize ConfigEmail
+    check_access        
+  end 
 
   def config_email_params
     params.require(:config_email).permit(:server_email, :username, :password_encrypted, :vendor_id, :status, :port, :smtp_server, :server_name)

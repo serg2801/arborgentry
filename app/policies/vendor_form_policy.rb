@@ -7,29 +7,44 @@ class VendorFormPolicy < ApplicationPolicy
   end
 
   def index?
-    @current_vendor.has_role? :admin
+    #@current_vendor.has_role? :admin
+    true
+  end
+
+  def new?
+    #@current_vendor.has_role? :admin
+    true
+  end
+
+  def create?
+    #@current_vendor.has_role? :admin
+    true
   end
 
   def show?
-    @current_vendor.has_role? :admin or check_vendor_form
+    #@current_vendor.has_role? :admin or check_vendor_form
+    true
   end
 
   def edit?
-    @current_vendor.has_role? :admin or check_vendor_form
+    #@current_vendor.has_role? :admin or check_vendor_form
+    true
   end
 
   def update?
-    @current_vendor.has_role? :admin or check_vendor_form
+    #@current_vendor.has_role? :admin or check_vendor_form
+    true
   end
 
   def grant_access?
-    @current_vendor.has_role? :admin
+    #@current_vendor.has_role? :admin
+    true
   end
 
   private
 
-  def check_vendor_form
-    @modal.vendor_id == @current_vendor.id
-  end
+  #def check_vendor_form
+  #  @modal.vendor_id == @current_vendor.id
+  #end
 
 end

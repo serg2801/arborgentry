@@ -1,6 +1,9 @@
 class ProductTypesController < ApplicationController
-  before_action :set_product_type, only: [:show, :edit, :update, :destroy]
+  
   alias_method :current_user, :current_vendor
+  before_action :do_authorize
+  before_action :set_product_type, only: [:show, :edit, :update, :destroy]
+  
 
   respond_to :html
 
@@ -38,6 +41,11 @@ class ProductTypesController < ApplicationController
   end
 
   private
+
+    def do_authorize
+      check_access        
+    end 
+
     def set_product_type
       @product_type = ProductType.find(params[:id])
     end

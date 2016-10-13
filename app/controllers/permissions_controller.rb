@@ -29,13 +29,17 @@ private
 
     def set_constants
     	@all_actions_alias = "--- All actions ---"
-		@routes_denied = ["permissions"]
+		@routes_denied = ["permissions", "registrations", "rails", "devise"]
+		@routes_add_dirs = ["spree/admin", "spree/admin/orders"]
     end	
 
     def set_permissions	
+
 		all_routes= Rails.application.routes.routes.map do |route|
-  			{alias: route.name, path: route.path.spec.to_s, controller: route.defaults[:controller], action: route.defaults[:action]}
+  			{controller: route.defaults[:controller], action: route.defaults[:action]}
 		end
+
+
 		routes = []
 		route_controllers = []
 		all_routes.each do |r|
@@ -43,7 +47,7 @@ private
 				  is_denied = false
 				  s = r[:controller].to_s.downcase 
 				  @routes_denied.each do |d|
-				  		is_denied = is_denied || (s == d) || (s.index(d + "/") == 0)
+				  		is_denied = is_denied || (s == d) || (s.index(d + "/") == 0) 
 				  end	
 				  unless is_denied	
 						rnew = Hash.new

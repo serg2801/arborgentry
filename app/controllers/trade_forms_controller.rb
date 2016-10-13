@@ -1,17 +1,16 @@
 class TradeFormsController < ApplicationController
 
-  skip_before_filter :authenticate_vendor!
   alias_method :current_user, :current_vendor
-
+  before_action :do_authorize
+  skip_before_filter :authenticate_vendor! 
+  
   layout 'vendor_form', only: [ :new, :create ]
 
   def index
-    authorize TradeForm
     @trade_forms = TradeForm.all
   end
 
   def show
-    authorize TradeForm
     @trade_form = TradeForm.find(params[:id])
   end
 
@@ -31,6 +30,12 @@ class TradeFormsController < ApplicationController
   end
 
   private
+
+  def do_authorize
+    authorize TradeForm
+    check_access        
+  end 
+
   def trade_forms_params
     params.require(:trade_form).permit(:business_name, :greeting, :first_name, :last_name, :email, :phone_number, :address,
                                    :suite, :city, :state, :zipcode, :country, :web_site_url, :information, :image,
