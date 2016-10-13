@@ -3127,7 +3127,7 @@ fieldset[disabled] .pricing-table.yellow .pricing-bottom .price .btn.active {
 .weather.clear {
   background-image: url(weather/clear.png);
 }
-.weather.cloud {
+.weather.cloudy {
   background-image: url(weather/cloud.png);
 }
 .weather.sunny {
