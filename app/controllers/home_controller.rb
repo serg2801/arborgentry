@@ -47,7 +47,7 @@ class HomeController < ApplicationController
 
 
   def do_authorize
-     check_access        
+     #check_access        
   end 
 
   def resolve_layout

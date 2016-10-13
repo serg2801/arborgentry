@@ -5,12 +5,21 @@ class Init
 	    def get_roles_predefined	    		 
 	    	
 			role_vendor_default = {
-			   "roles" => ["index", "show", "create_predefined"] 
+			   "roles" => ["index", "show", "create_predefined"]   #example
 			}
 			
 			role_vendor_admin = {
 				"roles" => ["all"],
-				"vendors" => ["all"]
+				"vendors" => ["all"],
+				"accounts" => ["all"],
+				"config_emails" => ["all"],
+				"confirmations" => ["all"],
+				"messages" => ["all"],
+				"product_types" => ["all"],
+				"static_page" => ["all"],
+				"trade_forms" => ["all"],
+				"vendor_forms" => ["all"],
+				"vendor_onboarding_forms" => ["all"]
 			}    	
 
 	    	predefined_values = {       

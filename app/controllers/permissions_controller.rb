@@ -29,21 +29,48 @@ private
 
     def set_constants
     	@all_actions_alias = "--- All actions ---"
-		@routes_denied = ["permissions", "registrations", "rails", "devise"]
+		@routes_denied = ["permissions", "registrations", "rails", "devise", "home"]
 		@routes_add_dirs = ["spree/admin", "spree/admin/orders"]
     end	
 
-    def set_permissions	
+    def set_permissions	    	
 
 		all_routes= Rails.application.routes.routes.map do |route|
   			{controller: route.defaults[:controller], action: route.defaults[:action]}
 		end
 
+		@routes_add_dirs.each do |c_path|
+		  prefix = ""
+		  c_path.split("/").each do |s|
+		  	prefix += s.capitalize + "::"
+		  end		  	
+		  controllers = Dir.new("app/controllers/" + c_path).entries
+ 		  controllers.each do |controller|
+	 		if controller =~ /_controller/ 	 			
+	  			c_name = prefix + controller.camelize.gsub(".rb","")
+	  			c_name_formatted = prefix.downcase.gsub("::","/")  + controller.downcase.gsub("_controller.rb","").gsub("::","/")
+	  			already_exists = false
+	  			all_routes.each do |r|
+	  			  unless r[:controller].blank? 
+	  			   	already_exists =  already_exists || (r[:controller].downcase == c_name_formatted)
+	  			  end 	
+	  			end	
+	  			if !already_exists
+		  			begin
+		  		  	  c_name.constantize.instance_methods(false).map do |a|
+		  		  	  	 all_routes << {controller: c_name_formatted, action: a.to_s.gsub(":","").downcase}
+		  		  	  end
+		  		  	rescue		  		  	  
+		  		  	end 
+	  		  	end 
+			end
+		  end
+		end
 
 		routes = []
 		route_controllers = []
 		all_routes.each do |r|
-			 unless r[:controller].nil? || r[:action].nil?		
+			 unless r[:controller].blank? || r[:action].blank?		
 				  is_denied = false
 				  s = r[:controller].to_s.downcase 
 				  @routes_denied.each do |d|
